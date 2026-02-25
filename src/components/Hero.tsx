@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Home, Video, Camera, Share2, Heart } from 'lucide-react';
 import { useState } from 'react';
+import HeroBackground from './HeroBackground';
 
 interface FloatingButtonProps {
   icon: any;
@@ -93,8 +94,15 @@ function FloatingButton({ icon: Icon, label, activeColor, hoverColor, delay = 0 
 export default function Hero() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center pt-20">
-      {/* Background with Stardust */}
-      <div className="absolute inset-0 z-0 stardust opacity-40" />
+      {/* Animated Background */}
+      <HeroBackground />
+      
+      {/* Mesh Gradient Overlay */}
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-primary/20 blur-[120px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-primary/10 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+      </div>
+
       <div className="absolute inset-0 bg-gradient-to-b from-brand-dark via-transparent to-brand-dark" />
       
       {/* Animated Glows */}

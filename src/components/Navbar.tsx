@@ -18,6 +18,7 @@ export default function Navbar() {
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
         <a href="#services" className="hover:text-brand-primary transition-colors">Expertise</a>
         <a href="#process" className="hover:text-brand-primary transition-colors">Process</a>
+        <a href="#work" className="hover:text-brand-primary transition-colors">Work</a>
         <a href="#critique" className="hover:text-brand-primary transition-colors">Audit</a>
         <a href="#contact" className="hover:text-brand-primary transition-colors">Login</a>
       </div>

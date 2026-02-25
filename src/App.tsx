@@ -4,6 +4,7 @@ import TrustBar from './components/TrustBar';
 import Marquee from './components/Marquee';
 import Services from './components/Services';
 import Process from './components/Process';
+import CaseStudies from './components/CaseStudies';
 import StopBurningCash from './components/StopBurningCash';
 import AICritique from './components/AICritique';
 import FounderVideo from './components/FounderVideo';
@@ -20,6 +21,7 @@ export default function App() {
         <Marquee />
         <Services />
         <Process />
+        <CaseStudies />
         <StopBurningCash />
         <AICritique />
         <FounderVideo />
