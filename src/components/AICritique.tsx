@@ -18,17 +18,15 @@ export default function AICritique() {
           {/* Glow behind card */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand-primary/8 blur-[120px] rounded-full pointer-events-none" />
 
-          {/* Animated gradient border wrapper */}
-          <div className="relative rounded-[2rem] p-px overflow-hidden">
-            {/* Rotating gradient border */}
+          {/* Breathing ambient glow wrapper */}
+          <div className="relative">
             <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-              className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0%,#C5A059_20%,transparent_40%,transparent_60%,#C5A059_80%,transparent_100%)]"
-              style={{ width: '200%', height: '200%', top: '-50%', left: '-50%' }}
+              animate={{ opacity: [0.15, 0.35, 0.15] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute -inset-px rounded-[2rem] bg-gradient-to-br from-brand-primary/20 via-transparent to-brand-primary/10 pointer-events-none"
             />
 
-            <div className={`relative glass-morphism rounded-[2rem] p-8 md:p-14 transition-all duration-500 ${isFocused ? 'shadow-[0_0_80px_rgba(197,160,89,0.08)]' : ''
+            <div className={`relative glass-morphism rounded-[2rem] p-8 md:p-14 transition-all duration-500 shadow-[0_20px_80px_rgba(0,0,0,0.4)] ${isFocused ? 'shadow-[0_20px_80px_rgba(197,160,89,0.12)]' : ''
               }`}>
               <div className="relative z-10 text-center">
                 <motion.div
