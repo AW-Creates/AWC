@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function HeroBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -6,116 +6,130 @@ export default function HeroBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let animationFrameId: number;
-    let particles: Particle[] = [];
-    const particleCount = 100;
-    const mouse = { x: 0, y: 0, radius: 200 };
-
-    class Particle {
-      x: number;
-      y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      opacity: number;
-
-      constructor() {
-        this.x = Math.random() * canvas!.width;
-        this.y = Math.random() * canvas!.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.8;
-        this.speedY = (Math.random() - 0.5) * 0.8;
-        this.opacity = Math.random() * 0.6 + 0.2;
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x > canvas!.width) this.x = 0;
-        else if (this.x < 0) this.x = canvas!.width;
-        if (this.y > canvas!.height) this.y = 0;
-        else if (this.y < 0) this.y = canvas!.height;
-
-        // Mouse interaction
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < mouse.radius) {
-          const force = (mouse.radius - distance) / mouse.radius;
-          const directionX = dx / distance;
-          const directionY = dy / distance;
-          this.x -= directionX * force * 3;
-          this.y -= directionY * force * 3;
-        }
-      }
-
-      draw() {
-        if (!ctx) return;
-        ctx.fillStyle = `rgba(197, 160, 89, ${this.opacity})`; // Using brand gold color
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    const init = () => {
-      particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-    };
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Draw subtle connections
-      ctx.strokeStyle = 'rgba(197, 160, 89, 0.1)';
-      ctx.lineWidth = 0.5;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < 180) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-      });
-      animationFrameId = requestAnimationFrame(animate);
-    };
 
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      init();
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+    // Pulse ring storage
+    const pulses: { x: number; y: number; radius: number; opacity: number; speed: number }[] = [];
+    let lastPulseTime = 0;
+
+    const drawFrame = (time: number) => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // 1. Animated gradient mesh — 3 slowly orbiting radial gradients
+      const cx = canvas.width * 0.65;
+      const cy = canvas.height * 0.45;
+
+      const blobs = [
+        {
+          x: cx + Math.sin(time * 0.0003) * 120,
+          y: cy + Math.cos(time * 0.0004) * 80,
+          r: 350,
+          color: 'rgba(197, 160, 89, 0.04)',
+        },
+        {
+          x: cx + Math.cos(time * 0.0002) * 150,
+          y: cy + Math.sin(time * 0.00035) * 100,
+          r: 280,
+          color: 'rgba(197, 160, 89, 0.03)',
+        },
+        {
+          x: cx + Math.sin(time * 0.00045 + 2) * 100,
+          y: cy + Math.cos(time * 0.0003 + 1) * 120,
+          r: 220,
+          color: 'rgba(191, 255, 7, 0.015)',
+        },
+      ];
+
+      for (const blob of blobs) {
+        const grad = ctx.createRadialGradient(blob.x, blob.y, 0, blob.x, blob.y, blob.r);
+        grad.addColorStop(0, blob.color);
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      // 2. Grid dots (subtle)
+      const spacing = 80;
+      const cols = Math.ceil(canvas.width / spacing) + 1;
+      const rows = Math.ceil(canvas.height / spacing) + 1;
+
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const x = i * spacing;
+          const y = j * spacing;
+          const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+          const pulse = prefersReducedMotion
+            ? 0.08
+            : 0.05 + 0.04 * Math.sin(time * 0.001 + dist * 0.005);
+
+          ctx.fillStyle = `rgba(197, 160, 89, ${pulse})`;
+          ctx.beginPath();
+          ctx.arc(x, y, 1, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // 3. Pulse rings emanating from the scan card center
+      if (!prefersReducedMotion) {
+        // Spawn a new pulse every 2 seconds
+        if (time - lastPulseTime > 2000) {
+          pulses.push({ x: cx, y: cy, radius: 20, opacity: 0.15, speed: 0.8 });
+          lastPulseTime = time;
+        }
+
+        for (let i = pulses.length - 1; i >= 0; i--) {
+          const p = pulses[i];
+          p.radius += p.speed;
+          p.opacity -= 0.0005;
+
+          if (p.opacity <= 0) {
+            pulses.splice(i, 1);
+            continue;
+          }
+
+          ctx.strokeStyle = `rgba(197, 160, 89, ${p.opacity})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        // Scanning line
+        const scanY = (time * 0.025) % canvas.height;
+        const scanGrad = ctx.createLinearGradient(0, scanY - 40, 0, scanY + 40);
+        scanGrad.addColorStop(0, 'rgba(197, 160, 89, 0)');
+        scanGrad.addColorStop(0.5, 'rgba(197, 160, 89, 0.02)');
+        scanGrad.addColorStop(1, 'rgba(197, 160, 89, 0)');
+        ctx.fillStyle = scanGrad;
+        ctx.fillRect(0, scanY - 40, canvas.width, 80);
+      }
     };
 
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove);
+    const animate = (time: number) => {
+      drawFrame(time);
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
     handleResize();
-    animate();
+    window.addEventListener('resize', handleResize);
+
+    if (prefersReducedMotion) {
+      drawFrame(0);
+    } else {
+      animate(0);
+    }
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -123,8 +137,8 @@ export default function HeroBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 pointer-events-none opacity-60"
-      style={{ filter: 'blur(1px)' }}
+      className="absolute inset-0 z-0 pointer-events-none"
+      aria-hidden="true"
     />
   );
 }
