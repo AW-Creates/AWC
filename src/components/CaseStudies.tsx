@@ -14,7 +14,7 @@ const projects: Project[] = [
     challenge: "The client's existing dashboard had a 68% user drop-off within the first week. Slow load times, confusing navigation, and zero onboarding flow meant power users stayed — but new users bounced immediately.",
     solution: "We rebuilt the entire platform on edge-optimized infrastructure with sub-50ms response times. AI-driven onboarding walks new users through key features, and a redesigned data hierarchy reduced clicks-to-insight by 74%.",
     techStack: ["Next.js", "TypeScript", "D3.js", "PostgreSQL", "Vercel Edge"],
-    screenshots: ["/images/case-saas-2.png"],
+    screenshots: ["/images/case-saas-2.png", "/images/case-saas-3.png"],
     stats: [
       { label: "Load Time", value: "42ms" },
       { label: "Retention", value: "+142%" },
@@ -31,7 +31,7 @@ const projects: Project[] = [
     challenge: "A beloved local restaurant with zero digital presence. Walk-in traffic was declining post-pandemic, and competitors with online ordering were stealing market share. No brand system, no website, no way to capture reservations.",
     solution: "We built a full brand identity and conversion-optimized website with integrated reservation system. AI-powered email campaigns re-engaged lapsed customers, and Google Business optimization pushed them to the #1 local search result.",
     techStack: ["React", "Tailwind CSS", "Supabase", "OpenTable API", "Cloudflare"],
-    screenshots: ["/images/case-restaurant-2.png"],
+    screenshots: ["/images/case-restaurant-2.png", "/images/case-restaurant-3.png"],
     stats: [
       { label: "Online Bookings", value: "3.2x" },
       { label: "Google Rank", value: "#1" },
@@ -48,7 +48,7 @@ const projects: Project[] = [
     challenge: "A premium fashion brand with beautiful products but a checkout flow that leaked revenue at every step. Cart abandonment was 82%, mobile conversion was near zero, and product discovery relied entirely on manual browsing.",
     solution: "We redesigned the entire purchase journey with AI-powered product recommendations, a one-tap checkout flow, and predictive search. Mobile-first design with gesture navigation tripled mobile conversion overnight.",
     techStack: ["Next.js", "Shopify Headless", "Algolia", "Stripe", "TensorFlow.js"],
-    screenshots: ["/images/case-ecommerce-2.png"],
+    screenshots: ["/images/case-ecommerce-2.png", "/images/case-ecommerce-3.png"],
     stats: [
       { label: "Cart Recovery", value: "64%" },
       { label: "Mobile Conv.", value: "3.1x" },
@@ -65,7 +65,7 @@ const projects: Project[] = [
     challenge: "A 3-location medical practice still using phone-only scheduling. Patients were frustrated with hold times, no-show rates were 35%, and the only web presence was an outdated directory listing with incorrect hours.",
     solution: "We launched a HIPAA-compliant patient portal with real-time scheduling, automated SMS reminders, and a patient intake form that cut reception time by 60%. SEO optimization captured high-intent local searches for every specialty.",
     techStack: ["React", "Node.js", "PostgreSQL", "Twilio", "AWS HIPAA"],
-    screenshots: ["/images/case-medical-2.png"],
+    screenshots: ["/images/case-medical-2.png", "/images/case-medical-3.png"],
     stats: [
       { label: "New Patients", value: "+210%" },
       { label: "No-Shows", value: "-71%" },
@@ -82,11 +82,28 @@ const projects: Project[] = [
     challenge: "A first-time founder with a killer workout algorithm but no product. The MVP needed to launch in 6 weeks to secure seed funding, with a polished enough UX to convince investors this wasn't just a side project.",
     solution: "We designed and shipped a full-featured fitness SaaS in 14 days — workout tracking, progress visualization, AI coaching, and social features. The launch generated 2,000 signups in the first 48 hours and secured $1.2M in funding.",
     techStack: ["React Native", "Next.js", "Supabase", "OpenAI API", "Vercel"],
-    screenshots: ["/images/case-fitness.png"],
+    screenshots: ["/images/case-fitness-2.png"],
     stats: [
       { label: "Launch Time", value: "14 days" },
       { label: "Active Users", value: "12k" },
       { label: "Funding", value: "$1.2M" },
+    ],
+  },
+  {
+    title: "Aura Pay",
+    category: "Fintech SaaS",
+    metrics: "$24M Processed",
+    description: "Ultra-secure analytics dashboard & mobile wallet for modern teams.",
+    image: "/images/case-fintech.png",
+    color: "from-green-500/20 to-transparent",
+    challenge: "Aura Pay was launching a corporate card but their dashboard looked like a 1990s banking portal. They needed interface that felt as premium and secure as their high-tier clients expected, right out of the box.",
+    solution: "We designed a dark-mode first dashboard with real-time financial tracking, integrated API portals, and a stunning mobile wallet companion app. The launch helped them secure a $4M seed round within 3 months.",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Plaid API", "Stripe"],
+    screenshots: ["/images/case-fintech-2.png", "/images/case-fintech-3.png", "/images/case-fintech-4.png"],
+    stats: [
+      { label: "Vol. Processed", value: "$24M" },
+      { label: "Seed Funding", value: "$4.0M" },
+      { label: "API Uptime", value: "99.9%" },
     ],
   },
 ];

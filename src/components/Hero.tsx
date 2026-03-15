@@ -75,7 +75,7 @@ function CountUp({ target, delay: startDelay }: { target: number; delay: number 
   return <span className="font-mono text-2xl font-bold text-brand-primary">{count}</span>;
 }
 
-function ScanCard() {
+function RevenueMachineCard() {
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
@@ -86,7 +86,7 @@ function ScanCard() {
     const cy = rect.top + rect.height / 2;
     const dx = (e.clientX - cx) / (rect.width / 2);
     const dy = (e.clientY - cy) / (rect.height / 2);
-    setTilt({ x: dy * -4, y: dx * 4 });
+    setTilt({ x: dy * -6, y: dx * 6 }); // Slightly stronger tilt
   }, []);
 
   const handleMouseLeave = useCallback(() => setTilt({ x: 0, y: 0 }), []);
@@ -97,80 +97,136 @@ function ScanCard() {
   }, [handleMouseMove]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-      animate={{ opacity: 1, y: [0, -10, 0], scale: 1 }}
-      transition={{
-        opacity: { duration: 0.8, delay: 0.5 },
-        scale: { duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
-        y: { duration: 5, delay: 1.5, repeat: Infinity, ease: 'easeInOut' },
-      }}
-      className="lg:col-span-2 hidden lg:block -ml-4 lg:-mr-16"
-      style={{ perspective: 800 }}
-    >
-      <div
-        ref={cardRef}
-        onMouseLeave={handleMouseLeave}
-        className="relative transition-transform duration-200 ease-out"
-        style={{
-          transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-          transformStyle: 'preserve-3d',
+    <div className="w-full flex justify-end perspective-1000 mt-12 lg:mt-0">
+      <motion.div
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        animate={{ opacity: 1, y: [0, -10, 0], scale: 1 }}
+        transition={{
+          opacity: { duration: 0.8, delay: 0.5 },
+          scale: { duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+          y: { duration: 6, delay: 1.5, repeat: Infinity, ease: 'easeInOut' },
         }}
+        className="w-full max-w-md relative z-10"
       >
-        {/* Pulsing glow behind */}
-        <motion.div
-          animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.08, 1] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -inset-12 bg-brand-primary/10 blur-[80px] rounded-full"
-        />
-
-        <div className="relative glass-morphism rounded-3xl p-8 border-brand-primary/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
-          {/* Status bar */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-2">
-              <motion.div animate={{ rotate: [0, 360] }} transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}>
-                <Scan size={16} className="text-brand-primary" />
-              </motion.div>
-              <span className="font-mono text-xs text-brand-primary uppercase tracking-widest font-semibold">Live Scan</span>
-            </div>
-            <div className="flex gap-1.5">
-              <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
-              <div className="w-2 h-2 rounded-full bg-brand-primary/30" />
-              <div className="w-2 h-2 rounded-full bg-white/10" />
-            </div>
-          </div>
-
-          {/* Typing scan results */}
-          <div className="font-mono text-xs leading-loose space-y-2 text-white/40 min-h-[180px]">
-            <TypingLine text="SEO score: 23/100" delay={1800} icon="✗" />
-            <TypingLine text="Mobile speed: 1.8s (target: 0.5s)" delay={2600} icon="✗" />
-            <TypingLine text="Conversion leak: checkout flow" delay={3400} icon="✗" />
-            <TypingLine text="Missing meta: 12 pages" delay={4200} icon="⚠" />
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 5 }} className="h-px bg-white/5 my-4" />
-            <TypingLine text="Revenue opportunity: +$14,200/mo" delay={5200} icon="✓" />
-          </div>
-
-          {/* Bottom metric */}
+        <div
+          ref={cardRef}
+          onMouseLeave={handleMouseLeave}
+          className="relative transition-transform duration-300 ease-out w-full"
+          style={{
+            transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+            transformStyle: 'preserve-3d',
+          }}
+        >
+          {/* Ambient Engine Glow */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 6 }}
-            className="mt-6 pt-6 border-t border-white/5 flex items-center justify-between"
-          >
-            <span className="font-mono text-[10px] text-white/20 uppercase tracking-widest">Profit leaks found</span>
-            <CountUp target={7} delay={6000} />
-          </motion.div>
-
-          {/* Scanning line */}
-          <motion.div
-            initial={{ top: '0%' }}
-            animate={{ top: ['0%', '100%', '0%'] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'linear', delay: 1.5 }}
-            className="absolute left-0 right-0 h-px bg-brand-primary/30 shadow-[0_0_15px_rgba(197,160,89,0.3)] pointer-events-none"
+            animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.05, 1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -inset-8 bg-brand-primary/20 blur-[60px] rounded-full"
+            style={{ transform: 'translateZ(-50px)' }}
           />
+
+          {/* Main Glass Card */}
+          <div className="relative glass-morphism rounded-3xl p-6 md:p-8 border-brand-primary/20 shadow-[0_30px_80px_rgba(0,0,0,0.8)] backdrop-blur-2xl overflow-hidden">
+
+            {/* Header / Status */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-brand-primary/10 border border-brand-primary/30">
+                  <motion.div animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}>
+                    <Scan size={14} className="text-brand-accent/80" />
+                  </motion.div>
+                </div>
+                <div>
+                  <div className="font-mono text-xs text-brand-primary uppercase tracking-widest font-bold">Revenue Engine</div>
+                  <div className="font-mono text-[9px] text-white/40 uppercase tracking-widest">System Active</div>
+                </div>
+              </div>
+              <div className="flex gap-1.5 opacity-60">
+                <motion.div animate={{ height: [4, 12, 4] }} transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }} className="w-1.5 bg-brand-primary rounded-full" />
+                <motion.div animate={{ height: [8, 16, 8] }} transition={{ duration: 1.2, delay: 0.2, repeat: Infinity, ease: "easeInOut" }} className="w-1.5 bg-brand-primary rounded-full" />
+                <motion.div animate={{ height: [6, 10, 6] }} transition={{ duration: 1.2, delay: 0.4, repeat: Infinity, ease: "easeInOut" }} className="w-1.5 bg-brand-accent rounded-full" />
+              </div>
+            </div>
+
+            {/* Core Visualization: The Conversion Funnel */}
+            <div className="space-y-4 mb-8">
+              {/* Traffic Node */}
+              <div className="flex items-center gap-4 group">
+                <div className="font-mono text-[10px] text-white/30 uppercase w-16 text-right">Traffic</div>
+                <div className="flex-1 h-3 bg-white/5 rounded-full overflow-hidden relative">
+                  <motion.div
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
+                    className="absolute inset-y-0 left-0 bg-white/20 rounded-full"
+                  />
+                  <motion.div
+                    animate={{ x: ["-100%", "200%"] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-y-0 w-8 bg-gradient-to-r from-transparent via-white/50 to-transparent"
+                  />
+                </div>
+                <div className="font-mono text-[10px] font-bold text-white w-12"><CountUp target={1420} delay={1000} />+</div>
+              </div>
+
+              {/* Engagement Node */}
+              <div className="flex items-center gap-4">
+                <div className="font-mono text-[10px] text-brand-primary/50 uppercase w-16 text-right">Engaged</div>
+                <div className="flex-1 h-3 bg-white/5 rounded-full overflow-hidden relative">
+                  <motion.div
+                    initial={{ width: "0%" }}
+                    animate={{ width: "68%" }}
+                    transition={{ duration: 1.5, ease: "easeOut", delay: 1.2 }}
+                    className="absolute inset-y-0 left-0 bg-brand-primary/40 rounded-full"
+                  />
+                </div>
+                <div className="font-mono text-[10px] font-bold text-brand-primary w-12"><CountUp target={68} delay={1200} />%</div>
+              </div>
+
+              {/* Conversion Node (The Money) */}
+              <div className="flex items-center gap-4">
+                <div className="font-mono text-[10px] text-brand-accent uppercase w-16 text-right font-bold">Closed</div>
+                <div className="flex-1 h-3 bg-brand-accent/10 rounded-full overflow-hidden relative border border-brand-accent/20 shadow-[0_0_10px_rgba(100,231,158,0.2)]">
+                  <motion.div
+                    initial={{ width: "0%" }}
+                    animate={{ width: "24%" }}
+                    transition={{ duration: 1.5, ease: "easeOut", delay: 1.4 }}
+                    className="absolute inset-y-0 left-0 bg-brand-accent shadow-[0_0_8px_rgba(100,231,158,1)] rounded-full"
+                  />
+                </div>
+                <div className="font-mono text-[10px] font-bold text-brand-accent w-12"><CountUp target={24} delay={1400} />%</div>
+              </div>
+            </div>
+
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent mb-6" />
+
+            {/* Bottom Metrics */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <div className="font-mono text-[9px] text-white/30 uppercase tracking-widest mb-1">Projected ROI</div>
+                <div className="font-display text-2xl font-bold text-white flex items-end gap-1">
+                  <CountUp target={420} delay={1600} /><span className="text-brand-accent text-lg mb-0.5">%</span>
+                </div>
+              </div>
+              <div>
+                <div className="font-mono text-[9px] text-white/30 uppercase tracking-widest mb-1">New Leads/Mo</div>
+                <div className="font-display text-2xl font-bold text-white flex items-end gap-1">
+                  +<CountUp target={85} delay={1800} />
+                </div>
+              </div>
+            </div>
+
+            {/* Continuous scanning laser effect */}
+            <motion.div
+              initial={{ top: '0%', opacity: 0 }}
+              animate={{ top: ['0%', '100%', '0%'], opacity: [0, 1, 1, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 2 }}
+              className="absolute left-0 right-0 h-px bg-brand-accent/50 shadow-[0_0_20px_rgba(100,231,158,0.8)] pointer-events-none z-20"
+            />
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
@@ -253,8 +309,10 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right — Large animated scan card with parallax tilt */}
-          <ScanCard />
+          {/* Right — Animated Revenue Machine UI (40%) */}
+          <div className="lg:col-span-2 hidden lg:flex items-center justify-center relative w-full pr-4 xl:pr-8">
+            <RevenueMachineCard />
+          </div>
         </div>
 
         {/* Scroll hint */}

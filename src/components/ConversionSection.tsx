@@ -136,20 +136,6 @@ export default function ConversionSection() {
                                 </h3>
                             </motion.div>
                         </div>
-
-                        {/* FAQ Accordion */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                        >
-                            <h4 className="font-mono text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-4">Frequently Asked</h4>
-                            <div className="glass-morphism rounded-2xl p-6">
-                                {faqs.map((faq, i) => (
-                                    <FAQItem key={i} q={faq.q} a={faq.a} />
-                                ))}
-                            </div>
-                        </motion.div>
                     </div>
 
                     {/* Right — Lead Capture Form */}
@@ -218,6 +204,23 @@ export default function ConversionSection() {
                         </div>
                     </motion.div>
                 </div>
+
+                {/* FAQ Accordion - Moved out of the grid to span full width below */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mt-24 max-w-3xl mx-auto"
+                >
+                    <div className="text-center mb-10">
+                        <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Frequently Asked Questions</h3>
+                    </div>
+                    <div className="glass-morphism rounded-3xl p-6 md:p-8">
+                        {faqs.map((faq, i) => (
+                            <FAQItem key={i} q={faq.q} a={faq.a} />
+                        ))}
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

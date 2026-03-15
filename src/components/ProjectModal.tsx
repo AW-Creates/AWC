@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ChevronLeft, ChevronRight, ExternalLink, ArrowRight } from 'lucide-react';
 
@@ -23,6 +23,11 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     const [currentImage, setCurrentImage] = useState(0);
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+    useEffect(() => {
+        setIsImageLoaded(false);
+    }, [currentImage, project]);
 
     if (!project) return null;
 
@@ -64,16 +69,22 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     {/* Image carousel */}
                     <div className="relative h-64 md:h-96 overflow-hidden rounded-t-3xl">
                         <AnimatePresence mode="wait">
-                            <motion.img
-                                key={currentImage}
-                                src={allImages[currentImage]}
-                                alt={`${project.title} screenshot ${currentImage + 1}`}
+                            <motion.div
+                                key={`container-${currentImage}`}
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -20 }}
                                 transition={{ duration: 0.3 }}
-                                className="w-full h-full object-cover"
-                            />
+                                className="absolute inset-0 w-full h-full"
+                            >
+                                {!isImageLoaded && <div className="absolute inset-0 bg-white/5 animate-pulse" />}
+                                <img
+                                    src={allImages[currentImage]}
+                                    alt={`${project.title} screenshot ${currentImage + 1}`}
+                                    className={`w-full h-full object-cover transition-opacity duration-500 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                                    onLoad={() => setIsImageLoaded(true)}
+                                />
+                            </motion.div>
                         </AnimatePresence>
 
                         {/* Gradient overlay */}
@@ -164,14 +175,24 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         </div>
 
                         {/* CTA */}
-                        <a
-                            href="#process"
-                            onClick={onClose}
-                            className="btn-primary inline-flex items-center gap-2 text-sm"
-                        >
-                            Start a Similar Project
-                            <ArrowRight size={16} />
-                        </a>
+                        <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                            <a
+                                href="#process"
+                                onClick={onClose}
+                                className="btn-primary inline-flex items-center justify-center gap-2 text-sm"
+                            >
+                                Start a Similar Project
+                                <ArrowRight size={16} />
+                            </a>
+                            <a
+                                href="#"
+                                onClick={(e) => { e.preventDefault(); onClose(); }}
+                                className="btn-secondary inline-flex items-center justify-center gap-2 text-sm bg-white/5 border border-white/10 text-white hover:bg-white/10"
+                            >
+                                <ExternalLink size={16} />
+                                View Live Project
+                            </a>
+                        </div>
                     </div>
                 </motion.div>
             </motion.div>
