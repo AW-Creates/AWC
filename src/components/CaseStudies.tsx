@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ExternalLink, TrendingUp } from 'lucide-react';
 import ProjectModal, { type Project } from './ProjectModal';
 
@@ -109,6 +109,7 @@ const projects: Project[] = [
 ];
 
 export default function CaseStudies() {
+  const reducedMotion = useReducedMotion();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const featured = projects[0];
@@ -122,14 +123,14 @@ export default function CaseStudies() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-xl">
-            <motion.span initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="archival-label mb-4 block">
+            <motion.span initial={reducedMotion ? false : { opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="archival-label mb-4 block">
               Selected Work
             </motion.span>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-6xl font-black leading-tight tracking-tighter uppercase">
-              Proof, Not<br /><span className="text-white/30">Promises.</span>
+            <motion.h2 initial={reducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-6xl font-black leading-tight tracking-tighter uppercase">
+              Proof, Not<br /><span className="text-muted-30">Promises.</span>
             </motion.h2>
           </div>
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-white/40 max-w-sm text-base font-light leading-relaxed">
+          <motion.p initial={reducedMotion ? false : { opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-muted-40 max-w-sm text-base font-light leading-relaxed">
             Click any project to explore the full case study — screenshots, metrics, and the strategy behind the results.
           </motion.p>
         </div>
@@ -137,31 +138,31 @@ export default function CaseStudies() {
         {/* Row 1: Featured (3/5) + 2 stacked (2/5) */}
         <div className="grid lg:grid-cols-5 gap-6 mb-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={reducedMotion ? false : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             onClick={() => setSelectedProject(featured)}
-            className="lg:col-span-3 group relative bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden hover:border-brand-primary/20 transition-all duration-500 cursor-pointer"
+            className="lg:col-span-3 group relative bg-ink/[0.02] border border-ink/5 rounded-2xl overflow-hidden hover:border-brand-primary/20 transition-all duration-500 cursor-pointer"
           >
-            <div className="relative h-72 md:h-96 overflow-hidden">
+            <div className="dark-preview relative h-72 md:h-96 overflow-hidden">
               <img src={featured.image} alt={`${featured.title} — ${featured.category}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[30%] group-hover:grayscale-0" loading="lazy" />
               <div className={`absolute inset-0 bg-gradient-to-t ${featured.color}`} />
-              <div className="absolute top-5 right-5 bg-black/50 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full flex items-center gap-2">
+              <div className="absolute top-5 right-5 bg-black/50 backdrop-blur-md border border-ink/10 px-4 py-2 rounded-full flex items-center gap-2">
                 <TrendingUp size={14} className="text-brand-accent" />
-                <span className="font-mono text-[10px] font-semibold text-white">{featured.metrics}</span>
+                <span className="font-mono text-[10px] font-semibold text-ink">{featured.metrics}</span>
               </div>
               <div className="absolute bottom-5 left-5 bg-brand-primary text-black px-4 py-1.5 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest">{featured.category}</div>
               {/* Click hint */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full flex items-center gap-2">
+                <div className="bg-ink/10 backdrop-blur-md border border-ink/20 px-6 py-3 rounded-full flex items-center gap-2">
                   <ExternalLink size={14} />
                   <span className="font-mono text-xs font-semibold">View Case Study</span>
                 </div>
               </div>
             </div>
             <div className="p-8">
-              <h3 className="text-2xl font-bold tracking-tight group-hover:text-brand-primary transition-colors">{featured.title}</h3>
-              <p className="text-white/40 text-sm leading-relaxed font-light mt-2">{featured.description}</p>
+              <h3 className="text-2xl font-bold tracking-tight group-hover:text-brand-ink transition-colors">{featured.title}</h3>
+              <p className="text-muted-40 text-sm leading-relaxed font-light mt-2">{featured.description}</p>
             </div>
           </motion.div>
 
@@ -169,30 +170,30 @@ export default function CaseStudies() {
             {secondary.map((project, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: 20 }}
+                initial={reducedMotion ? false : { opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
                 onClick={() => setSelectedProject(project)}
-                className="group relative bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden hover:border-brand-primary/20 transition-all duration-500 cursor-pointer flex-1"
+                className="group relative bg-ink/[0.02] border border-ink/5 rounded-2xl overflow-hidden hover:border-brand-primary/20 transition-all duration-500 cursor-pointer flex-1"
               >
-                <div className="relative h-44 overflow-hidden">
+                <div className="dark-preview relative h-44 overflow-hidden">
                   <img src={project.image} alt={`${project.title} — ${project.category}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[30%] group-hover:grayscale-0" loading="lazy" />
                   <div className={`absolute inset-0 bg-gradient-to-t ${project.color}`} />
-                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md border border-ink/10 px-3 py-1.5 rounded-full flex items-center gap-1.5">
                     <TrendingUp size={12} className="text-brand-accent" />
-                    <span className="font-mono text-[9px] font-semibold text-white">{project.metrics}</span>
+                    <span className="font-mono text-[9px] font-semibold text-ink">{project.metrics}</span>
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full flex items-center gap-2">
+                    <div className="bg-ink/10 backdrop-blur-md border border-ink/20 px-4 py-2 rounded-full flex items-center gap-2">
                       <ExternalLink size={12} />
                       <span className="font-mono text-[10px] font-semibold">View Details</span>
                     </div>
                   </div>
                 </div>
                 <div className="p-6">
-                  <span className="font-mono text-[9px] font-semibold uppercase tracking-widest text-brand-primary/60 block mb-2">{project.category}</span>
-                  <h3 className="text-lg font-bold tracking-tight group-hover:text-brand-primary transition-colors">{project.title}</h3>
+                  <span className="font-mono text-[9px] font-semibold uppercase tracking-widest text-brand-ink/60 block mb-2">{project.category}</span>
+                  <h3 className="text-lg font-bold tracking-tight group-hover:text-brand-ink transition-colors">{project.title}</h3>
                 </div>
               </motion.div>
             ))}
@@ -204,31 +205,31 @@ export default function CaseStudies() {
           {tertiary.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               onClick={() => setSelectedProject(project)}
-              className="group relative bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden hover:border-brand-primary/20 transition-all duration-500 cursor-pointer"
+              className="group relative bg-ink/[0.02] border border-ink/5 rounded-2xl overflow-hidden hover:border-brand-primary/20 transition-all duration-500 cursor-pointer"
             >
-              <div className="relative h-52 overflow-hidden">
+              <div className="dark-preview relative h-52 overflow-hidden">
                 <img src={project.image} alt={`${project.title} — ${project.category}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[30%] group-hover:grayscale-0" loading="lazy" />
                 <div className={`absolute inset-0 bg-gradient-to-t ${project.color}`} />
-                <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md border border-ink/10 px-3 py-1.5 rounded-full flex items-center gap-1.5">
                   <TrendingUp size={12} className="text-brand-accent" />
-                  <span className="font-mono text-[9px] font-semibold text-white">{project.metrics}</span>
+                  <span className="font-mono text-[9px] font-semibold text-ink">{project.metrics}</span>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                  <div className="bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full flex items-center gap-2">
+                  <div className="bg-ink/10 backdrop-blur-md border border-ink/20 px-4 py-2 rounded-full flex items-center gap-2">
                     <ExternalLink size={12} />
                     <span className="font-mono text-[10px] font-semibold">View Details</span>
                   </div>
                 </div>
               </div>
               <div className="p-6">
-                <span className="font-mono text-[9px] font-semibold uppercase tracking-widest text-brand-primary/60 block mb-2">{project.category}</span>
-                <h3 className="text-lg font-bold tracking-tight group-hover:text-brand-primary transition-colors">{project.title}</h3>
-                <p className="text-white/40 text-xs leading-relaxed mt-2 font-light">{project.description}</p>
+                <span className="font-mono text-[9px] font-semibold uppercase tracking-widest text-brand-ink/60 block mb-2">{project.category}</span>
+                <h3 className="text-lg font-bold tracking-tight group-hover:text-brand-ink transition-colors">{project.title}</h3>
+                <p className="text-muted-40 text-xs leading-relaxed mt-2 font-light">{project.description}</p>
               </div>
             </motion.div>
           ))}

@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Search, Zap } from 'lucide-react';
 
 export default function AICritique() {
   const [url, setUrl] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+  const reducedMotion = useReducedMotion();
 
   return (
     <section className="py-20 md:py-28 relative overflow-hidden" id="audit">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="max-w-3xl mx-auto"
@@ -21,7 +22,7 @@ export default function AICritique() {
           {/* Breathing ambient glow wrapper */}
           <div className="relative">
             <motion.div
-              animate={{ opacity: [0.15, 0.35, 0.15] }}
+              animate={reducedMotion ? undefined : { opacity: [0.15, 0.35, 0.15] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -inset-px rounded-[2rem] bg-gradient-to-br from-brand-primary/20 via-transparent to-brand-primary/10 pointer-events-none"
             />
@@ -30,25 +31,25 @@ export default function AICritique() {
               }`}>
               <div className="relative z-10 text-center">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={reducedMotion ? false : { opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 mb-6"
                 >
-                  <Zap size={12} className="text-brand-primary" />
-                  <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-brand-primary">Free AI-Powered Audit</span>
+                  <Zap size={12} className="text-brand-ink" />
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-brand-ink">Free AI-Powered Audit</span>
                 </motion.div>
 
                 <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight tracking-tighter">
                   Find Your Hidden <br />
-                  <span className="text-brand-primary">Revenue Leaks</span>
+                  <span className="text-brand-ink">Revenue Leaks</span>
                 </h2>
 
-                <p className="text-white/40 text-base md:text-lg mb-10 max-w-lg mx-auto font-light">
+                <p className="text-muted-40 text-base md:text-lg mb-10 max-w-lg mx-auto font-light">
                   Paste your URL. Our AI scans your site for conversion killers and shows you exactly where money is being left on the table.
                 </p>
 
-                <div className="relative max-w-xl mx-auto">
+                <div className="relative max-w-xl mx-auto flex flex-col sm:block gap-3">
                   <input
                     id="audit-url"
                     type="url"
@@ -58,10 +59,10 @@ export default function AICritique() {
                     onBlur={() => setIsFocused(false)}
                     placeholder="https://yourwebsite.com"
                     aria-label="Enter your website URL for AI analysis"
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-6 py-5 pr-36 focus:outline-none focus:border-brand-primary/40 transition-all text-white placeholder:text-white/20 font-light"
+                    className="w-full bg-ink/[0.03] border border-ink/10 rounded-2xl px-6 py-5 pr-6 sm:pr-36 focus:outline-none focus:border-brand-primary/40 transition-all text-ink placeholder:text-muted-20 font-light"
                   />
                   <button
-                    className="absolute right-2 top-2 bottom-2 bg-brand-primary text-black font-bold px-6 rounded-xl hover:shadow-[0_0_30px_rgba(197,160,89,0.4)] transition-all flex items-center gap-2 cursor-pointer text-sm"
+                    className="relative sm:absolute sm:right-2 sm:top-2 sm:bottom-2 self-stretch sm:self-auto bg-brand-primary text-black font-bold px-6 py-3 sm:py-0 rounded-xl hover:shadow-[0_0_30px_rgba(197,160,89,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
                     aria-label="Analyze website"
                   >
                     <Search size={16} />
@@ -73,7 +74,7 @@ export default function AICritique() {
                   {['No Credit Card', 'Instant Results', '100% Free'].map((item) => (
                     <div key={item} className="flex items-center gap-2">
                       <div className="w-1 h-1 rounded-full bg-brand-primary" />
-                      <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-white/30">{item}</span>
+                      <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-muted-30">{item}</span>
                     </div>
                   ))}
                 </div>

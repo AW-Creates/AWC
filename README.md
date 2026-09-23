@@ -1,20 +1,38 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# A. Wilcher Creatives
 
-# Run and deploy your AI Studio app
+Canonical React/Vite agency website. Start with [PROJECT_STATE.md](PROJECT_STATE.md)
+for the current milestone, locked decisions and exact next action.
 
-This contains everything you need to run your app locally.
+## Local development
 
-View your app in AI Studio: https://ai.studio/apps/e9dc82f7-21e1-4531-8a5c-9d7e5894e7c3
+Use Node.js 24 (`.nvmrc`). The existing native SQLite dependency does not support
+Node 26; the website itself is a client-side preview.
 
-## Run Locally
+```sh
+npm ci
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+The website and scripted Quote Agent demo need no API key. The audit and inquiry
+forms are presentational; no backend, live quote calculation or voice agent is
+included. Never place a production secret in a client-side bundle.
 
+## Validation
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```sh
+npm run lint
+npm run build
+```
+
+`lint` currently runs TypeScript (`tsc --noEmit`); there is no separate ESLint
+configuration. See [baseline closeout](docs/BASELINE_CLOSEOUT.md) for browser QA
+results, screenshots, limitations and the approved desktop preservation check.
+
+## Workflow
+
+This project follows [workspace workflow v3.2](docs/workflow/WORKFLOW-v3.2-README.md),
+including Content Capture, Context Budget and the Open-Source-First / Build-vs-Buy
+Gate. The canonical cross-project guidance remains in `../_venture-ops`; versioned
+copies in `docs/workflow` preserve the guidance used for this milestone.
+
+Original AI Studio reference: https://ai.studio/apps/e9dc82f7-21e1-4531-8a5c-9d7e5894e7c3

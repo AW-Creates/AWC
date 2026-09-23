@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AICritique from './components/AICritique';
+import QuoteAgent from './components/QuoteAgent';
 import TrustBar from './components/TrustBar';
 import Services from './components/Services';
 import WhyAWC from './components/WhyAWC';
@@ -10,23 +11,27 @@ import ConversionSection from './components/ConversionSection';
 import Footer from './components/Footer';
 import MobileStickyBar from './components/MobileStickyBar';
 import ParallaxDivider from './components/ParallaxDivider';
+import { MotionConfig } from 'motion/react';
 
 function SectionDivider() {
   return (
     <div className="container mx-auto px-6">
-      <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-ink/5 to-transparent" />
     </div>
   );
 }
 
 export default function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen selection:bg-brand-primary selection:text-black bg-brand-dark overflow-x-hidden">
       <Navbar />
-      <main className="pb-16 md:pb-0">
+      <main>
         <Hero />
 
         <AICritique />
+
+        <QuoteAgent />
 
         <TrustBar />
 
@@ -35,7 +40,7 @@ export default function App() {
 
         {/* Elevated section — slightly lighter bg */}
         <div className="relative">
-          <div className="absolute inset-0 bg-white/[0.008] pointer-events-none" />
+          <div className="absolute inset-0 bg-ink/[0.008] pointer-events-none" />
           <div className="absolute top-[20%] left-[5%] w-[500px] h-[500px] bg-brand-primary/3 blur-[200px] rounded-full pointer-events-none" />
           <Services />
         </div>
@@ -64,7 +69,7 @@ export default function App() {
 
         {/* Elevated testimonials */}
         <div className="relative">
-          <div className="absolute inset-0 bg-white/[0.01] pointer-events-none" />
+          <div className="absolute inset-0 bg-ink/[0.01] pointer-events-none" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/5 blur-[200px] rounded-full pointer-events-none" />
           <Testimonials />
         </div>
@@ -74,8 +79,9 @@ export default function App() {
 
         <ConversionSection />
       </main>
-      <Footer />
+      <div className="pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] md:pb-0"><Footer /></div>
       <MobileStickyBar />
     </div>
+    </MotionConfig>
   );
 }

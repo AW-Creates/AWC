@@ -1,0 +1,112 @@
+{
+  "date": "2026-09-23T17:59:41.199Z",
+  "checks": [
+    {
+      "name": "Mobile menu opens",
+      "pass": true
+    },
+    {
+      "name": "Mobile link closes menu and navigates",
+      "pass": true
+    },
+    {
+      "name": "Keyboard theme choice persists",
+      "pass": true
+    },
+    {
+      "name": "320px audit controls separated",
+      "pass": true,
+      "details": {
+        "input": {
+          "x": 57,
+          "y": 497.5,
+          "width": 206,
+          "height": 66
+        },
+        "analyze": {
+          "x": 57,
+          "y": 575.5,
+          "width": 206,
+          "height": 44
+        }
+      }
+    },
+    {
+      "name": "Audit URL editable",
+      "pass": true
+    },
+    {
+      "name": "FAQ expands",
+      "pass": true
+    },
+    {
+      "name": "FAQ collapses",
+      "pass": true
+    },
+    {
+      "name": "Testimonial manual navigation",
+      "pass": true
+    },
+    {
+      "name": "Reduced motion disables auto-advance",
+      "pass": true,
+      "details": "Marcus Rivera"
+    },
+    {
+      "name": "Case study opens",
+      "pass": true
+    },
+    {
+      "name": "Case study closes",
+      "pass": true
+    },
+    {
+      "name": "Footer clears fixed mobile CTA",
+      "pass": true,
+      "details": {
+        "footer": {
+          "x": 209.5,
+          "y": 701.75,
+          "width": 49,
+          "height": 15
+        },
+        "sticky": {
+          "x": 17,
+          "y": 843,
+          "width": 286,
+          "height": 44
+        }
+      }
+    },
+    {
+      "name": "Reduced motion shows full quote",
+      "pass": true
+    },
+    {
+      "name": "Demo cannot send messages",
+      "pass": true
+    },
+    {
+      "name": "Quote waits until visible",
+      "pass": true
+    },
+    {
+      "name": "Quote uses paced dialogue",
+      "pass": true
+    },
+    {
+      "name": "Paced quote completes",
+      "pass": true
+    },
+    {
+      "name": "Replay restarts demo",
+      "pass": true
+    },
+    {
+      "name": "No browser runtime errors",
+      "pass": true,
+      "details": []
+    }
+  ],
+  "errors": []
+}

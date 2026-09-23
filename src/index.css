@@ -8,12 +8,21 @@
   --color-brand-primary: #C5A059;
   --color-brand-accent: #BFFF07;
   --color-brand-dark: #02040a;
+  --color-page: #02040a;
+  --color-shade: #000000;
   --color-brand-muted: #8a7443;
+  --color-surface: #11151d;
+  --color-ink: #ffffff;
+  --color-ink-muted: rgba(248,248,245,.48);
+  --color-line: rgba(255,255,255,.1);
 }
+
+:root.theme-light { --color-brand-dark: #f4f1eb; --color-page: #f4f1eb; --color-shade: #171714; --color-surface: #ffffff; --color-ink: #171714; --color-ink-muted: rgba(23,23,20,.62); --color-line: rgba(23,23,20,.14); }
+:root.theme-light body { color: var(--color-ink); }
 
 @layer base {
   body {
-    @apply bg-brand-dark text-white font-sans antialiased;
+    @apply bg-brand-dark text-ink font-sans antialiased;
     scroll-behavior: smooth;
   }
 
@@ -54,7 +63,7 @@
 
 /* --- Glass & Texture Utilities --- */
 .glass {
-  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  @apply bg-ink/5 backdrop-blur-lg border border-ink/10;
 }
 
 .glass-morphism {
@@ -86,7 +95,7 @@
 
 /* --- Text Utilities --- */
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30;
+  @apply bg-clip-text text-transparent bg-gradient-to-b from-ink via-ink to-ink/30;
 }
 
 .text-primary-gradient {
@@ -95,11 +104,11 @@
 
 /* --- Archival Typography --- */
 .archival-label {
-  @apply font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30;
+  @apply font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-30;
 }
 
 .archival-index {
-  @apply font-mono text-7xl font-bold text-white/[0.03];
+  @apply font-mono text-7xl font-bold text-ink/[0.03];
 }
 
 /* --- Button System --- */
@@ -113,7 +122,7 @@
 }
 
 .btn-secondary {
-  @apply border border-white/20 text-white font-medium px-8 py-4 rounded-full transition-all hover:bg-white/10 active:scale-95 cursor-pointer;
+  @apply border border-ink/20 text-ink font-medium px-8 py-4 rounded-full transition-all hover:bg-ink/10 active:scale-95 cursor-pointer;
 }
 
 /* --- Focus & Accessibility --- */
@@ -142,5 +151,70 @@ textarea:focus-visible,
 
 /* Safe area for mobile sticky bar */
 .safe-bottom {
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
 }
+
+.bg-surface { background-color: var(--color-surface); }
+.bg-page { background-color: var(--color-page); }
+.bg-shade { background-color: var(--color-shade); }
+.text-ink { color: var(--color-ink); }
+.text-ink-muted { color: var(--color-ink-muted); }
+.border-line { border-color: var(--color-line); }
+
+/* Explicit surface/typography tokens keep the approved dark palette intact. */
+:root {
+  --glass-fill: rgba(255, 255, 255, 0.03);
+  --glass-edge: rgba(255, 255, 255, 0.06);
+}
+:root.theme-light {
+  color-scheme: light;
+  --glass-fill: rgba(255, 255, 255, 0.78);
+  --glass-edge: rgba(23, 23, 20, 0.14);
+}
+:root:not(.theme-light) { color-scheme: dark; }
+.glass-morphism { background: var(--glass-fill); border-color: var(--glass-edge); }
+:root.theme-light .archival-label { color: #65614f; }
+:root.theme-light .text-primary-gradient { background-image: linear-gradient(to bottom, #886326, #75511c); }
+@theme {
+  --color-brand-ink: #C5A059;
+  --color-muted-20: rgba(255,255,255,0.2);
+  --color-muted-30: rgba(255,255,255,0.3);
+  --color-muted-40: rgba(255,255,255,0.4);
+  --color-muted-50: rgba(255,255,255,0.5);
+  --color-muted-60: rgba(255,255,255,0.6);
+  --color-muted-70: rgba(255,255,255,0.7);
+  --color-muted-80: rgba(255,255,255,0.8);
+  --color-muted-90: rgba(255,255,255,0.9);
+}
+
+:root.theme-light {
+  --color-brand-ink: #886326;
+  --color-muted-20: rgba(23,23,20,1);
+  --color-muted-30: rgba(23,23,20,1);
+  --color-muted-40: rgba(23,23,20,1);
+  --color-muted-50: rgba(23,23,20,1);
+  --color-muted-60: rgba(23,23,20,1);
+  --color-muted-70: rgba(23,23,20,1);
+  --color-muted-80: rgba(23,23,20,1);
+  --color-muted-90: rgba(23,23,20,1);
+}
+
+.dark-preview {
+  color: white;
+  --color-ink: #ffffff;
+  --color-brand-ink: #C5A059;
+  --color-brand-dark: #02040a;
+  --glass-fill: rgba(255,255,255,0.03);
+  --glass-edge: rgba(255,255,255,0.06);
+  --color-muted-20: rgba(255,255,255,0.2);
+  --color-muted-30: rgba(255,255,255,0.3);
+  --color-muted-40: rgba(255,255,255,0.4);
+  --color-muted-50: rgba(255,255,255,0.5);
+  --color-muted-60: rgba(255,255,255,0.6);
+  --color-muted-70: rgba(255,255,255,0.7);
+  --color-muted-80: rgba(255,255,255,0.8);
+  --color-muted-90: rgba(255,255,255,0.9);
+}
+:root.theme-light .dark-preview .glass-morphism { background: #11151d; }
+
+:root.theme-light .project-dialog { background: #fcfaf6; }

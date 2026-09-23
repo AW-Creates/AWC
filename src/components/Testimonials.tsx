@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
@@ -24,16 +24,18 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+    const reducedMotion = useReducedMotion();
     const [current, setCurrent] = useState(0);
     const [direction, setDirection] = useState(1);
 
     useEffect(() => {
+        if (reducedMotion) return;
         const interval = setInterval(() => {
             setDirection(1);
             setCurrent((prev) => (prev + 1) % testimonials.length);
         }, 6000);
         return () => clearInterval(interval);
-    }, []);
+    }, [reducedMotion]);
 
     const navigate = (dir: number) => {
         setDirection(dir);
@@ -47,40 +49,40 @@ export default function Testimonials() {
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
                     <motion.span
-                        initial={{ opacity: 0 }}
+                        initial={reducedMotion ? false : { opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true }} transition={reducedMotion ? { duration: 0 } : undefined}
                         className="archival-label mb-4 block"
                     >
                         Client Stories
                     </motion.span>
                     <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={reducedMotion ? false : { opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true }} transition={reducedMotion ? { duration: 0 } : undefined}
                         className="text-4xl md:text-5xl font-black leading-tight tracking-tighter uppercase"
                     >
                         Don't Take Our<br />
-                        <span className="text-white/30">Word For It.</span>
+                        <span className="text-muted-30">Word For It.</span>
                     </motion.h2>
                 </div>
 
                 <div className="max-w-3xl mx-auto relative">
                     <div className="glass-morphism rounded-[2rem] p-8 md:p-14 relative overflow-hidden min-h-[280px]">
                         {/* Decorative quote */}
-                        <Quote size={60} className="absolute top-6 right-8 text-brand-primary/5" />
+                        <Quote size={60} className="absolute top-6 right-8 text-brand-ink/5" />
 
-                        <AnimatePresence mode="wait" custom={direction}>
+                        <AnimatePresence mode={reducedMotion ? 'sync' : 'wait'} custom={direction}>
                             <motion.div
                                 key={current}
                                 custom={direction}
-                                initial={{ opacity: 0, x: direction * 30 }}
+                                initial={reducedMotion ? false : { opacity: 0, x: direction * 30 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: direction * -30 }}
-                                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                exit={reducedMotion ? undefined : { opacity: 0, x: direction * -30 }}
+                                transition={reducedMotion ? { duration: 0 } : { duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                                 className="relative z-10"
                             >
-                                <p className="text-base md:text-lg text-white/70 leading-relaxed font-light mb-8 italic">
+                                <p className="text-base md:text-lg text-muted-70 leading-relaxed font-light mb-8 italic">
                                     "{t.quote}"
                                 </p>
 
@@ -88,15 +90,15 @@ export default function Testimonials() {
                                     <div className="flex items-center gap-4">
                                         {/* Avatar placeholder */}
                                         <div className="w-10 h-10 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center">
-                                            <span className="font-bold text-brand-primary text-sm">{t.name.charAt(0)}</span>
+                                            <span className="font-bold text-brand-ink text-sm">{t.name.charAt(0)}</span>
                                         </div>
                                         <div>
                                             <p className="font-bold text-sm">{t.name}</p>
-                                            <p className="font-mono text-[10px] text-white/30 uppercase tracking-widest">{t.role}</p>
+                                            <p className="font-mono text-[10px] text-muted-30 uppercase tracking-widest">{t.role}</p>
                                         </div>
                                     </div>
                                     <div className="bg-brand-primary/10 border border-brand-primary/20 px-4 py-1.5 rounded-full">
-                                        <span className="font-mono text-[10px] font-bold text-brand-primary tracking-wider">{t.metric}</span>
+                                        <span className="font-mono text-[10px] font-bold text-brand-ink tracking-wider">{t.metric}</span>
                                     </div>
                                 </div>
                             </motion.div>
@@ -107,10 +109,10 @@ export default function Testimonials() {
                     <div className="flex items-center justify-center gap-4 mt-6">
                         <button
                             onClick={() => navigate(-1)}
-                            className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-primary/30 transition-colors cursor-pointer"
+                            className="w-10 h-10 rounded-full border border-ink/10 flex items-center justify-center hover:border-brand-primary/30 transition-colors cursor-pointer"
                             aria-label="Previous testimonial"
                         >
-                            <ChevronLeft size={16} className="text-white/40" />
+                            <ChevronLeft size={16} className="text-muted-40" />
                         </button>
 
                         <div className="flex gap-2">
@@ -118,7 +120,7 @@ export default function Testimonials() {
                                 <button
                                     key={i}
                                     onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
-                                    className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${i === current ? 'bg-brand-primary w-6' : 'bg-white/10 hover:bg-white/20'
+                                    className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${i === current ? 'bg-brand-primary w-6' : 'bg-ink/10 hover:bg-ink/20'
                                         }`}
                                     aria-label={`Go to testimonial ${i + 1}`}
                                 />
@@ -127,10 +129,10 @@ export default function Testimonials() {
 
                         <button
                             onClick={() => navigate(1)}
-                            className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-brand-primary/30 transition-colors cursor-pointer"
+                            className="w-10 h-10 rounded-full border border-ink/10 flex items-center justify-center hover:border-brand-primary/30 transition-colors cursor-pointer"
                             aria-label="Next testimonial"
                         >
-                            <ChevronRight size={16} className="text-white/40" />
+                            <ChevronRight size={16} className="text-muted-40" />
                         </button>
                     </div>
                 </div>
