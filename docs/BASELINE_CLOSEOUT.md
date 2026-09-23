@@ -108,3 +108,12 @@ material paid provider decision. Keep the website's production-readiness gaps
 explicit rather than treating this baseline closeout as a live lead pipeline.
 
 Validated implementation commit: `bcdfac868801236464c5c9de6543efbdaf0e40e8`. Documentation closeout follows in Git.
+
+## Post-closeout capture infrastructure repair — 2026-09-23
+Playwright browser-context recording is verified on a synthetic local browser
+fixture, not the AWC design. Two clips passed full decode, browser playback and
+visual samples; screenshots, logs and exact external paths are in
+[CONTENT_CAPTURE_REPAIR.md](CONTENT_CAPTURE_REPAIR.md). Baseline/site video remains
+missing. Product code is unchanged. User-reported canonical source mismatch is
+unresolved and supersedes earlier source-location assumptions. Next milestone:
+AWC — Canonical Source Reconciliation; no Bake-Off.

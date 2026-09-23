@@ -1,12 +1,13 @@
 # Content pipeline
 
 Updated: 2026-09-23. The agent owns capture planning; the user should not have
-to guess when recording is useful. AWC screenshots are verified; no playable video was captured.
+to guess when recording is useful. AWC baseline screenshots are verified; baseline video remains missing. Content Capture infrastructure now has verified local-fixture videos (C004).
 
 | ID | Project / moment | Story and required footage | State | Asset / timecodes | Next action |
 |---|---|---|---|---|---|
 | C001 | AWC responsive baseline | Same page before/after at matched widths | Screenshots verified; video failed | media/awc-v3.2-2026-09-23/baseline-*.png and final-*.png | Retain raw evidence; no before-state video claim |
 | C002 | AWC baseline closeout | Hero, Quote Agent, mobile interaction | Screenshots and QA verified; video pending | media/awc-v3.2-2026-09-23/; AWC docs/BASELINE_CLOSEOUT.md | Future labeled demo recording only; publication not authorized |
+| C004 | Content Capture infrastructure repair | Later synthetic local fixture: timer, animation, scroll | VERIFIED: two Playwright recordings decoded/played/visually inspected | media/capture-repair-2026-09-23/; repeat video 7.96s / 428,092 bytes | Stop; next AWC — Canonical Source Reconciliation |
 | C003 | Future receptionist demo | Test customer asks, qualifies, books, hands off | Backlog | None | Define MVP before capture |
 
 States: idea → planned → captured → verified → editing → review → published.
@@ -44,3 +45,25 @@ beside the raw assets. Raw screenshots were visually reviewed; no audio intended
 or verified duration/timecodes exist. Contact sheets are diagnostics only.
 Future demo shot list: 0-5s dark hero, 5-10s theme switch, 10-22s Quote Agent,
 22-27s composer/replay. Label it as a later demo, never as before-state footage.
+## C004 — verified infrastructure repair, 2026-09-23
+Scope: capture only, no AWC site/design changes or source reconciliation. Existing
+C001/C002 missing site footage remains missing; this does not replace it.
+Primary method: Playwright context video, headless Chrome 153.0.8010.36,
+Playwright 1.63.0-alpha-2026-08-31, bundled FFmpeg 1011, 1280x720 VP8/25fps/silent.
+Agent-browser 0.38.1 abandoned as the default after repeat 30fps backlog failures;
+5fps isolated recordings work as a limited workaround. Exact failing guards are
+16 buffered frames/500ms lag; deeper hardware/OS cause is not established.
+
+Artifact directory: C:\Users\A-Problem\Documents\Web Development\AW-Creates-Ventures\_venture-ops\media\capture-repair-2026-09-23\
+Final video: repeat/context-2026-09-23T23-53-55-327Z.webm — 428,092 bytes,
+7.96 seconds, 199 frames. Screenshot: repeat/playback-end.png. Verification JSON:
+repeat/verification.json. Full decode and actual Chromium playback pass;
+start/middle/end screenshots visually inspected; readable titles/timer and scroll.
+Timecodes approximately 0-2s animation/title, 2-4.5s lower section, 4.5-7.96s return.
+No audio stream, as intended. First independent run: context-2026-09-23T23-51-51-384Z.webm,
+450,763 bytes / 8.12s / 203 frames; also decoded, played and visually inspected.
+Capture-only script/docs commit: use AWC git log entry titled
+"fix: verify Playwright content capture infrastructure"; pre-repair HEAD dbbb378.
+Detailed commands, source evidence, configuration and recovery:
+../AWC/docs/CONTENT_CAPTURE_REPAIR.md. Raw artifacts are outside the AWC Git repo.
+Recommended next milestone: AWC — Canonical Source Reconciliation. No Bake-Off.

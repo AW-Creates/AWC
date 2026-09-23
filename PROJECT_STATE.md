@@ -7,6 +7,20 @@ Revenue and a live lead pipeline are not established by this website baseline.
 Canonical repository: AW-Creates-Ventures/AWC. Branch: main.
 
 ## Current milestone
+**AWC — Content Capture Infrastructure Repair**
+**Status: VERIFIED. STOP.**
+
+Two local-fixture Playwright videos passed complete decode, Chromium playback and
+visual frame review. See docs/CONTENT_CAPTURE_REPAIR.md for the installed scripts,
+exact commands, runtime, failure matrix and evidence. No product design was changed.
+
+Source-location correction from user: this AWC tree currently contains the older
+gold-accent site; the approved red-accent/dark-light redesign appears to be in
+`C:\Users\A-Problem\Documents\Web Development\awilcher-creatives`. Historical
+baseline assertions below are not a resolution of that mismatch. Do not migrate,
+copy or delete either tree in this milestone. No Bake-Off was started.
+
+## Previous milestone (historical baseline record)
 **AWC - Workflow v3.2 Migration + Baseline Closeout**
 **Status: COMPLETE. STOP at this milestone.**
 
@@ -31,8 +45,8 @@ Acceptance criteria satisfied:
 
 ## Locked decisions
 - Preserve the accepted dark hero and desktop design; light is an alternate theme.
-- The legacy awilcher-creatives folder is read-only reference; its HTML hash still
-  matches the preservation manifest. Other old folders remain untouched.
+- Earlier classification of awilcher-creatives as legacy reference is superseded
+  by the source-location correction above. Keep both trees untouched pending reconciliation.
 - Quote Agent is explicitly illustrative. Voice-agent build remains deferred.
 - No paid provider, spending, publication, deployment or push was authorized/performed.
 
@@ -63,7 +77,8 @@ Desktop normal-motion screenshot also matches baseline 1440x1000 dimensions.
   owner verification before a production launch.
 - Chromium emulation only; physical-device and Safari/Firefox QA not performed.
 - External font loading depends on network availability.
-- Recording encoder failed twice; screenshots are verified, no playable video exists.
+- Historical site recording failed twice. Capture infrastructure is now verified
+  with Playwright local-fixture video; the actual AWC site demo is still pending.
 - No unresolved requested baseline layout defect. No claim of full accessibility
   audit, production lead capture or validated business results.
 
@@ -73,6 +88,15 @@ both themes at all widths, full-page/hero/Quote Agent captures and focused mobil
 audit/dialog/footer/pacing views. See docs/BASELINE_CLOSEOUT.md and the raw manifest.
 30fps and 5fps video attempts failed; contact sheets are diagnostics only.
 Any future recording must be labeled a later demo, not before-state footage.
+
+Repair evidence outside Git: ../_venture-ops/media/capture-repair-2026-09-23/.
+Final video: repeat/context-2026-09-23T23-53-55-327Z.webm (7.96s, 428,092 bytes,
+199 frames, 1280x720 VP8/25fps, silent). Screenshot: repeat/playback-end.png.
+Full decode, advancing Chromium playback and visual samples pass twice.
+Primary: scripts/content-capture/record-context.cjs; verification: verify-playback.cjs.
+Agent-browser recording is abandoned as the default; 5fps is a limited workaround.
+Only after Playwright fails consider independent FFmpeg capture, then desktop/manual.
+Tested runtime is a machine-local cached prerelease; revalidate after changes.
 
 ## Workflow v3.2 / Build-vs-Buy
 No material paid dependency adopted. Future adoption must compare license,
@@ -88,8 +112,9 @@ fixed remaining defects and validated the results. Account usage tool reading on
 window usage. Context-window percentage unavailable. No background monitor exists.
 
 ## Exact next action
-**Stop. In a fresh task, read this file and scope the receptionist/lead-recovery MVP
-separately, applying workflow v3.2 before a material paid-provider decision.**
-Keep website production gaps explicit; do not restart this completed baseline work.
+**Stop. Next milestone: AWC — Canonical Source Reconciliation.**
+In a fresh task, read this state, inspect both source trees without moving them,
+and establish which contains the approved redesign before proposing reconciliation.
+Do not begin the AI Employee Architecture Bake-Off. Do not restart capture repair.
 
 Last updated: 2026-09-23.

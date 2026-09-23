@@ -47,6 +47,34 @@ permission first. Log project, milestone, commit, purpose, saved path, duration,
 and timecodes. Play back the saved file, inspect readability and audio, and
 mark its actual status. The user retains control over publication.
 
+### Verified recording path (2026-09-23)
+Use Playwright browser-context video as the automatic primary method. Agent-browser
+0.38.1 recording hit its 16-frame/500 ms backlog guards at 30 fps across codecs,
+resolution and headed/headless mode. Five fps worked in isolated tests but is a
+limited workaround, not the automatic default.
+
+From the AWC repository, run `scripts/content-capture/record-context.cjs --url
+<local-url> --out <absolute-external-media-directory>` with Node, then run
+`scripts/content-capture/verify-playback.cjs <absolute-video> <absolute-evidence-directory>`.
+The [capture repair guide](../AWC/docs/CONTENT_CAPTURE_REPAIR.md) contains exact
+PowerShell commands, pinned cached runtime/browser paths, recovery setup, test
+matrix and evidence. When reading the AWC versioned snapshot, use
+`AWC/docs/CONTENT_CAPTURE_REPAIR.md` in the repository.
+
+Configuration: headless Chromium, viewport/video 1280x720, `recordVideo` enabled
+before opening the page; await context close before saving. Store raw video outside
+Git. The capture script verifies file presence/size only; the verifier requires a
+full decode, metadata, advancing browser playback, and screenshot evidence. Review
+start/middle/end images before marking the log verified. Tested output is silent.
+
+If Playwright fails, retain the exact error, check its browser/encoder installation,
+permissions and flush ordering, then retry an isolated fixture once after a concrete
+fix. Only if Playwright cannot provide stable video proceed to independent FFmpeg
+capture, then desktop/manual capture. Those lower fallbacks remain unverified.
+Stop retrying agent-browser on backlog; partial/nonzero files are not proof of success.
+Capture a clearly labeled later demo if the original moment was missed. Future
+milestones execute this workflow when appropriate; no background recorder is installed.
+
 ## Context Budget
 Context capacity and account usage limits are different resources. Neither is
 unlimited and neither can be guaranteed by this workflow.
