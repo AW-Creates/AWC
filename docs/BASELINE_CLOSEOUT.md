@@ -106,3 +106,5 @@ Stop this milestone. In a fresh task, read `PROJECT_STATE.md` and scope the
 receptionist/lead-recovery MVP separately, applying the v3.2 gate before any
 material paid provider decision. Keep the website's production-readiness gaps
 explicit rather than treating this baseline closeout as a live lead pipeline.
+
+Validated implementation commit: `bcdfac868801236464c5c9de6543efbdaf0e40e8`. Documentation closeout follows in Git.
