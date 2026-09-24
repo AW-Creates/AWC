@@ -132,3 +132,6 @@ implementation commit and validation evidence in PROJECT_STATE.md and commit
 that state update. Do not try to store a commit's own hash inside itself.
 Update portfolio pointers, deliver the result, and write one concrete next
 action. Prefer a fresh task for the next milestone.
+
+## Canonical Source Verification Gate
+Before replacing or migrating a visually approved build, identify exact source path, Git status/commit or file hashes, distinctive content and rendered desktop/mobile/theme evidence. Folder names, timestamps and deployment aliases alone do not prove approval. Compare with approved recording when available; record any missing comparison explicitly. Preserve the existing canonical history and any volatile recovered source before migration. When source identity is unresolved, stop replacement and perform source recovery; do not silently reconstruct. Recovery and migration should be separate milestones.

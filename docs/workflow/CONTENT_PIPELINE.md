@@ -66,3 +66,8 @@ Capture-only script/docs commit: d2f0d0bef8a8836dd41c0e4565ddfe4c31b65bcd; pre-r
 Detailed commands, source evidence, configuration and recovery:
 ../AWC/docs/CONTENT_CAPTURE_REPAIR.md. Raw artifacts are outside the AWC Git repo.
 Recommended next milestone: AWC — Canonical Source Reconciliation. No Bake-Off.
+
+## C005 — AWC red source recovery, 2026-09-23
+Before-state: untouched non-Git ChatGPT mirror index.html; recovery SHA-256 941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3. No source changes. Story: recover the lost approved-direction design before migration.
+Captured and verified: dark/light desktop hero, Work and Quote Agent; both mobile themes; 48.92-second silent Playwright walkthrough, complete decode, advancing playback and three sample-frame visual reviews passed. Artifacts: media/awc-red-recovery-2026-09-24/. Timecodes approximately 0–3 hero, 3–5 Work, 5–38 Quote Agent, 38–43 light, 43–49 mobile. Mobile frames use fixed desktop canvas; native screenshots provided.
+This is a later recovery demo, not the original approved recording. No publication. Next: AWC — Verified Red Source Migration. Detailed provenance/limitations: ../AWC/docs/RED_BUILD_RECOVERY.md.

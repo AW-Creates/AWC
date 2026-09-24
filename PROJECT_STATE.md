@@ -7,6 +7,17 @@ Revenue and a live lead pipeline are not established by this website baseline.
 Canonical repository: AW-Creates-Ventures/AWC. Branch: main.
 
 ## Current milestone
+**AWC — Approved Red Build Recovery**
+**Status: VERIFIED RECOVERED SOURCE. STOP before migration.**
+
+Original: `C:/Users/A-Problem/.codex/.chatgpt-projects/g-p-6aa9d58c27a0819196657334985b77fe/index.html`. Non-Git authored standalone HTML/CSS/JS.
+Preserved hash-identical source and earlier revisions: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_recovery/AWC-red-approved-recovered`.
+All four supplied distinctive phrases, red/pink themes, editorial hero, Master Manipulator and improved Quote Agent verified in rendered source. Desktop/mobile and both themes captured; 48.92s Playwright video decoded, played and visually sampled.
+See docs/RED_BUILD_RECOVERY.md for hashes, inventory, search coverage, evidence and migration plan. Exact prior-recording comparison remains unavailable; latest approved revision identity should be confirmed before canonical replacement.
+
+Source-location correction: awilcher-creatives is a different chartreuse/static site, NOT the red redesign. Canonical AWC remains the older gold React/Vite build. Earlier source-location and approval claims below are historical and superseded by this verified finding. No migration, rebuild or voice-agent development occurred.
+
+## Historical capture milestone
 **AWC — Content Capture Infrastructure Repair**
 **Status: VERIFIED. STOP.**
 
@@ -117,9 +128,6 @@ fixed remaining defects and validated the results. Account usage tool reading on
 window usage. Context-window percentage unavailable. No background monitor exists.
 
 ## Exact next action
-**Stop. Next milestone: AWC — Canonical Source Reconciliation.**
-In a fresh task, read this state, inspect both source trees without moving them,
-and establish which contains the approved redesign before proposing reconciliation.
-Do not begin the AI Employee Architecture Bake-Off. Do not restart capture repair.
+Stop. Start a fresh **AWC — Verified Red Source Migration** task. Verify preserved hashes, compare recovery captures with the approved recording if available, and migrate only after final source selection. Preserve gold Git history and use an isolated branch/worktree. Follow docs/RED_BUILD_RECOVERY.md. Do not start AI Employee / voice-agent work.
 
-Last updated: 2026-09-23.
+Last updated: 2026-09-23 (2026-09-24 UTC).

@@ -2,12 +2,18 @@
 
 Updated: 2026-09-23. AWC workflow v3.2 migration and baseline closeout complete. Earlier reconciliation evidence and preserved project folders remain untouched.
 
+## Current recovery milestone
+AWC — Approved Red Build Recovery: VERIFIED RECOVERED SOURCE, migration pending.
+Original: `C:/Users/A-Problem/.codex/.chatgpt-projects/g-p-6aa9d58c27a0819196657334985b77fe/index.html`; preservation: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_recovery/AWC-red-approved-recovered`.
+All four phrases and visual direction match. Exact prior-recording comparison remains unverified. Canonical AWC is still gold; awilcher-creatives is chartreuse, not the target. Earlier source/approval and receptionist next-action statements below are superseded.
+Next milestone: **AWC — Verified Red Source Migration**. See ../AWC/docs/RED_BUILD_RECOVERY.md. Stop before migration and voice-agent work.
+
 ## Objective
 Bring one business to a validated, revenue-producing offer before expanding
 development across the portfolio. AWC is the initial focus; profitability is a
 goal, not an established result.
 
-## Current milestone
+## Historical baseline milestone
 AWC - Workflow v3.2 Migration + Baseline Closeout COMPLETE.
 Validated implementation: bcdfac868801236464c5c9de6543efbdaf0e40e8 (main).
 Dark/light and illustrative Quote Agent views pass the responsive baseline checks.
