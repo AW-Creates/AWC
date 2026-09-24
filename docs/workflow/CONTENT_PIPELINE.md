@@ -62,8 +62,7 @@ start/middle/end screenshots visually inspected; readable titles/timer and scrol
 Timecodes approximately 0-2s animation/title, 2-4.5s lower section, 4.5-7.96s return.
 No audio stream, as intended. First independent run: context-2026-09-23T23-51-51-384Z.webm,
 450,763 bytes / 8.12s / 203 frames; also decoded, played and visually inspected.
-Capture-only script/docs commit: use AWC git log entry titled
-"fix: verify Playwright content capture infrastructure"; pre-repair HEAD dbbb378.
+Capture-only script/docs commit: d2f0d0bef8a8836dd41c0e4565ddfe4c31b65bcd; pre-repair HEAD dbbb378.
 Detailed commands, source evidence, configuration and recovery:
 ../AWC/docs/CONTENT_CAPTURE_REPAIR.md. Raw artifacts are outside the AWC Git repo.
 Recommended next milestone: AWC — Canonical Source Reconciliation. No Bake-Off.

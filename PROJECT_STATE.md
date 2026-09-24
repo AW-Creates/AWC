@@ -60,6 +60,11 @@ Acceptance criteria satisfied:
 - ../_venture-ops/WORKFLOW-v3.2-README.md: authoritative workspace workflow.
 
 ## Latest validated state
+**Capture infrastructure commit:** d2f0d0bef8a8836dd41c0e4565ddfe4c31b65bcd
+Checks: two decoded/played/visually reviewed videos; argument/output-boundary and
+corrupt-video rejection; script syntax; git diff --check. Product code untouched.
+
+Historical baseline:
 **Implementation commit:** bcdfac868801236464c5c9de6543efbdaf0e40e8
 **Baseline commit:** 9be190d59506cd815466e0cf0b8ae608d64942a4
 The following documentation-only closeout commit records this implementation hash;
