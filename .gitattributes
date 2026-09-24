@@ -1,0 +1,2 @@
+# Preserve the recovered authored bytes across Windows checkouts.
+index.html -text

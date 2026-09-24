@@ -1,0 +1,698 @@
+[
+  {
+    "width": 320,
+    "theme": "dark",
+    "name": "source",
+    "links": [
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#services",
+        "pass": true
+      },
+      {
+        "href": "#studio-view",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      }
+    ],
+    "animations": [],
+    "errors": [],
+    "invalidEmail": true,
+    "interest": "Website or digital product",
+    "quoteScroll": {
+      "top": 107,
+      "height": 428,
+      "total": 551
+    },
+    "quoteAction": true
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "name": "canonical",
+    "links": [
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#services",
+        "pass": true
+      },
+      {
+        "href": "#studio-view",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      }
+    ],
+    "animations": [],
+    "errors": [],
+    "invalidEmail": true,
+    "interest": "Website or digital product",
+    "quoteScroll": {
+      "top": 107,
+      "height": 428,
+      "total": 551
+    },
+    "quoteAction": true
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "name": "source",
+    "links": [
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#services",
+        "pass": true
+      },
+      {
+        "href": "#studio-view",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      }
+    ],
+    "animations": [],
+    "errors": [],
+    "invalidEmail": true,
+    "interest": "Website or digital product",
+    "quoteScroll": {
+      "top": 107,
+      "height": 428,
+      "total": 551
+    },
+    "quoteAction": true
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "name": "canonical",
+    "links": [
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#services",
+        "pass": true
+      },
+      {
+        "href": "#studio-view",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      }
+    ],
+    "animations": [],
+    "errors": [],
+    "invalidEmail": true,
+    "interest": "Website or digital product",
+    "quoteScroll": {
+      "top": 107,
+      "height": 428,
+      "total": 551
+    },
+    "quoteAction": true
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "name": "source",
+    "links": [
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#services",
+        "pass": true
+      },
+      {
+        "href": "#studio-view",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      }
+    ],
+    "animations": [],
+    "errors": [],
+    "invalidEmail": true,
+    "interest": "Website or digital product",
+    "quoteScroll": {
+      "top": 9,
+      "height": 390,
+      "total": 455
+    },
+    "quoteAction": true
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "name": "canonical",
+    "links": [
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#services",
+        "pass": true
+      },
+      {
+        "href": "#studio-view",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      }
+    ],
+    "animations": [],
+    "errors": [],
+    "invalidEmail": true,
+    "interest": "Website or digital product",
+    "quoteScroll": {
+      "top": 9,
+      "height": 390,
+      "total": 455
+    },
+    "quoteAction": true
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "name": "source",
+    "links": [
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#services",
+        "pass": true
+      },
+      {
+        "href": "#studio-view",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      }
+    ],
+    "animations": [],
+    "errors": [],
+    "invalidEmail": true,
+    "interest": "Website or digital product",
+    "quoteScroll": {
+      "top": 9,
+      "height": 390,
+      "total": 455
+    },
+    "quoteAction": true
+  },
+  {
+    "width": 1440,
+    "theme": "light",
+    "name": "canonical",
+    "links": [
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#services",
+        "pass": true
+      },
+      {
+        "href": "#studio-view",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      },
+      {
+        "href": "#top",
+        "pass": true
+      },
+      {
+        "href": "#work",
+        "pass": true
+      },
+      {
+        "href": "#capabilities",
+        "pass": true
+      },
+      {
+        "href": "#market-architect",
+        "pass": true
+      },
+      {
+        "href": "#process",
+        "pass": true
+      },
+      {
+        "href": "#contact",
+        "pass": true
+      }
+    ],
+    "animations": [],
+    "errors": [],
+    "invalidEmail": true,
+    "interest": "Website or digital product",
+    "quoteScroll": {
+      "top": 9,
+      "height": 390,
+      "total": 455
+    },
+    "quoteAction": true
+  }
+]

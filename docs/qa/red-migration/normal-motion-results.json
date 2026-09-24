@@ -1,0 +1,108 @@
+[
+  {
+    "name": "source",
+    "composer": "Type your message…",
+    "replay": true,
+    "switchedReduced": true,
+    "errors": [],
+    "shots": [
+      {
+        "label": "desktop-dark",
+        "seconds": 3.774
+      },
+      {
+        "label": "master-manipulator",
+        "seconds": 5.209
+      },
+      {
+        "label": "quote-composer",
+        "seconds": 9.316
+      },
+      {
+        "label": "quote-result",
+        "seconds": 36.445
+      },
+      {
+        "label": "quote-action",
+        "seconds": 37.447
+      },
+      {
+        "label": "quote-transcript",
+        "seconds": 39.028
+      },
+      {
+        "label": "desktop-light",
+        "seconds": 40.49
+      },
+      {
+        "label": "light-work",
+        "seconds": 40.67
+      },
+      {
+        "label": "mobile-light",
+        "seconds": 40.873
+      },
+      {
+        "label": "mobile-dark",
+        "seconds": 41.031
+      },
+      {
+        "label": "mobile-quote",
+        "seconds": 41.158
+      }
+    ]
+  },
+  {
+    "name": "canonical",
+    "composer": "Type your message…",
+    "replay": true,
+    "switchedReduced": true,
+    "errors": [],
+    "shots": [
+      {
+        "label": "desktop-dark",
+        "seconds": 3.086
+      },
+      {
+        "label": "master-manipulator",
+        "seconds": 4.576
+      },
+      {
+        "label": "quote-composer",
+        "seconds": 8.701
+      },
+      {
+        "label": "quote-result",
+        "seconds": 35.908
+      },
+      {
+        "label": "quote-action",
+        "seconds": 36.92
+      },
+      {
+        "label": "quote-transcript",
+        "seconds": 38.523
+      },
+      {
+        "label": "desktop-light",
+        "seconds": 39.99
+      },
+      {
+        "label": "light-work",
+        "seconds": 40.147
+      },
+      {
+        "label": "mobile-light",
+        "seconds": 40.321
+      },
+      {
+        "label": "mobile-dark",
+        "seconds": 40.455
+      },
+      {
+        "label": "mobile-quote",
+        "seconds": 40.586
+      }
+    ]
+  }
+]

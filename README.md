@@ -1,38 +1,24 @@
 # A. Wilcher Creatives
 
-Canonical React/Vite agency website. Start with [PROJECT_STATE.md](PROJECT_STATE.md)
-for the current milestone, locked decisions and exact next action.
+Canonical red/pink standalone AWC site recovered from the approved source. The active `index.html` is byte-identical to the preserved recovery copy; the prior gold React/Vite runtime remains available in Git history at the pre-migration checkpoint `awc-gold-pre-red-migration-2026-09-24`.
 
-## Local development
+## Local preview
 
-Use Node.js 24 (`.nvmrc`). The existing native SQLite dependency does not support
-Node 26; the website itself is a client-side preview.
+Use Node.js 24 (`.nvmrc`). No dependencies, install step, or build step is required.
 
 ```sh
-npm ci
-npm run dev
+node scripts/serve.cjs
 ```
 
-The website and scripted Quote Agent demo need no API key. The audit and inquiry
-forms are presentational; no backend, live quote calculation or voice agent is
-included. Never place a production secret in a client-side bundle.
+You can also use `npm run dev`. Open http://127.0.0.1:4173/ . The server binds only to loopback and serves only `/` and `/index.html`; `/favicon.ico` returns 204 and other paths return 404.
 
-## Validation
+The page loads Fraunces and Inter from Google Fonts when network access is available. Forms are presentational only; no production form delivery or backend is configured.
 
-```sh
-npm run lint
-npm run build
-```
+## Provenance
 
-`lint` currently runs TypeScript (`tsc --noEmit`); there is no separate ESLint
-configuration. See [baseline closeout](docs/BASELINE_CLOSEOUT.md) for browser QA
-results, screenshots, limitations and the approved desktop preservation check.
+- Recovered source: `C:/Users/A-Problem/.codex/.chatgpt-projects/g-p-6aa9d58c27a0819196657334985b77fe/index.html`
+- Preservation copy: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_recovery/AWC-red-approved-recovered/index.html`
+- Verified SHA-256: `941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3`
+- Migration record: [docs/RED_SOURCE_MIGRATION.md](docs/RED_SOURCE_MIGRATION.md)
 
-## Workflow
-
-This project follows [workspace workflow v3.2](docs/workflow/WORKFLOW-v3.2-README.md),
-including Content Capture, Context Budget and the Open-Source-First / Build-vs-Buy
-Gate. The canonical cross-project guidance remains in `../_venture-ops`; versioned
-copies in `docs/workflow` preserve the guidance used for this milestone.
-
-Original AI Studio reference: https://ai.studio/apps/e9dc82f7-21e1-4531-8a5c-9d7e5894e7c3
+The recovered source and preservation copy remain untouched outside this repository. The unavailable historical approved recording means exact recording equivalence remains unverified.

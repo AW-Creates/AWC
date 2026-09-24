@@ -1,0 +1,3284 @@
+{
+  "date": "2026-09-24T05:00:08.768Z",
+  "cases": [
+    {
+      "id": "320-dark-source",
+      "width": 320,
+      "scrollWidth": 320,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "320-dark-canonical",
+      "width": 320,
+      "scrollWidth": 320,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "320-light-source",
+      "width": 320,
+      "scrollWidth": 320,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "320-light-canonical",
+      "width": 320,
+      "scrollWidth": 320,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "360-dark-source",
+      "width": 360,
+      "scrollWidth": 360,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "360-dark-canonical",
+      "width": 360,
+      "scrollWidth": 360,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "360-light-source",
+      "width": 360,
+      "scrollWidth": 360,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "360-light-canonical",
+      "width": 360,
+      "scrollWidth": 360,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "375-dark-source",
+      "width": 375,
+      "scrollWidth": 375,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "375-dark-canonical",
+      "width": 375,
+      "scrollWidth": 375,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "375-light-source",
+      "width": 375,
+      "scrollWidth": 375,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "375-light-canonical",
+      "width": 375,
+      "scrollWidth": 375,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "390-dark-source",
+      "width": 390,
+      "scrollWidth": 390,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "390-dark-canonical",
+      "width": 390,
+      "scrollWidth": 390,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "390-light-source",
+      "width": 390,
+      "scrollWidth": 390,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "390-light-canonical",
+      "width": 390,
+      "scrollWidth": 390,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "430-dark-source",
+      "width": 430,
+      "scrollWidth": 430,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "430-dark-canonical",
+      "width": 430,
+      "scrollWidth": 430,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "430-light-source",
+      "width": 430,
+      "scrollWidth": 430,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "430-light-canonical",
+      "width": 430,
+      "scrollWidth": 430,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "768-dark-source",
+      "width": 768,
+      "scrollWidth": 768,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "768-dark-canonical",
+      "width": 768,
+      "scrollWidth": 768,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "768-light-source",
+      "width": 768,
+      "scrollWidth": 768,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "768-light-canonical",
+      "width": 768,
+      "scrollWidth": 768,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 9,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "1440-dark-source",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "1440-dark-canonical",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "theme": "dark",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 0,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "1440-light-source",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 14,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "id": "1440-light-canonical",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "theme": "light",
+      "images": [
+        {
+          "loaded": true,
+          "alt": ""
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        },
+        {
+          "loaded": true,
+          "alt": "A. Wilcher Creatives"
+        }
+      ],
+      "fonts": [
+        "Fraunces",
+        "Fraunces",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter",
+        "Inter"
+      ],
+      "h1": "Fraunces, Georgia, serif",
+      "links": [
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#services",
+          "exists": true
+        },
+        {
+          "href": "#studio-view",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        },
+        {
+          "href": "#top",
+          "exists": true
+        },
+        {
+          "href": "#work",
+          "exists": true
+        },
+        {
+          "href": "#capabilities",
+          "exists": true
+        },
+        {
+          "href": "#market-architect",
+          "exists": true
+        },
+        {
+          "href": "#process",
+          "exists": true
+        },
+        {
+          "href": "#contact",
+          "exists": true
+        }
+      ],
+      "runningAnimations": 14,
+      "formNotice": "Your details are ready. This preview has not sent a message.",
+      "themeAfterReload": "dark",
+      "errors": [],
+      "failedRequests": []
+    }
+  ],
+  "failures": [],
+  "sourceHash": "941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3",
+  "canonicalHash": "941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3"
+}

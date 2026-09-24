@@ -1,0 +1,602 @@
+[
+  {
+    "source": "1440-dark-source-full.png",
+    "canonical": "1440-dark-canonical-full.png",
+    "size": [
+      1440,
+      8836
+    ],
+    "identical": false,
+    "difference_bounds": [
+      0,
+      226,
+      1440,
+      8717
+    ]
+  },
+  {
+    "source": "1440-dark-source-hero.png",
+    "canonical": "1440-dark-canonical-hero.png",
+    "size": [
+      1440,
+      1000
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "1440-dark-source-quote.png",
+    "canonical": "1440-dark-canonical-quote.png",
+    "size": [
+      1440,
+      1000
+    ],
+    "identical": false,
+    "difference_bounds": [
+      718,
+      290,
+      1314,
+      856
+    ]
+  },
+  {
+    "source": "1440-dark-source-work.png",
+    "canonical": "1440-dark-canonical-work.png",
+    "size": [
+      1440,
+      1000
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "1440-light-source-full.png",
+    "canonical": "1440-light-canonical-full.png",
+    "size": [
+      1440,
+      8836
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "1440-light-source-hero.png",
+    "canonical": "1440-light-canonical-hero.png",
+    "size": [
+      1440,
+      1000
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "1440-light-source-quote.png",
+    "canonical": "1440-light-canonical-quote.png",
+    "size": [
+      1440,
+      1000
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "1440-light-source-work.png",
+    "canonical": "1440-light-canonical-work.png",
+    "size": [
+      1440,
+      1000
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "320-dark-source-full.png",
+    "canonical": "320-dark-canonical-full.png",
+    "size": [
+      320,
+      11616
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "320-dark-source-hero.png",
+    "canonical": "320-dark-canonical-hero.png",
+    "size": [
+      320,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "320-dark-source-quote.png",
+    "canonical": "320-dark-canonical-quote.png",
+    "size": [
+      320,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "320-dark-source-work.png",
+    "canonical": "320-dark-canonical-work.png",
+    "size": [
+      320,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "320-light-source-full.png",
+    "canonical": "320-light-canonical-full.png",
+    "size": [
+      320,
+      11618
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "320-light-source-hero.png",
+    "canonical": "320-light-canonical-hero.png",
+    "size": [
+      320,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "320-light-source-quote.png",
+    "canonical": "320-light-canonical-quote.png",
+    "size": [
+      320,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "320-light-source-work.png",
+    "canonical": "320-light-canonical-work.png",
+    "size": [
+      320,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "360-dark-source-full.png",
+    "canonical": "360-dark-canonical-full.png",
+    "size": [
+      360,
+      10872
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "360-dark-source-hero.png",
+    "canonical": "360-dark-canonical-hero.png",
+    "size": [
+      360,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "360-dark-source-quote.png",
+    "canonical": "360-dark-canonical-quote.png",
+    "size": [
+      360,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "360-dark-source-work.png",
+    "canonical": "360-dark-canonical-work.png",
+    "size": [
+      360,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "360-light-source-full.png",
+    "canonical": "360-light-canonical-full.png",
+    "size": [
+      360,
+      10874
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "360-light-source-hero.png",
+    "canonical": "360-light-canonical-hero.png",
+    "size": [
+      360,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "360-light-source-quote.png",
+    "canonical": "360-light-canonical-quote.png",
+    "size": [
+      360,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "360-light-source-work.png",
+    "canonical": "360-light-canonical-work.png",
+    "size": [
+      360,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "375-dark-source-full.png",
+    "canonical": "375-dark-canonical-full.png",
+    "size": [
+      375,
+      10666
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "375-dark-source-hero.png",
+    "canonical": "375-dark-canonical-hero.png",
+    "size": [
+      375,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "375-dark-source-quote.png",
+    "canonical": "375-dark-canonical-quote.png",
+    "size": [
+      375,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "375-dark-source-work.png",
+    "canonical": "375-dark-canonical-work.png",
+    "size": [
+      375,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "375-light-source-full.png",
+    "canonical": "375-light-canonical-full.png",
+    "size": [
+      375,
+      10668
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "375-light-source-hero.png",
+    "canonical": "375-light-canonical-hero.png",
+    "size": [
+      375,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "375-light-source-quote.png",
+    "canonical": "375-light-canonical-quote.png",
+    "size": [
+      375,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "375-light-source-work.png",
+    "canonical": "375-light-canonical-work.png",
+    "size": [
+      375,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "390-dark-source-full.png",
+    "canonical": "390-dark-canonical-full.png",
+    "size": [
+      390,
+      10668
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "390-dark-source-hero.png",
+    "canonical": "390-dark-canonical-hero.png",
+    "size": [
+      390,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "390-dark-source-quote.png",
+    "canonical": "390-dark-canonical-quote.png",
+    "size": [
+      390,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "390-dark-source-work.png",
+    "canonical": "390-dark-canonical-work.png",
+    "size": [
+      390,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "390-light-source-full.png",
+    "canonical": "390-light-canonical-full.png",
+    "size": [
+      390,
+      10670
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "390-light-source-hero.png",
+    "canonical": "390-light-canonical-hero.png",
+    "size": [
+      390,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "390-light-source-quote.png",
+    "canonical": "390-light-canonical-quote.png",
+    "size": [
+      390,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "390-light-source-work.png",
+    "canonical": "390-light-canonical-work.png",
+    "size": [
+      390,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "430-dark-source-full.png",
+    "canonical": "430-dark-canonical-full.png",
+    "size": [
+      430,
+      10572
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "430-dark-source-hero.png",
+    "canonical": "430-dark-canonical-hero.png",
+    "size": [
+      430,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "430-dark-source-quote.png",
+    "canonical": "430-dark-canonical-quote.png",
+    "size": [
+      430,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "430-dark-source-work.png",
+    "canonical": "430-dark-canonical-work.png",
+    "size": [
+      430,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "430-light-source-full.png",
+    "canonical": "430-light-canonical-full.png",
+    "size": [
+      430,
+      10574
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "430-light-source-hero.png",
+    "canonical": "430-light-canonical-hero.png",
+    "size": [
+      430,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "430-light-source-quote.png",
+    "canonical": "430-light-canonical-quote.png",
+    "size": [
+      430,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "430-light-source-work.png",
+    "canonical": "430-light-canonical-work.png",
+    "size": [
+      430,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "768-dark-source-full.png",
+    "canonical": "768-dark-canonical-full.png",
+    "size": [
+      768,
+      9741
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "768-dark-source-hero.png",
+    "canonical": "768-dark-canonical-hero.png",
+    "size": [
+      768,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "768-dark-source-quote.png",
+    "canonical": "768-dark-canonical-quote.png",
+    "size": [
+      768,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "768-dark-source-work.png",
+    "canonical": "768-dark-canonical-work.png",
+    "size": [
+      768,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "768-light-source-full.png",
+    "canonical": "768-light-canonical-full.png",
+    "size": [
+      768,
+      9743
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "768-light-source-hero.png",
+    "canonical": "768-light-canonical-hero.png",
+    "size": [
+      768,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "768-light-source-quote.png",
+    "canonical": "768-light-canonical-quote.png",
+    "size": [
+      768,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "768-light-source-work.png",
+    "canonical": "768-light-canonical-work.png",
+    "size": [
+      768,
+      844
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "settled-1440-dark-source-full.png",
+    "canonical": "settled-1440-dark-canonical-full.png",
+    "size": [
+      1440,
+      8836
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "settled-1440-dark-source-master.png",
+    "canonical": "settled-1440-dark-canonical-master.png",
+    "size": [
+      1440,
+      1000
+    ],
+    "identical": true,
+    "difference_bounds": null
+  },
+  {
+    "source": "settled-1440-dark-source-quote.png",
+    "canonical": "settled-1440-dark-canonical-quote.png",
+    "size": [
+      1440,
+      1000
+    ],
+    "identical": true,
+    "difference_bounds": null
+  }
+]
