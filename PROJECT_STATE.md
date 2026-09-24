@@ -1,135 +1,85 @@
 # AWC Project State
 
-## Project
-AWC / A. Wilcher Creatives is the agency website and initial portfolio focus.
-Objective: present the offer and demonstrate a clearer inquiry experience.
-Revenue and a live lead pipeline are not established by this website baseline.
-Canonical repository: AW-Creates-Ventures/AWC. Branch: main.
+Updated: 2026-09-24 (America/New_York).
+
+## Objective and canonical result
+AWC / A. Wilcher Creatives is the initial agency website and portfolio focus.
+Revenue and a live lead pipeline are not established by this website.
+Canonical repository: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`; branch: main after validated fast-forward.
+The **red/pink standalone recovered build is canonical**. The former gold React
+site remains in Git history. No framework conversion or redesign was performed.
 
 ## Current milestone
-**AWC — Approved Red Build Recovery**
-**Status: VERIFIED RECOVERED SOURCE. STOP before migration.**
+**AWC — Verified Red Source Migration: COMPLETE. STOP.**
+- [x] Gold checkpoint preserved; original/recovery archive untouched.
+- [x] Recovered index imported byte-for-byte; active gold runtime retired.
+- [x] Minimal local preview works without installation or paid dependencies.
+- [x] Dark/light QA at 320, 360, 375, 390, 430, 768, 1440; source fidelity passes.
+- [x] Hero/copy, Master Manipulator, Quote Agent, nav/forms/theme/motion checked.
+- [x] Screenshots and 50.60s walkthrough saved, decoded, played and reviewed.
+- [x] Migration committed; venture state/inventory and evidence reconciled.
 
-Original: `C:/Users/A-Problem/.codex/.chatgpt-projects/g-p-6aa9d58c27a0819196657334985b77fe/index.html`. Non-Git authored standalone HTML/CSS/JS.
-Preserved hash-identical source and earlier revisions: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_recovery/AWC-red-approved-recovered`.
-All four supplied distinctive phrases, red/pink themes, editorial hero, Master Manipulator and improved Quote Agent verified in rendered source. Desktop/mobile and both themes captured; 48.92s Playwright video decoded, played and visually sampled.
-See docs/RED_BUILD_RECOVERY.md for hashes, inventory, search coverage, evidence and migration plan. Exact prior-recording comparison remains unavailable; latest approved revision identity should be confirmed before canonical replacement.
+## Provenance and Git checkpoint
+Original: `C:/Users/A-Problem/.codex/.chatgpt-projects/g-p-6aa9d58c27a0819196657334985b77fe/index.html`.
+Imported preservation copy: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_recovery/AWC-red-approved-recovered/index.html`.
+Archive: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_recovery/AWC-red-approved-recovered`.
+Source/canonical SHA-256: `941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3` (494,202 bytes).
+All 17 original and preserved files still match RECOVERY_PROVENANCE.json.
+Gold tag: `awc-gold-pre-red-migration-2026-09-24` → `d3b0edea373f5c9f80605f0535806f776c505a30`.
+Migration branch retained: `milestone/awc-verified-red-source-migration`.
+Validated implementation commit: `3751fb606b74de6e94bcc11b91be497205ffe1c5` (2026-09-24).
+The subsequent documentation closeout commit records this implementation hash;
+`git log -1` gives the closeout's own hash. No history rewrite, push or deployment.
 
-Source-location correction: awilcher-creatives is a different chartreuse/static site, NOT the red redesign. Canonical AWC remains the older gold React/Vite build. Earlier source-location and approval claims below are historical and superseded by this verified finding. No migration, rebuild or voice-agent development occurred.
+## Runtime and local preview
+Single authored `index.html`: inline CSS/JS, embedded images, Google Fonts.
+Run `node scripts/serve.cjs` or `npm run dev` from AWC; open
+http://127.0.0.1:4173/ . No install or build step. Node 24 target; tested Node 26.8.2.
+Loopback server serves only index routes. Ignored old node_modules/dist stay on
+disk but are not active or exposed. `.gitattributes` preserves the HTML bytes.
+Capture verification tooling remains in scripts/content-capture; migration QA
+scripts are in scripts/migration. Workflow docs are preserved under docs/workflow.
 
-## Historical capture milestone
-**AWC — Content Capture Infrastructure Repair**
-**Status: VERIFIED. STOP.**
+## Validation and tangible evidence
+28 source/canonical viewport/theme cases pass, zero horizontal overflow,
+console/runtime errors or failed requests. All images/fonts loaded. 54/56 initial
+screenshot pairs match; two transient desktop reveal captures match on settled
+recheck, plus a matching Work pair. No migration regressions or source fixes.
+Menus/anchors/CTA, six diagnostic lenses, form validation/confirmation, theme
+toggle, quote transcript/result/replay/CTA, normal pacing and reduced motion pass.
+Reduced-motion animations settle to zero; the pre-existing quote scroll works.
+Full results and exact retired file inventory: docs/RED_SOURCE_MIGRATION.md and
+docs/qa/red-migration/. Runtime syntax, served bytes/routes and diff checks pass.
 
-Two local-fixture Playwright videos passed complete decode, Chromium playback and
-visual frame review. See docs/CONTENT_CAPTURE_REPAIR.md for the installed scripts,
-exact commands, runtime, failure matrix and evidence. No product design was changed.
+Artifacts: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_venture-ops/media/awc-red-migration-2026-09-24`.
+Video: `canonical-red-walkthrough.webm`, 50.60s, 4,589,337 bytes, silent VP8,
+1440×1000, 25fps, 1,265 frames. Full decode, browser playback and frame review pass.
+Native dark/light desktop/mobile, Work and quote PNGs plus playback evidence saved.
+Video hash: `f7de9069b21f0ea6322760331ef7641f917e0f8a03036c589de2c1a93f9fa82f`.
+Media remains outside Git. This is a later migration demo, not historical footage.
 
-Source-location correction from user: this AWC tree currently contains the older
-gold-accent site; the approved red-accent/dark-light redesign appears to be in
-`C:\Users\A-Problem\Documents\Web Development\awilcher-creatives`. Historical
-baseline assertions below are not a resolution of that mismatch. Do not migrate,
-copy or delete either tree in this milestone. No Bake-Off was started.
+## Locked decisions / remaining limitations
+- Preserve recovered typography, copy, red themes and approved behavior unchanged.
+- Original source was the ChatGPT project above, not C:/index.html; the chartreuse
+  awilcher-creatives folder is unrelated and untouched.
+- Original historical approved recording unavailable; exact final historical
+  revision identity is not proven. Recovered-source fidelity is verified.
+- Theme resets to dark on reload, matching source; do not silently add persistence.
+- Quote is scripted/fictional and uses an internal scrolling estimate region.
+- Contact form does not send; no live backend or appointment booking exists.
+- Fonts need network. Chromium emulation only; no physical-device/Safari/Firefox
+  or full accessibility/production claims audit.
+- **Voice-agent development has NOT started.** No LiveKit, Pipecat, receptionist,
+  ads/outreach, other portfolio development or paid service adoption occurred.
 
-## Previous milestone (historical baseline record)
-**AWC - Workflow v3.2 Migration + Baseline Closeout**
-**Status: COMPLETE. STOP at this milestone.**
+## Workflow and context
+Apply milestone-driven-build and venture WORKFLOW-v3.2-README.md. Content Capture
+and Build-vs-Buy requirements remain in effect. Director reviewed bounded Architect
+and Builder work and validated captures. No background monitoring is scheduled.
+Historical recovery: docs/RED_BUILD_RECOVERY.md; gold baseline: docs/BASELINE_CLOSEOUT.md;
+capture repair: docs/CONTENT_CAPTURE_REPAIR.md. Those next actions are superseded.
 
-Acceptance criteria satisfied:
-- [x] Workspace v3.2 gate adopted; Content Capture and Context Budget preserved.
-- [x] Approved dark hero/desktop composition retained; light theme added.
-- [x] Responsive QA at 320, 360, 375, 390, 430, 768 and 1440 in both themes.
-- [x] User-authorized illustrative Quote Agent, distinct roles, bottom composer,
-  realistic pacing/replay and $9,800-$12,400 range.
-- [x] Overflow, navigation, dialogs, footer clearance, motion and reduced motion checked.
-- [x] Production build and TypeScript lint pass; validated implementation committed.
-- [x] Screenshots/QA artifacts indexed; project and venture state updated.
-
-## Tangible deliverables / working state
-- Dark/light React/Vite website with persisted theme choice and mobile fixes.
-- Static scripted Quote Agent; no messages, live estimate calculation or API calls.
-- docs/BASELINE_CLOSEOUT.md: exact changes, QA, limitations and capture index.
-- docs/qa/: 14 viewport/theme results, 19 interaction checks, canvas-motion checks
-  and raw-artifact SHA-256 manifest.
-- ../_venture-ops/media/awc-v3.2-2026-09-23/: before/after screenshots and QA scripts.
-- docs/workflow/: versioned snapshots of canonical venture guidance and inventory.
-
-## Locked decisions
-- Preserve the accepted dark hero and desktop design; light is an alternate theme.
-- Earlier classification of awilcher-creatives as legacy reference is superseded
-  by the source-location correction above. Keep both trees untouched pending reconciliation.
-- Quote Agent is explicitly illustrative. Voice-agent build remains deferred.
-- No paid provider, spending, publication, deployment or push was authorized/performed.
-
-## Architecture / relevant paths
-- src/App.tsx, src/index.css: composition, semantic theme and motion configuration.
-- src/components/Navbar.tsx: navigation and persistent theme control.
-- src/components/Hero.tsx, HeroBackground.tsx: approved hero and canvas.
-- src/components/QuoteAgent.tsx: timed in-view demo; complete static reduced-motion view.
-- src/components/AICritique.tsx: presentational audit; stacked narrow-screen controls.
-- .nvmrc, package.json: Node 24; React 19 dev types; lint script runs tsc --noEmit.
-- ../_venture-ops/WORKFLOW-v3.2-README.md: authoritative workspace workflow.
-
-## Latest validated state
-**Recovery documentation commit:** 91633e3. Source recovery, preservation hashes and capture verified; website source remains unchanged. See docs/RED_BUILD_RECOVERY.md.
-
-**Capture infrastructure commit:** d2f0d0bef8a8836dd41c0e4565ddfe4c31b65bcd
-Checks: two decoded/played/visually reviewed videos; argument/output-boundary and
-corrupt-video rejection; script syntax; git diff --check. Product code untouched.
-
-Historical baseline:
-**Implementation commit:** bcdfac868801236464c5c9de6543efbdaf0e40e8
-**Baseline commit:** 9be190d59506cd815466e0cf0b8ae608d64942a4
-The following documentation-only closeout commit records this implementation hash;
-use git log -1 for its own hash (a commit cannot contain its own hash).
-
-Checks: npm run lint, npm run build, git diff --check; all pass. Emulated Chromium
-at all seven widths/both themes: zero horizontal overflow, clipped content or
-hidden headings; settled reduced-motion animation count zero. Normal canvas moves,
-reduced-motion canvas remains pixel-identical. All 19 interaction checks pass.
-Desktop normal-motion screenshot also matches baseline 1440x1000 dimensions.
-
-## Known limitations / unresolved feedback
-- Existing audit and strategy forms are presentational; no submission backend.
-- Existing placeholder phone/legal links and marketing claims/testimonials need
-  owner verification before a production launch.
-- Chromium emulation only; physical-device and Safari/Firefox QA not performed.
-- External font loading depends on network availability.
-- Historical site recording failed twice. Capture infrastructure is now verified
-  with Playwright local-fixture video; the actual AWC site demo is still pending.
-- No unresolved requested baseline layout defect. No claim of full accessibility
-  audit, production lead capture or validated business results.
-
-## Content Capture
-Eight untouched baseline screenshots preceded source edits. Final evidence includes
-both themes at all widths, full-page/hero/Quote Agent captures and focused mobile
-audit/dialog/footer/pacing views. See docs/BASELINE_CLOSEOUT.md and the raw manifest.
-30fps and 5fps video attempts failed; contact sheets are diagnostics only.
-Any future recording must be labeled a later demo, not before-state footage.
-
-Repair evidence outside Git: ../_venture-ops/media/capture-repair-2026-09-23/.
-Final video: repeat/context-2026-09-23T23-53-55-327Z.webm (7.96s, 428,092 bytes,
-199 frames, 1280x720 VP8/25fps, silent). Screenshot: repeat/playback-end.png.
-Full decode, advancing Chromium playback and visual samples pass twice.
-Primary: scripts/content-capture/record-context.cjs; verification: verify-playback.cjs.
-Agent-browser recording is abandoned as the default; 5fps is a limited workaround.
-Only after Playwright fails consider independent FFmpeg capture, then desktop/manual.
-Tested runtime is a machine-local cached prerelease; revalidate after changes.
-
-## Workflow v3.2 / Build-vs-Buy
-No material paid dependency adopted. Future adoption must compare license,
-maintenance, features, integration, compute, latency/reliability, switching cost,
-privacy/control and projected total cost at expected usage. Require benchmark or
-documented rationale before locking in a material paid provider. Use the shared
-decision template. The installed global skill remains v3; workspace guidance is v3.2.
-
-## Context checkpoint
-Architect and bounded Builders completed their scopes; Director reviewed source,
-fixed remaining defects and validated the results. Account usage tool reading on
-2026-09-23: 41% five-hour and 22% weekly used; these are account limits, not context
-window usage. Context-window percentage unavailable. No background monitor exists.
-
-## Exact next action
-Stop. Start a fresh **AWC — Verified Red Source Migration** task. Verify preserved hashes, compare recovery captures with the approved recording if available, and migrate only after final source selection. Preserve gold Git history and use an isolated branch/worktree. Follow docs/RED_BUILD_RECOVERY.md. Do not start AI Employee / voice-agent work.
-
-Last updated: 2026-09-23 (2026-09-24 UTC).
+## Exact next action / next milestone
+Stop this completed migration. In a fresh task, read this state and the venture
+workflow, then scope **AWC — AI Employee Architecture Bake-Off**. Do not begin it
+automatically in the migration task.

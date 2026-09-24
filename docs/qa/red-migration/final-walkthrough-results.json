@@ -1,0 +1,55 @@
+[
+  {
+    "name": "canonical",
+    "composer": "Type your message…",
+    "replay": true,
+    "switchedReduced": true,
+    "errors": [],
+    "shots": [
+      {
+        "label": "desktop-dark",
+        "seconds": 2.931
+      },
+      {
+        "label": "master-manipulator",
+        "seconds": 4.343
+      },
+      {
+        "label": "quote-composer",
+        "seconds": 8.433
+      },
+      {
+        "label": "quote-result",
+        "seconds": 35.63
+      },
+      {
+        "label": "quote-action",
+        "seconds": 36.642
+      },
+      {
+        "label": "quote-transcript",
+        "seconds": 38.239
+      },
+      {
+        "label": "desktop-light",
+        "seconds": 39.69
+      },
+      {
+        "label": "light-work",
+        "seconds": 42.373
+      },
+      {
+        "label": "mobile-light",
+        "seconds": 44.078
+      },
+      {
+        "label": "mobile-dark",
+        "seconds": 45.705
+      },
+      {
+        "label": "mobile-quote",
+        "seconds": 47.311
+      }
+    ]
+  }
+]

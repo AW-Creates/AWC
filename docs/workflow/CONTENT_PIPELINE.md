@@ -71,3 +71,29 @@ Recommended next milestone: AWC — Canonical Source Reconciliation. No Bake-Off
 Before-state: untouched non-Git ChatGPT mirror index.html; recovery SHA-256 941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3. No source changes. Story: recover the lost approved-direction design before migration.
 Captured and verified: dark/light desktop hero, Work and Quote Agent; both mobile themes; 48.92-second silent Playwright walkthrough, complete decode, advancing playback and three sample-frame visual reviews passed. Artifacts: media/awc-red-recovery-2026-09-24/. Timecodes approximately 0–3 hero, 3–5 Work, 5–38 Quote Agent, 38–43 light, 43–49 mobile. Mobile frames use fixed desktop canvas; native screenshots provided.
 This is a later recovery demo, not the original approved recording. No publication. Next: AWC — Verified Red Source Migration. Detailed provenance/limitations: ../AWC/docs/RED_BUILD_RECOVERY.md.
+
+## C006 — Verified Red Source Migration, 2026-09-24
+Status: VERIFIED; complete decode, advancing playback and visual frame review passed.
+Before-state: gold at d3b0ede, retained by tag awc-gold-pre-red-migration-2026-09-24;
+existing gold baseline captures remain in media/awc-v3.2-2026-09-23 (not recaptured).
+Fidelity reference: untouched preserved red index.html and C005 recovery media.
+Story: the recovered red/pink source becomes the canonical site without a redesign.
+Capture source/canonical paired screenshots at 320, 360, 375, 390, 430, 768, 1440
+in dark/light themes, plus normal-motion hero, Master Manipulator, Quote Agent
+composer/result/replay, and mobile themes. Final silent Playwright walkthrough:
+dark hero → Work → full scripted quote → light desktop → mobile. Store in
+media/awc-red-migration-2026-09-24 outside Git. Verify full decode, advancing
+Chromium playback and sampled frames. This is a later migration demo, not the
+missing original approved recording. No publishing or voice-agent development.
+
+### C006 outcome — 2026-09-24
+Migration `3751fb606b74de6e94bcc11b91be497205ffe1c5`. Canonical red capture: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_venture-ops/media/awc-red-migration-2026-09-24/canonical-red-walkthrough.webm`.
+50.60s / 4,589,337 bytes / 1,265 frames, VP8 1440×1000 25fps, silent.
+Full FFmpeg decode and Chromium playback pass; start/middle/end images visually
+reviewed. SHA-256 f7de9069b21f0ea6322760331ef7641f917e0f8a03036c589de2c1a93f9fa82f.
+Dark hero ~0–3s; Work ~3–5s; scripted quote ~5–39s; light desktop/Work ~39–44s;
+mobile themes/quote ~44–51s (fixed desktop canvas; native mobile PNGs also saved).
+Detailed shot times: final-walkthrough-results.json. Paired viewport/theme screenshots,
+settled reveal rechecks and evidence indexed in AWC/docs/RED_SOURCE_MIGRATION.md.
+The original historical recording remains unavailable. This is later migration
+footage. No publication; stop. Next: AWC — AI Employee Architecture Bake-Off.

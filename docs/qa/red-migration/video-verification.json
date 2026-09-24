@@ -1,0 +1,40 @@
+{
+  "video": "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-red-migration-2026-09-24\\canonical-red-walkthrough.webm",
+  "bytes": 4589337,
+  "sha256": "f7de9069b21f0ea6322760331ef7641f917e0f8a03036c589de2c1a93f9fa82f",
+  "metadata": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp8",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 1000,
+        "r_frame_rate": "25/1",
+        "nb_read_frames": "1265"
+      }
+    ],
+    "format": {
+      "duration": "50.600000",
+      "size": "4589337"
+    }
+  },
+  "fullDecodePassed": true,
+  "playbackPassed": true,
+  "playback": {
+    "duration": 50.6,
+    "currentTime": 6.098796,
+    "paused": false,
+    "readyState": 4,
+    "width": 1440,
+    "height": 1000,
+    "error": null
+  },
+  "screenshots": [
+    "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-red-migration-2026-09-24\\playback\\playback-start.png",
+    "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-red-migration-2026-09-24\\playback\\playback-middle.png",
+    "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-red-migration-2026-09-24\\playback\\playback-end.png"
+  ],
+  "visualReview": "Passed: Director inspected start/middle/end playback images plus native desktop dark/light, mobile, Work and Quote Agent screenshots. Readable scripted chat and mobile light hero; silent as intended. Mobile is left-aligned in a fixed desktop video canvas; native mobile screenshots are provided."
+}
