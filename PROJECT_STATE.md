@@ -71,6 +71,8 @@ Acceptance criteria satisfied:
 - ../_venture-ops/WORKFLOW-v3.2-README.md: authoritative workspace workflow.
 
 ## Latest validated state
+**Recovery documentation commit:** 91633e3. Source recovery, preservation hashes and capture verified; website source remains unchanged. See docs/RED_BUILD_RECOVERY.md.
+
 **Capture infrastructure commit:** d2f0d0bef8a8836dd41c0e4565ddfe4c31b65bcd
 Checks: two decoded/played/visually reviewed videos; argument/output-boundary and
 corrupt-video rejection; script syntax; git diff --check. Product code untouched.
