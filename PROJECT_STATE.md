@@ -1,85 +1,43 @@
 # AWC Project State
 
-Updated: 2026-09-24 (America/New_York).
+Updated: 2026-09-24. Canonical repo: C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC, main.
 
-## Objective and canonical result
-AWC / A. Wilcher Creatives is the initial agency website and portfolio focus.
-Revenue and a live lead pipeline are not established by this website.
-Canonical repository: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`; branch: main after validated fast-forward.
-The **red/pink standalone recovered build is canonical**. The former gold React
-site remains in Git history. No framework conversion or redesign was performed.
+## Objective and current milestone
+AWC is the initial agency/portfolio focus; revenue and live lead pipeline remain unproven.
+**AWC — AI Employee Architecture Bake-Off: bounded evaluation and local browser POC closed; STOP.**
+Realtime production acceptance is NOT achieved. Do not restart recovery/discovery or launch the next milestone automatically.
 
-## Current milestone
-**AWC — Verified Red Source Migration: COMPLETE. STOP.**
-- [x] Gold checkpoint preserved; original/recovery archive untouched.
-- [x] Recovered index imported byte-for-byte; active gold runtime retired.
-- [x] Minimal local preview works without installation or paid dependencies.
-- [x] Dark/light QA at 320, 360, 375, 390, 430, 768, 1440; source fidelity passes.
-- [x] Hero/copy, Master Manipulator, Quote Agent, nav/forms/theme/motion checked.
-- [x] Screenshots and 50.60s walkthrough saved, decoded, played and reviewed.
-- [x] Migration committed; venture state/inventory and evidence reconciled.
+## Delivered and validated
+- Recovered completed architecture brief and pre-existing voice environment; original interrupted builder had no edits.
+- Isolated experiments/receptionist POC: real local audio/STT/TTS, greeting, FAQ, $225 three-bedroom deep-clean estimate, mock availability/booking/conflict rejection, sales-role context handoff, human follow-up record, saved transcript/summary.
+- Pipecat business pipeline and LiveKit Agent API smoke pass; only Pipecat wired into final browser POC. No matched WebRTC transport benchmark.
+- faster-whisper/Kokoro synthetic component benchmark: 5 fixtures x 5 runs. Chatterbox installed but bounded import probes did not reach inference. Managed baseline documented only; user confirms no free account.
+- Four unit tests and 20/20 deterministic scenario suites pass. Seven-response browser run passes; two microphone-energy interruptions cancel old playback AND complete replacement speech after ORT thread cap.
+- 75.28s silent Playwright demo: full decode, advancing playback and Director sampled/final-frame visual inspection pass; zero page errors.
+- Source syntax, diff whitespace and targeted secret-pattern review pass. Marketing index hash unchanged.
 
-## Provenance and Git checkpoint
-Original: `C:/Users/A-Problem/.codex/.chatgpt-projects/g-p-6aa9d58c27a0819196657334985b77fe/index.html`.
-Imported preservation copy: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_recovery/AWC-red-approved-recovered/index.html`.
-Archive: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_recovery/AWC-red-approved-recovered`.
-Source/canonical SHA-256: `941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3` (494,202 bytes).
-All 17 original and preserved files still match RECOVERY_PROVENANCE.json.
-Gold tag: `awc-gold-pre-red-migration-2026-09-24` → `d3b0edea373f5c9f80605f0535806f776c505a30`.
-Migration branch retained: `milestone/awc-verified-red-source-migration`.
-Validated implementation commit: `3751fb606b74de6e94bcc11b91be497205ffe1c5` (2026-09-24).
-The subsequent documentation closeout commit records this implementation hash;
-`git log -1` gives the closeout's own hash. No history rewrite, push or deployment.
+## Selected initial stack
+Python 3.11.15; Pipecat 1.11.0 business frame pipeline; FastAPI/Uvicorn; browser WebAudio VAD + MediaRecorder HTTP utterance uploads/WAV playback; faster-whisper 1.2.1 base.en CPU int8; Kokoro ONNX 0.6.1 v1 int8 af_heart; ORT 1.24.4 CPU with two intra-op threads and spinning disabled. Deterministic language router and tools; optional loopback OpenAI-compatible LLM adapter (inference unmeasured). This is the local experiment choice, not a proven transport winner or production stack approval.
 
-## Runtime and local preview
-Single authored `index.html`: inline CSS/JS, embedded images, Google Fonts.
-Run `node scripts/serve.cjs` or `npm run dev` from AWC; open
-http://127.0.0.1:4173/ . No install or build step. Node 24 target; tested Node 26.8.2.
-Loopback server serves only index routes. Ignored old node_modules/dist stay on
-disk but are not active or exposed. `.gitattributes` preserves the HTML bytes.
-Capture verification tooling remains in scripts/content-capture; migration QA
-scripts are in scripts/migration. Workflow docs are preserved under docs/workflow.
+## Evidence and run instructions
+- docs/voice-bakeoff/BENCHMARK.md: decision, measured vs unmeasured, acceptance gaps, costs, capture and next milestone.
+- docs/voice-bakeoff/BUILD_VS_BUY.md: licenses including GPL phonemizer/eSpeak distribution review, privacy/control, portability and modeled total costs.
+- docs/voice-bakeoff/COMPONENT_EVIDENCE.md and evidence/*.json: measured results.
+- experiments/receptionist/README.md: setup, exact versions, endpoints, usage and limitations.
+- From AWC: `.cache/voice-env/Scripts/python.exe -m uvicorn experiments.receptionist.app:app --host 127.0.0.1 --port 8765`; open http://127.0.0.1:8765.
+- External media: ../_venture-ops/media/awc-voice-bakeoff-2026-09-24/verified/brighthome-demo.webm, greeting/handoff/summary PNGs and playback evidence. WAV samples copied to sibling component-audio. Models/venvs/session outputs ignored under .cache; no media in Git.
+- Demo SHA-256: f8b3d1c38f98eb01c2a5869e837d40849c6cb1eb8f179d138752a7185a23eb44.
 
-## Validation and tangible evidence
-28 source/canonical viewport/theme cases pass, zero horizontal overflow,
-console/runtime errors or failed requests. All images/fonts loaded. 54/56 initial
-screenshot pairs match; two transient desktop reveal captures match on settled
-recheck, plus a matching Work pair. No migration regressions or source fixes.
-Menus/anchors/CTA, six diagnostic lenses, form validation/confirmation, theme
-toggle, quote transcript/result/replay/CTA, normal pacing and reduced motion pass.
-Reduced-motion animations settle to zero; the pre-existing quote scroll works.
-Full results and exact retired file inventory: docs/RED_SOURCE_MIGRATION.md and
-docs/qa/red-migration/. Runtime syntax, served bytes/routes and diff checks pass.
+## Measured environment and limitations
+Ultra 7 155U, 12 cores/14 logical, 31.47 GiB RAM, Intel Graphics; CPU-only tests. Final browser request-response 4.5–12.2s; cancellation-to-replacement speech 11.0/13.2s. Too slow for polished realtime conversation. Synthetic MediaStream, not human mic/acoustics or voice-naturalness scoring. HTTP buffered audio, not WebRTC; PSTN deferred without free account. No real human contact, independent specialist process, generative LLM benchmark, durable production calendar or concurrent-caller support. Server inference is not cancelled; stale playback is suppressed. Single loopback synthetic demo only. No money spent, paid API, deployment, outreach or other venture work.
 
-Artifacts: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/_venture-ops/media/awc-red-migration-2026-09-24`.
-Video: `canonical-red-walkthrough.webm`, 50.60s, 4,589,337 bytes, silent VP8,
-1440×1000, 25fps, 1,265 frames. Full decode, browser playback and frame review pass.
-Native dark/light desktop/mobile, Work and quote PNGs plus playback evidence saved.
-Video hash: `f7de9069b21f0ea6322760331ef7641f917e0f8a03036c589de2c1a93f9fa82f`.
-Media remains outside Git. This is a later migration demo, not historical footage.
+## Preserved canonical site
+Red/pink standalone marketing source remains byte-identical: SHA-256 941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3.
+Prior migration implementation 3751fb606b74de6e94bcc11b91be497205ffe1c5; closeout/base 565a0bb11d598a6ad9a37684138190722f0975d6. Provenance in docs/RED_SOURCE_MIGRATION.md. Gold tag/recovery originals preserved. Preview `node scripts/serve.cjs`, port 4173. No marketing redesign or backend integration.
 
-## Locked decisions / remaining limitations
-- Preserve recovered typography, copy, red themes and approved behavior unchanged.
-- Original source was the ChatGPT project above, not C:/index.html; the chartreuse
-  awilcher-creatives folder is unrelated and untouched.
-- Original historical approved recording unavailable; exact final historical
-  revision identity is not proven. Recovered-source fidelity is verified.
-- Theme resets to dark on reload, matching source; do not silently add persistence.
-- Quote is scripted/fictional and uses an internal scrolling estimate region.
-- Contact form does not send; no live backend or appointment booking exists.
-- Fonts need network. Chromium emulation only; no physical-device/Safari/Firefox
-  or full accessibility/production claims audit.
-- **Voice-agent development has NOT started.** No LiveKit, Pipecat, receptionist,
-  ads/outreach, other portfolio development or paid service adoption occurred.
+## Latest validated commit
+Implementation/evidence: cd24ca9fbd7b778854b7404ff692a6eb82b082d2. This state and venture closeout are committed separately; `git log -1` identifies that documentation commit.
 
-## Workflow and context
-Apply milestone-driven-build and venture WORKFLOW-v3.2-README.md. Content Capture
-and Build-vs-Buy requirements remain in effect. Director reviewed bounded Architect
-and Builder work and validated captures. No background monitoring is scheduled.
-Historical recovery: docs/RED_BUILD_RECOVERY.md; gold baseline: docs/BASELINE_CLOSEOUT.md;
-capture repair: docs/CONTENT_CAPTURE_REPAIR.md. Those next actions are superseded.
+## Exact next action / recommended milestone
+Stop. In a fresh **AWC — Realtime Voice Acceptance** task, read this state and benchmark evidence; retain scenario/tools. Implement a real streaming WebRTC path and matched framework comparison, test actual mic/noise/listening and a local or explicitly no-cost LLM, measure p95 warm end-of-speech→audible response <=2s and cancellation <=300ms, and test concurrent booking isolation. PSTN requires practical free access or separate budget authorization. Do not begin production integration or outreach before those acceptance gates.
 
-## Exact next action / next milestone
-Stop this completed migration. In a fresh task, read this state and the venture
-workflow, then scope **AWC — AI Employee Architecture Bake-Off**. Do not begin it
-automatically in the migration task.

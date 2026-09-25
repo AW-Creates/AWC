@@ -1,3 +1,12 @@
+# AWC voice bake-off closeout — 2026-09-24
+
+Implementation/evidence commit: cd24ca9fbd7b778854b7404ff692a6eb82b082d2. Bounded local evaluation/POC closed; realtime production acceptance NOT achieved. Prior red migration is preserved; earlier 'voice not started' statements below are historical and superseded for AWC only.
+
+Pipecat + faster-whisper + Kokoro local POC proves synthetic browser speech, two interruptions with replacement responses, FAQ, deterministic quote, mock booking, local sales context and human follow-up record, transcript/summary. LiveKit API compatibility tested, no matched transport comparison. Chatterbox inconclusive, managed baseline documented, PSTN deferred. No money spent. Read AWC/docs/voice-bakeoff/BENCHMARK.md and AWC/PROJECT_STATE.md for evidence, costs, licenses, run instructions and explicit gaps. Silent 75.28s demo under media/awc-voice-bakeoff-2026-09-24/verified.
+
+Exact next action: STOP; recommend fresh AWC — Realtime Voice Acceptance. No other ventures changed.
+
+---
 # Portfolio state
 
 Updated: 2026-09-24. AWC — Verified Red Source Migration COMPLETE. STOP.
@@ -53,3 +62,4 @@ Mapping: ../repos.tsv. Workflow: WORKFLOW-v3.2-README.md. Capture: CONTENT_PIPEL
 Reconciliation: reconciliation-2026-09-23/AUDIT.md and preservation-manifest.json;
 all earlier bundles/source copies remain untouched. The parent and venture-ops
 remain outside Git; AWC/docs/workflow stores snapshots. No automatic monitor exists.
+
