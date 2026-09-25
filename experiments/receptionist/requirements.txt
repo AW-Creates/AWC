@@ -1,0 +1,10 @@
+fastapi==0.141.1
+uvicorn==0.53.0
+python-multipart==0.0.32
+faster-whisper==1.2.1
+kokoro-onnx==0.6.1
+pipecat-ai==1.11.0
+httpx==0.28.1
+numpy==2.4.6
+soundfile==0.13.1
+psutil==7.2.2

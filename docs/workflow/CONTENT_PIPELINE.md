@@ -97,3 +97,13 @@ Detailed shot times: final-walkthrough-results.json. Paired viewport/theme scree
 settled reveal rechecks and evidence indexed in AWC/docs/RED_SOURCE_MIGRATION.md.
 The original historical recording remains unavailable. This is later migration
 footage. No publication; stop. Next: AWC — AI Employee Architecture Bake-Off.
+
+## C007 — AI Employee Architecture Bake-Off (active 2026-09-24)
+Before-state recovered: no receptionist implementation at 565a0bb; interrupted builder had zero edits. This is a new isolated demo, not a marketing redesign.
+Story: synthetic BrightHome cleaning caller receives FAQ, $225 deep-clean estimate for three bedrooms, availability/booking, sales context handoff and human callback, with transcript/summary.
+Capture final localhost browser using Playwright context video outside Git at media/awc-voice-bakeoff-2026-09-24. Verify decode/playback and review frames. Browser video is silent; keep separate generated audio and distinguish synthetic input from real microphone/user listening. No publication.
+
+### C007 outcome — 2026-09-24
+Local browser receptionist verified with synthetic MediaStream input, real faster-whisper/Kokoro, Pipecat business pipeline, and two microphone interruption/replacement responses. Seven speech responses, $225 quote, mock booking, sales context and human record pass. Silent video verified by decode, advancing playback and Director frame review.
+Artifact: media/awc-voice-bakeoff-2026-09-24/verified/brighthome-demo.webm; 75.28s, 5,593,875 bytes, 1360x900 VP8, 25fps. SHA-256 f8b3d1c38f98eb01c2a5869e837d40849c6cb1eb8f179d138752a7185a23eb44. Greeting 0-7s, spoken estimate interruption 7-18s, FAQ 18-23s, availability 23-35s, booking 35-48s, sales 48-60s, spoken human escalation 60-74s. Native greeting/handoff/summary PNGs and browser-evidence JSON retained there.
+No subjective listening score, physical microphone, WebRTC/PSTN or production realtime claim. Turn latency is too high. Details: AWC/docs/voice-bakeoff/BENCHMARK.md. Stop bake-off; recommend fresh Realtime Voice Acceptance milestone. No publication or spend.

@@ -1,0 +1,181 @@
+{
+  "title": "BrightHome local Kokoro-to-faster-whisper synthetic component benchmark",
+  "measured_at_utc": "2026-09-24T18:57:03.689332+00:00",
+  "methodology": "Five warm runs per fixture. Kokoro af_heart emits synthetic clean audio which faster-whisper base.en transcribes. WER is normalized word-level edit distance against the text used to synthesize each fixture. This is a component-loop measurement, not human microphone accuracy, subjective naturalness, WebRTC, or end-to-end agent latency.",
+  "machine": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15 (main, Aug  7 2026, 02:24:19) [MSC v.1944 64 bit (AMD64)]",
+    "logical_cpu_count": 14,
+    "physical_cpu_count": 12,
+    "ram_gib": 31.47,
+    "onnx_providers": [
+      "AzureExecutionProvider",
+      "CPUExecutionProvider"
+    ]
+  },
+  "packages": {
+    "faster-whisper": "1.2.1",
+    "kokoro-onnx": "0.6.1",
+    "onnxruntime": "1.24.4",
+    "ctranslate2": "4.8.2",
+    "numpy": "2.4.6",
+    "psutil": "7.2.2"
+  },
+  "kokoro": {
+    "model": "kokoro-v1.0.int8.onnx",
+    "voice": "af_heart",
+    "runs_per_fixture": 5,
+    "rows": [
+      {
+        "fixture": "faq",
+        "text": "What is included in a standard BrightHome cleaning?",
+        "audio_seconds": 2.795,
+        "synthesis_ms": {
+          "n": 5,
+          "mean": 3205.893,
+          "median": 3229.401,
+          "min": 3103.373,
+          "max": 3316.083
+        },
+        "rss_delta_mib": 105.68
+      },
+      {
+        "fixture": "estimate",
+        "text": "I need a deep clean for a three bedroom home.",
+        "audio_seconds": 2.389,
+        "synthesis_ms": {
+          "n": 5,
+          "mean": 2867.608,
+          "median": 2860.356,
+          "min": 2760.934,
+          "max": 3051.74
+        },
+        "rss_delta_mib": 2.46
+      },
+      {
+        "fixture": "booking",
+        "text": "Can I book next Tuesday at 10 AM?",
+        "audio_seconds": 2.112,
+        "synthesis_ms": {
+          "n": 5,
+          "mean": 2846.621,
+          "median": 2802.172,
+          "min": 2701.266,
+          "max": 3155.438
+        },
+        "rss_delta_mib": 0.13
+      },
+      {
+        "fixture": "sales",
+        "text": "I need recurring cleaning for my office.",
+        "audio_seconds": 2.091,
+        "synthesis_ms": {
+          "n": 5,
+          "mean": 2709.886,
+          "median": 2712.359,
+          "min": 2666.609,
+          "max": 2745.222
+        },
+        "rss_delta_mib": 3.86
+      },
+      {
+        "fixture": "human",
+        "text": "Please connect me with a human because I have a complaint.",
+        "audio_seconds": 3.029,
+        "synthesis_ms": {
+          "n": 5,
+          "mean": 3624.986,
+          "median": 3622.077,
+          "min": 3530.568,
+          "max": 3799.734
+        },
+        "rss_delta_mib": 5.26
+      }
+    ]
+  },
+  "faster_whisper": {
+    "model": "base.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "model_load_ms": 32057.505,
+    "runs_per_fixture": 5,
+    "rows": [
+      {
+        "fixture": "faq",
+        "reference": "What is included in a standard BrightHome cleaning?",
+        "hypothesis": "What is included in a standard bright home cleaning?",
+        "audio_seconds": 2.795,
+        "transcription_ms": {
+          "n": 5,
+          "mean": 891.65,
+          "median": 683.217,
+          "min": 652.463,
+          "max": 1758.46
+        },
+        "wer": 0.25,
+        "real_time_factor_median": 0.2445
+      },
+      {
+        "fixture": "estimate",
+        "reference": "I need a deep clean for a three bedroom home.",
+        "hypothesis": "I need a deep clean for a three bedroom home.",
+        "audio_seconds": 2.389,
+        "transcription_ms": {
+          "n": 5,
+          "mean": 680.3,
+          "median": 705.085,
+          "min": 627.113,
+          "max": 708.453
+        },
+        "wer": 0.0,
+        "real_time_factor_median": 0.2951
+      },
+      {
+        "fixture": "booking",
+        "reference": "Can I book next Tuesday at 10 AM?",
+        "hypothesis": "Can I book next Tuesday at 10 a.m.?",
+        "audio_seconds": 2.112,
+        "transcription_ms": {
+          "n": 5,
+          "mean": 702.791,
+          "median": 694.137,
+          "min": 668.126,
+          "max": 734.743
+        },
+        "wer": 0.25,
+        "real_time_factor_median": 0.3287
+      },
+      {
+        "fixture": "sales",
+        "reference": "I need recurring cleaning for my office.",
+        "hypothesis": "I need recurring cleaning for my office.",
+        "audio_seconds": 2.091,
+        "transcription_ms": {
+          "n": 5,
+          "mean": 642.13,
+          "median": 632.958,
+          "min": 620.618,
+          "max": 663.961
+        },
+        "wer": 0.0,
+        "real_time_factor_median": 0.3028
+      },
+      {
+        "fixture": "human",
+        "reference": "Please connect me with a human because I have a complaint.",
+        "hypothesis": "Please connect me with a human because I have a complaint.",
+        "audio_seconds": 3.029,
+        "transcription_ms": {
+          "n": 5,
+          "mean": 699.254,
+          "median": 697.567,
+          "min": 661.174,
+          "max": 739.238
+        },
+        "wer": 0.0,
+        "real_time_factor_median": 0.2303
+      }
+    ]
+  },
+  "process_rss_mib_at_end": 497.15
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Chatterbox bounded CPU feasibility attempt",
+  "measured_at_utc": "2026-09-24T19:04:00Z",
+  "status": "inconclusive_no_inference_measurement",
+  "environment": {
+    "separate_environment": "AWC/.cache/chatterbox-env",
+    "package": "chatterbox-tts==0.1.7",
+    "torch": "2.6.0+cpu",
+    "cuda_available": false
+  },
+  "result": "Public package installation succeeded in a separate ignored environment. Two import/API-inspection attempts continued consuming CPU beyond 120 seconds and were terminated as a bounded test. No model was loaded, no speech was generated, and no Chatterbox latency, quality, or resource result is claimed.",
+  "constraint": "The existing faster-whisper/Kokoro environment was not changed."
+}

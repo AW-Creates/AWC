@@ -1,0 +1,40 @@
+{
+  "video": "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-voice-bakeoff-2026-09-24\\verified\\brighthome-demo.webm",
+  "bytes": 5593875,
+  "sha256": "f8b3d1c38f98eb01c2a5869e837d40849c6cb1eb8f179d138752a7185a23eb44",
+  "metadata": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp8",
+        "codec_type": "video",
+        "width": 1360,
+        "height": 900,
+        "r_frame_rate": "25/1",
+        "nb_read_frames": "1882"
+      }
+    ],
+    "format": {
+      "duration": "75.280000",
+      "size": "5593875"
+    }
+  },
+  "fullDecodePassed": true,
+  "playbackPassed": true,
+  "playback": {
+    "duration": 75.28,
+    "currentTime": 8.561549,
+    "paused": false,
+    "readyState": 4,
+    "width": 1360,
+    "height": 900,
+    "error": null
+  },
+  "screenshots": [
+    "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-voice-bakeoff-2026-09-24\\verified\\playback\\playback-start.png",
+    "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-voice-bakeoff-2026-09-24\\verified\\playback\\playback-middle.png",
+    "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-voice-bakeoff-2026-09-24\\verified\\playback\\playback-end.png"
+  ],
+  "visualReview": "Director inspected start/middle/end playback frames plus final handoff/summary PNGs: readable and consistent with synthetic demo; silent video."
+}

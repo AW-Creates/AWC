@@ -1,0 +1,440 @@
+{
+  "browser": {
+    "playbacks": [
+      {
+        "at": 6943.800000011921,
+        "duration": 5.013333
+      },
+      {
+        "at": 18192.5,
+        "duration": 6.4
+      },
+      {
+        "at": 22819.30000001192,
+        "duration": 3.690667
+      },
+      {
+        "at": 35082.59999999404,
+        "duration": 11.562667
+      },
+      {
+        "at": 47625.40000000596,
+        "duration": 11.072
+      },
+      {
+        "at": 59813,
+        "duration": 12.053333
+      },
+      {
+        "at": 73552.20000001788,
+        "duration": 10.773333
+      }
+    ],
+    "interruptions": [
+      {
+        "reason": "microphone energy",
+        "at": 7207.200000017881,
+        "position": 0.185607
+      },
+      {
+        "reason": "text turn",
+        "at": 18257.59999999404,
+        "position": 0.034642
+      },
+      {
+        "reason": "text turn",
+        "at": 23139.59999999404,
+        "position": 0.279303
+      },
+      {
+        "reason": "text turn",
+        "at": 35388,
+        "position": 0.263858
+      },
+      {
+        "reason": "text turn",
+        "at": 47938.40000000596,
+        "position": 0.27424
+      },
+      {
+        "reason": "microphone energy",
+        "at": 60306.30000001192,
+        "position": 0.449919
+      }
+    ],
+    "turns": [
+      {
+        "metrics": {
+          "server_turn_ms": 6543.34380000364
+        },
+        "elapsedMs": 6552,
+        "text": "Hello, I am the BrightHome demo receptionist. How can I help with your cleaning today?"
+      },
+      {
+        "metrics": {
+          "business_ms": 4.162099998211488,
+          "server_turn_ms": 7356.702299992321,
+          "stt_ms": 780.2676999999676,
+          "server_audio_turn_ms": 8136.979700007942
+        },
+        "elapsedMs": 8145.800000011921,
+        "text": "Your deep cleaning estimate for 3 bedrooms is 225 dollars. This is a demo estimate."
+      },
+      {
+        "metrics": {
+          "business_ms": 2.9580999980680645,
+          "server_turn_ms": 4518.152800010284
+        },
+        "elapsedMs": 4526.9000000059605,
+        "text": "We are open Monday through Friday, 9 AM to 5 PM."
+      },
+      {
+        "metrics": {
+          "business_ms": 3.7449999945238233,
+          "server_turn_ms": 11869.795799982967
+        },
+        "elapsedMs": 11880.59999999404,
+        "text": "Available demo appointments: 2026-10-01 10:00, 2026-10-02 14:00."
+      },
+      {
+        "metrics": {
+          "business_ms": 3.3051999926101416,
+          "server_turn_ms": 12162.456099991687
+        },
+        "elapsedMs": 12174.09999999404,
+        "text": "Your mock appointment is booked for 2026-10-01 10:00. Confirmation DEMO-8d659a59."
+      },
+      {
+        "metrics": {
+          "business_ms": 4.9173999868799,
+          "server_turn_ms": 11808.665199991083
+        },
+        "elapsedMs": 11819.700000017881,
+        "text": "You are now with the local sales specialist. I have your deep estimate of 225 dollars. Your appointment is 2026-10-01 10:00."
+      },
+      {
+        "metrics": {
+          "business_ms": 3.3844000136014074,
+          "server_turn_ms": 8964.084300008835,
+          "stt_ms": 706.9898000045214,
+          "server_audio_turn_ms": 9671.07899999246
+        },
+        "elapsedMs": 9680,
+        "text": "I created a local human follow-up request with our conversation, estimate and booking. No human has been contacted. Please provide contact details to the operator."
+      }
+    ],
+    "vadStarts": [
+      7207.9000000059605,
+      60306.59999999404
+    ]
+  },
+  "summary": {
+    "session_id": "53ac1a05-9bc5-4f25-8173-dab5667e48f7",
+    "agent": "sales specialist",
+    "transcript": [
+      {
+        "role": "receptionist",
+        "text": "Hello, I am the BrightHome demo receptionist. How can I help with your cleaning today?",
+        "at": 1790276927.8701167
+      },
+      {
+        "role": "user",
+        "text": "You need a deep clean for a three bedroom home.",
+        "at": 1790276938.3130572
+      },
+      {
+        "role": "receptionist",
+        "text": "Your deep cleaning estimate for 3 bedrooms is 225 dollars. This is a demo estimate.",
+        "at": 1790276938.3130572
+      },
+      {
+        "role": "user",
+        "text": "What hours are you open?",
+        "at": 1790276945.7928333
+      },
+      {
+        "role": "receptionist",
+        "text": "We are open Monday through Friday, 9 AM to 5 PM.",
+        "at": 1790276945.7928333
+      },
+      {
+        "role": "user",
+        "text": "What appointments are available?",
+        "at": 1790276950.6747653
+      },
+      {
+        "role": "receptionist",
+        "text": "Available demo appointments: 2026-10-01 10:00, 2026-10-02 14:00.",
+        "at": 1790276950.6747653
+      },
+      {
+        "role": "user",
+        "text": "Book the first slot",
+        "at": 1790276962.9237242
+      },
+      {
+        "role": "receptionist",
+        "text": "Your mock appointment is booked for 2026-10-01 10:00. Confirmation DEMO-8d659a59.",
+        "at": 1790276962.9237242
+      },
+      {
+        "role": "user",
+        "text": "Connect me to sales specialist",
+        "at": 1790276975.4740644
+      },
+      {
+        "role": "sales specialist",
+        "text": "You are now with the local sales specialist. I have your deep estimate of 225 dollars. Your appointment is 2026-10-01 10:00.",
+        "at": 1790276975.4740644
+      },
+      {
+        "role": "user",
+        "text": "Please connect me with a human because I have a complaint.",
+        "at": 1790276992.0590298
+      },
+      {
+        "role": "sales specialist",
+        "text": "I created a local human follow-up request with our conversation, estimate and booking. No human has been contacted. Please provide contact details to the operator.",
+        "at": 1790276992.0590298
+      }
+    ],
+    "quote": {
+      "bedrooms": 3,
+      "service": "deep",
+      "currency": "USD",
+      "total": 225
+    },
+    "booking": {
+      "slot": "2026-10-01 10:00",
+      "name": "Synthetic caller",
+      "confirmation": "DEMO-8d659a59"
+    },
+    "handoffs": [
+      {
+        "id": "bd2eed35cc6446b588c6c78b45ae74c3",
+        "reason": "Connect me to sales specialist",
+        "context": {
+          "session_id": "53ac1a05-9bc5-4f25-8173-dab5667e48f7",
+          "quote": {
+            "bedrooms": 3,
+            "service": "deep",
+            "currency": "USD",
+            "total": 225
+          },
+          "booking": {
+            "slot": "2026-10-01 10:00",
+            "name": "Synthetic caller",
+            "confirmation": "DEMO-8d659a59"
+          },
+          "transcript": [
+            {
+              "role": "receptionist",
+              "text": "Hello, I am the BrightHome demo receptionist. How can I help with your cleaning today?",
+              "at": 1790276927.8701167
+            },
+            {
+              "role": "user",
+              "text": "You need a deep clean for a three bedroom home.",
+              "at": 1790276938.3130572
+            },
+            {
+              "role": "receptionist",
+              "text": "Your deep cleaning estimate for 3 bedrooms is 225 dollars. This is a demo estimate.",
+              "at": 1790276938.3130572
+            },
+            {
+              "role": "user",
+              "text": "What hours are you open?",
+              "at": 1790276945.7928333
+            },
+            {
+              "role": "receptionist",
+              "text": "We are open Monday through Friday, 9 AM to 5 PM.",
+              "at": 1790276945.7928333
+            },
+            {
+              "role": "user",
+              "text": "What appointments are available?",
+              "at": 1790276950.6747653
+            },
+            {
+              "role": "receptionist",
+              "text": "Available demo appointments: 2026-10-01 10:00, 2026-10-02 14:00.",
+              "at": 1790276950.6747653
+            },
+            {
+              "role": "user",
+              "text": "Book the first slot",
+              "at": 1790276962.9237242
+            },
+            {
+              "role": "receptionist",
+              "text": "Your mock appointment is booked for 2026-10-01 10:00. Confirmation DEMO-8d659a59.",
+              "at": 1790276962.9237242
+            },
+            {
+              "role": "user",
+              "text": "Connect me to sales specialist",
+              "at": 1790276975.4740644
+            }
+          ],
+          "agent": "receptionist"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "id": "b1a8d5ba4a2543249e79d4e376cd1d48",
+        "reason": "Please connect me with a human because I have a complaint.",
+        "context": {
+          "session_id": "53ac1a05-9bc5-4f25-8173-dab5667e48f7",
+          "quote": {
+            "bedrooms": 3,
+            "service": "deep",
+            "currency": "USD",
+            "total": 225
+          },
+          "booking": {
+            "slot": "2026-10-01 10:00",
+            "name": "Synthetic caller",
+            "confirmation": "DEMO-8d659a59"
+          },
+          "transcript": [
+            {
+              "role": "receptionist",
+              "text": "Hello, I am the BrightHome demo receptionist. How can I help with your cleaning today?",
+              "at": 1790276927.8701167
+            },
+            {
+              "role": "user",
+              "text": "You need a deep clean for a three bedroom home.",
+              "at": 1790276938.3130572
+            },
+            {
+              "role": "receptionist",
+              "text": "Your deep cleaning estimate for 3 bedrooms is 225 dollars. This is a demo estimate.",
+              "at": 1790276938.3130572
+            },
+            {
+              "role": "user",
+              "text": "What hours are you open?",
+              "at": 1790276945.7928333
+            },
+            {
+              "role": "receptionist",
+              "text": "We are open Monday through Friday, 9 AM to 5 PM.",
+              "at": 1790276945.7928333
+            },
+            {
+              "role": "user",
+              "text": "What appointments are available?",
+              "at": 1790276950.6747653
+            },
+            {
+              "role": "receptionist",
+              "text": "Available demo appointments: 2026-10-01 10:00, 2026-10-02 14:00.",
+              "at": 1790276950.6747653
+            },
+            {
+              "role": "user",
+              "text": "Book the first slot",
+              "at": 1790276962.9237242
+            },
+            {
+              "role": "receptionist",
+              "text": "Your mock appointment is booked for 2026-10-01 10:00. Confirmation DEMO-8d659a59.",
+              "at": 1790276962.9237242
+            },
+            {
+              "role": "user",
+              "text": "Connect me to sales specialist",
+              "at": 1790276975.4740644
+            },
+            {
+              "role": "sales specialist",
+              "text": "You are now with the local sales specialist. I have your deep estimate of 225 dollars. Your appointment is 2026-10-01 10:00.",
+              "at": 1790276975.4740644
+            },
+            {
+              "role": "user",
+              "text": "Please connect me with a human because I have a complaint.",
+              "at": 1790276992.0590298
+            }
+          ],
+          "agent": "sales specialist"
+        },
+        "status": "awaiting human follow-up",
+        "contact": "not supplied"
+      }
+    ],
+    "events": [
+      {
+        "kind": "browser_interruption",
+        "at": 1790276934.7378051
+      },
+      {
+        "kind": "quote",
+        "at": 1790276938.3130572,
+        "result": {
+          "bedrooms": 3,
+          "service": "deep",
+          "currency": "USD",
+          "total": 225
+        }
+      },
+      {
+        "kind": "browser_interruption",
+        "at": 1790276945.7888334
+      },
+      {
+        "kind": "browser_interruption",
+        "at": 1790276950.6697638
+      },
+      {
+        "kind": "availability",
+        "at": 1790276950.6747653,
+        "slots": [
+          "2026-10-01 10:00",
+          "2026-10-02 14:00"
+        ]
+      },
+      {
+        "kind": "browser_interruption",
+        "at": 1790276962.918725
+      },
+      {
+        "kind": "booking",
+        "at": 1790276962.9237242,
+        "result": {
+          "ok": true,
+          "slot": "2026-10-01 10:00",
+          "name": "Synthetic caller",
+          "confirmation": "DEMO-8d659a59"
+        }
+      },
+      {
+        "kind": "browser_interruption",
+        "at": 1790276975.4690573
+      },
+      {
+        "kind": "handoff",
+        "at": 1790276975.4740644,
+        "id": "bd2eed35cc6446b588c6c78b45ae74c3"
+      },
+      {
+        "kind": "browser_interruption",
+        "at": 1790276987.8369474
+      },
+      {
+        "kind": "human_escalation",
+        "at": 1790276992.0590298,
+        "id": "b1a8d5ba4a2543249e79d4e376cd1d48"
+      }
+    ]
+  },
+  "width": 1360,
+  "scrollWidth": 1360,
+  "errors": [],
+  "input": "synthetic Kokoro WAV injected into WebAudio MediaStream, not human microphone",
+  "audio": "Chromium playing events/duration verified; silent Playwright video; subjective listening unmeasured"
+}

@@ -1,0 +1,108 @@
+{
+  "scope": "20 reset deterministic business scenarios; no audio/generative LLM",
+  "passed": 20,
+  "failed": 0,
+  "checks_per_run": 14,
+  "rows": [
+    {
+      "run": 1,
+      "passed": true,
+      "suite_ms": 519.1988000005949
+    },
+    {
+      "run": 2,
+      "passed": true,
+      "suite_ms": 36.87710000667721
+    },
+    {
+      "run": 3,
+      "passed": true,
+      "suite_ms": 37.10669997963123
+    },
+    {
+      "run": 4,
+      "passed": true,
+      "suite_ms": 36.003599991090596
+    },
+    {
+      "run": 5,
+      "passed": true,
+      "suite_ms": 42.24390001036227
+    },
+    {
+      "run": 6,
+      "passed": true,
+      "suite_ms": 37.68300000228919
+    },
+    {
+      "run": 7,
+      "passed": true,
+      "suite_ms": 40.30290001537651
+    },
+    {
+      "run": 8,
+      "passed": true,
+      "suite_ms": 37.68950002267957
+    },
+    {
+      "run": 9,
+      "passed": true,
+      "suite_ms": 43.00669999793172
+    },
+    {
+      "run": 10,
+      "passed": true,
+      "suite_ms": 41.12199999508448
+    },
+    {
+      "run": 11,
+      "passed": true,
+      "suite_ms": 45.03530001966283
+    },
+    {
+      "run": 12,
+      "passed": true,
+      "suite_ms": 37.579600000754
+    },
+    {
+      "run": 13,
+      "passed": true,
+      "suite_ms": 37.224299972876906
+    },
+    {
+      "run": 14,
+      "passed": true,
+      "suite_ms": 37.012800021329895
+    },
+    {
+      "run": 15,
+      "passed": true,
+      "suite_ms": 39.2355999792926
+    },
+    {
+      "run": 16,
+      "passed": true,
+      "suite_ms": 54.6510000131093
+    },
+    {
+      "run": 17,
+      "passed": true,
+      "suite_ms": 36.969900014810264
+    },
+    {
+      "run": 18,
+      "passed": true,
+      "suite_ms": 34.6844999876339
+    },
+    {
+      "run": 19,
+      "passed": true,
+      "suite_ms": 37.62959997402504
+    },
+    {
+      "run": 20,
+      "passed": true,
+      "suite_ms": 34.74519998417236
+    }
+  ]
+}
