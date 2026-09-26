@@ -1,0 +1,466 @@
+{
+  "date": "2026-09-26",
+  "source": "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-voice-realtime-2026-09-26\\closeout-final\\revalidation.json",
+  "source_sha256": "4f7f63b9127cb8ef3320c52e2bc0b1551bdade80f622d11e50fb0066747e3a00",
+  "scope": "Synthetic fixture injection over browser WebRTC. Browser received events and rendered-energy proxy; not physical audible latency or human-mic acceptance. Estimate includes automated confirmation delay.",
+  "browser_suite_passed": true,
+  "failure": null,
+  "checks": [
+    {
+      "label": "greeting: complete sentence was scheduled",
+      "pass": true,
+      "detail": "Hello, I am the BrightHome demo receptionist. How can I help?"
+    },
+    {
+      "label": "short 80ms burst did not cancel speech",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "label": "barge-in interrupt used the active playback epoch",
+      "pass": true,
+      "detail": {
+        "interruptRecord": {
+          "detected": 21783.899999976158,
+          "muted": 21784.100000023842,
+          "epoch": 3
+        },
+        "expected": 3
+      }
+    },
+    {
+      "label": "faq-fixture: corrected transcript retains required words",
+      "pass": true,
+      "detail": {
+        "transcript": "What is included in a standard bright home cleaning?",
+        "phrase": "standard bright home cleaning"
+      }
+    },
+    {
+      "label": "estimate-fixture: corrected transcript retains required words",
+      "pass": true,
+      "detail": {
+        "transcript": "I need a deep clean for a three-bedroom home.",
+        "phrase": "deep clean for a three bedroom home"
+      }
+    },
+    {
+      "label": "estimate-fixture: action review binds corrected transcript",
+      "pass": true,
+      "detail": {
+        "review": "I need a deep clean for a three-bedroom home.",
+        "transcript": "I need a deep clean for a three-bedroom home."
+      }
+    },
+    {
+      "label": "estimate-fixture: quote stays gated",
+      "pass": true
+    },
+    {
+      "label": "typed-quote-225: review is bound to the exact typed transcript",
+      "pass": true,
+      "detail": {
+        "review": "Deep cleaning for three bedrooms",
+        "text": "Deep cleaning for three bedrooms"
+      }
+    },
+    {
+      "label": "typed-quote-225: expected response word",
+      "pass": true,
+      "detail": {
+        "word": "225 dollars",
+        "response": "Your deep cleaning estimate for 3 bedrooms is 225 dollars. This is a demo estimate."
+      }
+    },
+    {
+      "label": "typed-availability: expected response word",
+      "pass": true,
+      "detail": {
+        "word": "2026-10-01",
+        "response": "Available demo appointments: 2026-10-01 10:00, 2026-10-02 14:00."
+      }
+    },
+    {
+      "label": "typed-booking-confirmed: review is bound to the exact typed transcript",
+      "pass": true,
+      "detail": {
+        "review": "Book the first slot",
+        "text": "Book the first slot"
+      }
+    },
+    {
+      "label": "typed-booking-confirmed: expected response word",
+      "pass": true,
+      "detail": {
+        "word": "confirmation",
+        "response": "Your mock appointment is booked for 2026-10-01 10:00. Confirmation DEMO-7be279a7."
+      }
+    },
+    {
+      "label": "typed-booking-conflict: review is bound to the exact typed transcript",
+      "pass": true,
+      "detail": {
+        "review": "Book the first slot",
+        "text": "Book the first slot"
+      }
+    },
+    {
+      "label": "typed-booking-conflict: expected response word",
+      "pass": true,
+      "detail": {
+        "word": "unavailable",
+        "response": "That slot is unavailable. Please choose an available appointment."
+      }
+    },
+    {
+      "label": "typed-handoff: expected response word",
+      "pass": true,
+      "detail": {
+        "word": "sales specialist",
+        "response": "You are now with the local sales specialist. I have your deep estimate of 225 dollars. Your appointment is 2026-10-01 10:00."
+      }
+    },
+    {
+      "label": "unconfirmed booking did not mutate booking state",
+      "pass": true,
+      "detail": {
+        "slot": "2026-10-01 10:00",
+        "name": "Synthetic caller",
+        "confirmation": "DEMO-7be279a7"
+      }
+    },
+    {
+      "label": "typed-handoff-retained: expected response word",
+      "pass": true,
+      "detail": {
+        "word": "human",
+        "response": "I created a local human follow-up request with our conversation, estimate and booking. No human has been contacted. Please provide contact details to the operator."
+      }
+    },
+    {
+      "label": "handoff does not perform the unconfirmed action",
+      "pass": true,
+      "detail": {
+        "slot": "2026-10-01 10:00",
+        "name": "Synthetic caller",
+        "confirmation": "DEMO-7be279a7"
+      }
+    },
+    {
+      "label": "sales handoff context remains after the later human request",
+      "pass": true,
+      "detail": {
+        "handoffs": [
+          {
+            "id": "5fa4308724c8458e9a6698a0546a0cfc",
+            "reason": "Sales specialist please",
+            "context": {
+              "session_id": "ed8523be-2ecf-44f4-a6cc-dea9991ba4e2",
+              "quote": {
+                "bedrooms": 3,
+                "service": "deep",
+                "currency": "USD",
+                "total": 225
+              },
+              "booking": {
+                "slot": "2026-10-01 10:00",
+                "name": "Synthetic caller",
+                "confirmation": "DEMO-7be279a7"
+              },
+              "transcript": [
+                {
+                  "role": "user",
+                  "text": "Please connect me with a human because I have a complaint.",
+                  "at": 1790454390.7875404
+                },
+                {
+                  "role": "receptionist",
+                  "text": "I created a local human follow-up request with our conversation, estimate and booking. No human has been contacted. Please provide contact details to the operator.",
+                  "at": 1790454390.7875404
+                },
+                {
+                  "role": "user",
+                  "text": "What is included in a standard bright home cleaning?",
+                  "at": 1790454415.8949811
+                },
+                {
+                  "role": "receptionist",
+                  "text": "I can help with hours, insurance, an estimate, appointment availability, sales or human follow-up.",
+                  "at": 1790454415.8949811
+                },
+                {
+                  "role": "user",
+                  "text": "I need a deep clean for a three-bedroom home.",
+                  "at": 1790454434.3041732
+                },
+                {
+                  "role": "receptionist",
+                  "text": "Your deep cleaning estimate for 3 bedrooms is 225 dollars. This is a demo estimate.",
+                  "at": 1790454434.3041732
+                },
+                {
+                  "role": "user",
+                  "text": "Deep cleaning for three bedrooms",
+                  "at": 1790454452.618405
+                },
+                {
+                  "role": "receptionist",
+                  "text": "Your deep cleaning estimate for 3 bedrooms is 225 dollars. This is a demo estimate.",
+                  "at": 1790454452.618405
+                },
+                {
+                  "role": "user",
+                  "text": "What slots are available?",
+                  "at": 1790454471.1855333
+                },
+                {
+                  "role": "receptionist",
+                  "text": "Available demo appointments: 2026-10-01 10:00, 2026-10-02 14:00.",
+                  "at": 1790454471.1855333
+                },
+                {
+                  "role": "user",
+                  "text": "Book the first slot",
+                  "at": 1790454498.8692265
+                },
+                {
+                  "role": "receptionist",
+                  "text": "Your mock appointment is booked for 2026-10-01 10:00. Confirmation DEMO-7be279a7.",
+                  "at": 1790454498.8692265
+                },
+                {
+                  "role": "user",
+                  "text": "Book the first slot",
+                  "at": 1790454525.9678419
+                },
+                {
+                  "role": "receptionist",
+                  "text": "That slot is unavailable. Please choose an available appointment.",
+                  "at": 1790454525.968841
+                },
+                {
+                  "role": "user",
+                  "text": "Sales specialist please",
+                  "at": 1790454539.1850991
+                }
+              ],
+              "agent": "receptionist"
+            }
+          }
+        ],
+        "agent": "sales specialist"
+      }
+    }
+  ],
+  "errors": [],
+  "fixture_latency": [
+    {
+      "fixture": "human-barge-in",
+      "transcript": "Please connect me with a human because I have a complaint.",
+      "start_to_first_partial_ms": 1033.4,
+      "end_to_endpoint_ms": 801.27,
+      "end_to_final_ms": 1487.97,
+      "end_to_decision_ms": 1489.97,
+      "end_to_audio_start_ms": 7248.27,
+      "end_to_rendered_ms": 7426.47,
+      "decision_to_rendered_ms": 5936.5,
+      "includes_review_confirmation": false
+    },
+    {
+      "fixture": "faq",
+      "transcript": "What is included in a standard bright home cleaning?",
+      "start_to_first_partial_ms": 712.6,
+      "end_to_endpoint_ms": 774.03,
+      "end_to_final_ms": 1548.63,
+      "end_to_decision_ms": 1552.63,
+      "end_to_audio_start_ms": 9570.73,
+      "end_to_rendered_ms": 9779.53,
+      "decision_to_rendered_ms": 8226.9,
+      "includes_review_confirmation": false
+    },
+    {
+      "fixture": "estimate",
+      "transcript": "I need a deep clean for a three-bedroom home.",
+      "start_to_first_partial_ms": 803.8,
+      "end_to_endpoint_ms": 777.67,
+      "end_to_final_ms": 1480.47,
+      "end_to_decision_ms": 1574.17,
+      "end_to_audio_start_ms": 11777.87,
+      "end_to_rendered_ms": 11971.07,
+      "decision_to_rendered_ms": 10396.9,
+      "includes_review_confirmation": true
+    }
+  ],
+  "other_metrics": {
+    "barge_in": {
+      "fixture_start_to_first_partial_ms": 1033.4000000357628,
+      "fixture_end_to_endpoint_ms": 801.2666666905097,
+      "detection_to_mute_ms": 0.20000004768371582,
+      "endpoint_to_decision_ms": 688.6999999880791,
+      "decision_to_rendered_ms": 5936.5,
+      "interrupted_epoch": 3,
+      "replacement_epoch": 5
+    },
+    "faq-fixture": {
+      "fixture_start_to_endpoint_ms": 3568.699999988079,
+      "endpoint_to_decision_ms": 778.6000000238419,
+      "decision_to_rendered_ms": 8226.899999976158,
+      "final_transcript": "What is included in a standard bright home cleaning?"
+    },
+    "estimate-fixture": {
+      "fixture_start_to_endpoint_ms": 3167,
+      "endpoint_to_decision_ms": 796.5,
+      "decision_to_rendered_ms": 10396.900000035763,
+      "final_transcript": "I need a deep clean for a three-bedroom home."
+    },
+    "typed-quote-225": {
+      "request_at": 87615.30000001192,
+      "decision_at": 87803.19999998808,
+      "rendered_at": 98600.30000001192,
+      "request_to_decision_ms": 187.89999997615814,
+      "request_to_rendered_ms": 10985,
+      "epoch": 10
+    },
+    "typed-availability": {
+      "request_at": 106306.10000002384,
+      "decision_at": 106370.5,
+      "rendered_at": 122016.89999997616,
+      "request_to_decision_ms": 64.39999997615814,
+      "request_to_rendered_ms": 15710.799999952316,
+      "epoch": 11
+    },
+    "typed-booking-confirmed": {
+      "request_at": 133864.69999998808,
+      "decision_at": 134060,
+      "rendered_at": 146567.10000002384,
+      "request_to_decision_ms": 195.30000001192093,
+      "request_to_rendered_ms": 12702.400000035763,
+      "epoch": 13
+    },
+    "typed-booking-conflict": {
+      "request_at": 160961.39999997616,
+      "decision_at": 161156.89999997616,
+      "rendered_at": 168466.89999997616,
+      "request_to_decision_ms": 195.5,
+      "request_to_rendered_ms": 7505.5,
+      "epoch": 15
+    },
+    "typed-handoff": {
+      "request_at": 174314.10000002384,
+      "decision_at": 174371.89999997616,
+      "rendered_at": 178166.80000001192,
+      "request_to_decision_ms": 57.799999952316284,
+      "request_to_rendered_ms": 3852.699999988079,
+      "epoch": 16
+    },
+    "typed-handoff-retained": {
+      "request_at": 199747.39999997616,
+      "decision_at": 199811.10000002384,
+      "rendered_at": 211516.80000001192,
+      "request_to_decision_ms": 63.700000047683716,
+      "request_to_rendered_ms": 11769.400000035763,
+      "epoch": 18
+    }
+  },
+  "scheduled_completions": [
+    {
+      "epoch": 1,
+      "complete": true,
+      "chunks": [
+        "Hello, I am the BrightHome demo receptionist.",
+        "How can I help?"
+      ]
+    },
+    {
+      "epoch": 2,
+      "complete": true,
+      "chunks": [
+        "Hello, I am the BrightHome demo receptionist.",
+        "How can I help?"
+      ]
+    },
+    {
+      "epoch": 5,
+      "complete": true,
+      "chunks": [
+        "I created a local human follow-up request with our conversation, estimate and booking.",
+        "No human has been contacted.",
+        "Please provide contact details to the operator."
+      ]
+    },
+    {
+      "epoch": 6,
+      "complete": true,
+      "chunks": [
+        "I can help with hours, insurance, an estimate, appointment availability, sales or human follow-up."
+      ]
+    },
+    {
+      "epoch": 8,
+      "complete": true,
+      "chunks": [
+        "Your deep cleaning estimate for 3 bedrooms is 225 dollars.",
+        "This is a demo estimate."
+      ]
+    },
+    {
+      "epoch": 10,
+      "complete": true,
+      "chunks": [
+        "Your deep cleaning estimate for 3 bedrooms is 225 dollars.",
+        "This is a demo estimate."
+      ]
+    },
+    {
+      "epoch": 11,
+      "complete": true,
+      "chunks": [
+        "Available demo appointments: 2026-10-01 10:00, 2026-10-02 14:00."
+      ]
+    },
+    {
+      "epoch": 13,
+      "complete": true,
+      "chunks": [
+        "Your mock appointment is booked for 2026-10-01 10:00.",
+        "Confirmation DEMO-7be279a7."
+      ]
+    },
+    {
+      "epoch": 15,
+      "complete": true,
+      "chunks": [
+        "That slot is unavailable.",
+        "Please choose an available appointment."
+      ]
+    },
+    {
+      "epoch": 16,
+      "complete": true,
+      "chunks": [
+        "You are now with the local sales specialist.",
+        "I have your deep estimate of 225 dollars.",
+        "Your appointment is 2026-10-01 10:00."
+      ]
+    },
+    {
+      "epoch": 18,
+      "complete": true,
+      "chunks": [
+        "I created a local human follow-up request with our conversation, estimate and booking.",
+        "No human has been contacted.",
+        "Please provide contact details to the operator."
+      ]
+    }
+  ],
+  "interruptions": [
+    {
+      "detected": 21783.899999976158,
+      "muted": 21784.100000023842,
+      "epoch": 3
+    }
+  ],
+  "truncation": "No planned/sent chunk loss in completed turns. Physical sentence completion remains unresolved pending human listening.",
+  "acceptance": "FAILED / NOT DEMO-READY",
+  "primary_bottleneck": "Local CPU speech synthesis latency"
+}

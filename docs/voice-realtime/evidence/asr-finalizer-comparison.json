@@ -1,0 +1,99 @@
+{
+  "scope": "Five preserved synthetic Kokoro fixtures at original ordinary/brisk pace; no human microphone claim. Streaming numbers are preserved earlier evidence, not a simultaneous speed benchmark. Cached base.en int8 CPU, beam 3, no VAD filter; whole-utterance correction adds latency.",
+  "normalization": "lowercase alphanumeric words; BrightHome=bright home, 10=ten, a.m./a m=am; hyphen/punctuation ignored, same normalization for both engines",
+  "reference_words": 45,
+  "streaming_wer": 0.3333333333333333,
+  "final_wer": 0.0,
+  "rows": [
+    {
+      "fixture": "faq",
+      "reference": "What is included in a standard BrightHome cleaning?",
+      "streaming_hypothesis": "' INCLUDED IN A STANDARD BRIGHT HOME CLEANING",
+      "final_hypothesis": "What is included in a standard bright home cleaning?",
+      "reference_words": 9,
+      "streaming_errors": 2,
+      "final_errors": 0,
+      "finalizer_ms": 656.46,
+      "audio_s": 2.795,
+      "words_per_minute": 193.2,
+      "avg_logprob": [
+        -0.3743
+      ],
+      "no_speech_prob": [
+        0.0008
+      ]
+    },
+    {
+      "fixture": "estimate",
+      "reference": "I need a deep clean for a three bedroom home.",
+      "streaming_hypothesis": "FOR A THREE BEDROOM HOME",
+      "final_hypothesis": "I need a deep clean for a three bedroom home.",
+      "reference_words": 10,
+      "streaming_errors": 5,
+      "final_errors": 0,
+      "finalizer_ms": 681.59,
+      "audio_s": 2.389,
+      "words_per_minute": 251.1,
+      "avg_logprob": [
+        -0.3027
+      ],
+      "no_speech_prob": [
+        0.0023
+      ]
+    },
+    {
+      "fixture": "booking",
+      "reference": "Can I book next Tuesday at 10 AM?",
+      "streaming_hypothesis": "'S TUESDAY AT TEN A M",
+      "final_hypothesis": "Can I book next Tuesday at 10 a.m.?",
+      "reference_words": 8,
+      "streaming_errors": 4,
+      "final_errors": 0,
+      "finalizer_ms": 684.49,
+      "audio_s": 2.112,
+      "words_per_minute": 227.3,
+      "avg_logprob": [
+        -0.2029
+      ],
+      "no_speech_prob": [
+        0.0035
+      ]
+    },
+    {
+      "fixture": "sales",
+      "reference": "I need recurring cleaning for my office.",
+      "streaming_hypothesis": "IN CLEANING FOR MY OFFICE",
+      "final_hypothesis": "I need recurring cleaning for my office.",
+      "reference_words": 7,
+      "streaming_errors": 3,
+      "final_errors": 0,
+      "finalizer_ms": 684.9,
+      "audio_s": 2.091,
+      "words_per_minute": 200.9,
+      "avg_logprob": [
+        -0.2615
+      ],
+      "no_speech_prob": [
+        0.0012
+      ]
+    },
+    {
+      "fixture": "human",
+      "reference": "Please connect me with a human because I have a complaint.",
+      "streaming_hypothesis": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAINT",
+      "final_hypothesis": "Please connect me with a human because I have a complaint.",
+      "reference_words": 11,
+      "streaming_errors": 1,
+      "final_errors": 0,
+      "finalizer_ms": 686.0,
+      "audio_s": 3.029,
+      "words_per_minute": 217.9,
+      "avg_logprob": [
+        -0.2333
+      ],
+      "no_speech_prob": [
+        0.0011
+      ]
+    }
+  ]
+}

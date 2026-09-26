@@ -1,0 +1,91 @@
+{
+  "title": "Local paced PCM WebRTC transport round-trip",
+  "measured_at_utc": "2026-09-26T00:53:59.349959+00:00",
+  "methodology": {
+    "repeats": 20,
+    "audio": "48 kHz mono, 100 ms PCM pulse followed by silence; timer ends at first returned high-energy PCM frame",
+    "excluded": "STT, TTS, LLM, browser rendering, WAN/NAT, natural speech, and AgentSession behavior"
+  },
+  "topologies": {
+    "pipecat_smallwebrtc": "direct aiortc peer -> Pipecat SmallWebRTC transport -> Pipecat echo processor",
+    "livekit_local_sfu": "LiveKit RTC client -> local LiveKit SFU -> direct RTC echo participant"
+  },
+  "caveat": "These are practical alternate transport topologies, not a matched framework or Agents benchmark.",
+  "pipecat_smallwebrtc": {
+    "n": 20,
+    "min_ms": 222.321,
+    "p50_ms": 317.916,
+    "p95_ms": 425.956,
+    "max_ms": 426.673,
+    "raw_ms": [
+      222.321,
+      254.575,
+      258.178,
+      271.577,
+      285.08,
+      301.245,
+      301.477,
+      302.453,
+      317.353,
+      317.532,
+      318.3,
+      318.466,
+      334.77,
+      361.071,
+      362.879,
+      378.23,
+      398.568,
+      411.586,
+      425.956,
+      426.673
+    ],
+    "pipeline_input_frames": 827,
+    "pipeline_input_rates": {
+      "48000": 827
+    },
+    "client_output_frames": 873,
+    "client_output_signal_frames": 120,
+    "client_output_rates": {
+      "48000": 873
+    }
+  },
+  "livekit_local_sfu": {
+    "n": 20,
+    "min_ms": 148.866,
+    "p50_ms": 610.63,
+    "p95_ms": 690.938,
+    "max_ms": 691.664,
+    "raw_ms": [
+      148.866,
+      149.393,
+      150.496,
+      171.023,
+      192.751,
+      200.744,
+      600.043,
+      600.621,
+      609.579,
+      610.456,
+      610.804,
+      611.056,
+      680.146,
+      680.501,
+      681.022,
+      688.261,
+      688.825,
+      689.948,
+      690.938,
+      691.664
+    ],
+    "bot_input_frames": 2039,
+    "bot_input_signal_frames": 220,
+    "bot_input_rates": {
+      "48000": 2039
+    },
+    "client_output_frames": 2053,
+    "client_output_signal_frames": 216,
+    "client_output_rates": {
+      "48000": 2053
+    }
+  }
+}

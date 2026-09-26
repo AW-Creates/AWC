@@ -1,0 +1,255 @@
+{
+  "scope": "Warm uncached CPU component timing; native stream batches vs short phrases; no network, physical playback or human quality rating",
+  "rows": [
+    {
+      "mode": "short-phrase",
+      "threads": 1,
+      "text": "Hello, how can I help?",
+      "run": 1,
+      "first_audio_ms": 2695.3053000033833,
+      "audio_s": 1.3653333333333333,
+      "real_time_factor": 1.9741005615259155,
+      "cpu_core_percent": 97.39156451021356,
+      "rss_mib": 222.35546875,
+      "cold_load_and_warmup_ms": 2455.3440999879967
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 1,
+      "text": "Hello, how can I help?",
+      "run": 2,
+      "first_audio_ms": 2787.8412999853026,
+      "audio_s": 1.3653333333333333,
+      "real_time_factor": 2.041875952137673,
+      "cpu_core_percent": 98.08216127705747,
+      "rss_mib": 232.984375,
+      "cold_load_and_warmup_ms": 2455.3440999879967
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 1,
+      "text": "Your estimate is 225 dollars.",
+      "run": 1,
+      "first_audio_ms": 5085.833100019954,
+      "audio_s": 2.7306666666666666,
+      "real_time_factor": 1.8624877075268387,
+      "cpu_core_percent": 98.61953590219706,
+      "rss_mib": 257.3515625,
+      "cold_load_and_warmup_ms": 2455.3440999879967
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 1,
+      "text": "Your estimate is 225 dollars.",
+      "run": 2,
+      "first_audio_ms": 5243.45579999499,
+      "audio_s": 2.7306666666666666,
+      "real_time_factor": 1.9202108642559779,
+      "cpu_core_percent": 98.03887352316218,
+      "rss_mib": 291.359375,
+      "cold_load_and_warmup_ms": 2455.3440999879967
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 1,
+      "text": "We are open Monday through Friday.",
+      "run": 1,
+      "first_audio_ms": 3686.3619000068866,
+      "audio_s": 1.8346666666666667,
+      "real_time_factor": 2.0092815588700326,
+      "cpu_core_percent": 94.52069803546664,
+      "rss_mib": 292.2578125,
+      "cold_load_and_warmup_ms": 2455.3440999879967
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 1,
+      "text": "We are open Monday through Friday.",
+      "run": 2,
+      "first_audio_ms": 3326.3830000068992,
+      "audio_s": 1.8346666666666667,
+      "real_time_factor": 1.8130721293642256,
+      "cpu_core_percent": 98.17345146344323,
+      "rss_mib": 292.2578125,
+      "cold_load_and_warmup_ms": 2455.3440999879967
+    },
+    {
+      "mode": "native-create-stream",
+      "threads": 1,
+      "text": "We are open Monday through Friday. Your estimate is 225 dollars.",
+      "chunk_ready_ms": [
+        7861.060199997155
+      ],
+      "first_audio_ms": 7861.060199997155,
+      "audio_s": 4.970666666666666,
+      "chunks": 1
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 2,
+      "text": "Hello, how can I help?",
+      "run": 1,
+      "first_audio_ms": 2412.0516999973916,
+      "audio_s": 1.3653333333333333,
+      "real_time_factor": 1.766639428709027,
+      "cpu_core_percent": 117.89755584439071,
+      "rss_mib": 349.33984375,
+      "cold_load_and_warmup_ms": 3071.6320000065025
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 2,
+      "text": "Hello, how can I help?",
+      "run": 2,
+      "first_audio_ms": 2390.4089000134263,
+      "audio_s": 1.3653333333333333,
+      "real_time_factor": 1.7507877685645212,
+      "cpu_core_percent": 118.96500217950273,
+      "rss_mib": 360.03515625,
+      "cold_load_and_warmup_ms": 3071.6320000065025
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 2,
+      "text": "Your estimate is 225 dollars.",
+      "run": 1,
+      "first_audio_ms": 4054.8470000212546,
+      "audio_s": 2.7306666666666666,
+      "real_time_factor": 1.4849293212968462,
+      "cpu_core_percent": 120.61182579698728,
+      "rss_mib": 384.328125,
+      "cold_load_and_warmup_ms": 3071.6320000065025
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 2,
+      "text": "Your estimate is 225 dollars.",
+      "run": 2,
+      "first_audio_ms": 3895.9648000018205,
+      "audio_s": 2.7306666666666666,
+      "real_time_factor": 1.4267449218756667,
+      "cpu_core_percent": 117.1083475907654,
+      "rss_mib": 418.33203125,
+      "cold_load_and_warmup_ms": 3071.6320000065025
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 2,
+      "text": "We are open Monday through Friday.",
+      "run": 1,
+      "first_audio_ms": 3151.684500015108,
+      "audio_s": 1.8346666666666667,
+      "real_time_factor": 1.717851289979165,
+      "cpu_core_percent": 116.50515779680353,
+      "rss_mib": 418.52734375,
+      "cold_load_and_warmup_ms": 3071.6320000065025
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 2,
+      "text": "We are open Monday through Friday.",
+      "run": 2,
+      "first_audio_ms": 2931.0565999767277,
+      "audio_s": 1.8346666666666667,
+      "real_time_factor": 1.597596257254757,
+      "cpu_core_percent": 116.74544258296375,
+      "rss_mib": 418.52734375,
+      "cold_load_and_warmup_ms": 3071.6320000065025
+    },
+    {
+      "mode": "native-create-stream",
+      "threads": 2,
+      "text": "We are open Monday through Friday. Your estimate is 225 dollars.",
+      "chunk_ready_ms": [
+        7357.8802999982145
+      ],
+      "first_audio_ms": 7357.8802999982145,
+      "audio_s": 4.970666666666666,
+      "chunks": 1
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 4,
+      "text": "Hello, how can I help?",
+      "run": 1,
+      "first_audio_ms": 2171.7309999803547,
+      "audio_s": 1.3653333333333333,
+      "real_time_factor": 1.5906232910012363,
+      "cpu_core_percent": 122.31026770921575,
+      "rss_mib": 350.16015625,
+      "cold_load_and_warmup_ms": 2770.107400021516
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 4,
+      "text": "Hello, how can I help?",
+      "run": 2,
+      "first_audio_ms": 2157.8393999952823,
+      "audio_s": 1.3653333333333333,
+      "real_time_factor": 1.5804487792934196,
+      "cpu_core_percent": 140.4761633329444,
+      "rss_mib": 360.85546875,
+      "cold_load_and_warmup_ms": 2770.107400021516
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 4,
+      "text": "Your estimate is 225 dollars.",
+      "run": 1,
+      "first_audio_ms": 3767.6365000079386,
+      "audio_s": 2.7306666666666666,
+      "real_time_factor": 1.379749694827126,
+      "cpu_core_percent": 133.5386256075765,
+      "rss_mib": 385.05859375,
+      "cold_load_and_warmup_ms": 2770.107400021516
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 4,
+      "text": "Your estimate is 225 dollars.",
+      "run": 2,
+      "first_audio_ms": 3582.2062000224832,
+      "audio_s": 2.7306666666666666,
+      "real_time_factor": 1.311843090828546,
+      "cpu_core_percent": 123.87617440816636,
+      "rss_mib": 419.05859375,
+      "cold_load_and_warmup_ms": 2770.107400021516
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 4,
+      "text": "We are open Monday through Friday.",
+      "run": 1,
+      "first_audio_ms": 2601.004299998749,
+      "audio_s": 1.8346666666666667,
+      "real_time_factor": 1.4176985646795508,
+      "cpu_core_percent": 139.36924287290657,
+      "rss_mib": 419.26171875,
+      "cold_load_and_warmup_ms": 2770.107400021516
+    },
+    {
+      "mode": "short-phrase",
+      "threads": 4,
+      "text": "We are open Monday through Friday.",
+      "run": 2,
+      "first_audio_ms": 2656.5342000103556,
+      "audio_s": 1.8346666666666667,
+      "real_time_factor": 1.447965588668435,
+      "cpu_core_percent": 127.63340294985785,
+      "rss_mib": 419.2578125,
+      "cold_load_and_warmup_ms": 2770.107400021516
+    },
+    {
+      "mode": "native-create-stream",
+      "threads": 4,
+      "text": "We are open Monday through Friday. Your estimate is 225 dollars.",
+      "chunk_ready_ms": [
+        6375.2565999748185
+      ],
+      "first_audio_ms": 6375.2565999748185,
+      "audio_s": 4.970666666666666,
+      "chunks": 1
+    }
+  ],
+  "media": "C:\\Users\\A-Problem\\Documents\\Web Development\\AW-Creates-Ventures\\_venture-ops\\media\\awc-realtime-2026-09-25\\tts"
+}

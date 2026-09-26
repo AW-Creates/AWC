@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-25",
+  "tests": 15,
+  "passed": 15,
+  "failed": 0,
+  "command": ".cache/voice-env/Scripts/python.exe -m unittest experiments.receptionist.test_app experiments.receptionist.test_safety experiments.receptionist.test_realtime_safety",
+  "business_browser": {
+    "quote_total": 225,
+    "booking_successes": 1,
+    "conflict_rejections": 1,
+    "handoff_quote_retained": true,
+    "handoff_booking_retained": true
+  },
+  "scope": "Deterministic fixture regressions and reviewed browser scenario; not statistical guarantee for arbitrary speech"
+}

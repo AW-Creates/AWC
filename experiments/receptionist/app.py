@@ -1,6 +1,7 @@
 from __future__ import annotations
 import asyncio, base64, copy, io, json, os, re, time, uuid, wave
 from pathlib import Path
+from dotenv import load_dotenv
 from typing import Literal, Protocol
 from urllib.parse import urlparse
 import httpx
@@ -9,6 +10,8 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 
 ROOT = Path(__file__).parent
+# Local development only: preserve explicitly supplied runtime configuration.
+load_dotenv(ROOT.parents[1] / '.env', override=False)
 CACHE = ROOT.parents[1] / '.cache'
 STORE = CACHE / 'receptionist-output'
 app = FastAPI(title='BrightHome local voice laboratory')
@@ -81,7 +84,7 @@ async def domain(text):
     elif 'bedroom' in t or 'quote' in t or 'estimate' in t or 'price' in t:
         normalized=t
         for w,n in [('one','1'),('two','2'),('three','3'),('four','4'),('five','5')]: normalized=re.sub(r'\b'+w+r'\b',n,normalized)
-        match=re.search(r'(\d+)\s*bedroom',normalized)
+        match=re.search(r'(\d+)[\s-]*bedroom',normalized)
         if match:
             count=int(match[1])
             if not 1<=count<=20: answer='Please provide a bedroom count from 1 to 20.'
@@ -89,7 +92,15 @@ async def domain(text):
                 q=quote(QuoteRequest(bedrooms=count,service='deep' if 'deep' in t else 'standard')); STATE['quote']=q; event('quote',result=q)
                 answer=f"Your {q['service']} cleaning estimate for {count} bedrooms is {q['total']} dollars. This is a demo estimate."
         else: answer='How many bedrooms, and standard or deep cleaning?'
-    elif 'book' in t or 'reserve' in t:
+    elif re.search(r'\b(book|reserve|booking|reservation)\b', t):
+        # A speech transcript is untrusted intent, never implicit authorization.
+        denied = re.search(r"\b(don['’]?t|do not|not|never|cancel|avoid|stop|maybe|might|if|unless)\b", t)
+        authorized = re.match(r"^(?:please\s+)?(?:book|reserve)\b", t) or re.match(r"^(?:yes[, ]+|i (?:want|would like) (?:you )?to |can you |could you |please can you )(?:please )?(?:book|reserve)\b", t)
+        if denied or not authorized:
+            answer = 'No appointment was booked. To authorize a booking, say book the first slot or book the second slot.'
+            STATE['transcript'].append(dict(role=STATE['agent'], text=answer, at=time.time()))
+            persist()
+            return answer
         slot=next((s for s in SLOT_NAMES if s in t),None)
         if not slot:
             if re.search(r'(october|oct)\s*(1|first)\b',t) or 'first slot' in t: slot=SLOT_NAMES[0]
@@ -104,7 +115,11 @@ async def domain(text):
     elif 'hour' in t or 'open' in t: answer='We are open Monday through Friday, 9 AM to 5 PM.'
     elif 'insur' in t: answer='BrightHome is fully insured.'
     elif 'where' in t or 'service area' in t or 'springfield' in t: answer='We serve Springfield.'
-    elif os.getenv('AWC_LOCAL_LLM_URL'): answer=await LocalOpenAIAdapter().respond(text,context())
+    elif 'financ' in t or 'payment plan' in t:
+        answer='No financing terms are configured for this demo. I can retain your context for a sales specialist or a human follow-up.'
+    elif os.getenv('AWC_LOCAL_LLM_URL'):
+        # Unverified generative output cannot assert prices or commitments in acceptance mode.
+        answer='This demo only answers verified business questions. I can connect you to a human for anything else.'
     elif STATE['agent']=='sales specialist':
         answer='As your sales specialist, I retain your estimate and appointment. Ask for an estimate, booking, or a human follow-up.'
     else: answer='I can help with hours, insurance, an estimate, appointment availability, sales or human follow-up.'

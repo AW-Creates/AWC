@@ -1,0 +1,11 @@
+{
+  "validated_at": "2026-09-25",
+  "endpoint": "GET /v1/me",
+  "http_status": 200,
+  "runtime_key_loaded": true,
+  "runtime_matches_canonical_env": true,
+  "secret_output": false,
+  "env_git_ignored": true,
+  "generation_billing_confirmed": false,
+  "realtime_control_result": "billing_not_active"
+}

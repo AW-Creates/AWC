@@ -1,0 +1,11 @@
+{
+  "date": "2026-09-26",
+  "tests": 26,
+  "passed": 26,
+  "failed": 0,
+  "command": ".cache/voice-env/Scripts/python.exe -m unittest experiments.receptionist.test_app experiments.receptionist.test_safety experiments.receptionist.test_realtime_safety experiments.receptionist.test_voice_continuity",
+  "scope": "Deterministic unit/scenario checks including 40 quote configurations, negative booking intents, conflict and retained handoff context, exact confirmation, uncertain/incomplete transcript rejection, stale finalizers, duplicate interruption and sentence delivery. No arbitrary-speech accuracy or acoustic claim.",
+  "quote_configurations": 40,
+  "hallucinated_pricing_in_test_cases": 0,
+  "unapproved_bookings_in_test_cases": 0
+}

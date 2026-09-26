@@ -12,3 +12,5 @@ stop condition before spending or contacting prospects. Log failed experiments
 as well as successes. Keep leads anonymized and link private evidence.
 
 E002 | 2026-09-24 | BrightHome synthetic receptionist architecture bake-off | No outreach; zero API spend | Local browser POC validated, realtime latency gate not passed | AWC/docs/voice-bakeoff/BENCHMARK.md | Pipecat local experiment; next Realtime Voice Acceptance; STOP.
+
+E003 | 2026-09-26 | Realtime Voice Acceptance | Director + narrow read-only Validator; fictional local inputs, no outreach/API spend | 19/19 browser checks and 28/28 regression tests pass; normal rendered-audio 9.780s, replacement 7.426s fail targets | AWC/docs/voice-realtime/ACCEPTANCE.md; browser-closeout.json | CLOSED FAILED / NOT DEMO-READY; CPU TTS primary bottleneck; physical-mic continuity/STT unresolved; managed billing blocked; matched transport unproven; next narrow managed-control acceptance only in fresh authorized task; STOP.

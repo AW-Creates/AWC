@@ -1,0 +1,17 @@
+{
+  "title": "Superseded initial Pipecat SmallWebRTC harness result",
+  "measured_at_utc": "2026-09-25T08:14:17.211514+00:00",
+  "status": "failed; no latency values recorded",
+  "pipecat_smallwebrtc": {
+    "error": "TimeoutError",
+    "detail": "",
+    "observed": "Peer connection and data channel opened, but the original harness did not record a returned high-energy audio frame before its 15-second whole-case timeout. It had no frame counters."
+  },
+  "harness_defects_repaired": [
+    "The whole-case timeout was 15 seconds despite a 20-pulse sequence with 500 ms inter-pulse gaps and up to 3 seconds receive wait per pulse.",
+    "The offer omitted the video m-line assumed by SmallWebRTC's fixed audio/video transceiver ordering.",
+    "The harness did not count pipeline input frames, returned client frames, or returned signal frames."
+  ],
+  "superseded_by": "transport.json",
+  "interpretation": "This is a recovery record, not a latency measurement or evidence that the Pipecat transport itself cannot pass audio."
+}

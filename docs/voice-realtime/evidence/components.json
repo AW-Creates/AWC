@@ -1,0 +1,788 @@
+{
+  "method": "Synthetic pre-generated Kokoro fixtures, 20ms PCM delivered at wall clock rate; sherpa online Zipformer int8 2 threads. Component only, no WebRTC or physical microphone. TTS cache disabled, same process repeated phrase/full synthesis.",
+  "asr_load_ms": 1134.3556999927387,
+  "asr": [
+    {
+      "run": 1,
+      "fixture": "faq",
+      "audio_seconds": 2.7946875,
+      "hypothesis": "' INCLUDED IN A STANDARD BRIGHT HOME CLEANING",
+      "first_partial_ms": 732.5499000144191,
+      "endpoint_after_file_end_ms": 819.2574000183956,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 732.5499000144191,
+          "text": "'"
+        },
+        {
+          "ms": 1052.9995000106283,
+          "text": "' INCLUD"
+        },
+        {
+          "ms": 1372.540400014259,
+          "text": "' INCLUDED"
+        },
+        {
+          "ms": 1689.0894999960437,
+          "text": "' INCLUDED IN A"
+        },
+        {
+          "ms": 2012.484900013078,
+          "text": "' INCLUDED IN A STANDARD"
+        },
+        {
+          "ms": 2333.3930000080727,
+          "text": "' INCLUDED IN A STANDARD BRIGHT"
+        },
+        {
+          "ms": 2652.128100016853,
+          "text": "' INCLUDED IN A STANDARD BRIGHT HOME"
+        },
+        {
+          "ms": 2974.5980000006966,
+          "text": "' INCLUDED IN A STANDARD BRIGHT HOME CLEANING"
+        }
+      ],
+      "decode_frame": {
+        "n": 181,
+        "p50_ms": 0.12399998377077281,
+        "p95_ms": 8.744999999180436,
+        "min_ms": 0.07979999645613134,
+        "max_ms": 16.668600001139566
+      },
+      "cpu_core_percent": 286.6500062056165
+    },
+    {
+      "run": 1,
+      "fixture": "estimate",
+      "audio_seconds": 2.389375,
+      "hypothesis": "",
+      "first_partial_ms": null,
+      "endpoint_after_file_end_ms": -1015.5146000045349,
+      "endpoint_detected": true,
+      "partials": [],
+      "decode_frame": {
+        "n": 69,
+        "p50_ms": 0.11900000390596688,
+        "p95_ms": 8.674599986989051,
+        "min_ms": 0.03649998689070344,
+        "max_ms": 13.970600004540756
+      },
+      "cpu_core_percent": 236.55954207273447
+    },
+    {
+      "run": 1,
+      "fixture": "booking",
+      "audio_seconds": 2.112,
+      "hypothesis": "'S TUESDAY AT TEN A M",
+      "first_partial_ms": 1053.3520000171848,
+      "endpoint_after_file_end_ms": 862.1005999967455,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 1053.3520000171848,
+          "text": "'S"
+        },
+        {
+          "ms": 1373.0125000001863,
+          "text": "'S TUESDA"
+        },
+        {
+          "ms": 1692.8784000047017,
+          "text": "'S TUESDAY AT"
+        },
+        {
+          "ms": 2008.4511000022758,
+          "text": "'S TUESDAY AT TEN A"
+        },
+        {
+          "ms": 2331.116600020323,
+          "text": "'S TUESDAY AT TEN A M"
+        }
+      ],
+      "decode_frame": {
+        "n": 149,
+        "p50_ms": 0.11749999248422682,
+        "p95_ms": 10.685099987313151,
+        "min_ms": 0.048299989430233836,
+        "max_ms": 13.513199985027313
+      },
+      "cpu_core_percent": 272.14101468931733
+    },
+    {
+      "run": 1,
+      "fixture": "sales",
+      "audio_seconds": 2.0906875,
+      "hypothesis": "IN CLEANING FOR MY OFFICE",
+      "first_partial_ms": 1370.6261000188533,
+      "endpoint_after_file_end_ms": 1201.6538999960758,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 1370.6261000188533,
+          "text": "IN CLEAN"
+        },
+        {
+          "ms": 1693.539600004442,
+          "text": "IN CLEANING FOR"
+        },
+        {
+          "ms": 2008.9294000063092,
+          "text": "IN CLEANING FOR MY OF"
+        },
+        {
+          "ms": 2332.2713999950793,
+          "text": "IN CLEANING FOR MY OFFIC"
+        },
+        {
+          "ms": 2648.9228999998886,
+          "text": "IN CLEANING FOR MY OFFICE"
+        }
+      ],
+      "decode_frame": {
+        "n": 165,
+        "p50_ms": 0.11679998715408146,
+        "p95_ms": 8.725000021513551,
+        "min_ms": 0.06269998266361654,
+        "max_ms": 13.14180000917986
+      },
+      "cpu_core_percent": 269.56496436677287
+    },
+    {
+      "run": 1,
+      "fixture": "human",
+      "audio_seconds": 3.029375,
+      "hypothesis": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAINT",
+      "first_partial_ms": 734.3113000097219,
+      "endpoint_after_file_end_ms": 902.6382000138984,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 734.3113000097219,
+          "text": "'S"
+        },
+        {
+          "ms": 1049.6929000073578,
+          "text": "'S CONNECT"
+        },
+        {
+          "ms": 1373.1320000078995,
+          "text": "'S CONNECT ME WITH"
+        },
+        {
+          "ms": 1691.6114000196103,
+          "text": "'S CONNECT ME WITH A HU"
+        },
+        {
+          "ms": 2011.8400000210386,
+          "text": "'S CONNECT ME WITH A HUMAN"
+        },
+        {
+          "ms": 2334.303200012073,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE"
+        },
+        {
+          "ms": 2655.346000014106,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE"
+        },
+        {
+          "ms": 2970.6513000128325,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMP"
+        },
+        {
+          "ms": 3294.3911000038497,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAIN"
+        },
+        {
+          "ms": 3609.4470000243746,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAINT"
+        }
+      ],
+      "decode_frame": {
+        "n": 197,
+        "p50_ms": 0.11850000009872019,
+        "p95_ms": 9.47050002287142,
+        "min_ms": 0.03840000135824084,
+        "max_ms": 15.147700003581122
+      },
+      "cpu_core_percent": 289.2919653523743
+    },
+    {
+      "run": 2,
+      "fixture": "faq",
+      "audio_seconds": 2.7946875,
+      "hypothesis": "' INCLUDED IN A STANDARD BRIGHT HOME CLEANING",
+      "first_partial_ms": 732.4860000226181,
+      "endpoint_after_file_end_ms": 818.2654000027103,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 732.4860000226181,
+          "text": "'"
+        },
+        {
+          "ms": 1052.9706000234,
+          "text": "' INCLUD"
+        },
+        {
+          "ms": 1373.3768000092823,
+          "text": "' INCLUDED"
+        },
+        {
+          "ms": 1688.8773000100628,
+          "text": "' INCLUDED IN A"
+        },
+        {
+          "ms": 2012.6999000203796,
+          "text": "' INCLUDED IN A STANDARD"
+        },
+        {
+          "ms": 2331.1659000173677,
+          "text": "' INCLUDED IN A STANDARD BRIGHT"
+        },
+        {
+          "ms": 2653.007900022203,
+          "text": "' INCLUDED IN A STANDARD BRIGHT HOME"
+        },
+        {
+          "ms": 2973.1155000044964,
+          "text": "' INCLUDED IN A STANDARD BRIGHT HOME CLEANING"
+        }
+      ],
+      "decode_frame": {
+        "n": 181,
+        "p50_ms": 0.12069998774677515,
+        "p95_ms": 10.934500023722649,
+        "min_ms": 0.046699977247044444,
+        "max_ms": 13.047299988102168
+      },
+      "cpu_core_percent": 286.2962235019729
+    },
+    {
+      "run": 2,
+      "fixture": "estimate",
+      "audio_seconds": 2.389375,
+      "hypothesis": "",
+      "first_partial_ms": null,
+      "endpoint_after_file_end_ms": -1016.6859999892765,
+      "endpoint_detected": true,
+      "partials": [],
+      "decode_frame": {
+        "n": 69,
+        "p50_ms": 0.1244999875780195,
+        "p95_ms": 12.340099987341091,
+        "min_ms": 0.043199979700148106,
+        "max_ms": 15.214400016702712
+      },
+      "cpu_core_percent": 226.5169285473862
+    },
+    {
+      "run": 2,
+      "fixture": "booking",
+      "audio_seconds": 2.112,
+      "hypothesis": "'S TUESDAY AT TEN A M",
+      "first_partial_ms": 1053.342800005339,
+      "endpoint_after_file_end_ms": 861.8241000159177,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 1053.342800005339,
+          "text": "'S"
+        },
+        {
+          "ms": 1374.8827000090387,
+          "text": "'S TUESDA"
+        },
+        {
+          "ms": 1694.8912000225391,
+          "text": "'S TUESDAY AT"
+        },
+        {
+          "ms": 2010.359400010202,
+          "text": "'S TUESDAY AT TEN A"
+        },
+        {
+          "ms": 2337.2249999956694,
+          "text": "'S TUESDAY AT TEN A M"
+        }
+      ],
+      "decode_frame": {
+        "n": 149,
+        "p50_ms": 0.1218999968841672,
+        "p95_ms": 11.705800017807633,
+        "min_ms": 0.05800000508315861,
+        "max_ms": 16.933499980950728
+      },
+      "cpu_core_percent": 265.3358800400723
+    },
+    {
+      "run": 2,
+      "fixture": "sales",
+      "audio_seconds": 2.0906875,
+      "hypothesis": "IN CLEANING FOR MY OFFICE",
+      "first_partial_ms": 1373.696100024972,
+      "endpoint_after_file_end_ms": 1202.0896000249777,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 1373.696100024972,
+          "text": "IN CLEAN"
+        },
+        {
+          "ms": 1692.3471000045538,
+          "text": "IN CLEANING FOR"
+        },
+        {
+          "ms": 2011.1064000229817,
+          "text": "IN CLEANING FOR MY OF"
+        },
+        {
+          "ms": 2331.020700017689,
+          "text": "IN CLEANING FOR MY OFFIC"
+        },
+        {
+          "ms": 2651.433899998665,
+          "text": "IN CLEANING FOR MY OFFICE"
+        }
+      ],
+      "decode_frame": {
+        "n": 165,
+        "p50_ms": 0.12260000221431255,
+        "p95_ms": 10.941999993519858,
+        "min_ms": 0.06369999027810991,
+        "max_ms": 14.017599984072149
+      },
+      "cpu_core_percent": 263.8349665891788
+    },
+    {
+      "run": 2,
+      "fixture": "human",
+      "audio_seconds": 3.029375,
+      "hypothesis": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAINT",
+      "first_partial_ms": 733.4277000045404,
+      "endpoint_after_file_end_ms": 906.8828000000213,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 733.4277000045404,
+          "text": "'S"
+        },
+        {
+          "ms": 1052.3134999966715,
+          "text": "'S CONNECT"
+        },
+        {
+          "ms": 1372.6251999905799,
+          "text": "'S CONNECT ME WITH"
+        },
+        {
+          "ms": 1693.2257000007667,
+          "text": "'S CONNECT ME WITH A HU"
+        },
+        {
+          "ms": 2013.0696999840438,
+          "text": "'S CONNECT ME WITH A HUMAN"
+        },
+        {
+          "ms": 2334.0609000006225,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE"
+        },
+        {
+          "ms": 2654.6832000021823,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE"
+        },
+        {
+          "ms": 2971.972899977118,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMP"
+        },
+        {
+          "ms": 3290.78449998633,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAIN"
+        },
+        {
+          "ms": 3611.387399985688,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAINT"
+        }
+      ],
+      "decode_frame": {
+        "n": 197,
+        "p50_ms": 0.1218999968841672,
+        "p95_ms": 10.944900015601888,
+        "min_ms": 0.0653000024612993,
+        "max_ms": 15.29160002246499
+      },
+      "cpu_core_percent": 286.5982941279796
+    },
+    {
+      "run": 3,
+      "fixture": "faq",
+      "audio_seconds": 2.7946875,
+      "hypothesis": "' INCLUDED IN A STANDARD BRIGHT HOME CLEANING",
+      "first_partial_ms": 732.8612999990582,
+      "endpoint_after_file_end_ms": 816.6466000163925,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 732.8612999990582,
+          "text": "'"
+        },
+        {
+          "ms": 1053.965099999914,
+          "text": "' INCLUD"
+        },
+        {
+          "ms": 1373.239900014596,
+          "text": "' INCLUDED"
+        },
+        {
+          "ms": 1695.180500013521,
+          "text": "' INCLUDED IN A"
+        },
+        {
+          "ms": 2011.885700019775,
+          "text": "' INCLUDED IN A STANDARD"
+        },
+        {
+          "ms": 2334.644800022943,
+          "text": "' INCLUDED IN A STANDARD BRIGHT"
+        },
+        {
+          "ms": 2653.0789000098594,
+          "text": "' INCLUDED IN A STANDARD BRIGHT HOME"
+        },
+        {
+          "ms": 2970.862800022587,
+          "text": "' INCLUDED IN A STANDARD BRIGHT HOME CLEANING"
+        }
+      ],
+      "decode_frame": {
+        "n": 181,
+        "p50_ms": 0.12270000297576189,
+        "p95_ms": 10.969199996907264,
+        "min_ms": 0.053800002206116915,
+        "max_ms": 14.681700005894527
+      },
+      "cpu_core_percent": 281.66526805936275
+    },
+    {
+      "run": 3,
+      "fixture": "estimate",
+      "audio_seconds": 2.389375,
+      "hypothesis": "",
+      "first_partial_ms": null,
+      "endpoint_after_file_end_ms": -1015.6790000048929,
+      "endpoint_detected": true,
+      "partials": [],
+      "decode_frame": {
+        "n": 69,
+        "p50_ms": 0.12139999307692051,
+        "p95_ms": 10.813600005349144,
+        "min_ms": 0.039000005926936865,
+        "max_ms": 13.247199996840209
+      },
+      "cpu_core_percent": 234.31302079372986
+    },
+    {
+      "run": 3,
+      "fixture": "booking",
+      "audio_seconds": 2.112,
+      "hypothesis": "'S TUESDAY AT TEN A M",
+      "first_partial_ms": 1054.4316000014078,
+      "endpoint_after_file_end_ms": 862.2798999941441,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 1054.4316000014078,
+          "text": "'S"
+        },
+        {
+          "ms": 1374.507000000449,
+          "text": "'S TUESDA"
+        },
+        {
+          "ms": 1694.7090000030585,
+          "text": "'S TUESDAY AT"
+        },
+        {
+          "ms": 2021.478400012711,
+          "text": "'S TUESDAY AT TEN A"
+        },
+        {
+          "ms": 2334.503499994753,
+          "text": "'S TUESDAY AT TEN A M"
+        }
+      ],
+      "decode_frame": {
+        "n": 149,
+        "p50_ms": 0.12589999823831022,
+        "p95_ms": 12.487700005294755,
+        "min_ms": 0.07469998672604561,
+        "max_ms": 20.72000000043772
+      },
+      "cpu_core_percent": 267.9219124165186
+    },
+    {
+      "run": 3,
+      "fixture": "sales",
+      "audio_seconds": 2.0906875,
+      "hypothesis": "IN CLEANING FOR MY OFFICE",
+      "first_partial_ms": 1371.838300023228,
+      "endpoint_after_file_end_ms": 1201.6435000041965,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 1371.838300023228,
+          "text": "IN CLEAN"
+        },
+        {
+          "ms": 1690.0712000206113,
+          "text": "IN CLEANING FOR"
+        },
+        {
+          "ms": 2010.9194999968167,
+          "text": "IN CLEANING FOR MY OF"
+        },
+        {
+          "ms": 2331.562400009716,
+          "text": "IN CLEANING FOR MY OFFIC"
+        },
+        {
+          "ms": 2653.180000022985,
+          "text": "IN CLEANING FOR MY OFFICE"
+        }
+      ],
+      "decode_frame": {
+        "n": 165,
+        "p50_ms": 0.12310000602155924,
+        "p95_ms": 9.909999993396923,
+        "min_ms": 0.061400001868605614,
+        "max_ms": 12.594400002853945
+      },
+      "cpu_core_percent": 265.76909810593514
+    },
+    {
+      "run": 3,
+      "fixture": "human",
+      "audio_seconds": 3.029375,
+      "hypothesis": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAINT",
+      "first_partial_ms": 731.0051000094973,
+      "endpoint_after_file_end_ms": 902.6257000060288,
+      "endpoint_detected": true,
+      "partials": [
+        {
+          "ms": 731.0051000094973,
+          "text": "'S"
+        },
+        {
+          "ms": 1053.379600023618,
+          "text": "'S CONNECT"
+        },
+        {
+          "ms": 1377.145600010408,
+          "text": "'S CONNECT ME WITH"
+        },
+        {
+          "ms": 1691.9962000101805,
+          "text": "'S CONNECT ME WITH A HU"
+        },
+        {
+          "ms": 2013.2895999995526,
+          "text": "'S CONNECT ME WITH A HUMAN"
+        },
+        {
+          "ms": 2332.0791000151075,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE"
+        },
+        {
+          "ms": 2653.3599000249524,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE"
+        },
+        {
+          "ms": 2971.8239000067115,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMP"
+        },
+        {
+          "ms": 3294.386800000211,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAIN"
+        },
+        {
+          "ms": 3610.65139999846,
+          "text": "'S CONNECT ME WITH A HUMAN BECAUSE I HAVE A COMPLAINT"
+        }
+      ],
+      "decode_frame": {
+        "n": 197,
+        "p50_ms": 0.12400001287460327,
+        "p95_ms": 11.130200000479817,
+        "min_ms": 0.03999998443759978,
+        "max_ms": 13.743100018473342
+      },
+      "cpu_core_percent": 277.76885526387196
+    }
+  ],
+  "tts": [
+    {
+      "text": "We are open Monday through Friday.",
+      "run": 1,
+      "first_complete_chunk_ms": 3321.6447999875527,
+      "audio_seconds": 1.8346666666666667,
+      "real_time_factor": 1.8104895348769363,
+      "cpu_core_percent": 115.24787358402516
+    },
+    {
+      "text": "We are open Monday through Friday.",
+      "run": 2,
+      "first_complete_chunk_ms": 3513.810000004014,
+      "audio_seconds": 1.8346666666666667,
+      "real_time_factor": 1.9152307412812577,
+      "cpu_core_percent": 109.3898076445684
+    },
+    {
+      "text": "We are open Monday through Friday.",
+      "run": 3,
+      "first_complete_chunk_ms": 3045.8992999920156,
+      "audio_seconds": 1.8346666666666667,
+      "real_time_factor": 1.6601922056642526,
+      "cpu_core_percent": 117.98650073590484
+    },
+    {
+      "text": "We are open Monday through Friday.",
+      "run": 4,
+      "first_complete_chunk_ms": 2912.2641000139993,
+      "audio_seconds": 1.8346666666666667,
+      "real_time_factor": 1.587353252187863,
+      "cpu_core_percent": 123.93707699733173
+    },
+    {
+      "text": "We are open Monday through Friday.",
+      "run": 5,
+      "first_complete_chunk_ms": 2868.7130000034813,
+      "audio_seconds": 1.8346666666666667,
+      "real_time_factor": 1.5636153706414324,
+      "cpu_core_percent": 121.4612615481497
+    },
+    {
+      "text": "Your estimate is 225 dollars.",
+      "run": 1,
+      "first_complete_chunk_ms": 4568.921399972169,
+      "audio_seconds": 2.7306666666666666,
+      "real_time_factor": 1.6731889892476204,
+      "cpu_core_percent": 116.2747076373947
+    },
+    {
+      "text": "Your estimate is 225 dollars.",
+      "run": 2,
+      "first_complete_chunk_ms": 4135.683800006518,
+      "audio_seconds": 2.7306666666666666,
+      "real_time_factor": 1.5145326416039495,
+      "cpu_core_percent": 118.25432592289314
+    },
+    {
+      "text": "Your estimate is 225 dollars.",
+      "run": 3,
+      "first_complete_chunk_ms": 4241.773499990813,
+      "audio_seconds": 2.7306666666666666,
+      "real_time_factor": 1.553383850094292,
+      "cpu_core_percent": 117.87522365375777
+    },
+    {
+      "text": "Your estimate is 225 dollars.",
+      "run": 4,
+      "first_complete_chunk_ms": 4064.336599985836,
+      "audio_seconds": 2.7306666666666666,
+      "real_time_factor": 1.4884045165963755,
+      "cpu_core_percent": 120.33021576060023
+    },
+    {
+      "text": "Your estimate is 225 dollars.",
+      "run": 5,
+      "first_complete_chunk_ms": 4144.44580001873,
+      "audio_seconds": 2.7306666666666666,
+      "real_time_factor": 1.5177413818427965,
+      "cpu_core_percent": 121.77442397671582
+    },
+    {
+      "text": "Hello, how can I help?",
+      "run": 1,
+      "first_complete_chunk_ms": 2320.533300022362,
+      "audio_seconds": 1.3653333333333333,
+      "real_time_factor": 1.6996093506023158,
+      "cpu_core_percent": 119.85391461407593
+    },
+    {
+      "text": "Hello, how can I help?",
+      "run": 2,
+      "first_complete_chunk_ms": 2262.490199995227,
+      "audio_seconds": 1.3653333333333333,
+      "real_time_factor": 1.6570973144496293,
+      "cpu_core_percent": 113.26015909396672
+    },
+    {
+      "text": "Hello, how can I help?",
+      "run": 3,
+      "first_complete_chunk_ms": 2337.0982999913394,
+      "audio_seconds": 1.3653333333333333,
+      "real_time_factor": 1.7117419189389693,
+      "cpu_core_percent": 121.01010043139735
+    },
+    {
+      "text": "Hello, how can I help?",
+      "run": 4,
+      "first_complete_chunk_ms": 2303.0794999795035,
+      "audio_seconds": 1.3653333333333333,
+      "real_time_factor": 1.6868258056490504,
+      "cpu_core_percent": 120.08378347445726
+    },
+    {
+      "text": "Hello, how can I help?",
+      "run": 5,
+      "first_complete_chunk_ms": 2286.8905999930575,
+      "audio_seconds": 1.3653333333333333,
+      "real_time_factor": 1.6749687011667902,
+      "cpu_core_percent": 122.30034090867707
+    },
+    {
+      "text": "Your deep cleaning estimate for three bedrooms is 225 dollars. This is a demo estimate.",
+      "run": 1,
+      "first_complete_chunk_ms": 9042.981500009773,
+      "audio_seconds": 6.4,
+      "real_time_factor": 1.412965859376527,
+      "cpu_core_percent": 117.66722070578713
+    },
+    {
+      "text": "Your deep cleaning estimate for three bedrooms is 225 dollars. This is a demo estimate.",
+      "run": 2,
+      "first_complete_chunk_ms": 8642.042599996785,
+      "audio_seconds": 6.4,
+      "real_time_factor": 1.3503191562494976,
+      "cpu_core_percent": 122.58386692058127
+    },
+    {
+      "text": "Your deep cleaning estimate for three bedrooms is 225 dollars. This is a demo estimate.",
+      "run": 3,
+      "first_complete_chunk_ms": 8473.740300018108,
+      "audio_seconds": 6.4,
+      "real_time_factor": 1.3240219218778293,
+      "cpu_core_percent": 120.9619322411627
+    },
+    {
+      "text": "Your deep cleaning estimate for three bedrooms is 225 dollars. This is a demo estimate.",
+      "run": 4,
+      "first_complete_chunk_ms": 8382.624100020621,
+      "audio_seconds": 6.4,
+      "real_time_factor": 1.309785015628222,
+      "cpu_core_percent": 121.90395129342448
+    },
+    {
+      "text": "Your deep cleaning estimate for three bedrooms is 225 dollars. This is a demo estimate.",
+      "run": 5,
+      "first_complete_chunk_ms": 8600.196799990954,
+      "audio_seconds": 6.4,
+      "real_time_factor": 1.3437807499985865,
+      "cpu_core_percent": 120.45509237661743
+    }
+  ],
+  "tts_cold_load_and_hello_ms": 3927.177000005031,
+  "rss_mib": 591.50390625
+}

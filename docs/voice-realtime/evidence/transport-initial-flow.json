@@ -1,0 +1,75 @@
+{
+  "title": "Local paced PCM WebRTC transport round-trip",
+  "measured_at_utc": "2026-09-25T08:17:25.403303+00:00",
+  "methodology": {
+    "repeats": 20,
+    "audio": "48 kHz mono, 10 ms PCM pulse followed by silence; timer ends at first returned high-energy PCM frame",
+    "excluded": "STT, TTS, LLM, browser rendering, WAN/NAT, natural speech, and AgentSession behavior"
+  },
+  "topologies": {
+    "pipecat_smallwebrtc": "direct aiortc peer -> Pipecat SmallWebRTC transport -> Pipecat echo processor",
+    "livekit_local_sfu": "LiveKit RTC client -> local LiveKit SFU -> direct RTC echo participant"
+  },
+  "caveat": "These are practical alternate transport topologies, not a matched framework or Agents benchmark.",
+  "pipecat_smallwebrtc": {
+    "n": 20,
+    "min_ms": 205.58,
+    "p50_ms": 285.803,
+    "p95_ms": 337.232,
+    "max_ms": 349.476,
+    "raw_ms": [
+      205.58,
+      256.34,
+      265.393,
+      280.388,
+      282.386,
+      282.564,
+      283.072,
+      284.17,
+      284.865,
+      285.536,
+      286.069,
+      297.298,
+      299.523,
+      300.022,
+      300.328,
+      301.768,
+      311.957,
+      317.352,
+      337.232,
+      349.476
+    ],
+    "pipeline_input_frames": 787,
+    "client_output_frames": 834,
+    "client_output_signal_frames": 121
+  },
+  "livekit_local_sfu": {
+    "n": 20,
+    "min_ms": 130.381,
+    "p50_ms": 139.955,
+    "p95_ms": 210.711,
+    "max_ms": 220.251,
+    "raw_ms": [
+      130.381,
+      130.42,
+      130.731,
+      131.232,
+      131.795,
+      137.963,
+      138.3,
+      138.394,
+      139.19,
+      139.21,
+      140.7,
+      140.962,
+      140.968,
+      141.506,
+      147.329,
+      148.387,
+      150.679,
+      177.592,
+      210.711,
+      220.251
+    ]
+  }
+}
