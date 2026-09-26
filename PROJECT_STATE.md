@@ -1,43 +1,43 @@
 # AWC Project State
 
-Updated: 2026-09-24. Canonical repo: C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC, main.
+Updated: 2026-09-26. Canonical repo: C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC, main.
 
-## Objective and current milestone
-AWC is the initial agency/portfolio focus; revenue and live lead pipeline remain unproven.
-**AWC — AI Employee Architecture Bake-Off: bounded evaluation and local browser POC closed; STOP.**
-Realtime production acceptance is NOT achieved. Do not restart recovery/discovery or launch the next milestone automatically.
+## Objective / current milestone
+AWC agency/portfolio; revenue and live lead pipeline remain unproven.
+**AWC — Realtime Voice Acceptance: CLOSED, FAILED / NOT DEMO-READY. STOP.**
+The bounded evaluation is closed with failed acceptance, not a successful realtime implementation. Earlier architecture bake-off remains closed. No further local CPU tuning or automatic next milestone.
 
-## Delivered and validated
-- Recovered completed architecture brief and pre-existing voice environment; original interrupted builder had no edits.
-- Isolated experiments/receptionist POC: real local audio/STT/TTS, greeting, FAQ, $225 three-bedroom deep-clean estimate, mock availability/booking/conflict rejection, sales-role context handoff, human follow-up record, saved transcript/summary.
-- Pipecat business pipeline and LiveKit Agent API smoke pass; only Pipecat wired into final browser POC. No matched WebRTC transport benchmark.
-- faster-whisper/Kokoro synthetic component benchmark: 5 fixtures x 5 runs. Chatterbox installed but bounded import probes did not reach inference. Managed baseline documented only; user confirms no free account.
-- Four unit tests and 20/20 deterministic scenario suites pass. Seven-response browser run passes; two microphone-energy interruptions cancel old playback AND complete replacement speech after ORT thread cap.
-- 75.28s silent Playwright demo: full decode, advancing playback and Director sampled/final-frame visual inspection pass; zero page errors.
-- Source syntax, diff whitespace and targeted secret-pattern review pass. Marketing index hash unchanged.
+## Final acceptance evidence
+- Normal spoken FAQ: first partial 0.713s from fixture start; final 1.549s, decision 1.553s, audio-start event 9.571s, rendered audio 9.780s from fixture end.
+- Interruption/replacement: first partial 1.033s from start; final 1.488s, decision 1.490s, audio-start event 7.248s, rendered audio 7.426s from end. Detection-to-browser-mute 0.20ms, not physical speaker stop.
+- Spoken estimate: final 1.480s, decision 1.574s, rendered audio 11.971s from end, including automated exact confirmation. First audio <=1.5s and normal/replacement ~1–2s targets FAIL.
+- Primary bottleneck: local CPU TTS; decision-to-rendered 8.227s FAQ / 5.937s replacement. Preserve prior Kokoro ~2.2–5.2s short-phrase starts and Chatterbox ~34s generation for 1.32s audio; do not retune this CPU.
+- 19/19 final browser checks pass, zero browser errors. 11 completed responses have matching planned/sent sentence chunks. Brief noise no longer cancels speech; deliberate interruption succeeds.
+- Sentence truncation: no scheduled chunk loss in uninterrupted automated turns; **physical audible completion unresolved**. Earlier user's incomplete-sentence feedback remains open.
+- Natural-paced STT: preserved Whisper correction 45/45 normalized fixture words at 193–251 WPM versus preserved streaming 33.3% WER. Final browser human-follow-up, FAQ and hyphenated estimate transcripts complete. **Human-microphone natural speech still required**; prior missed words/over-enunciation feedback not marked passed.
+- Final regression 28/28 passes after phrase fix; 40 deterministic quote configurations, conflict and handoff context, zero hallucinated prices/unapproved bookings in tested cases. Browser $225 quote, conflict rejection and exact confirmation checks pass. No arbitrary-language guarantee.
 
-## Selected initial stack
-Python 3.11.15; Pipecat 1.11.0 business frame pipeline; FastAPI/Uvicorn; browser WebAudio VAD + MediaRecorder HTTP utterance uploads/WAV playback; faster-whisper 1.2.1 base.en CPU int8; Kokoro ONNX 0.6.1 v1 int8 af_heart; ORT 1.24.4 CPU with two intra-op threads and spinning disabled. Deterministic language router and tools; optional loopback OpenAI-compatible LLM adapter (inference unmeasured). This is the local experiment choice, not a proven transport winner or production stack approval.
+## Delivered fixes / architecture
+Single-caller loopback laboratory: Pipecat SmallWebRTC, Sherpa streaming partials, cached Whisper base.en final correction, sentence-chunked Kokoro CPU, deterministic local tools. Sustained-energy interruption gate, stale confirmation/finalizer invalidation and complete chunk telemetry retained. Hyphenated bedroom parsing aligned in business and preview; tests added. Browser harness now waits for the confirmed transcript response instead of the superseded review prompt. Local mock booking/handoff only; no actual person contacted.
 
-## Evidence and run instructions
-- docs/voice-bakeoff/BENCHMARK.md: decision, measured vs unmeasured, acceptance gaps, costs, capture and next milestone.
-- docs/voice-bakeoff/BUILD_VS_BUY.md: licenses including GPL phonemizer/eSpeak distribution review, privacy/control, portability and modeled total costs.
-- docs/voice-bakeoff/COMPONENT_EVIDENCE.md and evidence/*.json: measured results.
-- experiments/receptionist/README.md: setup, exact versions, endpoints, usage and limitations.
-- From AWC: `.cache/voice-env/Scripts/python.exe -m uvicorn experiments.receptionist.app:app --host 127.0.0.1 --port 8765`; open http://127.0.0.1:8765.
-- External media: ../_venture-ops/media/awc-voice-bakeoff-2026-09-24/verified/brighthome-demo.webm, greeting/handoff/summary PNGs and playback evidence. WAV samples copied to sibling component-audio. Models/venvs/session outputs ignored under .cache; no media in Git.
-- Demo SHA-256: f8b3d1c38f98eb01c2a5869e837d40849c6cb1eb8f179d138752a7185a23eb44.
+## Evidence / run instructions
+- docs/voice-realtime/ACCEPTANCE.md: final decision, full timing definitions, artifacts, limitations and next action.
+- docs/voice-realtime/evidence/browser-closeout.json and regressions-closeout.json: 19 browser checks / 28 tests; source hash and raw artifact location.
+- docs/voice-realtime/README.md: existing environment/runtime instructions. Prior component, ASR, managed and transport evidence retained; do not restart benchmarks.
+- External artifacts: ../_venture-ops/media/awc-voice-realtime-2026-09-26/closeout-final/revalidation.json, conversation-screen.webm, checkpoint PNGs and verified/verification.json.
+- 227.68s silent video full-decode/playback pass; Director visual sampling completed. SHA-256 2abe92f49119cf86436824b746642376faca5ed522aa4c266c37b8e36fcf0c40.
+- Mixed audio was NOT exported (harness uses window.recorded versus lexical recorded). No acoustic completion claim; correct/verify export in next control run. UI heading/separator encoding artifacts remain cosmetic limitations.
+- Both docs/workflow/EXPERIMENT_LOG.md and sibling _venture-ops/EXPERIMENT_LOG.md updated. External venture log/media are outside this Git repo.
 
-## Measured environment and limitations
-Ultra 7 155U, 12 cores/14 logical, 31.47 GiB RAM, Intel Graphics; CPU-only tests. Final browser request-response 4.5–12.2s; cancellation-to-replacement speech 11.0/13.2s. Too slow for polished realtime conversation. Synthetic MediaStream, not human mic/acoustics or voice-naturalness scoring. HTTP buffered audio, not WebRTC; PSTN deferred without free account. No real human contact, independent specialist process, generative LLM benchmark, durable production calendar or concurrent-caller support. Server inference is not cancelled; stale playback is suppressed. Single loopback synthetic demo only. No money spent, paid API, deployment, outreach or other venture work.
+## Deferred / access constraints
+Matched Pipecat vs LiveKit real-audio framework/agent benchmark remains unproven; existing pulse tests have differing topologies, no winner. Managed control has zero completed generations: saved authentication HTTP 200 but billing_not_active. No new managed call/billing change here. WAN/NAT, concurrency, PSTN, human acoustics/listening and production security/capacity unaccepted. No secrets/media/models/caches/envs in Git. No production rollout, outreach, marketing redesign or spending authorized by this closeout.
 
 ## Preserved canonical site
-Red/pink standalone marketing source remains byte-identical: SHA-256 941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3.
-Prior migration implementation 3751fb606b74de6e94bcc11b91be497205ffe1c5; closeout/base 565a0bb11d598a6ad9a37684138190722f0975d6. Provenance in docs/RED_SOURCE_MIGRATION.md. Gold tag/recovery originals preserved. Preview `node scripts/serve.cjs`, port 4173. No marketing redesign or backend integration.
+Marketing source unchanged. Prior source SHA-256 941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3; provenance docs/RED_SOURCE_MIGRATION.md. Prior architecture bake-off docs/voice-bakeoff/BENCHMARK.md; previous closeout 8c15bda.
 
 ## Latest validated commit
-Implementation/evidence: cd24ca9fbd7b778854b7404ff692a6eb82b082d2. This state and venture closeout are committed separately; `git log -1` identifies that documentation commit.
+Realtime fixes/tests, preserved interrupted evidence and failed-acceptance closeout: 4d8bc9204570be05332e31027afe2ec4df9308c8.
+This compact state is committed separately immediately afterward; git log -1 identifies its documentation commit.
 
-## Exact next action / recommended milestone
-Stop. In a fresh **AWC — Realtime Voice Acceptance** task, read this state and benchmark evidence; retain scenario/tools. Implement a real streaming WebRTC path and matched framework comparison, test actual mic/noise/listening and a local or explicitly no-cost LLM, measure p95 warm end-of-speech→audible response <=2s and cancellation <=300ms, and test concurrent booking isolation. PSTN requires practical free access or separate budget authorization. Do not begin production integration or outreach before those acceptance gates.
-
+## Exact next action / single recommended milestone
+STOP. In a fresh authorized **AWC — Managed Realtime Voice Control Acceptance** task, first resolve billing/access with an explicit small spending cap. Reuse the existing wired control and fictional scenarios; measure first audio, normal and replacement latency, then one natural human-mic/listening test with verified audio export. Retain deterministic business/confirmation checks and current latency targets. Fail decisively if unmet. Do not expand to CPU TTS tuning, framework migration, matched transport research, PSTN or production. No next milestone started.
