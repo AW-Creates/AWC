@@ -1,2 +1,3 @@
 # Optional only for authenticated Retell callback verification; no live calls are made by the adapter.
-retell-sdk
+# Validated against the instance-level verifier provided by retell-sdk 6.0.1.
+retell-sdk==6.0.1
