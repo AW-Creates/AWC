@@ -39,7 +39,13 @@
   "booking_confirmed": false,
   "booking_rejection": "Missing, expired or stale review",
   "transcript_ends_mid_sentence": true,
-  "human_verdicts": "pending",
+  "human_verdicts": {
+    "interruption_barge_in": "worked very well",
+    "replacement_carryover": "no noticeable issue",
+    "date_pronunciation": "sounded natural",
+    "latency": "great",
+    "sentence_truncation_carryover": "none noticed"
+  },
   "readiness": {
     "ok": true,
     "checks": {
@@ -52,5 +58,15 @@
     },
     "reason": ""
   },
-  "offline_tests_passed": 39
+  "offline_tests_passed": 39,
+  "final_verdict": "PASS",
+  "appointment_reoffer_classification": "Minor timing/state-review UX debt; stale review safely rejected, no booking committed; exact expiry cause not proven.",
+  "closeout_offline_tests_passed": 47,
+  "identity": {
+    "agent_name": "Ava",
+    "business_name": "BrightHome",
+    "saved_prompt_and_greeting_readback": "PASS",
+    "verification": "offline configuration tests and non-call provider readback; no new audio/model sample"
+  },
+  "additional_live_calls": 0
 }

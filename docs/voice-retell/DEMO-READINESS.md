@@ -1,6 +1,6 @@
 # Retell Demo Polish & Readiness
 
-Status: IN PROGRESS â€” 2026-09-27. Baseline: 2cdef4100c78bb979f8fb60b9fe9c76ca80a70c5.
+Status: PASS — final human feedback received 2026-09-27. Historical checkpoints below are superseded by Final closeout.
 
 ## Scope and Progress / Cost Gate
 Preserve passed managed business-flow acceptance. This milestone addresses only callback readiness, presentation-only spoken dates/times, and one human interruption test. No provider research, production rollout, phone purchases, payment changes, or unrelated suites.
@@ -61,3 +61,32 @@ Transcript contains several interruptions but cannot prove audible stop/carryove
 Sanitized evidence: docs/voice-retell/DEMO-EVIDENCE.json. Private provider record: .cache/retell-acceptance/demo-result-private.json. Runtime and tunnel were stopped after the call; no listeners on 8766/8767/20241 remained. Temporary agent retains the now-inactive tunnel; future creation must refresh through readiness again.
 
 Exact next action: record human feedback, decide PASS or FAIL/narrow, update this report and PROJECT_STATE.md, and commit closeout. Do NOT run another call to fill missing listening evidence. Implementation checkpoint commit: 50562a9.
+
+## Final closeout (2026-09-27)
+Final verdict: PASS. The user's final listening evidence completes the existing automated safety and readiness evidence. Earlier pending/not-passed checkpoints above are historical.
+
+### Recorded human listening verdicts
+- Interruption/barge-in: worked very well.
+- Replacement speech/carryover: no noticeable issue.
+- Date pronunciation: sounded natural.
+- Latency: great.
+- Sentence truncation/carryover: none noticed.
+
+The transcript ending mid-proposal near cutoff remains recorded; the user did not hear sentence truncation. These are different observations, not a reason to discard either evidence source.
+
+### Appointment re-offer classification
+Minor timing/state-review UX polish debt, not an evidenced booking correctness defect. The user heard an appointment described as no longer available after a pause, followed by another offer to book it. The actual tool error was "Missing, expired or stale review"; this does not establish that the appointment slot became unavailable. The adapter invalidates reviews on changed user turn as well as missing/mismatched review or 60-second expiry. The recorded confirmation rejection occurred about 44 seconds after the proposal, so elapsed TTL expiry alone is not established. No booking was committed, and unauthorized/stale confirmation remained blocked. Future demo presentation work should clarify review-expiry versus slot-unavailability wording and avoid confusing re-offers; no booking rules are changed in this closeout.
+
+### Existing final session and readiness
+Readiness/preflight PASS: genuine signed callback reached AWC, all eight stale tool URLs plus webhook were automatically refreshed and verified from Retell; the immediate pre-call rerun also passed. Six live function results succeeded. Final session: 113.201 seconds; actual combined cost $0.225620038. Existing evidence commits: 50562a9, e758f0a, 927b027. No additional live call or paid text test is authorized by this closeout.
+
+Runtime/tunnel remain stopped. Saved callback URLs are inactive and must pass the existing refresh/readback gate before any future authorized demo. Preserve the exclusive attempt ledger; do not reset it to bypass the one-call limit.
+
+### Identity polish and offline closeout validation
+Configurable `RETELL_AGENT_NAME=Ava` and `RETELL_BUSINESS_NAME=BrightHome` keep the individual's name separate from the existing fictional business. The identity instructions answer direct name questions with Ava, company/employer questions with BrightHome, and introduce both in the greeting. The fixed Retell opening message also includes both and retains the fictional-demo disclosure. No human identity claim was introduced.
+
+The explicit identity sync updates only the saved identity prompt section and opening greeting on the existing temporary Retell LLM, preserving existing business/date instructions, tools, model, voice, callback URLs and safety gates. Fresh provider readback verified the saved fields. It creates no session, performs no paid text test and starts no server or tunnel. Existing attempt ledger remains untouched.
+
+Offline validation: 47 focused tests PASS, including the original 39 readiness/rendering/runtime/adapter/SDK/app/business-safety tests and new identity/config-sync regression tests. Tests cover direct-name versus company instructions, configured greeting, separate names without substitution, and the non-call sync contract. This verifies configuration and saved prompt/greeting, not a new sampled audio or model-response test. Another live call was avoided; additional call spend $0.00.
+
+Exact next milestone recommendation: **AWC — Demo Presentation & Operator Runbook**. Start it in a fresh task only when requested. Stop here; no production telephony, outreach, ads, CRM integration or provider expansion.
