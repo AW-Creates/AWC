@@ -4,40 +4,38 @@ Updated: 2026-09-26. Canonical repo: C:/Users/A-Problem/Documents/Web Developmen
 
 ## Objective / current milestone
 AWC agency/portfolio; revenue and live lead pipeline remain unproven.
-**AWC — Realtime Voice Acceptance: CLOSED, FAILED / NOT DEMO-READY. STOP.**
-The bounded evaluation is closed with failed acceptance, not a successful realtime implementation. Earlier architecture bake-off remains closed. No further local CPU tuning or automatic next milestone.
+**AWC — Managed Realtime Voice Control Preparation + Progress/Cost Gate: OFFLINE PREPARATION COMPLETE. STOP at Retell credential gate.**
+Retell managed acceptance is unmeasured; no demo-ready claim. No external account, call, spending or public exposure performed.
 
-## Final acceptance evidence
-- Normal spoken FAQ: first partial 0.713s from fixture start; final 1.549s, decision 1.553s, audio-start event 9.571s, rendered audio 9.780s from fixture end.
-- Interruption/replacement: first partial 1.033s from start; final 1.488s, decision 1.490s, audio-start event 7.248s, rendered audio 7.426s from end. Detection-to-browser-mute 0.20ms, not physical speaker stop.
-- Spoken estimate: final 1.480s, decision 1.574s, rendered audio 11.971s from end, including automated exact confirmation. First audio <=1.5s and normal/replacement ~1–2s targets FAIL.
-- Primary bottleneck: local CPU TTS; decision-to-rendered 8.227s FAQ / 5.937s replacement. Preserve prior Kokoro ~2.2–5.2s short-phrase starts and Chatterbox ~34s generation for 1.32s audio; do not retune this CPU.
-- 19/19 final browser checks pass, zero browser errors. 11 completed responses have matching planned/sent sentence chunks. Brief noise no longer cancels speech; deliberate interruption succeeds.
-- Sentence truncation: no scheduled chunk loss in uninterrupted automated turns; **physical audible completion unresolved**. Earlier user's incomplete-sentence feedback remains open.
-- Natural-paced STT: preserved Whisper correction 45/45 normalized fixture words at 193–251 WPM versus preserved streaming 33.3% WER. Final browser human-follow-up, FAQ and hyphenated estimate transcripts complete. **Human-microphone natural speech still required**; prior missed words/over-enunciation feedback not marked passed.
-- Final regression 28/28 passes after phrase fix; 40 deterministic quote configurations, conflict and handoff context, zero hallucinated prices/unapproved bookings in tested cases. Browser $225 quote, conflict rejection and exact confirmation checks pass. No arbitrary-language guarantee.
+## Preserved closed acceptance
+**Realtime Voice Acceptance: CLOSED — FAILED / NOT DEMO-READY.** First rendered audio 9.780s normal / 7.426s replacement; CPU TTS is dominant. Preserve 28/28 regressions, 19/19 browser checks, Whisper 45/45 normalized fixture words, matching chunks across 11 completed responses. Human natural-mic/listening and physical sentence completion unresolved. Matched Pipecat/LiveKit remains unproven. Do not repeat CPU tuning or old benchmarks.
+Evidence: docs/voice-realtime/ACCEPTANCE.md; docs/voice-realtime/evidence/browser-closeout.json and regressions-closeout.json. Previous fixes/evidence commit 4d8bc9204570be05332e31027afe2ec4df9308c8; previous state 1d5252a. Prior recording was silent; future acceptance must verify actual audio export/playback.
 
-## Delivered fixes / architecture
-Single-caller loopback laboratory: Pipecat SmallWebRTC, Sherpa streaming partials, cached Whisper base.en final correction, sentence-chunked Kokoro CPU, deterministic local tools. Sustained-energy interruption gate, stale confirmation/finalizer invalidation and complete chunk telemetry retained. Hyphenated bedroom parsing aligned in business and preview; tests added. Browser harness now waits for the confirmed transcript response instead of the superseded review prompt. Local mock booking/handoff only; no actual person contacted.
+## Locked decisions / architecture
+Retell FIRST managed control; replaceable speech/recognition/turn-taking/tool transport. AWC owns profile/FAQs, deterministic quotes, booking conflicts and local approval, handoff/context and summary/outcome. Existing local business implementation preserved. Single synthetic caller, local mock bookings/handoffs; no real calendar or person contacted. Existing local app stays private. Authenticating the dedicated callback is mandatory before any future public tunnel.
 
-## Evidence / run instructions
-- docs/voice-realtime/ACCEPTANCE.md: final decision, full timing definitions, artifacts, limitations and next action.
-- docs/voice-realtime/evidence/browser-closeout.json and regressions-closeout.json: 19 browser checks / 28 tests; source hash and raw artifact location.
-- docs/voice-realtime/README.md: existing environment/runtime instructions. Prior component, ASR, managed and transport evidence retained; do not restart benchmarks.
-- External artifacts: ../_venture-ops/media/awc-voice-realtime-2026-09-26/closeout-final/revalidation.json, conversation-screen.webm, checkpoint PNGs and verified/verification.json.
-- 227.68s silent video full-decode/playback pass; Director visual sampling completed. SHA-256 2abe92f49119cf86436824b746642376faca5ed522aa4c266c37b8e36fcf0c40.
-- Mixed audio was NOT exported (harness uses window.recorded versus lexical recorded). No acoustic completion claim; correct/verify export in next control run. UI heading/separator encoding artifacts remain cosmetic limitations.
-- Both docs/workflow/EXPERIMENT_LOG.md and sibling _venture-ops/EXPERIMENT_LOG.md updated. External venture log/media are outside this Git repo.
+## Permanent Progress / Cost Gate
+Adopted in docs/workflow/WORKFLOW-v3.2-README.md and sibling _venture-ops/WORKFLOW-v3.2-README.md for all current/future ventures. Trigger on two failed focused attempts, two usage-cap hits, two substantial runs without material validated progress, implausible tuning gap, deteriorating evidence/cost, or a cheaper decisive benchmark. Stop broad work, preserve evidence, identify dominant blocker, choose fail/switch/narrow/minimum credential, update state and efficiency rationale. At most one documented high-confidence bounded final attempt; no chained exceptions. Usage reset is never automatic justification to resume an approach. Existing workflow gates preserved.
+Efficiency rationale: reuse closed evidence and local safety code, one narrow architect plus one builder, official Retell docs only, offline contracts, no new CPU benchmark or multi-provider survey. Exact historical cap hits/token totals unknown. This policy is not an installed background usage monitor.
 
-## Deferred / access constraints
-Matched Pipecat vs LiveKit real-audio framework/agent benchmark remains unproven; existing pulse tests have differing topologies, no winner. Managed control has zero completed generations: saved authentication HTTP 200 but billing_not_active. No new managed call/billing change here. WAN/NAT, concurrency, PSTN, human acoustics/listening and production security/capacity unaccepted. No secrets/media/models/caches/envs in Git. No production rollout, outreach, marketing redesign or spending authorized by this closeout.
+## Relevant deliverables
+- docs/voice-retell/PREPARATION.md: official review, ownership boundaries, account gate, bounded acceptance script.
+- experiments/receptionist/retell_adapter.py and test_retell_adapter.py: isolated callback/tool boundary and offline contracts.
+- scripts/voice-demo/retell_control.py: bounded offline preflight/operator harness.
+- experiments/receptionist/retell.env.example and requirements-retell.txt: names-only configuration and optional official signature SDK dependency.
+- Canonical venture mirror: ../_venture-ops/AWC-RETELL-PREPARATION.md (outside this Git repo).
 
-## Preserved canonical site
-Marketing source unchanged. Prior source SHA-256 941f908cfefcfe2d1a9e47a15af44210ed2ce247fb7b68d56e617d3ed3bb46a3; provenance docs/RED_SOURCE_MIGRATION.md. Prior architecture bake-off docs/voice-bakeoff/BENCHMARK.md; previous closeout 8c15bda.
+## Exact credential/account gate
+Create only Retell account at https://dashboard.retellai.com/. Confirm eligible $10 trial balance and auto recharge OFF. Settings → API Keys → Add; save RETELL_API_KEY in ignored AWC/.env or server environment, never chat/Git. Designate webhook key; use RETELL_WEBHOOK_API_KEY only if separate. New eligible trial accounts can test before adding payment method; stop if trial unavailable/card unexpectedly required. No phone number needed: dashboard browser testing.
+Next task supplies dedicated fictional RETELL_AGENT_ID and temporary RETELL_PUBLIC_BASE_URL and verifies optional official SDK/signatures. No public endpoint exists yet. No other platform account requested. Existing ignored OpenAI access remains untouched.
 
-## Latest validated commit
-Realtime fixes/tests, preserved interrupted evidence and failed-acceptance closeout: 4d8bc9204570be05332e31027afe2ec4df9308c8.
-This compact state is committed separately immediately afterward; git log -1 identifies its documentation commit.
+## Spending / acceptance limits
+NEXT authorized benchmark: three sequential browser sessions max, <=120s each, configured all-in rate <=$0.50/min, <=$3 total credit consumption, no auto reload/retry/recharge. Never exceed $5 without explicit approval; $3 initial cap remains binding. Reconcile actual cost after each call before another; stop if unknown. Hard 30-minute session including review. Provider duration limit and operator control required; offline preparation cannot enforce account-wide spend.
+First audible <=1.5s; normal and replacement ~1–2s; natural interruption/recognition, no truncation, 100% tested quote/booking/handoff safety. Physical human-mic/listening and verified audio evidence required; no metric/event proxy pass.
 
-## Exact next action / single recommended milestone
-STOP. In a fresh authorized **AWC — Managed Realtime Voice Control Acceptance** task, first resolve billing/access with an explicit small spending cap. Reuse the existing wired control and fictional scenarios; measure first audio, normal and replacement latency, then one natural human-mic/listening test with verified audio export. Retain deterministic business/confirmation checks and current latency targets. Fail decisively if unmet. Do not expand to CPU TTS tuning, framework migration, matched transport research, PSTN or production. No next milestone started.
+## Deferred / next milestone
+Vapi, direct ElevenLabs, Bland, Firebase, Cloud Run, GPU hosting, CPU retuning, framework comparison, PSTN, production/concurrency/security rollout remain deferred. Marketing source unchanged; provenance docs/RED_SOURCE_MIGRATION.md.
+**Exact next action:** user provides Retell credential locally; then start a fresh authorized **AWC — Retell Managed Realtime Voice Acceptance** task, read this state and preparation only, configure the dedicated agent/callback and run the capped script. Do not start live work in this preparation task.
+
+## Validation / latest validated commit
+Director validation: 12 adapter contract/security tests + 9 existing business/safety tests PASS (21 combined). Fixed stale read/quote caching and root .env loading. No secrets or generated artifacts added. Official retell-sdk absent: fake verifier contract/fail-closed tested; actual SDK signature verification is mandatory before future public exposure. Human listening/live provider acceptance unmeasured. See docs/voice-retell/PREPARATION.md closeout. Implementation commit recorded at final checkpoint below.

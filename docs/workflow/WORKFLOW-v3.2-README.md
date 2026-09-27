@@ -135,3 +135,26 @@ action. Prefer a fresh task for the next milestone.
 
 ## Canonical Source Verification Gate
 Before replacing or migrating a visually approved build, identify exact source path, Git status/commit or file hashes, distinctive content and rendered desktop/mobile/theme evidence. Folder names, timestamps and deployment aliases alone do not prove approval. Compare with approved recording when available; record any missing comparison explicitly. Preserve the existing canonical history and any volatile recovered source before migration. When source identity is unresolved, stop replacement and perform source recovery; do not silently reconstruct. Recovery and migration should be separate milestones.
+
+## Progress / Cost Gate (mandatory for all current and future ventures)
+The Director must pause or close a milestone when ANY trigger occurs:
+
+- The same blocker survives two focused attempts.
+- A component is materially outside an explicit acceptance target and further tuning is unlikely to close the gap.
+- The same milestone hits a Work/Codex usage cap twice.
+- Two consecutive substantial Work runs produce no material validated or user-visible progress.
+- Experimentation cost or usage is growing faster than evidence gained.
+- A cheaper or faster benchmark can answer the core question sooner.
+
+A single final attempt is allowed only when the Director first records a high-confidence reason, the changed condition, a bounded time/usage budget, the expected decisive evidence, and a hard stopping condition. A reset alone is not a changed condition. Do not chain exceptions.
+
+When triggered, the Director must:
+
+1. Stop broad implementation and research.
+2. Summarize evidence already gathered without rerunning settled benchmarks.
+3. Identify the single dominant blocker.
+4. Choose one action: close as failed, switch architecture/provider, narrow the experiment, or request the minimum user action/credential.
+5. Update PROJECT_STATE.md with the decision, preserved evidence, attempts/cap hits (unknown if unavailable), and exact next action so a fresh task cannot repeat prior work.
+6. Explicitly record the token/credit-efficiency rationale.
+
+Token-limit resets are NOT automatic authorization or a reason to resume the same approach. First reassess whether the milestone remains the highest-value path. Evaluate this gate at startup, after focused attempts, and before substantial continuation. This policy supplements and preserves every existing workflow gate; it does not authorize spending or waive tests, safety, visual QA, or human acceptance.
