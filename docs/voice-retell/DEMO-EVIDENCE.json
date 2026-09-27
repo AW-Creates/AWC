@@ -1,0 +1,56 @@
+{
+  "call_id": "call_2e8a11645dbcdc24ced0728a840",
+  "status": "ended",
+  "duration_ms": 113201,
+  "actual_cost_usd": 0.225620038,
+  "disconnection_reason": "user_hangup",
+  "tool_results": [
+    {
+      "successful": true,
+      "time_sec": 17.446
+    },
+    {
+      "successful": true,
+      "time_sec": 28.549
+    },
+    {
+      "successful": true,
+      "time_sec": 47.471
+    },
+    {
+      "successful": true,
+      "time_sec": 60.885
+    },
+    {
+      "successful": true,
+      "time_sec": 91.521
+    },
+    {
+      "successful": true,
+      "time_sec": 108.746
+    }
+  ],
+  "spoken_date": "October first, 2026 at 10 o'clock AM",
+  "quote": {
+    "service": "standard",
+    "bedrooms": 3,
+    "total_usd": 145
+  },
+  "booking_confirmed": false,
+  "booking_rejection": "Missing, expired or stale review",
+  "transcript_ends_mid_sentence": true,
+  "human_verdicts": "pending",
+  "readiness": {
+    "ok": true,
+    "checks": {
+      "url": true,
+      "dns": true,
+      "health": true,
+      "signed_probe": true,
+      "agent_tools": true,
+      "refreshed": false
+    },
+    "reason": ""
+  },
+  "offline_tests_passed": 39
+}
