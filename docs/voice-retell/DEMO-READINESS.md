@@ -50,3 +50,14 @@ Ignored evidence: .cache/retell-acceptance/demo-readiness.json, demo-server.stdo
 Runtime at checkpoint: tunnel PID 25292; launcher PID 13288 (verify current owning process before stopping). Ports 8766/8767 and tunnel metrics 20241. Active tunnel generated-closely-chevy-parks.trycloudflare.com. Runtime readiness expires with tunnel/process; never trust this document instead of a fresh preflight.
 
 Next action: user performs ONE final browser test, then retrieve authoritative provider duration and combined_cost, collect the five human listening verdicts, stop these runtime processes, sanitize evidence, decide PASS/FAIL, update state and commit closeout. No new milestone started. Proposed next milestone only after PASS: a bounded demo presentation and operator runbook; no outreach, telephony or integrations without separate scope.
+
+## Final live session completed — supersedes pre-call checkpoint
+Call call_2e8a11645dbcdc24ced0728a840 ended normally (provider user_hangup), 113.201 seconds. Authoritative combined_cost 22.5620038 cents = $0.225620038, including all cost components. One session only; below $0.30 target and $0.50 hard cap. No retry authorized or scheduled.
+
+Readiness reran immediately before creation and passed with refreshed=false, confirming the previously repaired URLs were still current. Six live function results succeeded: insurance, availability, proposal, deterministic standard three-bedroom $145 quote, rejected stale confirmation, replacement proposal. No booking committed. $225 remains the deep-clean price, tested offline; this call requested general three-bedroom cleaning and the tool selected standard. Spoken date appears repeatedly as October first, 2026 at 10 o'clock AM. Stored slot stayed 2026-10-01 10:00.
+
+Transcript contains several interruptions but cannot prove audible stop/carryover quality. It ends during the final proposal sentence near the browser safety cutoff; this is explicitly recorded, not hidden. Provider user_hangup does not distinguish a manual End from browser cutoff. Human stop/replacement/pronunciation/latency/truncation verdicts have been requested and remain pending. Overall milestone is NOT PASSED while that evidence is missing.
+
+Sanitized evidence: docs/voice-retell/DEMO-EVIDENCE.json. Private provider record: .cache/retell-acceptance/demo-result-private.json. Runtime and tunnel were stopped after the call; no listeners on 8766/8767/20241 remained. Temporary agent retains the now-inactive tunnel; future creation must refresh through readiness again.
+
+Exact next action: record human feedback, decide PASS or FAIL/narrow, update this report and PROJECT_STATE.md, and commit closeout. Do NOT run another call to fill missing listening evidence. Implementation checkpoint commit: 50562a9.
