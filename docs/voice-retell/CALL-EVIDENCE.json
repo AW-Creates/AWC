@@ -1,0 +1,137 @@
+{
+  "date": "2026-09-27",
+  "scope": "Bounded Retell managed-control acceptance, fictional BrightHome only",
+  "tests": {
+    "run": 26,
+    "passed": 26
+  },
+  "repair": "Updated existing eight AWC function URLs and agent webhook to a newly verified public tunnel; created Call 2 only after read-back and signed public probes. No business logic or approval relaxation.",
+  "sessions": [
+    {
+      "number": 1,
+      "call_id": "call_32d09876cd00b4f1ff1d0451a9b",
+      "duration_ms": 103602,
+      "billed_seconds": 104.0,
+      "cost_cents": 20.7653368,
+      "cost_usd": 0.207653368,
+      "disconnection_reason": "user_hangup",
+      "tool_results": [
+        {
+          "name": "get_quote",
+          "arguments": {
+            "bedrooms": 3,
+            "service": "standard"
+          },
+          "successful": false,
+          "result": "Axios Error: error code: ENOTFOUND, error message: getaddrinfo ENOTFOUND options-hebrew-uncertainty-accompanying.trycloudflare.com"
+        },
+        {
+          "name": "get_availability",
+          "arguments": {},
+          "successful": false,
+          "result": "Axios Error: error code: ENOTFOUND, error message: getaddrinfo ENOTFOUND options-hebrew-uncertainty-accompanying.trycloudflare.com"
+        },
+        {
+          "name": "get_quote",
+          "arguments": {
+            "bedrooms": 3,
+            "service": "deep"
+          },
+          "successful": false,
+          "result": "Axios Error: error code: ENOTFOUND, error message: getaddrinfo ENOTFOUND options-hebrew-uncertainty-accompanying.trycloudflare.com"
+        },
+        {
+          "name": "get_business_info",
+          "arguments": {
+            "topic": "insurance"
+          },
+          "successful": false,
+          "result": "Axios Error: error code: ENOTFOUND, error message: getaddrinfo ENOTFOUND options-hebrew-uncertainty-accompanying.trycloudflare.com"
+        },
+        {
+          "name": "get_summary_outcome",
+          "arguments": {},
+          "successful": false,
+          "result": "Axios Error: error code: ENOTFOUND, error message: getaddrinfo ENOTFOUND options-hebrew-uncertainty-accompanying.trycloudflare.com"
+        },
+        {
+          "name": "get_summary_outcome",
+          "arguments": {},
+          "successful": false,
+          "result": "Axios Error: error code: ENOTFOUND, error message: getaddrinfo ENOTFOUND options-hebrew-uncertainty-accompanying.trycloudflare.com"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "call_id": "call_6cb5925d7710eeef7401d775848",
+      "duration_ms": 113802,
+      "billed_seconds": 114.0,
+      "cost_cents": 22.5620038,
+      "cost_usd": 0.225620038,
+      "disconnection_reason": "user_hangup",
+      "tool_results": [
+        {
+          "name": "get_business_info",
+          "arguments": {
+            "topic": "insurance"
+          },
+          "successful": true,
+          "result": "{\"answer\":\"BrightHome is fully insured.\"}"
+        },
+        {
+          "name": "get_quote",
+          "arguments": {
+            "bedrooms": 3,
+            "service": "deep"
+          },
+          "successful": true,
+          "result": "{\"quote\":{\"bedrooms\":3,\"service\":\"deep\",\"currency\":\"USD\",\"total\":225}}"
+        },
+        {
+          "name": "get_availability",
+          "arguments": {},
+          "successful": true,
+          "result": "{\"slots\":[\"2026-10-01 10:00\",\"2026-10-02 14:00\"]}"
+        },
+        {
+          "name": "prepare_booking",
+          "arguments": {
+            "slot": "2026-10-01 10:00"
+          },
+          "successful": true,
+          "result": "{\"ok\":false,\"status\":\"proposal_only\",\"review_id\":\"bf2cd06574e74826a1de056f61148173\",\"slot\":\"2026-10-01 10:00\"}"
+        },
+        {
+          "name": "prepare_booking",
+          "arguments": {
+            "name": "Adrian",
+            "slot": "2026-10-01 10:00"
+          },
+          "successful": true,
+          "result": "{\"ok\":false,\"status\":\"proposal_only\",\"review_id\":\"eecce38374b94030b44b74482eb7d1d4\",\"slot\":\"2026-10-01 10:00\"}"
+        },
+        {
+          "name": "confirm_booking",
+          "arguments": {
+            "review_id": "eecce38374b94030b44b74482eb7d1d4"
+          },
+          "successful": true,
+          "result": "{\"ok\":true,\"slot\":\"2026-10-01 10:00\",\"name\":\"Adrian\",\"confirmation\":\"DEMO-07c58383\"}"
+        },
+        {
+          "name": "get_summary_outcome",
+          "arguments": {},
+          "successful": true,
+          "result": "AWC summary includes authoritative $225 quote and locally approved booking."
+        }
+      ]
+    }
+  ],
+  "total_usd": 0.43327340599999997,
+  "verdict": "PASS - bounded managed-control acceptance; not production approval",
+  "human_feedback": {
+    "call1": "Voice pretty good, difficult to distinguish from AI; business functionality unavailable. Interruption/latency verdict not captured.",
+    "call2": "MUCH better; realistic except October one instead of October 1st. User heard $225 estimate and insurance answer. Response delays much more natural. Transcript confirms booking acknowledgement; interruption quality not explicitly graded."
+  }
+}

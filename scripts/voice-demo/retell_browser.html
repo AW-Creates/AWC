@@ -1,0 +1,50 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AWC Retell Call 1 diagnostic</title>
+<style>body{font:16px system-ui;margin:2rem;max-width:52rem}button{padding:.7rem 1rem;margin-right:.5rem}pre{background:#111;color:#eee;padding:1rem;min-height:14rem;white-space:pre-wrap}.bad{color:#a00}.ok{color:#063}</style>
+<h1>AWC Retell Call 1 diagnostic</h1>
+<p id="summary">Checking browser capabilities…</p>
+<button id="start" disabled>Start saved Call 1</button><button id="end" disabled>End</button>
+<pre id="events" aria-live="polite"></pre>
+<script src="/vendor/eventemitter3.umd.js"></script>
+<script>window.eventemitter3 = window.EventEmitter3;</script>
+<script src="/vendor/livekit-client.umd.js"></script>
+<script>window.livekitClient = window.LivekitClient;</script>
+<script src="/vendor/retell-client.umd.js"></script>
+<script>
+(() => {
+  const logBox = document.querySelector('#events'), summary = document.querySelector('#summary');
+  const start = document.querySelector('#start'), end = document.querySelector('#end');
+  let call, connectWatchdog, stopTimer;
+  const log = (label, value = '') => { const safe = String(value).replace(/(access_token|authorization|bearer)[^\s]*/ig, '[redacted]'); logBox.textContent += `${new Date().toISOString()} ${label}${safe ? ': ' + safe : ''}\n`; };
+  const fail = (reason) => { log('ERROR', reason); summary.textContent = `Blocked: ${reason}`; summary.className = 'bad'; start.disabled = true; end.disabled = !call; };
+  const clearTimers = () => { clearTimeout(connectWatchdog); clearTimeout(stopTimer); };
+  async function inspect() {
+    const facts = { secureContext: window.isSecureContext, mediaDevices: !!navigator.mediaDevices, getUserMedia: !!navigator.mediaDevices?.getUserMedia, RTCPeerConnection: !!window.RTCPeerConnection };
+    try { facts.microphonePermission = (await navigator.permissions?.query({name: 'microphone'}))?.state || 'unavailable'; } catch { facts.microphonePermission = 'unavailable'; }
+    log('browser capability', JSON.stringify(facts));
+    if (!facts.mediaDevices || !facts.getUserMedia || !facts.RTCPeerConnection) return fail('browser lacks required WebRTC/media APIs');
+    const config = await fetch('/config', {credentials:'same-origin'}).then(r => r.ok ? r.json() : Promise.reject(`config ${r.status}`));
+    if (!config.session_available) return fail('saved session was already served; no automatic retry');
+    window.awcAgentId = config.agent_id;
+    summary.textContent = 'Ready. Starting requests microphone access and consumes the one saved session.'; summary.className = 'ok'; start.disabled = false;
+  }
+  start.addEventListener('click', () => {
+    start.disabled = true; summary.textContent = 'Requesting saved Retell session…'; log('user gesture: start');
+    if (!window.retellClientJsSdk?.RetellClient) return fail('Retell SDK bundle unavailable');
+    const client = new window.retellClientJsSdk.RetellClient({ key: 'unused', fetch: (_url, init) => fetch('/session', {...init, credentials:'same-origin'}) });
+    call = client.createWebCall({ agent_id: window.awcAgentId, hooks: {
+      onStatus: status => { log('status', status); summary.textContent = `Retell status: ${status}`; if (status === 'live') { clearTimeout(connectWatchdog); end.disabled = false; } },
+      onEnd: detail => { clearTimers(); log('ended', JSON.stringify(detail || {})); summary.textContent = 'Call ended.'; end.disabled = true; },
+      onError: error => { clearTimers(); call?.end(); fail(error?.message || error); }
+    }});
+    call.ready?.catch(error => { clearTimers(); call?.end(); fail(error?.message || error); });
+    connectWatchdog = setTimeout(() => { fail('no live state within 25 seconds; inspect the displayed events before any retry'); call?.end(); }, 25000);
+    stopTimer = setTimeout(() => { log('115-second safety stop'); call?.end(); }, 115000);
+  });
+  end.addEventListener('click', () => { log('user requested end'); clearTimers(); call?.end(); end.disabled = true; });
+  window.addEventListener('beforeunload', () => call?.end());
+  inspect().catch(error => fail(error?.message || error));
+})();
+</script>

@@ -1,30 +1,43 @@
 # AWC Retell Managed Realtime Voice Acceptance
 
-Status: IN PROGRESS — live setup validated; waiting for human tester readiness. No acceptance verdict yet.
-Date: 2026-09-26 America/New_York (2026-09-27 UTC).
+Status: **PASS — bounded managed-control acceptance**, closed 2026-09-27.
+Scope: one fictional BrightHome caller, AWC-owned business tools and local mock booking. Not production approval or a full latency/interruptions benchmark.
 
-## Verified preflight
-- Canonical starting tree clean, checkpoint b303098; preserved preparation b45f147.
-- Ignored root .env loaded without printing credentials. Official retell-sdk 6.0.1 installed in existing .cache/voice-env.
-- Live read-only agent.list(limit=1) authentication PASS; response AgentListResponse. call.list(limit=1) PASS, response items/has_more/pagination_key/total; zero baseline calls.
-- SDK verify is an instance attribute, not a class method. The prepared adapter already uses the correct interface; no correction required. Actual SDK synthetic HMAC tests: valid accepted; changed body, wrong key and expired signature rejected.
-- Existing 12 adapter + 9 business/safety tests PASS (21). No local CPU voice benchmark repeated.
-- One temporary agent and response engine created successfully through official SDK. Fictional BrightHome, GPT 4.1 mini, ElevenLabs Adrian, 120000 ms max call duration, 8 AWC functions, zero function retries. Recording deliberately enabled with tester consent. No PSTN.
-- Dashboard configured rate $0.108/min; $0.216 estimated for 120 seconds, not actual usage. Balance $10.00; auto recharge switch OFF. No payment/phone purchase.
-- Temporary Cloudflare tunnel exposes only callback service on 127.0.0.1:8766. Unsigned function/webhook requests return 401; correctly signed wrong-call probe returns 403; /approve and / return 404. No business action from probes.
-- Provider-origin callback signing remains unverified until a live call. Local signed probes establish crypto/transport, not provider delivery.
+## Completed session ledger
 
-## Session ledger
-Zero browser sessions run; 0 seconds; $0 call consumption. No live first-audio, perceived turn/replacement, recognition, truncation, quote/booking/handoff, transcript or listening result yet. No PASS/FAIL provider verdict can be inferred from preflight.
+| Session | Provider duration | Billed duration | Actual cost | Result |
+| --- | ---: | ---: | ---: | --- |
+| Call 1 | 103.602 s | 104 s | $0.207653368 | Natural voice; all six business-tool requests failed DNS |
+| Call 2 | 113.802 s | 114 s | $0.225620038 | Insurance, $225 quote, availability, locally approved booking, summary succeeded |
+| Total | 217.404 s | 218 s | $0.433273406 | Two completed calls; no further session |
 
-## Constraints and pending action
-Maximum 3 sequential sessions, 120 seconds each, initial $3 cap, hard $5 without approval; reconcile actual duration/cost after every session and stop while cost unknown. No automatic retries. Human agreed to microphone testing and recording, then answered Not ready yet before call 1. Do not start until ready. Preserve local exact booking approval. Do not benchmark other providers.
+Costs are the provider combined_cost in cents divided by 100, including each record's 2.08-cent text-testing line item; no components omitted. Call 1 was freshly retrieved from Retell and matched saved evidence. Call 2 saved after ended. Cost units: https://community.retellai.com/t/combined-cost-from-end-call/2408/5 . Provider records show user_hangup. Browser safety stop was 115 seconds; provider authoritative durations above supersede approximate browser elapsed time. Both under the 120-second hard limit and combined spend below $3 initial / $5 absolute caps. No phone number, payment changes, or other provider work.
 
-Ignored operational artifacts: .cache/retell-acceptance/setup.json (temporary IDs/URL), preflight.json, cloudflared.exe. Large recordings remain outside Git. Agent UI screenshot captured in task; no call media exists yet.
+## Call 1 failure layer and one focused repair
 
-Exact next action: resume this same bounded acceptance when tester ready; ensure callback/tunnel alive (refresh temporary URL if restarted), verify provider webhook signing key and exact call arming, then run first <=120s browser session with greeting/FAQ/interruption/$225 quote, reconcile actual cost and collect human observations before deciding next session. Full required booking/conflict/handoff evidence remains pending.
+Six invocations: get_quote twice, get_availability, get_business_info (insurance), get_summary_outcome twice. Every result: ENOTFOUND for options-hebrew-uncertainty-accompanying.trycloudflare.com. These requests failed before HTTP dispatch, so none of the six live function requests reached AWC. There was no prepare_booking invocation: availability failed upstream. Tools and instructions were attached; insurance lookup was requested correctly. No evidence supports signature rejection, schema mismatch, or business rejection as Call 1's cause.
 
-Official references: https://docs.retellai.com/features/secure-webhook ; https://docs.retellai.com/api-references/list-agents ; https://docs.retellai.com/deploy/web-call
+At resume the live agent already referenced a different inactive tunnel, tucson-sensors-surfaces-listed.trycloudflare.com. Thus Call 1's captured configuration and later live configuration differed; the exact timing of that earlier change is not established. Historical local callback/tunnel logs were not persisted in the acceptance cache; receipt conclusions rely on explicit provider DNS errors, not guessed local logs.
 
-## Waiting checkpoint
-5 persistent genuine-SDK crypto tests added; combined 26 PASS. SDK requirement pinned to 6.0.1. Callback harness and tunnel stopped cleanly; no listeners on 8766/20241 observed. Resume requires a new temporary URL and updating existing agent configuration. This is a checkpoint, not acceptance closeout.
+Repair: started one authenticated isolated callback and fresh tunnel, sent signed synthetic insurance/quote/availability probes through public HTTPS (all 200 with AWC answers), updated all eight existing temporary-agent function URLs plus webhook to that tunnel, read them back, and verified 120000 ms cap and zero function retries. Initial update using retrieved response objects was rejected because optional headers were null; the same repair used the existing configuration() request schema successfully. No business logic, insurance claims, or safeguards changed. Insurance remains the existing fictional BrightHome fixture, not a claim about a real business.
+
+Call 2 was justified only after public probes, configuration read-back, and 26 passing offline tests. A new session was created after configuration refresh, exact call ID armed, and the existing one-shot browser harness served it. Chrome was operated by the user because Chrome was not connected to browser control. Old page label said Call 1; it served the separate Call 2 record. Never reuse cached session tokens after changing tunnel URLs.
+
+## Call 2 evidence / safety
+
+Seven function invocations and seven successful provider results: insurance; quote; availability; two booking proposals (caller added name); confirmation; summary. Real signed provider requests reached AWC and passed its existing signature and exact call/agent checks. Live quote was exactly $225 for three-bedroom deep cleaning. Insurance answer came from AWC get_business_info, not a prompt assertion.
+
+User explicitly approved the precise local proposal in Codex: Adrian, 2026-10-01 10:00, review eecce38374b94030b44b74482eb7d1d4. Local stdin approval committed confirmation DEMO-07c58383. The agent subsequently retrieved confirm_booking ok=true and spoke that confirmation. No booking was committed on spoken consent alone. Summary retained authoritative quote, booking, and conversation context. Agent's offer to request approval followed by admitting it could not is minor wording friction; it did not bypass approval.
+
+Post-repair offline/provider contracts: **26/26 PASS** across test_retell_adapter, test_retell_sdk, test_app, test_safety. Covers deterministic truth, genuine SDK signatures, invalid identity/arguments, stale/forged approvals, conflict rejection, duplicate behavior, lifecycle and handoff context. Signed public synthetic insurance/quote/availability probes also passed. Conflict and handoff were not exercised live in Call 2; optional conflict omitted to stay bounded. No claim of a complete live safety stress test.
+
+## Human listening / remaining limits
+
+Call 1: voice pretty good and difficult to distinguish from AI. Quote, booking, insurance unavailable. No specific interruption or latency rating captured.
+Call 2: user said MUCH better, realistic except pronouncing the date as October one instead of October 1st; heard insurance and $225 estimate; response delays much more natural. Transcript explicitly records spoken booking confirmation and caller thanks for confirming it. Interruption quality not separately graded. Provider e2e reports 870 ms but only one sample; this does not establish all turn latency or the original first-audio/replacement targets. No new exported-audio playback verification was performed; acceptance listening evidence is the actual human live call. These broader performance/media checks remain unclaimed.
+
+## Closeout / exact next action
+
+STOP: one focused integration repair and one decisive additional call completed. Callback, tunnel, browser server stopped; no listeners on 8766, 8767, 20241 observed. Temporary Retell configuration retains an inactive tunnel URL; do not start another call from it. Private provider records remain ignored under .cache/retell-acceptance; sanitized committed evidence is CALL-EVIDENCE.json. Existing browser harness from the interrupted task is preserved and committed after review and successful live use.
+
+Next narrow milestone recommendation: a fresh, separately scoped demo-readiness task for date pronunciation and automatic callback/configuration preflight before session creation. No additional provider benchmark or live call is authorized by this closeout. Production, real calendars, concurrency, and rigorous interruption/latency acceptance remain deferred. Prior CPU voice failure remains closed.
