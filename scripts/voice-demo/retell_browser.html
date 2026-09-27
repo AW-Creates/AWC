@@ -1,11 +1,11 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AWC Retell Call 1 diagnostic</title>
+<title>AWC Retell Demo Readiness</title>
 <style>body{font:16px system-ui;margin:2rem;max-width:52rem}button{padding:.7rem 1rem;margin-right:.5rem}pre{background:#111;color:#eee;padding:1rem;min-height:14rem;white-space:pre-wrap}.bad{color:#a00}.ok{color:#063}</style>
-<h1>AWC Retell Call 1 diagnostic</h1>
-<p id="summary">Checking browser capabilities…</p>
-<button id="start" disabled>Start saved Call 1</button><button id="end" disabled>End</button>
+<h1>AWC Retell Demo Readiness</h1>
+<p id="summary">Checking browser capabilities...</p>
+<button id="start" disabled>Start final demo test</button><button id="end" disabled>End</button>
 <pre id="events" aria-live="polite"></pre>
 <script src="/vendor/eventemitter3.umd.js"></script>
 <script>window.eventemitter3 = window.EventEmitter3;</script>
@@ -26,12 +26,12 @@
     log('browser capability', JSON.stringify(facts));
     if (!facts.mediaDevices || !facts.getUserMedia || !facts.RTCPeerConnection) return fail('browser lacks required WebRTC/media APIs');
     const config = await fetch('/config', {credentials:'same-origin'}).then(r => r.ok ? r.json() : Promise.reject(`config ${r.status}`));
-    if (!config.session_available) return fail('saved session was already served; no automatic retry');
+    if (!config.session_available || !config.readiness?.session_fresh) return fail('saved session is stale or already served; no automatic retry');
     window.awcAgentId = config.agent_id;
-    summary.textContent = 'Ready. Starting requests microphone access and consumes the one saved session.'; summary.className = 'ok'; start.disabled = false;
+    summary.textContent = 'Ready. Start rechecks callback readiness, then opens one microphone session. Interrupt an answer, then ask for an appointment date and time. End before 115 seconds.'; summary.className = 'ok'; start.disabled = false;
   }
   start.addEventListener('click', () => {
-    start.disabled = true; summary.textContent = 'Requesting saved Retell session…'; log('user gesture: start');
+    start.disabled = true; summary.textContent = 'Requesting readiness-checked Retell session...'; log('user gesture: start');
     if (!window.retellClientJsSdk?.RetellClient) return fail('Retell SDK bundle unavailable');
     const client = new window.retellClientJsSdk.RetellClient({ key: 'unused', fetch: (_url, init) => fetch('/session', {...init, credentials:'same-origin'}) });
     call = client.createWebCall({ agent_id: window.awcAgentId, hooks: {

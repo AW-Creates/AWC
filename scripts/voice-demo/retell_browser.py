@@ -1,7 +1,7 @@
 """Loopback-only Retell web-call diagnostic harness.
 
-Serves a single, already-created session from ignored cache.  It has no API
-key handling and never creates, retries, or stops a provider call.
+Serves one session through the readiness-gated retell_demo.py state.
+The legacy cached-session entry point is disabled. Credentials stay server-side.
 """
 from __future__ import annotations
 
@@ -34,16 +34,7 @@ def load_json(path: Path) -> dict:
 
 class HarnessState:
     def __init__(self) -> None:
-        self.session = load_json(SESSION_FILE)
-        setup = load_json(SETUP_FILE)
-        self.agent_id = setup.get("agent_id")
-        required = ("access_token", "call_id", "expires_at", "transport")
-        if not self.agent_id or any(not self.session.get(key) for key in required):
-            raise ValueError("saved Retell session or agent ID is incomplete")
-        if int(self.session["expires_at"]) <= int(time.time() * 1000):
-            raise ValueError("saved Retell session has expired; do not create a replacement from this harness")
-        self.used = False
-        self.lock = threading.Lock()
+        raise ValueError("Use retell_demo.py: saved sessions without live readiness are blocked")
 
     def public_session(self) -> bytes:
         # Deliberately omit all server-only data. This response is one-shot.
@@ -88,7 +79,9 @@ class Handler(BaseHTTPRequestHandler):
             if not self.same_origin():
                 self.send_bytes(HTTPStatus.FORBIDDEN, b'{"error":"same-origin required"}', "application/json")
                 return
-            self.send_bytes(HTTPStatus.OK, json.dumps({"agent_id": self.state.agent_id, "session_available": not self.state.used}).encode(), "application/json")
+            available = not self.state.used and int(self.state.session["expires_at"]) > int(time.time() * 1000)
+            self.send_bytes(HTTPStatus.OK, json.dumps({"agent_id": self.state.agent_id, "session_available": available,
+                "readiness": {"session_fresh": available, "single_use": True}}).encode(), "application/json")
             return
         target = files.get(route)
         if not target or not target.is_file():
@@ -117,7 +110,11 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_bytes(HTTPStatus.CONFLICT, b'{"error":"saved session already served; no retry"}', "application/json")
                 return
             self.state.used = True
-            body = self.state.public_session()
+            try:
+                body = self.state.public_session()
+            except Exception:
+                self.send_bytes(HTTPStatus.SERVICE_UNAVAILABLE, b'{"error":"readiness or session creation failed; no retry; inspect server evidence"}', "application/json")
+                return
         self.send_bytes(HTTPStatus.OK, body, "application/json")
 
 

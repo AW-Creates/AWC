@@ -8,6 +8,7 @@ import httpx
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
+from .spoken import spoken_slot
 
 ROOT = Path(__file__).parent
 # Local development only: preserve explicitly supplied runtime configuration.
@@ -107,11 +108,11 @@ async def domain(text):
             elif re.search(r'(october|oct)\s*(2|second)\b',t) or 'second slot' in t: slot=SLOT_NAMES[1]
         if slot:
             result=book(BookingRequest(slot=slot)); event('booking',result=result)
-            answer=f"Your mock appointment is booked for {slot}. Confirmation {result['confirmation']}." if result['ok'] else result['error']
+            answer=f"Your mock appointment is booked for {spoken_slot(slot)}. Confirmation {result['confirmation']}." if result['ok'] else result['error']
         else: answer='Please choose October first at 10 AM or October second at 2 PM from available slots.'
     elif any(w in t for w in ['availability','available','appointment','slots']):
         available=[s for s,v in SLOTS.items() if v=='available']; event('availability',slots=available)
-        answer='Available demo appointments: '+(', '.join(available) if available else 'none')+'.'
+        answer='Available demo appointments: '+(', '.join(spoken_slot(s) for s in available) if available else 'none')+'.'
     elif 'hour' in t or 'open' in t: answer='We are open Monday through Friday, 9 AM to 5 PM.'
     elif 'insur' in t: answer='BrightHome is fully insured.'
     elif 'where' in t or 'service area' in t or 'springfield' in t: answer='We serve Springfield.'

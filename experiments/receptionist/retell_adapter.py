@@ -9,6 +9,7 @@ import time
 import uuid
 from typing import Literal
 from urllib.parse import urlparse
+from .spoken import spoken_slot
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
@@ -64,7 +65,7 @@ def configuration(base_url: str) -> dict:
         "data_storage_setting": "basic_attributes_only", "opt_in_signed_url": True,
         "webhook_url": base_url.rstrip("/")+"/retell/webhook",
         "webhook_events": ["call_started", "call_ended", "call_analyzed"]},
-        "llm_settings": {"general_prompt": "You are the fictional BrightHome demo receptionist. Use AWC tools for all business facts, estimates, availability, bookings, handoffs and outcomes. Never invent prices or commitments. Ask for clarification on uncertain recognition. A booking requires separate local operator approval; spoken yes is insufficient. Read only the tool result. On tool failure say no action is confirmed. Handoffs are local demo records and no human has been contacted. Call get_summary_outcome before ending. Never retry automatically.",
+        "llm_settings": {"general_prompt": "You are the fictional BrightHome demo receptionist. Use AWC tools for all business facts, estimates, availability, bookings, handoffs and outcomes. Never invent prices or commitments. Ask for clarification on uncertain recognition. A booking requires separate local operator approval; spoken yes is insufficient. Read only the tool result. Speak dates naturally with month names and ordinal days (October first, October second), and speak times unambiguously with AM or PM; preserve the exact slot value internally. On tool failure say no action is confirmed. Handoffs are local demo records and no human has been contacted. Call get_summary_outcome before ending. Never retry automatically.",
                          "general_tools": functions},
         "note": "Configuration fragments for dashboard setup, not a create-agent request. Choose model/voice and verify rate separately. No provider request performed."}
 
@@ -151,7 +152,8 @@ class ManagedVoiceAdapter:
             b.persist()
             return {"quote": result}
         if name == "get_availability":
-            return {"slots": [s for s, status in b.SLOTS.items() if status == "available"]}
+            slots = [s for s, status in b.SLOTS.items() if status == "available"]
+            return {"slots": slots, "spoken_slots": [spoken_slot(s) for s in slots]}
         if name == "prepare_booking":
             if not text:
                 raise HTTPException(422, "User transcript required for review")
@@ -159,7 +161,8 @@ class ManagedVoiceAdapter:
                 return {"ok": False, "error": "Slot unavailable"}
             self.pending = dict(review_id=uuid.uuid4().hex, args=args, turn=turn,
                                 transcript=text, expires=self.clock()+60)
-            return {"ok": False, "status": "proposal_only", "review_id": self.pending["review_id"], "slot": args["slot"]}
+            return {"ok": False, "status": "proposal_only", "review_id": self.pending["review_id"],
+                    "slot": args["slot"], "spoken_slot": spoken_slot(args["slot"])}
         if name == "confirm_booking":
             if args["review_id"] in self.committed_reviews:
                 return copy.deepcopy(self.committed_reviews[args["review_id"]])
@@ -188,8 +191,11 @@ class ManagedVoiceAdapter:
             result = self.business.book(self.business.BookingRequest(**p["args"]))
             self.business.event("booking", result=result)
             self.business.persist()
-            self.committed_reviews[review_id] = copy.deepcopy(result)
             self.pending = None
+            result = copy.deepcopy(result)
+            if result.get("slot"):
+                result["spoken_slot"] = spoken_slot(result["slot"])
+            self.committed_reviews[review_id] = copy.deepcopy(result)
             return result
 
     async def invalidate(self):
@@ -212,6 +218,10 @@ class ManagedVoiceAdapter:
 
 def create_app(adapter: ManagedVoiceAdapter, verifier=verify_signature):
     app = FastAPI(title="AWC isolated Retell callbacks", docs_url=None, redoc_url=None, openapi_url=None)
+
+    @app.get("/health")
+    async def health():
+        return {"ok": True, "service": "awc-retell-callback"}
 
     async def read(request):
         raw = bytearray()

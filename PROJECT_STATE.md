@@ -1,36 +1,29 @@
 # AWC Project State
 
-Updated: 2026-09-27. Canonical repo: C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC, main.
+Updated: 2026-09-27 21:18 UTC. Canonical repo: C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC, main.
 
-## Objective / current milestone
-AWC agency/portfolio; revenue and live lead pipeline remain unproven.
-**AWC — Retell Managed Realtime Voice Acceptance: CLOSED — PASS for bounded managed control.**
-One focused callback repair plus decisive Call 2 completed. No further calls or provider work. This is a fictional single-caller demo acceptance, not production approval or exhaustive interruption/latency acceptance.
+## Current milestone
+AWC — Retell Demo Polish & Readiness: IMPLEMENTATION VALIDATED; HUMAN FINAL CALL PENDING. Not PASS yet. Resume exact checkpoint; do not repeat setup/research.
 
-## Validated outcome
-Call 1: 103.602 seconds, $0.207653368 actual provider cost; voice positive but six tool invocations all failed DNS before reaching AWC. Dead callback tunnel, not missing tool definitions.
-Call 2: 113.802 seconds, $0.225620038; seven tool results succeeded through authenticated AWC callback. Insurance fixture, deterministic three-bedroom deep-clean $225 quote, availability, explicit locally approved booking and summary all verified. Confirmation DEMO-07c58383 for Adrian, October 1, 2026 at 10:00. Combined actual spend $0.433273406; two live calls total.
-Human: Call 2 MUCH better; realistic except October one versus October 1st; heard quote and insurance; response delays much more natural. Transcript confirms spoken booking confirmation. Interruption quality and rigorous first-audio/replacement targets not separately verified; provider e2e 870 ms has only one sample. No exported-audio playback verification in this continuation.
+## Validated state
+39 focused offline tests PASS, including all 26 existing adapter/SDK/app/safety tests. Natural ordinal dates and AM/PM are presentation-only; ISO business values unchanged. Public DNS/health and genuine signed availability callback PASS. Existing temporary agent's eight stale tool URLs and webhook automatically refreshed and verified by fresh provider readback. Readiness reruns immediately before call creation. Legacy cached-session bypass disabled. One-shot disk reservation prevents retry after ambiguous provider creation.
 
-## Locked decisions / safety
-Retell first managed control; AWC owns profile/FAQs, deterministic quotes, conflicts, local explicit approval, handoff context and summary. BrightHome is fictional; insurance answer is demo fixture only. Local mock booking; no real calendar or person contacted. Speech cannot approve a booking. Forged/stale approval and conflicts remain rejected; no safeguard changes.
-One existing temporary agent: all eight tool URLs and webhook updated to newly tested public tunnel before creating Call 2. Signed public synthetic probes passed. Real Call 2 provider requests passed existing signature/identity checks. All 26 focused offline SDK/adapter/business safety tests passed. Live conflict and handoff not exercised; offline coverage preserved.
+## Cost / acceptance gate
+No live session created at this checkpoint; $0 additional spend. Dashboard $9.57, no active calls, $0.108/min; prior verified auto recharge disabled. Voice currently labeled Kathrine; preserved. One final browser session only, 115-second browser cutoff / 120-second provider cap. Target <=$0.30; hard additional cap <=$0.50. No phone/payment/provider changes. One known usage-cap interruption; one updater serialization failure fixed on one focused nonbillable retry. Do not chain retries.
 
-## Runtime / cost gate
-Callback, tunnel and browser server stopped; no listeners observed on 8766/8767/20241. Temporary Retell agent now retains an inactive tunnel URL. Do not create a call until callback is running, URLs refreshed and read back, and signed public probes pass. Never reuse a cached session created before URL repair.
-Original maximum three sessions, <=120 seconds/session, initial $3 / absolute $5 caps, no auto retry/recharge, no phone/payment changes remain preserved. This continuation used its one additional session; STOP.
-Permanent Progress / Cost Gate remains in docs/workflow/WORKFLOW-v3.2-README.md and sibling _venture-ops copy. Usage reset never justifies open-ended debugging. No broad research/subagents or provider switch undertaken.
+## Exact next action
+Human opens http://127.0.0.1:8767/ and presses Start final demo test. Ask FAQ, interrupt with another question, ask appointment date/time, end promptly. Browser automation is blocked by open Brave extension UI. No need for another permission question; human participation is necessary for listening evidence.
+Then retrieve duration and actual combined_cost, collect only five requested verdicts (clean stop, natural replacement/no carryover, date/time, latency, truncation), stop runtime, decide PASS/FAIL, commit final docs/state. Never fabricate human verdicts or start another session. Check ignored demo-creation-attempt.json before doing anything that could create a call.
 
-## Relevant files / evidence
-- docs/voice-retell/ACCEPTANCE.md: authoritative closeout, costs, root cause, tests, limits, next action.
-- docs/voice-retell/CALL-EVIDENCE.json: sanitized provider function evidence and human verdict.
-- experiments/receptionist/retell_adapter.py: unchanged business transport/safety boundary.
-- scripts/voice-demo/retell_control.py: unchanged local approval harness.
-- scripts/voice-demo/retell_browser.py and retell_browser.html: existing interrupted-task one-shot harness, reviewed and successfully used for Call 2; page retains legacy Call 1 label/default file.
-- Ignored .cache/retell-acceptance: private provider records and setup. Never commit credentials/tokens/recording URLs.
+## Runtime / evidence
+docs/voice-retell/DEMO-READINESS.md is the checkpoint/evidence index.
+scripts/voice-demo/retell_demo.py: readiness-gated single-session runtime.
+experiments/receptionist/readiness.py, spoken.py, test_readiness_spoken.py, test_retell_demo.py.
+Ignored .cache/retell-acceptance/demo-readiness.json and demo-server/tunnel logs. Future demo-session-private.json contains sensitive session material; never commit.
+At checkpoint tunnel PID 25292, server launcher PID 13288, ports 8766/8767/20241; verify owners before stopping. Tunnel generated-closely-chevy-parks.trycloudflare.com. Never trust cached tunnel state; fresh readiness is mandatory.
 
-## Preserved closed work
-Local CPU Realtime Voice Acceptance CLOSED FAILED / NOT DEMO-READY. Do not repeat CPU tuning or prior benchmarks. Evidence docs/voice-realtime/ACCEPTANCE.md; previous implementation 4d8bc9204570be05332e31027afe2ec4df9308c8. Retell preflight baseline 61738f8; original adapter b45f147bc3868392223a99957b5cad0559ba02ac. Current closeout commit contains this state, acceptance and sanitized evidence; obtain exact hash with git log -1.
+## Locked decisions / previous acceptance
+Retell is temporary fictional single-caller demo voice. AWC owns FAQs, deterministic quote, local approval, booking conflicts, handoff and summary. Speech cannot approve bookings. Final test runtime exposes no approval UI; booking optional and omitted. No real calendar/customer contact. Existing managed business-flow milestone CLOSED PASS at 2cdef4100c78bb979f8fb60b9fe9c76ca80a70c5; Call 1 103.602s/$0.207653368, Call 2 113.802s/$0.225620038, combined $0.433273406. Prior local CPU milestone FAILED; do not reopen provider benchmarking.
 
-## Exact next action / next milestone
-End this task. Recommend fresh narrow demo-readiness milestone: natural date pronunciation plus automatic callback URL/readiness verification before session creation. No new live call scheduled or authorized here. Production/concurrency, real calendar, rigorous latency/interruption/media-export tests remain deferred. Vapi, ElevenLabs direct, Bland, Firebase, Cloud Run, GPU hosting, framework comparison and PSTN remain out of scope.
+## Next milestone recommendation
+Only after final human PASS: bounded demo presentation and operator runbook, separately scoped. Stop at this milestone; no automatic outreach, telephony, ads, CRM or provider work. Current checkpoint commit: obtain with git log -1; final milestone closeout still pending.
