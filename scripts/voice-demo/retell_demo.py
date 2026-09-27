@@ -13,7 +13,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from experiments.receptionist.readiness import verify_callback
-from experiments.receptionist.retell_adapter import TOOLS, ManagedVoiceAdapter, create_app
+from experiments.receptionist.retell_adapter import (TOOLS, ManagedVoiceAdapter, create_app,
+    identity_config, with_identity_prompt)
 
 
 class DemoGate:
@@ -45,6 +46,26 @@ class DemoGate:
         items = [{**t, 'url': base + '/retell/function'} for t in self.llm['general_tools']]
         self.client.llm.update(self.setup['llm_id'], general_tools=items)
         self.client.agent.update(self.setup['agent_id'], webhook_url=base + '/retell/webhook')
+
+    def sync_identity_prompt(self):
+        """Update only the saved LLM identity fields, preserving all other settings."""
+        current = self.client.llm.retrieve(self.setup['llm_id']).model_dump(exclude_none=True)
+        existing = current.get('general_prompt')
+        if not isinstance(existing, str) or not existing.strip():
+            raise ValueError('Saved LLM has no general_prompt to preserve')
+        identity = identity_config()
+        updated = with_identity_prompt(existing, identity['agent_name'], identity['business_name'])
+        greeting = (f"Thanks for calling {identity['business_name']}, this is {identity['agent_name']}, "
+                    "the virtual receptionist for this fictional demo. How can I help?")
+        agent = self.client.agent.retrieve(self.setup['agent_id']).model_dump(exclude_none=True)
+        engine = agent.get('response_engine', {})
+        if engine.get('llm_id') != self.setup['llm_id'] or engine.get('type') != 'retell-llm':
+            raise ValueError('Temporary agent response engine changed')
+        self.client.llm.update(self.setup['llm_id'], general_prompt=updated, begin_message=greeting)
+        verified = self.client.llm.retrieve(self.setup['llm_id']).model_dump(exclude_none=True)
+        if verified.get('general_prompt') != updated or verified.get('begin_message') != greeting:
+            raise ValueError('Identity prompt readback did not match update')
+        return {'general_prompt': updated, 'begin_message': greeting}
 
     def probe(self, url):
         from retell.lib.webhook_auth import symmetric
@@ -85,15 +106,23 @@ def main():
     from dotenv import load_dotenv
     load_dotenv(ROOT / '.env', override=False)
     from retell import Retell
-    import uvicorn
-    from experiments.receptionist import app as business
-    import retell_browser as browser
     parser = argparse.ArgumentParser()
-    parser.add_argument('--base', required=True)
+    parser.add_argument('--base')
+    parser.add_argument('--sync-identity', action='store_true')
     args = parser.parse_args()
     cache = ROOT / '.cache/retell-acceptance'
     setup = json.loads((cache / 'setup.json').read_text())
     client = Retell(api_key=os.environ['RETELL_API_KEY'], max_retries=0, timeout=10)
+    if args.sync_identity:
+        gate = DemoGate(client, setup, args.base or '', None, cache)
+        gate.sync_identity_prompt()
+        print(json.dumps({'identity_readback': 'PASS', **identity_config()}), flush=True)
+        return
+    if not args.base:
+        parser.error('--base is required unless --sync-identity is used')
+    import uvicorn
+    from experiments.receptionist import app as business
+    import retell_browser as browser
     business.reset_state()
     adapter = ManagedVoiceAdapter(business, 'UNARMED', setup['agent_id'])
     server = uvicorn.Server(uvicorn.Config(create_app(adapter), host='127.0.0.1', port=8766, log_level='warning'))

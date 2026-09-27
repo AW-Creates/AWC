@@ -67,4 +67,39 @@ class DemoContracts(unittest.TestCase):
         self.assertEqual(result['slots'],list(b.SLOTS))
         self.assertIn('October first',result['spoken_slots'][0])
 
+    def test_sync_identity_updates_only_identity_fields_and_readback(self):
+        existing = 'Keep business facts and date instructions.\n\n[AWC IDENTITY START] old [AWC IDENTITY END]'
+        # use a provider-shaped mock that reflects writes while recording call boundaries
+        llm_state = {'general_prompt': existing, 'general_tools': [{'name': 'get_availability'}], 'model': 'keep'}
+        agent_state = {'response_engine': {'type': 'retell-llm', 'llm_id': 'llm_fixture'}, 'max_call_duration_ms': 120000}
+        self.client.llm.retrieve.return_value.model_dump.side_effect = lambda **_: dict(llm_state)
+        self.client.agent.retrieve.return_value.model_dump.side_effect = lambda **_: dict(agent_state)
+        def llm_update(_id, **kwargs): llm_state.update(kwargs)
+        self.client.llm.update.side_effect = llm_update
+        with patch.dict('os.environ', {'RETELL_AGENT_NAME': 'Mina', 'RETELL_BUSINESS_NAME': 'Oak & Pine'}):
+            result = self.gate.sync_identity_prompt()
+        self.assertIn('Mina', result['general_prompt'])
+        self.assertIn('Oak & Pine', result['begin_message'])
+        self.assertEqual(set(self.client.llm.update.call_args.kwargs), {'general_prompt', 'begin_message'})
+        self.assertFalse(self.client.agent.update.called)
+        self.assertEqual(self.client.call.mock_calls, [])
+        self.assertEqual(llm_state['model'], 'keep')
+        self.assertEqual(llm_state['general_tools'], [{'name': 'get_availability'}])
+        self.assertIn('Keep business facts and date instructions.', llm_state['general_prompt'])
+
+    def test_identity_sync_fails_on_readback_mismatch_without_call(self):
+        self.client.llm.retrieve.return_value.model_dump.return_value = {'general_prompt': 'Existing rules'}
+        self.client.agent.retrieve.return_value.model_dump.return_value = {'response_engine': {'type': 'retell-llm', 'llm_id': 'llm_fixture'}}
+        with self.assertRaisesRegex(ValueError, 'readback'):
+            self.gate.sync_identity_prompt()
+        self.assertEqual(self.client.call.mock_calls, [])
+
+    def test_identity_sync_rejects_changed_response_engine_before_write(self):
+        self.client.llm.retrieve.return_value.model_dump.return_value = {'general_prompt': 'Existing rules'}
+        self.client.agent.retrieve.return_value.model_dump.return_value = {'response_engine': {'type': 'retell-llm', 'llm_id': 'different'}}
+        with self.assertRaisesRegex(ValueError, 'response engine'):
+            self.gate.sync_identity_prompt()
+        self.client.llm.update.assert_not_called()
+        self.assertEqual(self.client.call.mock_calls, [])
+
 if __name__=='__main__': unittest.main()

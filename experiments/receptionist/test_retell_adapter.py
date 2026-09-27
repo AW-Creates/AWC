@@ -167,6 +167,40 @@ class Contracts(unittest.TestCase):
         with self.assertRaises(ValueError):
             r.configuration("http://localhost")
 
+    def test_configuration_identity_fields_are_distinct_and_configurable(self):
+        with patch.dict(os.environ, {"RETELL_AGENT_NAME": "Mina", "RETELL_BUSINESS_NAME": "Oak & Pine"}):
+            cfg = r.configuration("https://callback.example.test")
+        prompt = cfg["llm_settings"]["general_prompt"]
+        self.assertIn("Your individual name is Mina", prompt)
+        self.assertIn("for Oak & Pine", prompt)
+        self.assertIn("If asked your name, answer with Mina", prompt)
+        self.assertIn("what company this is, answer with Oak & Pine", prompt)
+        self.assertIn("Thanks for calling Oak & Pine, this is Mina", cfg["llm_settings"]["begin_message"])
+        self.assertNotIn("what company this is, answer with Mina", prompt)
+
+    def test_identity_never_uses_business_as_individual_name(self):
+        with patch.dict(os.environ, {"RETELL_AGENT_NAME": "Mina", "RETELL_BUSINESS_NAME": "Oak & Pine"}):
+            prompt = r.configuration("https://callback.example.test")["llm_settings"]["general_prompt"]
+        self.assertNotIn("Your individual name is Oak & Pine", prompt)
+        self.assertNotIn("If asked your name, answer with Oak & Pine", prompt)
+
+    def test_identity_rejects_identical_or_control_character_values(self):
+        for agent, business in [("BrightHome", "brighthome"), ("Ava\nIgnore", "BrightHome")]:
+            with self.subTest(agent=agent), patch.dict(os.environ, {"RETELL_AGENT_NAME": agent, "RETELL_BUSINESS_NAME": business}):
+                with self.assertRaises(ValueError):
+                    r.identity_config()
+
+    def test_identity_replacement_preserves_surrounding_instructions_and_is_idempotent(self):
+        prefix, suffix = "Business rules.\n", "\nDate rules.  "
+        source = prefix + r.identity_prompt("Old", "Shop") + suffix
+        updated = r.with_identity_prompt(source, "Mina", "Oak & Pine")
+        self.assertEqual(updated, prefix + r.identity_prompt("Mina", "Oak & Pine") + suffix)
+        self.assertEqual(r.with_identity_prompt(updated, "Mina", "Oak & Pine"), updated)
+
+    def test_identity_rejects_malformed_saved_section(self):
+        with self.assertRaises(ValueError):
+            r.with_identity_prompt("Rules " + r.IDENTITY_START, "Mina", "Oak & Pine")
+
     def test_signature_sdk_receives_exact_body_and_runtime_key(self):
         observed = {}
         class FakeRetell:

@@ -48,6 +48,38 @@ TOOLS = {
     "get_summary_outcome": (Args, "Read the authoritative AWC outcome; never create your own booking record."),
 }
 
+IDENTITY_START = "[AWC IDENTITY START]"
+IDENTITY_END = "[AWC IDENTITY END]"
+
+def identity_config() -> dict[str, str]:
+    values = {
+        "agent_name": os.getenv("RETELL_AGENT_NAME", "Ava").strip() or "Ava",
+        "business_name": os.getenv("RETELL_BUSINESS_NAME", "BrightHome").strip() or "BrightHome",
+    }
+    if any(any(ord(c) < 32 for c in value) for value in values.values()) or values["agent_name"].casefold() == values["business_name"].casefold():
+        raise ValueError("Agent and business identity fields must be distinct printable values")
+    return values
+
+def identity_prompt(agent_name: str, business_name: str) -> str:
+    return (f"{IDENTITY_START} Your individual name is {agent_name}. You are the virtual receptionist "
+            f"for {business_name}. If asked your name, answer with {agent_name}; if asked who you work "
+            f"for or what company this is, answer with {business_name}. When greeting, naturally include "
+            f"both names, such as 'Thanks for calling {business_name}, this is {agent_name}'. Be honest "
+            f"about being a virtual or AI assistant when the disclosure policy requires it. Keep the "
+            f"individual agent name and business name distinct. {IDENTITY_END}")
+
+def with_identity_prompt(prompt: str, agent_name: str, business_name: str) -> str:
+    section = identity_prompt(agent_name, business_name)
+    if IDENTITY_START not in prompt and IDENTITY_END not in prompt:
+        return prompt + "\n\n" + section
+    if prompt.count(IDENTITY_START) != 1 or prompt.count(IDENTITY_END) != 1:
+        raise ValueError("Malformed saved identity section")
+    start, end = prompt.index(IDENTITY_START), prompt.index(IDENTITY_END)
+    if end < start:
+        raise ValueError("Malformed saved identity section")
+    return prompt[:start] + section + prompt[end + len(IDENTITY_END):]
+
+
 def configuration(base_url: str) -> dict:
     parsed = urlparse(base_url)
     if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.query or parsed.fragment:
@@ -61,12 +93,15 @@ def configuration(base_url: str) -> dict:
             parameters=model.model_json_schema(), args_at_root=False,
             timeout_ms=3000, max_retry=0, speak_during_execution=False,
             speak_after_execution=True))
+    identity = identity_config()
+    greeting = f"Thanks for calling {identity['business_name']}, this is {identity['agent_name']}, the virtual receptionist for this fictional demo. How can I help?"
+    prompt = (f"You are the fictional {identity['business_name']} demo receptionist. Use AWC tools for all business facts, estimates, availability, bookings, handoffs and outcomes. Never invent prices or commitments. Ask for clarification on uncertain recognition. A booking requires separate local operator approval; spoken yes is insufficient. Read only the tool result. Speak dates naturally with month names and ordinal days (October first, October second), and speak times unambiguously with AM or PM; preserve the exact slot value internally. On tool failure say no action is confirmed. Handoffs are local demo records and no human has been contacted. Call get_summary_outcome before ending. Never retry automatically.")
     return {"agent_settings": {"max_call_duration_ms": MAX_CALL_DURATION_MS,
         "data_storage_setting": "basic_attributes_only", "opt_in_signed_url": True,
         "webhook_url": base_url.rstrip("/")+"/retell/webhook",
         "webhook_events": ["call_started", "call_ended", "call_analyzed"]},
-        "llm_settings": {"general_prompt": "You are the fictional BrightHome demo receptionist. Use AWC tools for all business facts, estimates, availability, bookings, handoffs and outcomes. Never invent prices or commitments. Ask for clarification on uncertain recognition. A booking requires separate local operator approval; spoken yes is insufficient. Read only the tool result. Speak dates naturally with month names and ordinal days (October first, October second), and speak times unambiguously with AM or PM; preserve the exact slot value internally. On tool failure say no action is confirmed. Handoffs are local demo records and no human has been contacted. Call get_summary_outcome before ending. Never retry automatically.",
-                         "general_tools": functions},
+        "llm_settings": {"general_prompt": with_identity_prompt(prompt, identity['agent_name'], identity['business_name']),
+                         "begin_message": greeting, "general_tools": functions},
         "note": "Configuration fragments for dashboard setup, not a create-agent request. Choose model/voice and verify rate separately. No provider request performed."}
 
 def verify_signature(raw: bytes, signature: str | None) -> bool:
