@@ -1,0 +1,144 @@
+{
+  "template_version": "1.0",
+  "purpose": "Non-executable intake template for replacing the BrightHome demo profile during first-pilot planning.",
+  "status": "INCOMPLETE_UNTIL_OWNER_APPROVAL",
+  "secrets_policy": "Placeholders and environment-variable names only; never store secrets here.",
+  "business_profile": {
+    "legal_name": "{{LEGAL_BUSINESS_NAME}}",
+    "display_name": "{{DISPLAY_BUSINESS_NAME}}",
+    "agent_name": "{{AGENT_NAME}}",
+    "greeting": "{{PHONE_GREETING}}",
+    "hours": "{{BUSINESS_HOURS}}",
+    "timezone": "{{TIMEZONE}}",
+    "service_area": "{{SERVICE_AREA}}",
+    "primary_contact": "{{PRIMARY_CONTACT}}",
+    "escalation_contact": "{{ESCALATION_CONTACT}}"
+  },
+  "service_catalog": [
+    {
+      "name": "{{SERVICE_NAME_1}}",
+      "aliases": [
+        "{{SERVICE_ALIAS_1}}"
+      ],
+      "description": "{{SERVICE_DESCRIPTION_1}}",
+      "inclusions": [
+        "{{INCLUSION_1}}"
+      ],
+      "exclusions": [
+        "{{EXCLUSION_1}}"
+      ],
+      "add_ons": [
+        "{{ADD_ON_1}}"
+      ],
+      "pricing_mode": "{{DETERMINISTIC_ESTIMATE_OR_HUMAN_REVIEW}}",
+      "quote_rule": "{{QUOTE_RULE_1}}",
+      "restrictions": [
+        "{{RESTRICTION_1}}"
+      ]
+    }
+  ],
+  "pricing": {
+    "allowed_quote_inputs": [
+      "{{ALLOWED_INPUT_1}}"
+    ],
+    "human_review_triggers": [
+      "{{REVIEW_TRIGGER_1}}"
+    ],
+    "minimum_charge": "{{MINIMUM_CHARGE}}",
+    "quote_supported_services": [],
+    "quote_scenarios": []
+  },
+  "booking": {
+    "provider": "{{BOOKING_PROVIDER}}",
+    "calendar_owner": "{{CALENDAR_OWNER}}",
+    "appointment_duration": "{{APPOINTMENT_DURATION}}",
+    "working_hours": "{{BOOKING_HOURS}}",
+    "blackout_dates": [
+      "{{BLACKOUT_DATE_1}}"
+    ],
+    "lead_time": "{{LEAD_TIME}}",
+    "cancellation_policy": "{{CANCELLATION_POLICY}}",
+    "stale_slot_behavior": "RECHECK_BEFORE_REOFFER",
+    "slots": [],
+    "conflict_handling": "{{BOOKING_CONFLICT_RULE}}",
+    "reschedule_rule": "{{RESCHEDULE_RULE}}",
+    "final_booking_authority": "{{FINAL_BOOKING_AUTHORITY}}",
+    "conflict_scenario": "{{BOOKING_CONFLICT_SCENARIO}}"
+  },
+  "faq_policies": {
+    "insurance": "{{INSURANCE_STATEMENT}}",
+    "payment_methods": "{{PAYMENT_METHODS}}",
+    "guarantee": "{{GUARANTEE_POLICY}}",
+    "service_limits": "{{SERVICE_LIMITS}}"
+  },
+  "handoff": {
+    "sales_contact": "{{SALES_CONTACT}}",
+    "urgent_route": "{{URGENT_ROUTE}}",
+    "follow_up_sla": "{{FOLLOW_UP_SLA}}",
+    "after_hours": "{{AFTER_HOURS_BEHAVIOR}}"
+  },
+  "integration_env_var_names": {
+    "calendar": "{{ENV_CALENDAR_CREDENTIAL_NAME}}",
+    "crm": "{{ENV_CRM_CREDENTIAL_NAME}}",
+    "telephony": "{{ENV_TELEPHONY_CREDENTIAL_NAME}}",
+    "notifications": "{{ENV_NOTIFICATION_CREDENTIAL_NAME}}"
+  },
+  "privacy": {
+    "recording_notice": "{{RECORDING_NOTICE}}",
+    "transcript_retention": "{{TRANSCRIPT_RETENTION}}",
+    "pii_policy": "{{PII_POLICY}}",
+    "client_approval": "{{PRIVACY_APPROVER}}"
+  },
+  "pilot_acceptance": {
+    "quote_accuracy_threshold": "{{QUOTE_ACCURACY_THRESHOLD}}",
+    "booking_accuracy_threshold": "{{BOOKING_ACCURACY_THRESHOLD}}",
+    "escalation_threshold": "{{ESCALATION_THRESHOLD}}",
+    "voice_threshold": "{{VOICE_THRESHOLD}}",
+    "cost_ceiling": "{{COST_CEILING}}",
+    "failure_fallback": "{{FAILURE_FALLBACK}}",
+    "owner_approver": "{{CLIENT_APPROVER}}",
+    "unauthorized_actions": "0",
+    "wrong_price_count": "0",
+    "duplicate_booking_count": "0",
+    "numeric_latency_ceiling": "{{NUMERIC_LATENCY_CEILING_MS}}",
+    "numeric_cost_ceiling": "{{NUMERIC_COST_CEILING_PER_CALL}}",
+    "waiver_limits": "Owner waiver cannot bypass critical privacy, security, or booking gates."
+  },
+  "demo_replacement_map": {
+    "BrightHome": "{{DISPLAY_BUSINESS_NAME}}",
+    "Ava": "{{AGENT_NAME}}",
+    "standard/deep/recurring cleaning services": "service_catalog",
+    "$225 example quote": "{{DETERMINISTIC_QUOTE_RULE}}",
+    "demo contacts and policies": "business_profile, faq_policies, handoff",
+    "demo Retell/OpenAI credentials": "replace with approved client integration env var names"
+  },
+  "not_required_for_first_pilot": [
+    "full CRM dashboard",
+    "broad outbound campaigns",
+    "multi-location support unless required",
+    "advanced analytics",
+    "custom mobile app",
+    "CRM integration when the pilot has no CRM need"
+  ],
+  "demo_business_field_map": {
+    "agent_name": "business_profile.agent_name",
+    "business_name": "business_profile.display_name",
+    "hours": "business_profile.hours",
+    "service_area": "business_profile.service_area",
+    "insurance": "faq_policies.insurance",
+    "policies": "faq_policies + booking.cancellation_policy",
+    "handoff_rules": "handoff",
+    "slots": "booking.slots (EXPLICITLY EMPTY UNTIL PROVIDER IMPLEMENTED)",
+    "quote_supported_services": "pricing.quote_supported_services (EXPLICITLY EMPTY UNTIL QUOTE CODE IMPLEMENTED)",
+    "services": "service_catalog",
+    "add_ons": "service_catalog[*].add_ons",
+    "quote_scenarios": "pricing.quote_scenarios",
+    "booking_conflict_scenario": "booking.conflict_scenario"
+  },
+  "credential_owners": {
+    "telephony": "{{TELEPHONY_CREDENTIAL_OWNER}}",
+    "crm": "{{CRM_CREDENTIAL_OWNER}}",
+    "calendar": "{{CALENDAR_CREDENTIAL_OWNER}}",
+    "secure_store_reference": "{{SECURE_STORE_REFERENCE}}"
+  }
+}

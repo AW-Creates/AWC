@@ -1,79 +1,79 @@
 # AWC Project State
 
-Updated: 2026-09-28 UTC. Canonical repo:
+Updated: 2026-09-28. Canonical repository:
 `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
 
 ## Current milestone
-**AWC — Demo Presentation & Operator Runbook: CLOSED PASS.** Stop at closeout.
-Validated implementation commit: `13a5be1f8f7f590750caacf0947f67aa92b98198`.
-This state-only closeout follows it; resolve its hash with `git log -1`.
+**AWC — Human Demo Rehearsal & Pilot Requirements: technical deliverables PASS;
+human operator acceptance PENDING.** Stop at this backed-up checkpoint. Do not claim
+CLOSED PASS until the user runs and presents the revised flow.
+Previous Demo Presentation & Operator Runbook milestone remains CLOSED PASS.
 
 ## Backup / Git
-Origin verified `https://github.com/AW-Creates/AWC.git`. Startup clean main was 11 ahead,
-0 behind; pushed safely and re-fetched to verify equality at
-`04a1f4651491ce253e274420f6315418e38d5e8d` before implementation.
-Implementation commit above pushed and re-fetched: local main == origin/main at
-`13a5be1f8f7f590750caacf0947f67aa92b98198`. No force push/history rewrite.
-Push this state-only closeout and verify equality/clean tree once more; final SHA is
-reported in the task closeout. Remote verification remains a milestone closeout gate.
+Startup clean main == saved origin/main == freshly queried GitHub main:
+`06f26f5d1a8a2beee6d5e1128be67bdbbad1b60c` (corrected transcription from request).
+No initial push needed. Commit this validated checkpoint and push without force;
+verify GitHub main == local afterward. Final hash/equality is in the task response;
+resolve this checkpoint with `git log -1`.
 
-## Deliverables / validated behavior
-- Configured Ava/BrightHome profile: hours, Springfield, fictional insurance/policies,
-  handoff rules, two fixed mock slots, quote fixtures, six primary cleaning offerings
-  and controlled oven/refrigerator add-ons, including scope/exclusions.
-- `get_business_info` supports list, explanation, exact normalized service aliases,
-  comparisons and safe unknown answers. Unknowns offer local human follow-up without
-  invented facts. Only standard/deep quotes; quote and booking tools stay authoritative.
-- One-command `scripts/voice-demo/demo_operator.py --cloudflared
-  .cache/retell-acceptance/cloudflared.exe`, using `.cache/voice-env/Scripts/python.exe`:
-  secret-presence/config checks, owned tunnel/callback, registration/DNS wait, saved
-  profile readback, URL refresh, genuine signed availability/catalog probes, cleanup.
-- Actual nonbillable startup/readiness PASS; saved tool/identity configuration verified.
-  Tunnel/runtime stopped: zero listeners on 8766/8767, no cloudflared left running.
-- 64 focused offline tests PASS, including prior 47. `scripts/voice-demo/rehearse.py`
-  PASS: $225 deep three-bedroom estimate, caller-only approval blocked, explicit local
-  approval confirms synthetic booking, conflict rejected, context retained for follow-up.
-- Stale review wording clarified: no booking confirmed; availability unknown until
-  rechecked; ask permission before new proposal. Approval/freshness/conflict rules intact.
+## Tangible deliverables
+- `scripts/voice-demo/rehearse.py --present`: numbered readable offline walkthrough;
+  default JSON preserved. Includes configured Ava/BrightHome greeting, catalog, safe
+  unknowns, FAQ, prior barge-in narration, $225 quote, explicit local mock approval,
+  expired second proposal, sales/human follow-up and synthetic transcript/outcome.
+- `docs/voice-retell/OPERATOR-RUNBOOK.md`: exact Windows folder/terminal/start/show
+  instructions, PASS expectations, short troubleshooting, stop and cost boundaries.
+- `docs/voice-retell/DEMO-SCRIPT.md`: missed-call value first, fictional disclosure,
+  3–5 minute target, knowledge/booking/handoff, AWC versus Retell responsibilities.
+- `docs/voice-retell/FIRST-PILOT-REQUIREMENTS.md`: practical A–K checklist.
+- `docs/voice-retell/PILOT-CLIENT-TEMPLATE.json`: non-executable intake, all 13 demo
+  fields mapped; placeholders only, no secrets, empty slots/quote support pending code.
+- `docs/voice-retell/READINESS-SCORECARD.md`: demo/pilot/deferred status by capability.
+- `docs/voice-retell/HUMAN-PILOT-CLOSEOUT.md`: validation, feedback and remaining gates.
 
-## Preserved voice acceptance / cost
-Retell managed voice and demo polish remain PASS. Human said barge-in worked very well,
-no replacement carryover, natural dates, great latency and no noticed truncation.
-The final transcript still ends mid-proposal near cutoff; preserve both observations.
-Prior final call: 113.201 seconds, $0.225620038 actual combined cost. Six tools succeeded;
-standard three-bedroom quote $145, stale booking blocked, no live booking committed.
-No new call or paid text test this milestone; additional call spend $0.00.
-Do not delete/reset `.cache/retell-acceptance/demo-creation-attempt.json`.
-`--serve` blocks the consumed allowance; another voice call requires separate scope,
-budget and an audited allowance. Offline rehearsal demonstrates confirmed booking;
-the voice browser still exposes no operator approval interface.
+## Validation / readiness
+34 focused catalog/operator/Retell-adapter tests PASS. Expanded offline presentation
+and default JSON rehearsal PASS. Intake JSON parse, complete field mapping and empty
+implementation gates PASS. Actual nonbillable signed startup/readiness PASS; runtime
+and tunnel cleaned up, no listeners on 8766/8767 or cloudflared observed afterward.
+New script check field-path error corrected; Windows encoding edit corrected to UTF-8.
+No production UI changed. Read-only Validator reviewed flow and docs; cue numbering fixed.
+Readiness is point-in-time: saved tunnel URL inactive after shutdown.
 
-## Relevant files
-`experiments/receptionist/demo_business.json`, `service_catalog.py`, `app.py`,
-`retell_adapter.py`, `test_service_catalog.py`, `test_operator.py`.
-`scripts/voice-demo/demo_operator.py`, `retell_demo.py`, `rehearse.py`.
-`docs/voice-retell/OPERATOR-RUNBOOK.md`, `DEMO-SCRIPT.md`, `PRESENTATION-CLOSEOUT.md`.
-Prior evidence: `DEMO-READINESS.md`, `DEMO-EVIDENCE.json`. Secrets/provider records,
-attempt ledger and media remain ignored/private. Saved tunnel URLs are inactive.
+## Human feedback / exact next action
+User accepted the opening and requested help starting/showing the demo. Instructions
+and readable scenes supplied. User has NOT run the revised flow yet.
+Exact next action: user runs
+`.cache/voice-env/Scripts/python.exe scripts/voice-demo/rehearse.py --present`
+from the canonical repo, presents the scenes aloud, reports final PASS, elapsed time
+and unclear steps. Resolve bounded usability issues, record human acceptance and then
+close this milestone. Measured presentation timing and independent usability remain unverified.
 
-## Progress / Cost Gate and limitations
-Historic cap count for this exact milestone unknown. User explicitly resumed at the
-backup gate. One bounded Builder; no broad research/provider experiments. Two distinct
-startup defects fixed from evidence: Retell schema-annotation normalization, then URL
-publication before DNS readiness. Next startup passed; no further repetition needed.
-Catalog configuration/tool behavior validated offline plus signed callbacks, not a new
-live speech/model-response test. No UI change; command output/runtime inspected.
-Dependency deprecation warnings are nonblocking. Fixed mock dates are not real calendar
-availability. Current account balance/rate unknown; verify before future authorized spend.
+## Preserved acceptance / cost
+Prior voice/barge-in/date/latency human acceptance preserved; no new audio acceptance
+claimed. Prior final call 113.201 seconds, $0.225620038 combined cost; final transcript
+ended mid-proposal near cutoff despite positive human observations.
+No new paid call/text test: additional spend $0.00. Balance/rate not checked this run.
+Preserve `.cache/retell-acceptance/demo-creation-attempt.json`; allowance consumed.
+`--serve` must remain blocked. Future call needs separate approval/budget/audited allowance.
+Current voice page has no operator booking approval control; confirmed booking is offline.
 
-## Locked decisions
-Temporary fictional single-caller Retell demo. AWC owns facts, deterministic quotes,
-approval, conflicts, handoff and summary. Speech cannot approve Retell bookings.
-No real customer contact/calendar, production telephony, outreach, ads or CRM expansion.
-Local CPU voice milestone failed; do not reopen benchmarking.
+## Demo versus first pilot gap
+Demo ready: synthetic catalog/quote/booking safety, local handoff/context and startup.
+Pilot required: approved real business facts and prices, implemented client quote rules
+(profile JSON alone does not change the hardcoded engine), authoritative calendar,
+delivered escalation/fallback, secure client credentials, owner-approved privacy/data
+rules, authorized telephony routing and accuracy/voice/cost/failure acceptance tests.
+The intake template is not loaded by production code and cannot enable real bookings.
 
-## Exact next action / recommendation
-After state commit/push verification, stop. Fresh milestone recommendation:
-**AWC — Human Demo Rehearsal & Pilot Requirements**. Start by running the offline
-rehearsal with the 3–5 minute script, collect human feedback on service/booking clarity,
-then document pilot requirements. No automatic outreach, rollout or new paid call.
+## Locked scope / Progress and Cost Gate
+Fictional single caller; AWC owns facts, quotes, local approval/conflicts and summary;
+Retell owns managed voice infrastructure. Speech cannot approve a Retell booking.
+No real customer contact/calendar, outreach, ads, purchases, PSTN rollout or onboarding.
+One bounded Builder and one read-only Validator; no provider comparisons or historical
+benchmarks. No blocker survived two focused corrections. Stop on two unresolved attempts.
+
+## Next milestone recommendation
+Only after remaining human acceptance: **AWC — Pilot Scope & Acceptance Design**.
+Agree the minimum one-business workflow and acceptance criteria using the checklist.
+No outreach, spending, deployment or real client onboarding starts automatically.

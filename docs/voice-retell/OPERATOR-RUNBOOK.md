@@ -1,86 +1,117 @@
-# BrightHome / Ava operator runbook
+# Ava / BrightHome operator runbook
 
-Fictional single-caller demo only. No real calendar, customer data or contact delivery.
-The existing Retell voice acceptance remains passed. This milestone adds catalog and
-operator tooling, not a new live voice acceptance or additional call allowance.
+Fictional demo only: synthetic details, fixed mock dates, no real booking or human contact.
+Use the offline presentation today. Previous voice acceptance is separate evidence;
+the existing live-call allowance is consumed and must not be reset.
 
-## Before presenting
+## Before demo: five-minute checklist
 
-- Work from `C:\Users\A-Problem\Documents\Web Development\AW-Creates-Ventures\AWC`.
-- Use synthetic caller details and headphones. Close private tabs and notifications.
-- Read `experiments/receptionist/demo_business.json`: identities, hours, Springfield
-  service area, demo-only insurance/policy facts, catalog and fixed mock appointments.
-- Confirm the existing Python environment, `.env` credential and ignored
-  `.cache/retell-acceptance/setup.json` are present. Never print or share them.
-- Review the current Retell balance, displayed all-in rate, duration limit and
-  auto-recharge setting before any separately authorized voice session. Historical
-  balance/rate is not current evidence. No spending is authorized by this runbook.
-- Preserve `.cache/retell-acceptance/demo-creation-attempt.json`. The previous
-  one-call allowance is consumed. Never delete, rename or reset it to get another call.
+- Open this runbook and DEMO-SCRIPT.md. Read the opening once aloud.
+- Close private tabs/notifications. Share only the presentation window.
+- Use fictional caller details. Insurance and service facts belong to fictional BrightHome.
+- Confirm the mock dates are described as examples, never current availability.
+- For this offline flow, no microphone, Retell login, tunnel, or balance check is needed.
+- Allow 3–5 minutes to present; reserve extra time for owner questions.
 
-## One-command readiness (no call, no chargeable text test)
+## Start demo: one command
+
+1. Open File Explorer and paste this into its address bar:
+   `C:\Users\A-Problem\Documents\Web Development\AW-Creates-Ventures\AWC`
+2. In that folder, right-click empty space and choose **Open in Terminal**.
+   Use a PowerShell tab. The folder name at the prompt should end in `AWC`.
+3. Paste the following line and press Enter:
+
+```powershell
+.cache\voice-env\Scripts\python.exe scripts/voice-demo/rehearse.py --present
+```
+
+The results appear in the terminal, with numbered headings. Nothing is spoken aloud
+and you do not type caller questions into this window. Scroll back to **1. Meet Ava**,
+enlarge the text with Ctrl+mouse wheel if needed, then read caller cues from DEMO-SCRIPT.md
+and show the matching result. All scenes run automatically with fresh temporary mock data.
+The scripted local approval is an illustration, not a button the presenter must find.
+
+## What PASS looks like
+
+The final line says `PASS: offline rehearsal complete. No provider call or charge.`
+Look for six services, two add-ons, a $225 deep three-bedroom estimate, an explicitly
+approved mock booking, a rejected expired second proposal, and a retained summary.
+A traceback, STOP, missing section, or missing PASS blocks this presentation.
+If the command is not found: check the folder and pasted command once. If the Python
+file is missing, stop and request setup help; do not install random substitutes.
+After two focused failures on the same blocker, stop and record the visible error.
+
+## Demo talk track cues
+
+Follow the numbered headings: greeting → services → deep scope → standard comparison →
+unknown service → FAQ → interruption explanation → estimate → mock availability and
+approval → stale second proposal → local sales/human follow-up → transcript and outcome.
+Spend most of the time on the value: answers, a useful estimate, and context for the owner.
+The expired example is a second proposal; the first confirmed mock appointment remains.
+The transcript excerpt is synthetic tool-walkthrough text, not a recorded conversation.
+
+## Optional nonbillable callback readiness
+
+This networked check is separate from the offline presentation. It refreshes the
+existing temporary Retell agent configuration and tunnel URLs but creates no call:
 
 ```powershell
 .cache\voice-env\Scripts\python.exe scripts/voice-demo/demo_operator.py --cloudflared .cache/retell-acceptance/cloudflared.exe
 ```
 
-This checks secrets by presence without showing values, validates local identity and
-catalog, checks ports, starts an owned tunnel and callback runtime, syncs the existing
-temporary agent's tool schema/instructions/greeting, verifies provider readback,
-refreshes stale tool/webhook URLs, and checks health plus signed availability and
-catalog callbacks. It preserves model/voice and booking protections. Success prints
-`PASS: signed callback, tool URLs, agent identity and catalog configuration verified.`
-It then stops its runtime and tunnel. A PASS is a point-in-time check, not permission
-to call or evidence that a stopped tunnel still works.
+PASS says `signed callback, tool URLs, agent identity and catalog configuration verified`.
+It then shuts down its tunnel/runtime. Saved tunnel URLs are inactive after exit.
+A PASS proves readiness at that moment; it does not authorize a paid call.
 
-Any STOP/nonzero exit blocks the demo. A missing secret, occupied port, tunnel failure,
-signature rejection, changed agent, or readback mismatch must be resolved first.
-After two focused failures, stop and record the exact blocker; do not keep retrying.
+## Launch browser call — future authorized voice session only
 
-## Present now without paid calls
+Today: do not launch a browser call. Use the offline command above.
+A future voice session requires explicit budget approval and an audited new allowance.
+Never delete or reset `.cache/retell-acceptance/demo-creation-attempt.json`.
+With that future allowance, add `--serve` to the readiness command. After PASS,
+the browser page is `http://127.0.0.1:8767/`; use Start once. The current page has
+no local approval control, so confirmed booking is shown offline. Provider cap is
+120 seconds; browser stop is 115 seconds. Do not try to fit the whole presentation in it.
 
-```powershell
-.cache\voice-env\Scripts\python.exe scripts/voice-demo/rehearse.py
-```
+## Short troubleshooting decisions
 
-This runs the actual catalog/quote/booking/handoff tools with synthetic input and
-temporary output storage. It makes no network call or audio claim. Show the returned
-answers and outcome alongside `DEMO-SCRIPT.md`. The rehearsal visibly checks that
-caller confirmation alone cannot book, then performs an explicit local operator
-approval, shows confirmation, rejects a conflicting slot, and retains handoff context.
-It starts from a fresh mock calendar and cannot affect the provider or real bookings.
+- **Mic permission fails?** Allow microphone for the loopback page, select the correct
+  Windows/browser input, and check mute using the local device meter. Still failing?
+  Switch to offline; do not create repeat paid calls to troubleshoot.
+- **Tunnel/tool URL fails?** Stop the owned runtime with Ctrl+C. Run readiness once
+  for a fresh URL. Still failing after two focused attempts? Stop live preparation
+  and show the offline presentation. Never reuse a URL from an old report.
+- **Retell unavailable?** Use offline and call it a tool walkthrough. It does not
+  demonstrate live voice latency or interruption.
+- **Missing secret or changed agent?** Stop live preparation. Ask for private setup
+  help; never paste `.env`, tokens, setup.json, or private provider responses.
+- **Review expired?** No new booking was confirmed. Ask whether a fresh proposal is
+  wanted, recheck availability, then obtain fresh local approval. Do not auto-reoffer.
 
-## Voice start / stop
+## Stop cleanly
 
-`demo_operator.py --serve --cloudflared .cache/retell-acceptance/cloudflared.exe` is the
-one-shot voice startup path. It currently refuses to start because the existing
-allowance is consumed. A future separately scoped voice milestone must establish
-authorization, budget and an audited new allowance; this milestone does not implement
-a reset or bypass. Readiness alone never creates a call.
+Offline: the command ends itself and removes temporary output. Close the terminal
+when finished. If interrupted, Ctrl+C stops it; rerun only if needed for the presentation.
+Future authorized voice: click End, then Ctrl+C in the operator terminal. Wait for
+cleanup before closing it. Only owned processes should be stopped.
 
-With a valid future allowance, the loopback browser is `http://127.0.0.1:8767/`;
-Start creates one session only after another readiness check. Provider cap remains
-120 seconds and browser stop remains 115 seconds. The current voice page has no
-operator approval control; present confirmed booking in the offline rehearsal.
-End the call with End before the cap, then Ctrl+C in the operator terminal. Cleanup
-terminates only processes created by that startup. Do not close unrelated processes.
+## Check cost and balance
 
-## Troubleshooting and fallback
+Offline costs $0. Before any future authorized voice call, privately open the Retell
+account billing/balance view and record current balance, displayed all-in rate,
+auto-recharge state, and approved call ceiling. If any is unclear, do not call.
+Afterward reconcile actual provider usage/cost; a historical balance is not evidence.
+Retell/OpenAI credentials stay private; current balance was not checked for this offline work.
 
-- Microphone: allow browser microphone access on the loopback page; choose the right
-  input device in browser/Windows settings, use headphones and check mute. Do not
-  create repeat calls to diagnose the mic. Use a local recording/device meter first.
-- Stale tunnel: stop the owned runtime with Ctrl+C and run readiness again. It obtains
-  a new URL and verifies fresh provider readback. Never paste an old URL from a report.
-- Retell outage or insufficient balance: use `rehearse.py`; label it an offline tool
-  walkthrough. Do not claim it demonstrates live latency or interruption behavior.
-- Failed startup: secrets remain private; inspect local setup privately. Do not paste
-  `.env`, access tokens, provider response bodies, or private cache files into support.
-- Review expired/changed: no booking is confirmed. Ask whether a fresh proposal is
-  wanted, recheck availability, then obtain new local approval. Do not describe a
-  stale review as proof the slot is unavailable or automatically repeat the offer.
+## When NOT to demo
 
-Do not demo live when readiness fails, the allowance is consumed, cost is unverified,
-mock dates are being mistaken for real availability, secrets/private data are visible,
-or a caller expects a real booking/human connection. Reconcile actual provider cost
-after any future authorized call and shut down before leaving the workstation.
+Do not present if offline PASS is missing, private information is visible, or the
+owner expects a real booking/contact. Do not demo live if readiness fails, allowance
+is consumed, cost is unverified, or no explicit spend approval exists.
+
+## Human rehearsal record
+
+User confirmed the opening is clear and asked for help starting/showing the demo.
+The explicit folder, terminal, command and scroll instructions above address that feedback.
+User successfully running and presenting this revised flow is still pending; do not
+mark end-to-end human operator acceptance as passed until they report it.
