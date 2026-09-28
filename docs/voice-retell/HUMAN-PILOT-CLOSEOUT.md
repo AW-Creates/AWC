@@ -1,5 +1,7 @@
 # Human Demo Rehearsal & Pilot Requirements — checkpoint
 
+Update 2026-09-28: user has now completed the offline rehearsal successfully and reported the final PASS marker. Human acceptance is satisfied; prior milestone CLOSED PASS. Timing was not measured. The checkpoint below is preserved as historical evidence; its pending status is superseded by this update.
+
 2026-09-28. Technical/document deliverables validated; human end-to-end acceptance pending.
 This is a backed-up checkpoint, not a CLOSED PASS milestone.
 

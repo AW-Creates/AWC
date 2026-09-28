@@ -113,5 +113,4 @@ is consumed, cost is unverified, or no explicit spend approval exists.
 
 User confirmed the opening is clear and asked for help starting/showing the demo.
 The explicit folder, terminal, command and scroll instructions above address that feedback.
-User successfully running and presenting this revised flow is still pending; do not
-mark end-to-end human operator acceptance as passed until they report it.
+Update 2026-09-28: user reports successful completion ending in the offline PASS marker; human offline rehearsal accepted. Elapsed presentation time was not measured.
