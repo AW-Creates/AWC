@@ -9,6 +9,7 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 from .spoken import spoken_slot
+from .service_catalog import CONFIG as BUSINESS_CONFIG, answer as catalog_answer
 
 ROOT = Path(__file__).parent
 # Local development only: preserve explicitly supplied runtime configuration.
@@ -16,7 +17,7 @@ load_dotenv(ROOT.parents[1] / '.env', override=False)
 CACHE = ROOT.parents[1] / '.cache'
 STORE = CACHE / 'receptionist-output'
 app = FastAPI(title='BrightHome local voice laboratory')
-SLOT_NAMES = ['2026-10-01 10:00', '2026-10-02 14:00']
+SLOT_NAMES = list(BUSINESS_CONFIG['slots'])
 SLOTS = dict.fromkeys(SLOT_NAMES, 'available')
 STATE = {}
 LOCK = asyncio.Lock()
@@ -26,6 +27,7 @@ def reset_state():
     STATE.clear()
     STATE.update(session_id=str(uuid.uuid4()), agent='receptionist', transcript=[], quote=None,
                  booking=None, handoffs=[], callbacks=[], events=[])
+    SLOTS.clear()
     SLOTS.update(dict.fromkeys(SLOT_NAMES, 'available'))
 reset_state()
 
@@ -113,9 +115,11 @@ async def domain(text):
     elif any(w in t for w in ['availability','available','appointment','slots']):
         available=[s for s,v in SLOTS.items() if v=='available']; event('availability',slots=available)
         answer='Available demo appointments: '+(', '.join(spoken_slot(s) for s in available) if available else 'none')+'.'
-    elif 'hour' in t or 'open' in t: answer='We are open Monday through Friday, 9 AM to 5 PM.'
-    elif 'insur' in t: answer='BrightHome is fully insured.'
-    elif 'where' in t or 'service area' in t or 'springfield' in t: answer='We serve Springfield.'
+    elif 'hour' in t or 'open' in t: answer=catalog_answer('hours')
+    elif 'insur' in t: answer=catalog_answer('insurance')
+    elif 'where' in t or 'service area' in t or 'springfield' in t: answer=catalog_answer('service area')
+    elif any(x in t for x in ['service','cleaning','oven','fridge','refrigerator','move-in','move out']) or t in {'offerings','what do you offer'}:
+        answer=catalog_answer('services' if t in {'service','services','what services','what do you offer','offerings'} else t)
     elif 'financ' in t or 'payment plan' in t:
         answer='No financing terms are configured for this demo. I can retain your context for a sales specialist or a human follow-up.'
     elif os.getenv('AWC_LOCAL_LLM_URL'):

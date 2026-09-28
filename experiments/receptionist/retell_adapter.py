@@ -10,18 +10,21 @@ import uuid
 from typing import Literal
 from urllib.parse import urlparse
 from .spoken import spoken_slot
+from .service_catalog import PROFILE, answer as catalog_answer, compare as catalog_compare
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 MAX_BODY = 65536
 MAX_CALL_DURATION_MS = 120000
-FAQ_QUERIES = {"hours": "hours", "insurance": "insurance", "service_area": "service area"}
+FAQ_QUERIES = {"hours": "hours", "insurance": "insurance", "service_area": "service area", "services": "services", "policies": "policies", "service": "service", "compare": "compare"}
 
 class Args(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
 
 class FAQ(Args):
-    topic: Literal["hours", "insurance", "service_area"]
+    topic: Literal["hours", "insurance", "service_area", "services", "policies", "service", "compare"]
+    service: str | None = Field(default=None, max_length=80)
+    compare_to: str | None = Field(default=None, max_length=80)
 
 class Quote(Args):
     bedrooms: int = Field(ge=1, le=20)
@@ -38,7 +41,7 @@ class Reason(Args):
     reason: str = Field(min_length=1, max_length=500)
 
 TOOLS = {
-    "get_business_info": (FAQ, "Get verified business facts; never invent an answer."),
+        "get_business_info": (FAQ, "Get verified facts: topic services lists offerings; service explains the exact service or add-on name supplied in service; compare requires service and compare_to. Unknown names stay unknown. Quotes use get_quote."),
     "get_quote": (Quote, "Get the authoritative demo estimate; never calculate a price yourself."),
     "get_availability": (Args, "Get currently available demo slots."),
     "prepare_booking": (Booking, "Prepare a proposal only. Await local operator approval; this does not book."),
@@ -53,8 +56,8 @@ IDENTITY_END = "[AWC IDENTITY END]"
 
 def identity_config() -> dict[str, str]:
     values = {
-        "agent_name": os.getenv("RETELL_AGENT_NAME", "Ava").strip() or "Ava",
-        "business_name": os.getenv("RETELL_BUSINESS_NAME", "BrightHome").strip() or "BrightHome",
+        "agent_name": os.getenv("RETELL_AGENT_NAME", PROFILE["agent_name"]).strip() or PROFILE["agent_name"],
+        "business_name": os.getenv("RETELL_BUSINESS_NAME", PROFILE["business_name"]).strip() or PROFILE["business_name"],
     }
     if any(any(ord(c) < 32 for c in value) for value in values.values()) or values["agent_name"].casefold() == values["business_name"].casefold():
         raise ValueError("Agent and business identity fields must be distinct printable values")
@@ -95,7 +98,7 @@ def configuration(base_url: str) -> dict:
             speak_after_execution=True))
     identity = identity_config()
     greeting = f"Thanks for calling {identity['business_name']}, this is {identity['agent_name']}, the virtual receptionist for this fictional demo. How can I help?"
-    prompt = (f"You are the fictional {identity['business_name']} demo receptionist. Use AWC tools for all business facts, estimates, availability, bookings, handoffs and outcomes. Never invent prices or commitments. Ask for clarification on uncertain recognition. A booking requires separate local operator approval; spoken yes is insufficient. Read only the tool result. Speak dates naturally with month names and ordinal days (October first, October second), and speak times unambiguously with AM or PM; preserve the exact slot value internally. On tool failure say no action is confirmed. Handoffs are local demo records and no human has been contacted. Call get_summary_outcome before ending. Never retry automatically.")
+    prompt = (f"You are the fictional {identity['business_name']} demo receptionist. Use AWC tools for all business facts, estimates, availability, bookings, handoffs and outcomes. Use get_business_info for service lists, descriptions, included/excluded work, comparisons, and unknown-service questions; the catalog is authoritative and unknown services must be handed to a human without invented details. Use get_quote for the only supported standard/deep estimates; other service pricing requires human review. Never invent prices or commitments. Ask for clarification on uncertain recognition. A booking requires separate local operator approval; spoken yes is insufficient. Read only the tool result. Speak dates naturally with month names and ordinal days (October first, October second), and speak times unambiguously with AM or PM; preserve the exact slot value internally. On tool failure say no action is confirmed. Handoffs are local demo records and no human has been contacted. Call get_summary_outcome before ending. Never retry automatically.")
     return {"agent_settings": {"max_call_duration_ms": MAX_CALL_DURATION_MS,
         "data_storage_setting": "basic_attributes_only", "opt_in_signed_url": True,
         "webhook_url": base_url.rstrip("/")+"/retell/webhook",
@@ -179,7 +182,9 @@ class ManagedVoiceAdapter:
     async def _execute(self, name, args, turn, text):
         b = self.business
         if name == "get_business_info":
-            return {"answer": await b.domain(FAQ_QUERIES[args["topic"]])}
+            if args["topic"] == "compare":
+                return {"answer": catalog_compare(args.get("service") or "", args.get("compare_to") or "")}
+            return {"answer": catalog_answer(FAQ_QUERIES[args["topic"]], args.get("service"))}
         if name == "get_quote":
             result = b.quote(b.QuoteRequest(**args))
             b.STATE["quote"] = result
@@ -203,7 +208,7 @@ class ManagedVoiceAdapter:
                 return copy.deepcopy(self.committed_reviews[args["review_id"]])
             p = self.pending
             if not p or p["review_id"] != args["review_id"] or p["turn"] != turn or self.clock() >= p["expires"]:
-                return {"ok": False, "error": "Missing, expired or stale review"}
+                return {"ok": False, "error": "Missing, expired or stale review. No booking was confirmed; availability is unknown until rechecked. Ask permission before presenting a fresh proposal."}
             return {"ok": False, "status": "awaiting_local_operator_approval"}
         if name in {"request_sales_handoff", "request_human_escalation"}:
             # Never pass provider reason through the text command parser.

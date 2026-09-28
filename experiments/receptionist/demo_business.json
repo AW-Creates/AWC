@@ -1,0 +1,199 @@
+{
+  "agent_name": "Ava",
+  "business_name": "BrightHome",
+  "hours": "Monday through Friday, 9 AM to 5 PM",
+  "service_area": "Springfield",
+  "insurance": "BrightHome is fully insured.",
+  "policies": "This fictional demo provides estimates and appointment proposals; a local operator must approve a booking.",
+  "handoff_rules": "Sales and human follow-up are local demo records; nobody is contacted automatically.",
+  "slots": [
+    "2026-10-01 10:00",
+    "2026-10-02 14:00"
+  ],
+  "quote_supported_services": [
+    "standard",
+    "deep"
+  ],
+  "services": [
+    {
+      "id": "standard",
+      "name": "Standard cleaning",
+      "aliases": [
+        "standard",
+        "regular cleaning",
+        "routine cleaning"
+      ],
+      "description": "Recurring or one-time cleaning for kitchens, bathrooms, floors, dusting, and common living areas.",
+      "included": [
+        "kitchens",
+        "bathrooms",
+        "floors",
+        "dusting",
+        "common living areas"
+      ],
+      "excluded": [
+        "inside appliances",
+        "specialty restoration"
+      ]
+    },
+    {
+      "id": "deep",
+      "name": "Deep cleaning",
+      "aliases": [
+        "deep",
+        "deep clean",
+        "deep cleaning"
+      ],
+      "description": "A more detailed top-to-bottom clean for homes needing extra attention before or between regular visits.",
+      "included": [
+        "standard cleaning tasks",
+        "detailed bathroom and kitchen cleaning",
+        "baseboards and reachable detail work"
+      ],
+      "excluded": [
+        "inside appliances unless added",
+        "hazardous waste",
+        "specialty restoration"
+      ]
+    },
+    {
+      "id": "move_in_out",
+      "name": "Move-in or move-out cleaning",
+      "aliases": [
+        "move in",
+        "move-in cleaning",
+        "move out",
+        "move-out cleaning",
+        "moving cleaning",
+        "turnover cleaning"
+      ],
+      "description": "Empty-home cleaning to prepare a residence for moving in or handing over.",
+      "included": [
+        "empty-room floors",
+        "kitchens",
+        "bathrooms",
+        "reachable surfaces"
+      ],
+      "excluded": [
+        "debris hauling",
+        "repairs",
+        "inside appliances unless added"
+      ]
+    },
+    {
+      "id": "recurring",
+      "name": "Recurring home cleaning",
+      "aliases": [
+        "recurring",
+        "weekly cleaning",
+        "biweekly cleaning",
+        "maintenance cleaning"
+      ],
+      "description": "Scheduled maintenance cleaning for homes that want an ongoing plan.",
+      "included": [
+        "kitchens",
+        "bathrooms",
+        "floors",
+        "dusting",
+        "common living areas"
+      ],
+      "excluded": [
+        "deep-detail work unless upgraded",
+        "inside appliances unless added"
+      ]
+    },
+    {
+      "id": "office",
+      "name": "Small office cleaning",
+      "aliases": [
+        "office cleaning",
+        "commercial cleaning",
+        "small business cleaning"
+      ],
+      "description": "Routine cleaning for a small office or professional workspace.",
+      "included": [
+        "work areas",
+        "break areas",
+        "restrooms",
+        "floors"
+      ],
+      "excluded": [
+        "industrial work",
+        "hazardous materials"
+      ]
+    },
+    {
+      "id": "post_construction",
+      "name": "Post-construction cleanup",
+      "aliases": [
+        "post construction",
+        "construction cleanup",
+        "builders clean"
+      ],
+      "description": "Removal of ordinary construction dust and residue after a project is complete.",
+      "included": [
+        "surface dust",
+        "floors",
+        "reachable fixtures"
+      ],
+      "excluded": [
+        "construction debris hauling",
+        "hazardous materials",
+        "repairs"
+      ]
+    }
+  ],
+  "add_ons": [
+    {
+      "id": "oven",
+      "name": "Inside oven",
+      "aliases": [
+        "oven",
+        "inside oven",
+        "oven cleaning"
+      ],
+      "description": "Cleaning the inside of a household oven as an add-on to an offered cleaning service.",
+      "included": [
+        "interior cleaning of an emptied household appliance"
+      ],
+      "excluded": [
+        "repairs",
+        "commercial appliances",
+        "standalone appointments"
+      ],
+      "pricing": "Human review required; never add to the standard/deep quote automatically."
+    },
+    {
+      "id": "fridge",
+      "name": "Inside refrigerator",
+      "aliases": [
+        "fridge",
+        "refrigerator",
+        "inside fridge"
+      ],
+      "description": "Cleaning the inside of an emptied household refrigerator as an add-on.",
+      "included": [
+        "interior cleaning of an emptied household appliance"
+      ],
+      "excluded": [
+        "repairs",
+        "commercial appliances",
+        "standalone appointments"
+      ],
+      "pricing": "Human review required; never add to the standard/deep quote automatically."
+    }
+  ],
+  "quote_scenarios": [
+    {
+      "bedrooms": 3,
+      "service": "standard",
+      "expected_total": 145
+    },
+    {
+      "bedrooms": 3,
+      "service": "deep",
+      "expected_total": 225
+    }
+  ],
+  "booking_conflict_scenario": "After local approval books a slot, a second proposal for that slot must fail."
+}
