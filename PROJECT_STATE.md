@@ -3,7 +3,7 @@
 Updated 2026-09-28. Canonical repo: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
 
 ## Current milestone
-**AWC — Pilot Scope & Acceptance Design: design deliverables complete; see PILOT-SCOPE-CLOSEOUT.md for validation and Git checkpoint.** Human Demo Rehearsal & Pilot Requirements is now CLOSED PASS: user personally completed the offline rehearsal, ending with `PASS: offline rehearsal complete. No provider call or charge.` Presentation duration was not measured. Prior voice/demo acceptance preserved.
+**AWC — Pilot Scope & Acceptance Design: CLOSED PASS (design only); see PILOT-SCOPE-CLOSEOUT.md for validation and Git checkpoint.** Human Demo Rehearsal & Pilot Requirements is now CLOSED PASS: user personally completed the offline rehearsal, ending with `PASS: offline rehearsal complete. No provider call or charge.` Presentation duration was not measured. Prior voice/demo acceptance preserved.
 
 ## Current working state / deliverables
 Seven documents under `docs/voice-retell/`:
@@ -22,10 +22,10 @@ AWC owns facts/quotes/booking safety/context; Retell provides managed voice. Cur
 Product/demo and pilot design ready for conditional prospect preparation. Before actual outreach: owner accepts narrow offer, pricing structure and capacity to support one pilot, and separately authorizes contact. No engineering blocker must be solved merely to talk about a conditional pilot. Client-specific integrations, final price, legal/privacy review, deployment, numeric budgets and live tests can wait until prospect agreement; all mandatory production gates must pass before launch. No launch date/compatibility guarantee.
 
 ## Validation / evidence
-Documentation-only changes; link resolution, JSON parse/empty implementation gates, cost arithmetic, coverage and consistency review. No runtime code changed, historical tests/voice benchmarks not repeated. Prior 34 focused tests and nonbillable preflight remain historical evidence, not new results. Human offline PASS accepted from user report. See milestone closeout for final independent review outcome.
+Documentation-only changes; link resolution, JSON parse/empty implementation gates, cost arithmetic, coverage and consistency review. No runtime code changed, historical tests/voice benchmarks not repeated. Prior 34 focused tests and nonbillable preflight remain historical evidence, not new results. Human offline PASS accepted from user report. Independent read-only Validator found no actionable contradictions or omissions; final document checks passed.
 
 ## Backup / commit checkpoint
-Startup local HEAD == saved origin/main == freshly queried GitHub main: `1b4cd43dc3f8861f67dc876dc1adab458d9a4000`; clean. No initial push. Milestone content commit is recorded in PILOT-SCOPE-CLOSEOUT.md; final checkpoint hash and remote equality reported in task closeout. Do not rely on an old hash as current HEAD; inspect Git once on resumption.
+Startup local HEAD == saved origin/main == freshly queried GitHub main: `1b4cd43dc3f8861f67dc876dc1adab458d9a4000`; clean. No initial push. Latest validated milestone content commit: `bd93b7aca83c9c017c59971a7dd6e79693154185`; final checkpoint hash and remote equality reported in task closeout. Do not rely on an old hash as current HEAD; inspect Git once on resumption.
 
 ## Progress / Cost Gate
 No calls, purchases, outreach, integrations or provider reconfiguration. Additional provider spend $0.00; balance/current rate not checked. Consumed `.cache/retell-acceptance/demo-creation-attempt.json` allowance preserved; `--serve` remains blocked. One read-only Validator, no swarm/provider research. Stop/re-scope on two unsuccessful focused attempts, two usage-cap hits, two substantial runs without validated progress, implausible target, deteriorating cost/evidence or a cheaper decisive experiment. Any final-attempt exception requires changed conditions, bounded budget and stop rule. Future test/pilot budget requires explicit authorization; historical demo caps do not authorize production usage.
