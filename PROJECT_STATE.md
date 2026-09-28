@@ -1,33 +1,79 @@
 # AWC Project State
 
-Updated: 2026-09-27. Canonical repo: C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC, main.
+Updated: 2026-09-28 UTC. Canonical repo:
+`C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
 
 ## Current milestone
-AWC — Retell Demo Polish & Readiness: CLOSED PASS. Final user listening feedback recorded; bounded identity polish completed. Stop at closeout.
+**AWC — Demo Presentation & Operator Runbook: CLOSED PASS.** Stop at closeout.
+Validated implementation commit: `13a5be1f8f7f590750caacf0947f67aa92b98198`.
+This state-only closeout follows it; resolve its hash with `git log -1`.
 
-## Validated state
-47 focused offline tests PASS, retaining the original 39 tests including all 26 existing adapter/SDK/app/business-safety tests. Natural ordinal dates and AM/PM remain presentation-only; ISO appointment values unchanged. Genuine signed callback reached AWC. Eight stale tool URLs plus webhook automatically refreshed and independently verified from Retell. Immediate pre-call readiness rerun PASS. Legacy cached-session bypass disabled; one-shot disk reservation blocks retry after ambiguous creation.
+## Backup / Git
+Origin verified `https://github.com/AW-Creates/AWC.git`. Startup clean main was 11 ahead,
+0 behind; pushed safely and re-fetched to verify equality at
+`04a1f4651491ce253e274420f6315418e38d5e8d` before implementation.
+Implementation commit above pushed and re-fetched: local main == origin/main at
+`13a5be1f8f7f590750caacf0947f67aa92b98198`. No force push/history rewrite.
+Push this state-only closeout and verify equality/clean tree once more; final SHA is
+reported in the task closeout. Remote verification remains a milestone closeout gate.
 
-## Final human acceptance
-Interruption/barge-in worked very well; replacement/carryover had no noticeable issue; date pronunciation sounded natural; latency was great; no sentence truncation/carryover noticed. The transcript still ends mid-proposal near cutoff; preserve that artifact observation alongside the human verdict.
+## Deliverables / validated behavior
+- Configured Ava/BrightHome profile: hours, Springfield, fictional insurance/policies,
+  handoff rules, two fixed mock slots, quote fixtures, six primary cleaning offerings
+  and controlled oven/refrigerator add-ons, including scope/exclusions.
+- `get_business_info` supports list, explanation, exact normalized service aliases,
+  comparisons and safe unknown answers. Unknowns offer local human follow-up without
+  invented facts. Only standard/deep quotes; quote and booking tools stay authoritative.
+- One-command `scripts/voice-demo/demo_operator.py --cloudflared
+  .cache/retell-acceptance/cloudflared.exe`, using `.cache/voice-env/Scripts/python.exe`:
+  secret-presence/config checks, owned tunnel/callback, registration/DNS wait, saved
+  profile readback, URL refresh, genuine signed availability/catalog probes, cleanup.
+- Actual nonbillable startup/readiness PASS; saved tool/identity configuration verified.
+  Tunnel/runtime stopped: zero listeners on 8766/8767, no cloudflared left running.
+- 64 focused offline tests PASS, including prior 47. `scripts/voice-demo/rehearse.py`
+  PASS: $225 deep three-bedroom estimate, caller-only approval blocked, explicit local
+  approval confirms synthetic booking, conflict rejected, context retained for follow-up.
+- Stale review wording clarified: no booking confirmed; availability unknown until
+  rechecked; ask permission before new proposal. Approval/freshness/conflict rules intact.
 
-## Final session / cost gate
-Final session 113.201 seconds, actual combined cost $0.225620038, below $0.30 target/$0.50 cap. Six live function results succeeded; standard three-bedroom quote $145. Unauthorized/stale booking confirmation rejected; no booking committed. No new live call or paid text test for identity closeout; additional call spend $0.00. Preserve demo-creation-attempt.json; never reset to bypass the one-call limit.
+## Preserved voice acceptance / cost
+Retell managed voice and demo polish remain PASS. Human said barge-in worked very well,
+no replacement carryover, natural dates, great latency and no noticed truncation.
+The final transcript still ends mid-proposal near cutoff; preserve both observations.
+Prior final call: 113.201 seconds, $0.225620038 actual combined cost. Six tools succeeded;
+standard three-bedroom quote $145, stale booking blocked, no live booking committed.
+No new call or paid text test this milestone; additional call spend $0.00.
+Do not delete/reset `.cache/retell-acceptance/demo-creation-attempt.json`.
+`--serve` blocks the consumed allowance; another voice call requires separate scope,
+budget and an audited allowance. Offline rehearsal demonstrates confirmed booking;
+the voice browser still exposes no operator approval interface.
 
-## Identity polish
-Separate configurable RETELL_AGENT_NAME=Ava and RETELL_BUSINESS_NAME=BrightHome. Name questions identify Ava; company questions identify BrightHome; greeting names both and retains fictional-demo disclosure. Existing temporary Retell prompt and fixed greeting synced and freshly read back without creating a call. Business/date instructions, model/voice, tools and safety gates preserved. Offline/config verification is not a new live audio/model-response acceptance test.
+## Relevant files
+`experiments/receptionist/demo_business.json`, `service_catalog.py`, `app.py`,
+`retell_adapter.py`, `test_service_catalog.py`, `test_operator.py`.
+`scripts/voice-demo/demo_operator.py`, `retell_demo.py`, `rehearse.py`.
+`docs/voice-retell/OPERATOR-RUNBOOK.md`, `DEMO-SCRIPT.md`, `PRESENTATION-CLOSEOUT.md`.
+Prior evidence: `DEMO-READINESS.md`, `DEMO-EVIDENCE.json`. Secrets/provider records,
+attempt ledger and media remain ignored/private. Saved tunnel URLs are inactive.
 
-## Known minor polish debt
-Timing/state-review messaging: caller heard slot unavailable followed by a new offer. Actual tool error was Missing, expired or stale review; changed-turn freshness can cause it. Rejection about 44 seconds after proposal does not prove 60-second TTL expiry or slot unavailability. Safety held. Clarify review-expiry versus slot-unavailability and avoid confusing re-offer wording in the next separately scoped demo milestone; no booking logic changes needed on current evidence.
+## Progress / Cost Gate and limitations
+Historic cap count for this exact milestone unknown. User explicitly resumed at the
+backup gate. One bounded Builder; no broad research/provider experiments. Two distinct
+startup defects fixed from evidence: Retell schema-annotation normalization, then URL
+publication before DNS readiness. Next startup passed; no further repetition needed.
+Catalog configuration/tool behavior validated offline plus signed callbacks, not a new
+live speech/model-response test. No UI change; command output/runtime inspected.
+Dependency deprecation warnings are nonblocking. Fixed mock dates are not real calendar
+availability. Current account balance/rate unknown; verify before future authorized spend.
 
-## Runtime / evidence / relevant files
-Runtime and tunnel were stopped after final call; closeout starts neither. Saved callback URLs are inactive and must be refreshed by readiness before future authorized sessions.
-docs/voice-retell/DEMO-READINESS.md and DEMO-EVIDENCE.json contain acceptance evidence. Private provider records, secrets and media remain ignored/outside Git.
-experiments/receptionist/retell_adapter.py and its tests hold identity configuration; scripts/voice-demo/retell_demo.py and test_retell_demo.py hold explicit non-call identity sync. retell.env.example documents identity fields. Readiness and business safety remain unchanged.
+## Locked decisions
+Temporary fictional single-caller Retell demo. AWC owns facts, deterministic quotes,
+approval, conflicts, handoff and summary. Speech cannot approve Retell bookings.
+No real customer contact/calendar, production telephony, outreach, ads or CRM expansion.
+Local CPU voice milestone failed; do not reopen benchmarking.
 
-## Locked decisions / history
-Retell is temporary fictional single-caller demo voice. AWC owns FAQs, deterministic quote, approval, booking conflicts, handoff and summary. Speech cannot approve bookings. Final test exposes no approval UI; no real calendar/customer contact. Managed business-flow milestone CLOSED PASS at 2cdef4100c78bb979f8fb60b9fe9c76ca80a70c5. Local CPU milestone FAILED; do not reopen provider benchmarking.
-Validated polish/evidence commits: 50562a9, e758f0a, 927b027. Latest validated implementation commit: bd76513 (identity fix; 47 tests PASS and saved Retell identity readback PASS). This documentation closeout follows it; resolve its hash using git log -1 or the task final report.
-
-## Exact next action / next milestone
-No remaining closeout work after committing this validated state and confirming clean Git status. Stop. Recommendation: **AWC — Demo Presentation & Operator Runbook**, in a fresh task when requested. No automatic production telephony, outreach, ads, CRM integration or additional provider work.
+## Exact next action / recommendation
+After state commit/push verification, stop. Fresh milestone recommendation:
+**AWC — Human Demo Rehearsal & Pilot Requirements**. Start by running the offline
+rehearsal with the 3–5 minute script, collect human feedback on service/booking clarity,
+then document pilot requirements. No automatic outreach, rollout or new paid call.
