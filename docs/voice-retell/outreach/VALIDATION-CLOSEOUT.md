@@ -43,3 +43,7 @@ Recovery startup: main, clean, local HEAD and origin/main `f3fc71da78f08e854b6cd
 ## Exact next milestone
 
 **AWC — First-Batch Prospect Evidence & Outreach Approval.** Record owner scope/commercial/capacity choices and one target market; verify at most 10 public-qualified prospects, prepare factual personalized messages, complete channel review and present the concrete batch for explicit sending authority. Stop before sending. Paid demo enablement and production work remain separate.
+
+## Git closeout resolved — 2026-10-01
+
+The user committed and pushed the recovered package as `386f2f57325972829c57f779f39093bd1184d6ad`. Direct verification confirmed clean working tree and local HEAD == origin/main == fresh GitHub main. The earlier permission blocker is resolved for milestone backup. This checkpoint correction is committed separately; final task report provides its hash and remote verification. No content review, runtime test, voice call or outreach was repeated. Preparation milestone CLOSED PASS; stop before the recommended next milestone.
