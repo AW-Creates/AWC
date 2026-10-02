@@ -53,3 +53,21 @@ test('no-spend mode answers service questions without any provider call',async()
  globalThis.fetch=async()=>{calls++;throw new Error('must not call provider');};
  try{const response=await worker.fetch(request('/api/chat',{message:'What services does AWC offer?'},token),env,ctx);assert.equal(response.status,200);const d=await response.json();assert.equal(d.mode,'guide');assert.match(d.answer,/Brand.*Build.*Intelligence.*Growth/);assert.equal(calls,0);assert.equal(env.DB.raw.prepare('SELECT count(*) n FROM counters WHERE key LIKE \'budget:%\'').get().n,0);}finally{globalThis.fetch=original;}
 });
+
+test('estimate route requires origin, valid active session and bounded input, and rate limits',async()=>{
+ const {worker,env}=setup();env.AI_ENABLED='false';const token=await session(worker,env),data={package:'launch',extraPages:2,copyPages:3};
+ assert.equal((await worker.fetch(request('/api/estimate',data,null),env,ctx)).status,401);
+ assert.equal((await worker.fetch(request('/api/estimate',data,token,{Origin:'https://evil.test'}),env,ctx)).status,403);
+ assert.equal((await worker.fetch(request('/api/estimate',{...data,copyPages:8},token),env,ctx)).status,400);
+ const response=await worker.fetch(request('/api/estimate',data,token),env,ctx);assert.equal(response.status,200);const estimate=await response.json();assert.deepEqual([estimate.min,estimate.max],[2100,3450]);
+ for(let i=0;i<10;i++)assert.equal((await worker.fetch(request('/api/estimate',data,token),env,ctx)).status,200);
+ assert.equal((await worker.fetch(request('/api/estimate',data,token),env,ctx)).status,429);
+ assert.equal(env.DB.raw.prepare('SELECT count(*) n FROM inquiries').get().n,0);assert.equal(env.DB.raw.prepare("SELECT count(*) n FROM counters WHERE key LIKE 'budget:%'").get().n,0);
+ const deleted=await session(worker,env);env.DB.raw.prepare('DELETE FROM chat_sessions WHERE id=?').run(deleted.split('.')[0]);assert.equal((await worker.fetch(request('/api/estimate',data,deleted,{'CF-Connecting-IP':'192.0.2.2'}),env,ctx)).status,401);
+});
+test('estimate attachment needs explicit choice and inquiry consent and is recomputed server-side',async()=>{
+ const {worker,env}=setup(),token=await session(worker,env);const payload={name:'Draft Test',email:'test@example.test',interest:'Draft proposal',message:'Synthetic test inquiry only',consent:true,estimate:{package:'launch',extraPages:2,copyPages:3}};
+ const first=crypto.randomUUID();assert.equal((await worker.fetch(request('/api/inquiry',{...payload,requestId:first},token),env,ctx)).status,201);assert.doesNotMatch(env.DB.raw.prepare('SELECT message FROM inquiries WHERE id=?').get(first).message,/planning draft/);
+ assert.equal((await worker.fetch(request('/api/inquiry',{...payload,requestId:crypto.randomUUID(),attachEstimate:true,consent:false},token),env,ctx)).status,400);
+ const second=crypto.randomUUID();assert.equal((await worker.fetch(request('/api/inquiry',{...payload,requestId:second,attachEstimate:true},token),env,ctx)).status,201);const row=env.DB.raw.prepare('SELECT message,transcript FROM inquiries WHERE id=?').get(second);assert.match(row.message,/\$2100–\$3450/);assert.match(row.message,/unpublished/);assert.equal(row.transcript,'[]');
+});

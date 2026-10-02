@@ -1,7 +1,9 @@
+import {offerHTML} from '../src/offers.mjs';
 import {readFileSync,writeFileSync,mkdirSync,cpSync,existsSync,unlinkSync} from 'node:fs';
-const html=readFileSync('public/index.html','utf8');
+const html=readFileSync('public/index.html','utf8').replace('<!-- DRAFT_OFFER_CARDS -->',offerHTML());
 if(existsSync('dist/index.html'))unlinkSync('dist/index.html');
 mkdirSync('dist/server',{recursive:true});mkdirSync('dist/.openai',{recursive:true});
+cpSync('src/offers.mjs','dist/server/offers.mjs');
 cpSync('src/worker.mjs','dist/server/worker.mjs');cpSync('src/facts.mjs','dist/server/facts.mjs');
 writeFileSync('dist/server/index.js',`import {createWorker} from './worker.mjs';\nexport default createWorker(${JSON.stringify(html)});\n`);
 cpSync('.openai/hosting.json','dist/.openai/hosting.json');cpSync('drizzle','dist/.openai/drizzle',{recursive:true});

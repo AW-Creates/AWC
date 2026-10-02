@@ -1,3 +1,4 @@
+import { estimate } from './offers.mjs';
 import { MODEL, SYSTEM, guideAnswer } from './facts.mjs';
 
 const ORIGIN = 'https://aw-creates-ventures.thesml.chatgpt.site';
@@ -78,7 +79,7 @@ export function createWorker(html) {
      if(!owner(request,env))throw new HttpError(403,'This inbox is available only to the AWC owner.');
      const rows=await env.DB.prepare('SELECT * FROM inquiries WHERE expires > ? ORDER BY created DESC LIMIT 100').bind(Math.floor(Date.now()/1000)).all();return page(inboxHTML(rows.results));
    }
-   if(!['/api/session','/api/chat','/api/inquiry'].includes(path))return json({error:'Not found'},404);
+   if(!['/api/session','/api/chat','/api/inquiry','/api/estimate'].includes(path))return json({error:'Not found'},404);
    if(request.method!=='POST')return json({error:'Method not allowed'},405);
    sameOrigin(request,env);const input=await body(request);
    ctx?.waitUntil(cleanup(env.DB).catch(()=>{}));
@@ -88,6 +89,12 @@ export function createWorker(html) {
      return json({token:await tokenFor(env.SESSION_SECRET,id,expires),aiAvailable:env.AI_ENABLED==='true' && !!env.OPENAI_API_KEY});
    }
    const id=await sessionId(request,env);
+   if(path==='/api/estimate') {
+     await rate(request,env,'estimate',12,60);
+     const active=await env.DB.prepare('SELECT history FROM chat_sessions WHERE id=? AND expires>?').bind(id,Math.floor(Date.now()/1000)).first();
+     if(!active)throw new HttpError(401,'Your conversation expired. Please start again.');
+     try{return json(estimate(input));}catch(error){if(error instanceof RangeError)throw new HttpError(400,error.message);throw error;}
+   }
    if(path==='/api/chat') {
      const message=clean(input.message,1,800);await rate(request,env,'chat',6,60);
      const now=Math.floor(Date.now()/1000);
@@ -122,8 +129,11 @@ export function createWorker(html) {
      } finally {await env.DB.prepare('UPDATE chat_sessions SET busy_until=0 WHERE id=?').bind(id).run();}
    }
    await rate(request,env,'inquiry',3,3600);
-   const name=clean(input.name,1,100),email=clean(input.email,3,254),interest=clean(input.interest,1,100),message=clean(input.message,5,3000);
+   const name=clean(input.name,1,100),email=clean(input.email,3,254),interest=clean(input.interest,1,100);let message=clean(input.message,5,3000);
    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||/[\r\n]/.test(email)||input.consent!==true||input.website)throw new HttpError(400,'Please check your email and consent to sending these details.');
+   if(input.attachEstimate===true) {
+     try {message+='\n\nVisitor-selected planning draft:\n'+estimate(input.estimate).summary;}catch(error){if(error instanceof RangeError)throw new HttpError(400,error.message);throw error;}
+   }
    if(!/^[a-f0-9-]{36}$/.test(input.requestId||''))throw new HttpError(400,'Invalid request reference.');
    const existing=await env.DB.prepare('SELECT id,mail_status,session FROM inquiries WHERE id=?').bind(input.requestId).first();
    if(existing) {if(existing.session!==id)throw new HttpError(409,'Please use a new request reference.');return json({reference:existing.id,emailStatus:existing.mail_status,saved:true});}
