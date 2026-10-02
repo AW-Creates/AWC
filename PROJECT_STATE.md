@@ -51,3 +51,9 @@ Retell read-only /list-agents returned 401 for current canonical key. No replace
 
 Retell credential recovery — 2026-10-02: User replaced RETELL_API_KEY in ignored canonical .env. Read-only GET /list-agents returned HTTP 200 with one accessible agent. Credential now authenticates; no voice call, agent mutation or spend. Key remains local and excluded from Git. This does not enable website voice; no-spend prepared guide remains active. Email test receipt and owner inbox verification remain pending.
 
+
+## Own-website milestone closeout — 2026-10-02
+CLOSED PASS for user-selected no-spend service guide and live inquiry flow. User confirmed receipt of test inquiry email and viewed the saved request in the private /inbox. Production saves inquiries, sends owner notifications, and allows owner review; consultation requests require human confirmation. Ava answers from prepared information with no generative AI calls. OpenAI billing remains inactive; do not describe this deployment as live generative AI or voice. Retell credential independently verified HTTP 200; website voice is not connected. Seven runtime tests and targeted live security/service/quote/inquiry checks retained; no redundant tests or outreach.
+Source version 3 c7de671d152b2d8320c57d465eb15ef00c9e007d; current successful deployment appgdep_6abf2f4760148191a6a581516d9aa934 with environment revision 4. Canonical sanitized backup in website-receptionist/. Secrets only in ignored .env and hosted runtime; never in Git.
+Exact next milestone recommendation: AWC — First-Pilot Offer, Pricing & Capacity Approval. Review the already prepared narrow cleaning-business offer, price structure and support capacity with owner before separately authorized outreach. No automatic contacting, ads, lead purchases or voice spending. Optional generative-AI/voice website upgrade requires a separate requested milestone and billing readiness.
+
