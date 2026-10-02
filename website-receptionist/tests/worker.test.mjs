@@ -1,0 +1,55 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {DatabaseSync} from 'node:sqlite';
+import {readFileSync,readdirSync} from 'node:fs';
+import {createWorker,tokenFor,monthKey} from '../src/worker.mjs';
+const origin='https://aw-creates-ventures.thesml.chatgpt.site';
+function database(){
+ const db=new DatabaseSync(':memory:');for(const file of readdirSync('drizzle').filter(f=>f.endsWith('.sql')))db.exec(readFileSync('drizzle/'+file,'utf8'));
+ return {raw:db,prepare(sql){let args=[];return {bind(...a){args=a;return this;},async first(){return db.prepare(sql).get(...args)||null;},async all(){return {results:db.prepare(sql).all(...args)};},async run(){return db.prepare(sql).run(...args);}};},async batch(statements){return Promise.all(statements.map(s=>s.run()));}};
+}
+function setup(){const env={DB:database(),SESSION_SECRET:'test-secret-only',AI_ENABLED:'true',OPENAI_API_KEY:'test-only',OWNER_EMAIL:'owner@example.test'};return {env,worker:createWorker('<html>AWC</html>')};}
+const ctx={waitUntil(p){p.catch(()=>{});}};
+function request(path,data={},token=null,headers={}){return new Request(origin+path,{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','CF-Connecting-IP':'192.0.2.1',...(token?{'X-AWC-Session':token}:{}),...headers},body:JSON.stringify(data)});}
+async function session(worker,env){return (await (await worker.fetch(request('/api/session'),env,ctx)).json()).token;}
+test('month budget uses New York month at UTC boundary',()=>{assert.equal(monthKey(Date.parse('2026-11-01T02:00:00Z')),'2026-10');});
+test('cross-origin, missing IP and forged sessions fail closed',async()=>{
+ const {worker,env}=setup();assert.equal((await worker.fetch(request('/api/session',{},null,{Origin:'https://evil.test'}),env,ctx)).status,403);
+ const req=request('/api/session');req.headers.delete('CF-Connecting-IP');assert.equal((await worker.fetch(req,env,ctx)).status,503);
+ assert.equal((await worker.fetch(request('/api/chat',{message:'hello'},'bad'),env,ctx)).status,401);
+});
+test('budget gate blocks model fetch and inquiry fallback still works',async()=>{
+ const {worker,env}=setup(),token=await session(worker,env);env.DB.raw.prepare('INSERT INTO counters VALUES(?,?,?)').run('budget:'+monthKey(),500,Math.floor(Date.now()/1000)+100000);
+ const original=globalThis.fetch;let calls=0;globalThis.fetch=async()=>{calls++;throw new Error('should not call');};
+ try{assert.equal((await worker.fetch(request('/api/chat',{message:'What services?'},token),env,ctx)).status,429);assert.equal(calls,0);}finally{globalThis.fetch=original;}
+ const response=await worker.fetch(request('/api/inquiry',{requestId:crypto.randomUUID(),name:'Test Visitor',email:'test@example.test',interest:'Request a consultation',message:'Synthetic test request only',consent:true},token),env,ctx);
+ assert.equal(response.status,201);assert.equal((await response.json()).emailStatus,'not_configured');assert.equal(env.DB.raw.prepare('SELECT count(*) n FROM inquiries').get().n,1);
+});
+test('inquiry idempotency, consent, no other-session access and stored XSS stays escaped',async()=>{
+ const {worker,env}=setup(),token=await session(worker,env),id=crypto.randomUUID();const payload={requestId:id,name:'<script>bad</script>',email:'test@example.test',interest:'Request a quote',message:'Synthetic website inquiry',consent:true};
+ assert.equal((await worker.fetch(request('/api/inquiry',{...payload,consent:false},token),env,ctx)).status,400);
+ assert.equal((await worker.fetch(request('/api/inquiry',payload,token),env,ctx)).status,201);
+ assert.equal((await worker.fetch(request('/api/inquiry',payload,token),env,ctx)).status,200);
+ assert.equal(env.DB.raw.prepare('SELECT count(*) n FROM inquiries').get().n,1);
+ const token2=await session(worker,env);assert.equal((await worker.fetch(request('/api/inquiry',payload,token2,{'CF-Connecting-IP':'192.0.2.2'}),env,ctx)).status,409);
+ const anonymous=await worker.fetch(new Request(origin+'/inbox'),env,ctx);assert.equal(anonymous.status,303);
+ const forbidden=await worker.fetch(new Request(origin+'/inbox',{headers:{'oai-authenticated-user-id':'other','oai-authenticated-user-email':'other@example.test'}}),env,ctx);assert.equal(forbidden.status,403);
+ const owner=await worker.fetch(new Request(origin+'/inbox',{headers:{'oai-authenticated-user-id':'owner','oai-authenticated-user-email':'owner@example.test'}}),env,ctx);assert.equal(owner.status,200);assert.ok((await owner.text()).includes('&lt;script&gt;'));
+});
+test('quotes and unsupported action claims are replaced; provider failure preserves cost reservation',async()=>{
+ const {worker,env}=setup(),token=await session(worker,env),original=globalThis.fetch;
+ globalThis.fetch=async()=>new Response(JSON.stringify({choices:[{message:{content:'I have booked your consultation for $500.'}}]}));
+ try{const response=await worker.fetch(request('/api/chat',{message:'What do you do?'},token),env,ctx);assert.equal(response.status,200);assert.match((await response.json()).answer,/human|confirmation/);assert.equal(env.DB.raw.prepare('SELECT count FROM counters WHERE key=?').get('budget:'+monthKey()).count,1);
+ globalThis.fetch=async()=>new Response('unavailable',{status:500});assert.equal((await worker.fetch(request('/api/chat',{message:'Tell me more'},token),env,ctx)).status,503);assert.equal(env.DB.raw.prepare('SELECT count FROM counters WHERE key=?').get('budget:'+monthKey()).count,2);
+ }finally{globalThis.fetch=original;}
+});
+test('expired token rejected and oversized payload rejected before persistence',async()=>{
+ const {worker,env}=setup(),token=await tokenFor(env.SESSION_SECRET,crypto.randomUUID(),Math.floor(Date.now()/1000)-1);
+ assert.equal((await worker.fetch(request('/api/chat',{message:'hello'},token),env,ctx)).status,401);
+ assert.equal((await worker.fetch(request('/api/session',{data:'x'.repeat(11000)}),env,ctx)).status,413);
+});
+test('no-spend mode answers service questions without any provider call',async()=>{
+ const {worker,env}=setup();env.AI_ENABLED='false';delete env.OPENAI_API_KEY;const token=await session(worker,env),original=globalThis.fetch;let calls=0;
+ globalThis.fetch=async()=>{calls++;throw new Error('must not call provider');};
+ try{const response=await worker.fetch(request('/api/chat',{message:'What services does AWC offer?'},token),env,ctx);assert.equal(response.status,200);const d=await response.json();assert.equal(d.mode,'guide');assert.match(d.answer,/Brand.*Build.*Intelligence.*Growth/);assert.equal(calls,0);assert.equal(env.DB.raw.prepare('SELECT count(*) n FROM counters WHERE key LIKE \'budget:%\'').get().n,0);}finally{globalThis.fetch=original;}
+});

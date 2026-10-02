@@ -1,0 +1,40 @@
+<style>
+ .ava-launch{position:fixed;bottom:22px;right:22px;z-index:2000;background:#a31d30;color:#fff;border:1px solid #cf7180;border-radius:30px;padding:15px 23px;font:600 15px Inter,system-ui;box-shadow:0 8px 30px #50122033;cursor:pointer}
+ #avaDialog{width:min(420px,calc(100vw - 32px));max-height:85dvh;padding:0;border:1px solid #dec1c7;border-radius:18px;background:#fff9f8;color:#32181c;box-shadow:0 20px 70px #24101655;font-family:Inter,system-ui}
+ #avaDialog::backdrop{background:#21111655} .ava-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid #eed9dd} .ava-head h2{font-size:19px;margin:0}.ava-head small{font-size:12px;color:#73545b}
+ .ava-close{font-size:22px;border:0;background:transparent;cursor:pointer;color:#652c39;padding:8px} .ava-body{padding:16px 20px;max-height:40dvh;overflow:auto;display:grid;gap:12px;min-height:100px}.ava-msg{padding:12px 14px;border-radius:12px;line-height:1.65;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere;background:#f2e4e7}.ava-msg.user{background:#a31d30;color:white;margin-left:22px}.ava-msg.assistant{margin-right:10px}
+ .ava-prompts{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 12px}.ava-prompts button,.ava-actions button{border:1px solid #cda7b0;border-radius:20px;background:#fff;color:#7d2036;padding:8px 12px;cursor:pointer;font:12px Inter,system-ui}
+ .ava-input{display:flex;gap:8px;padding:12px 20px;border-top:1px solid #eed9dd}.ava-input textarea{min-width:0;flex:1;padding:10px;border:1px solid #cda7b0;border-radius:8px;resize:vertical;max-height:100px;font:14px Inter,system-ui}.ava-input button{background:#a31d30;color:white;border:0;border-radius:8px;padding:10px;cursor:pointer}.ava-input button:disabled{opacity:.5;cursor:wait}.ava-status{font-size:12px;min-height:20px;padding:0 20px;color:#783047}.ava-actions{display:flex;justify-content:space-between;gap:6px;padding:10px 20px}.ava-note{font-size:11px;line-height:1.6;color:#73545b;padding:0 20px 18px;margin:0}
+ @media(max-width:500px){.ava-launch{bottom:14px;right:14px}.ava-body{max-height:34dvh}}
+</style>
+<button type="button" class="ava-launch" id="avaLaunch" aria-haspopup="dialog" aria-controls="avaDialog">Ask Ava · AWC assistant</button>
+<dialog id="avaDialog" aria-labelledby="avaTitle">
+ <div class="ava-head"><div><h2 id="avaTitle">Ava at AWC</h2><small>Automated service guide · no AI usage</small></div><button type="button" class="ava-close" id="avaClose" aria-label="Close Ava">×</button></div>
+ <div class="ava-body" id="avaMessages" role="log" aria-live="polite" aria-relevant="additions"><div class="ava-msg assistant">Hi, I’m Ava, AWC’s automated service guide. I use prepared service information, with no generative AI calls. I can explain our services and help you prepare a request for the studio.</div></div>
+ <div class="ava-prompts"><button type="button" data-ava-prompt="What services does AWC offer?">Explore services</button><button type="button" data-ava-prompt="Can you help me request a quote?">Request a quote</button><button type="button" data-ava-prompt="How could a receptionist help my cleaning business?">Receptionist pilot</button></div>
+ <form class="ava-input" id="avaForm"><textarea id="avaQuestion" aria-label="Message Ava" placeholder="Ask about your project…" maxlength="800" required rows="2"></textarea><button id="avaSend" type="submit">Send</button></form>
+ <div class="ava-status" id="avaStatus" role="status"></div>
+ <div class="ava-actions"><button type="button" id="avaConsult">Request a consultation</button><button type="button" id="avaNew">New conversation</button></div>
+ <p class="ava-note">Prepared answers cover AWC’s published services. The studio confirms scope, pricing and appointments. Chat stays on this site for up to 24 hours; no messages go to an AI provider in this mode. Don’t share sensitive information. Use the form to send an inquiry.</p>
+</dialog>
+<script>
+(()=>{
+ const dialog=document.getElementById('avaDialog'),messages=document.getElementById('avaMessages'),question=document.getElementById('avaQuestion'),status=document.getElementById('avaStatus'),send=document.getElementById('avaSend');
+ let token=null,sessionPending=null,busy=false,requestId=crypto.randomUUID(),completed=false;
+ async function session(){if(token)return token;if(!sessionPending)sessionPending=fetch('/api/session',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'}).then(async r=>{const d=await r.json();if(!r.ok)throw new Error(d.error||'Please try again later.');token=d.token;return token;}).finally(()=>sessionPending=null);return sessionPending;}
+ async function call(path,payload){const s=await session();const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-AWC-Session':s},body:JSON.stringify(payload)});let d;try{d=await response.json();}catch{throw new Error('The service is unavailable. Please try again.');}if(!response.ok)throw new Error(d.error||'Please try again.');return d;}
+ function append(role,text){const div=document.createElement('div');div.className='ava-msg '+role;div.textContent=text;messages.appendChild(div);messages.scrollTop=messages.scrollHeight;}
+ document.getElementById('avaLaunch').addEventListener('click',()=>{dialog.showModal();question.focus();});
+ document.getElementById('avaClose').addEventListener('click',()=>dialog.close());
+ document.getElementById('avaConsult').addEventListener('click',()=>{dialog.close();document.getElementById('finterest').value='Request a consultation';document.getElementById('contact').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});document.getElementById('fname').focus();});
+ document.getElementById('avaNew').addEventListener('click',()=>{if(busy)return;token=null;messages.replaceChildren();append('assistant','A new conversation is ready. How can I help with AWC’s services?');status.textContent='';question.focus();});
+ document.querySelectorAll('[data-ava-prompt]').forEach(b=>b.addEventListener('click',()=>{question.value=b.dataset.avaPrompt;document.getElementById('avaForm').requestSubmit();}));
+ document.getElementById('avaForm').addEventListener('submit',async e=>{e.preventDefault();if(busy||!question.value.trim())return;const text=question.value.trim();busy=true;send.disabled=true;status.textContent='Finding AWC service information…';try{const d=await call('/api/chat',{message:text});append('user',text);append('assistant',d.answer);question.value='';status.textContent='';}catch(err){status.textContent=err.message;question.value=text;}finally{busy=false;send.disabled=false;}});
+ const contact=document.getElementById('contactForm'),button=document.getElementById('submitBtn'),result=document.getElementById('formConfirm');
+ contact.addEventListener('input',()=>{if(completed){completed=false;requestId=crypto.randomUUID();button.disabled=false;result.classList.remove('show');}});
+ contact.addEventListener('submit',async e=>{e.preventDefault();if(completed)return;button.disabled=true;result.classList.add('show');result.textContent='Saving your inquiry…';try{
+  const d=await call('/api/inquiry',{requestId,name:document.getElementById('fname').value,email:document.getElementById('femail').value,interest:document.getElementById('finterest').value,message:document.getElementById('fmsg').value,consent:document.getElementById('inquiryConsent').checked,attachConversation:document.getElementById('attachConversation').checked,website:document.getElementById('inquiryWebsite').value});
+  result.textContent='Your inquiry is saved for AWC. Reference: '+d.reference+'. '+(d.emailStatus==='accepted'?'The email service accepted the owner notification.':'Email notification is unavailable; your request is still in AWC’s private inbox.')+' Consultation requests need AWC’s confirmation.';completed=true;
+ }catch(err){result.textContent=err.message+' Your entries have been kept.';button.disabled=false;}});
+})();
+</script>
