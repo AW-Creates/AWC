@@ -132,7 +132,7 @@ export function createWorker(html) {
    const name=clean(input.name,1,100),email=clean(input.email,3,254),interest=clean(input.interest,1,100);let message=clean(input.message,5,3000);
    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||/[\r\n]/.test(email)||input.consent!==true||input.website)throw new HttpError(400,'Please check your email and consent to sending these details.');
    if(input.attachEstimate===true) {
-     try {message+='\n\nVisitor-selected planning draft:\n'+estimate(input.estimate).summary;}catch(error){if(error instanceof RangeError)throw new HttpError(400,error.message);throw error;}
+     try {message+='\n\nVisitor-selected preliminary estimate:\n'+estimate(input.estimate).summary;}catch(error){if(error instanceof RangeError)throw new HttpError(400,error.message);throw error;}
    }
    if(!/^[a-f0-9-]{36}$/.test(input.requestId||''))throw new HttpError(400,'Invalid request reference.');
    const existing=await env.DB.prepare('SELECT id,mail_status,session FROM inquiries WHERE id=?').bind(input.requestId).first();

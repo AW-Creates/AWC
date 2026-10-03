@@ -1,6 +1,6 @@
 # AWC offers and estimate review
 
-Status: internal review draft, 2026-10-02. Monetary values are proposed USD planning amounts, unpublished and not approved sales terms. Existing live site remains unchanged until review. Phone, voice spending and generative AI activation are deferred.
+Status: owner approved publication on 2026-10-02 as preliminary USD budgets; final scope and price require a written proposal. Live version 4 includes the estimate flow. Phone, voice spending and generative AI activation are deferred.
 
 ## Customer experience
 

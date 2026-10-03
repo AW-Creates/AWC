@@ -4,7 +4,7 @@ import {estimate,OFFERS} from '../src/offers.mjs';
 import {guideAnswer} from '../src/facts.mjs';
 test('draft estimator calculates bounded itemized additions',()=>{
  const d=estimate({package:'launch',extraPages:2,copyPages:3});
- assert.deepEqual([d.min,d.max],[2100,3450]);assert.equal(d.items.length,3);assert.equal(d.draft,true);assert.match(d.summary,/unpublished/);assert.match(d.summary,/taxes/);
+ assert.deepEqual([d.min,d.max],[2100,3450]);assert.equal(d.items.length,3);assert.equal(d.draft,true);assert.match(d.summary,/Preliminary/);assert.match(d.summary,/taxes/);
  assert.deepEqual([estimate({package:'clarity'}).min,estimate({package:'clarity'}).max],[195,195]);
  const cap=estimate({package:'guide',extraPages:5,copyPages:5});assert.deepEqual([cap.min,cap.max],[3750,6000]);
 });

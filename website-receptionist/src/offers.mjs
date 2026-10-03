@@ -1,11 +1,11 @@
-export const DRAFT_NOTICE = 'REVIEW DRAFT — unpublished proposed USD planning ranges. AWC must confirm scope and price in a written proposal; this is not a quote, booking or purchase.';
+export const DRAFT_NOTICE = 'Preliminary USD budget estimate. AWC must confirm scope and price in a written proposal; this is not a quote, booking or purchase.';
 export const OFFERS = Object.freeze({
  clarity: {name:'Clarity Session',min:195,max:195,scope:'60-minute session and written prioritized action plan',timing:'Written plan in 3–5 business days after the session and completed intake; session date requires agreement',website:false},
  launch: {name:'Launch Website',min:1500,max:2500,scope:'Up to 5 pages, responsive design, contact inquiry form and 2 revision rounds',timing:'2–4 weeks after content readiness, approvals and agreed start',website:true},
  guide: {name:'Website + Inquiry Guide',min:2500,max:4000,scope:'Launch Website plus approved FAQs up to 30 topics, scoped deterministic estimator, email notification and private inbox',timing:'3–5 weeks after content readiness, approved FAQ rules and agreed start',website:true},
  workflow: {name:'Workflow Sprint',min:900,max:1800,scope:'One bounded workflow, at most 2 validated integrations and 2 revision rounds; feasibility first',timing:'1–3 weeks after feasibility, required access and agreed start',website:false}
 });
-export const CARE = 'Optional proposed care plan: $149/month, explicitly opt-in, up to 1 hour of minor updates and a monthly form check. No automatic enrollment, SLA, 24/7 support, unlimited work or vendor fees included.';
+export const CARE = 'Optional care budget: $149/month, explicitly opt-in, up to 1 hour of minor updates and a monthly form check. No automatic enrollment, SLA, 24/7 support, unlimited work or vendor fees included.';
 export const EXCLUSIONS = ['Domain, hosting, vendor subscriptions, third-party usage costs and applicable taxes or fees are separate.', 'Brand identity, e-commerce, custom applications, voice/phone, generative AI, calendar booking and payments require individual scope; they are not included in these estimates.', 'Optional care is separate and never added automatically.'];
 export function estimate(input) {
  if(!input || typeof input!=='object' || Array.isArray(input) || Object.keys(input).some(k=>!['package','extraPages','copyPages'].includes(k)))throw new RangeError('Choose a supported package and valid page counts.');
@@ -22,4 +22,4 @@ export function estimate(input) {
  const summary=[DRAFT_NOTICE,offer.name+': '+range(min,max),...items.map(x=>x.label+': '+range(x.min,x.max)),...assumptions,...EXCLUSIONS].join('\n');
  return {draft:true,currency:'USD',package:input.package,name:offer.name,min,max,items,assumptions,exclusions:EXCLUSIONS,notice:DRAFT_NOTICE,summary};
 }
-export function offerHTML(){return Object.entries(OFFERS).map(([id,o])=>`<article class="offer-card"><h3>${o.name}</h3><p class="offer-price">${o.min===o.max?'$'+o.min+' proposed session amount':'$'+o.min+'–$'+o.max+' proposed range'}</p><p>${o.scope}.</p><p>${o.timing}.</p><a href="#planning-estimate" data-offer="${id}">Explore this draft scope →</a></article>`).join('');}
+export function offerHTML(){return Object.entries(OFFERS).map(([id,o])=>`<article class="offer-card"><h3>${o.name}</h3><p class="offer-price">${o.min===o.max?'$'+o.min+' preliminary session budget':'$'+o.min+'–$'+o.max+' preliminary budget'}</p><p>${o.scope}.</p><p>${o.timing}.</p><a href="#planning-estimate" data-offer="${id}">Explore this scope →</a></article>`).join('');}
