@@ -37,3 +37,8 @@ Visitors can understand services, fit, scope, budget assumptions, process, conte
 ## Next approval
 
 Review the local estimator and offers together. Decide whether to publish indicative ranges, starting prices or discovery-only pricing per service. Do not publish this draft automatically.
+
+## Verified local preview
+Run npm run build, then node scripts/preview.mjs from the publishing checkout. Open http://127.0.0.1:4191/#planning-estimate. This preview uses in-memory synthetic data, no sending-service or AI keys, and resets on restart. Production is unchanged.
+Browser QA 2026-10-02: sample USD2100–3450 itemization displayed; consent-attached synthetic inquiry saved honestly with no email; changing selection invalidated stale estimate attachment; 390px mobile viewport had no horizontal overflow. Existing 12 tests retained. Owner publication/presentation choice still pending.
+
