@@ -21,7 +21,7 @@ For each section record value, source/document date, client approver and approva
 | Secure provisioning | Credential owner, secure-store reference and environment-variable names only; rotation/revocation owner; no passwords, tokens or recovery codes |
 
 ## Required signoffs (versioned, dated, separately attributable)
-- [ ] Client approves exact greeting, every FAQ/fact and catalog statement Ava may state, including source evidence. No BrightHome assertions carried over.
+- [ ] Client approves exact greeting, every FAQ/fact and catalog statement Autumn may state, including source evidence. No BrightHome assertions carried over.
 - [ ] Client approves what must defer: uncertain prices, unsupported service, disputes, reschedule/cancel, sensitive actions and urgent concerns.
 - [ ] Client and AWC approve booking mode: implemented human-authorized calendar booking OR explicitly re-scoped request capture, with corresponding offer/test changes.
 - [ ] Client accepts test cases, numeric success thresholds, data handling and evaluation method in PILOT-ACCEPTANCE-PLAN.md.

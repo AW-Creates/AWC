@@ -16,7 +16,7 @@ Use this checklist before onboarding the first real service business. Blank item
 ## C. Pricing
 - [ ] Mark each service as deterministic quote, estimate only, or human review
 - [ ] Define permitted inputs, minimums, surcharges, taxes/fees, and rounding
-- [ ] Ava must never invent a price or promise an unapproved discount
+- [ ] Autumn must never invent a price or promise an unapproved discount
 
 ## D. Booking
 - [ ] Calendar/booking provider and account owner

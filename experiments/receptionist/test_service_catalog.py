@@ -13,7 +13,7 @@ from .retell_adapter import FAQ, TOOLS
 class ServiceCatalogTests(unittest.TestCase):
     def test_profile_has_bounded_primary_services_and_separate_addons(self):
         self.assertEqual(catalog.PROFILE["business_name"], "BrightHome")
-        self.assertEqual(catalog.PROFILE["agent_name"], "Ava")
+        self.assertEqual(catalog.PROFILE["agent_name"], "Autumn")
         self.assertGreaterEqual(len(catalog.list_services()), 5)
         self.assertLessEqual(len(catalog.list_services()), 8)
         self.assertTrue(catalog.PROFILE["add_ons"])

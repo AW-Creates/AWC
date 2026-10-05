@@ -72,7 +72,7 @@ async def rehearse():
 def present(report):
     """Readable presentation; diagnostic JSON remains the default."""
     print('AVA / BRIGHTHOME - OFFLINE PRESENTATION\nFictional tool walkthrough; no audio or real booking.\n')
-    cues = [('greeting','1. Meet Ava'), ('services','2. Services'), ('deep_clean','3. Deep cleaning'),
+    cues = [('greeting','1. Meet Autumn'), ('services','2. Services'), ('deep_clean','3. Deep cleaning'),
             ('comparison','4. Standard versus deep'), ('unknown','5. An unconfigured service'),
             ('insurance','6. Business FAQ (fictional fact)'), ('barge_in','7. Interruption evidence'),
             ('quote','8. Three-bedroom deep estimate'), ('availability','9a. Mock availability'),

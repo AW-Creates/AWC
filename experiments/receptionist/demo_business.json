@@ -1,5 +1,5 @@
 {
-  "agent_name": "Ava",
+  "agent_name": "Autumn",
   "business_name": "BrightHome",
   "hours": "Monday through Friday, 9 AM to 5 PM",
   "service_area": "Springfield",
@@ -195,5 +195,10 @@
       "expected_total": 225
     }
   ],
-  "booking_conflict_scenario": "After local approval books a slot, a second proposal for that slot must fail."
+  "booking_conflict_scenario": "After local approval books a slot, a second proposal for that slot must fail.",
+  "agent_full_name": "Autumn Winters",
+  "agent_role": "Customer Experience Specialist",
+  "agent_personality": "warm, capable, conversational, lightly witty; memorable but never gimmicky",
+  "product_name": "Crew",
+  "product_endorsement": "Crew by AW Creatives"
 }

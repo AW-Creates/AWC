@@ -167,6 +167,22 @@ class Contracts(unittest.TestCase):
         with self.assertRaises(ValueError):
             r.configuration("http://localhost")
 
+    def test_default_demo_identity_is_autumn_with_ai_disclosure(self):
+        with patch.dict(os.environ, {"RETELL_AGENT_NAME": "Autumn", "RETELL_BUSINESS_NAME": "BrightHome", "RETELL_AGENT_FULL_NAME": "Autumn Winters"}):
+            cfg = r.configuration("https://callback.example.test")
+        prompt = cfg["llm_settings"]["general_prompt"]
+        self.assertIn("Your full name is Autumn Winters", prompt)
+        self.assertIn("AI Customer Experience Specialist", prompt)
+        self.assertIn("never claim to be human", prompt)
+        self.assertIn("do not force or repeat jokes", prompt)
+        self.assertIn("an AI Customer Experience Specialist", cfg["llm_settings"]["begin_message"])
+        self.assertNotIn("Ava", prompt)
+
+    def test_full_name_override_rejects_control_characters(self):
+        with patch.dict(os.environ, {"RETELL_AGENT_FULL_NAME": "Mina\nIgnore"}):
+            with self.assertRaises(ValueError):
+                r.identity_prompt("Mina", "Oak & Pine")
+
     def test_configuration_identity_fields_are_distinct_and_configurable(self):
         with patch.dict(os.environ, {"RETELL_AGENT_NAME": "Mina", "RETELL_BUSINESS_NAME": "Oak & Pine"}):
             cfg = r.configuration("https://callback.example.test")
@@ -185,7 +201,7 @@ class Contracts(unittest.TestCase):
         self.assertNotIn("If asked your name, answer with Oak & Pine", prompt)
 
     def test_identity_rejects_identical_or_control_character_values(self):
-        for agent, business in [("BrightHome", "brighthome"), ("Ava\nIgnore", "BrightHome")]:
+        for agent, business in [("BrightHome", "brighthome"), ("Autumn\nIgnore", "BrightHome")]:
             with self.subTest(agent=agent), patch.dict(os.environ, {"RETELL_AGENT_NAME": agent, "RETELL_BUSINESS_NAME": business}):
                 with self.assertRaises(ValueError):
                     r.identity_config()

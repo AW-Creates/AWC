@@ -7,11 +7,11 @@ walkthrough; existing voice acceptance is separate evidence. Do not stretch a
 120-second capped voice session to cover the whole presentation.
 
 **0:00–0:25 — Introduce the problem.**
-“When your team is busy, callers can leave before anyone answers. This is Ava, the virtual receptionist for fictional BrightHome. The business supplies
-the facts; Ava can explain services, obtain an estimate and prepare an appointment.
-This walkthrough uses synthetic data and does not make real bookings.”
+“When your team is busy, callers can leave before anyone answers. This is Autumn Winters, an AI Customer Experience Specialist demonstrating Crew by AW Creatives for fictional BrightHome. The business supplies
+the facts; Autumn can explain services, obtain an estimate and prepare an appointment.
+Crew is a Digital Workforce platform. Clients receive specialists customized for their business, not a copy of Autumn. This walkthrough uses synthetic data and does not make real bookings.”
 
-Show the configured greeting naming Ava and BrightHome.
+Show the configured greeting naming Autumn and BrightHome.
 
 **0:25–1:15 — Explain services.**
 Caller: “What services do you offer?” Show the six configured offerings and two add-ons.

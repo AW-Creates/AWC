@@ -195,7 +195,7 @@ async def respond(r:TextRequest):
 @app.post('/api/greet')
 async def greet():
     async with LOCK:
-        text='Hello, I am the BrightHome demo receptionist. How can I help with your cleaning today?'
+        text=f"Hello, I'm {BUSINESS_CONFIG['agent_name']}, the AI {BUSINESS_CONFIG['agent_role']} for this fictional {BUSINESS_CONFIG['business_name']} demo. How can I help with your cleaning today?"
         STATE['transcript'].append(dict(role='receptionist',text=text,at=time.time()));persist()
         start=time.perf_counter();wav=await asyncio.to_thread(synthesize,text)
         return dict(text=text,audio_wav=wav,metrics=dict(server_turn_ms=(time.perf_counter()-start)*1000))

@@ -1,4 +1,4 @@
-# Ava / BrightHome operator runbook
+# Autumn / BrightHome operator runbook
 
 Fictional demo only: synthetic details, fixed mock dates, no real booking or human contact.
 Use the offline presentation today. Previous voice acceptance is separate evidence;
@@ -26,7 +26,7 @@ the existing live-call allowance is consumed and must not be reset.
 ```
 
 The results appear in the terminal, with numbered headings. Nothing is spoken aloud
-and you do not type caller questions into this window. Scroll back to **1. Meet Ava**,
+and you do not type caller questions into this window. Scroll back to **1. Meet Autumn**,
 enlarge the text with Ctrl+mouse wheel if needed, then read caller cues from DEMO-SCRIPT.md
 and show the matching result. All scenes run automatically with fresh temporary mock data.
 The scripted local approval is an illustration, not a button the presenter must find.

@@ -1523,26 +1523,26 @@ html[data-theme="light"] .studio-content .agent-steps li.is-operating{border-top
 
   <section class="studio-section intelligence-section" id="agents" aria-labelledby="intelligence-title">
     <div class="studio-wrap">
-      <p class="studio-label">Intelligence in action <span>Applied system / Quote Agent</span></p>
-      <div class="intelligence-layout"><div class="intelligence-story"><h2 id="intelligence-title">What if your business could respond <em>before your competitor does?</em></h2><p>One practical application of Connected Thinking: a quote agent that gathers the right details, applies your pricing rules, and prepares the next step.</p><ol class="agent-steps"><li><b>Ask</b><span>Understand the request.</span></li><li><b>Calculate</b><span>Apply business-specific rules.</span></li><li><b>Prepare</b><span>Bring the estimate and follow-up together.</span></li></ol></div>
+      <p class="studio-label">Intelligence in action <span>Crew by AW Creatives / Digital Workforce</span></p>
+      <div class="intelligence-layout"><div class="intelligence-story"><h2 id="intelligence-title">What if your business could respond <em>before your competitor does?</em></h2><p>Meet Crew by AW Creatives: a Digital Workforce customized around your business. Customer Experience, Sales, Scheduling and Support are example roles. Autumn Winters is one demo Customer Experience Specialist; your specialists get their own names, voices, personality, business facts and action rules. The scripted estimate illustrates one possible role.</p><ol class="agent-steps"><li><b>Ask</b><span>Understand the request.</span></li><li><b>Calculate</b><span>Apply business-specific rules.</span></li><li><b>Prepare</b><span>Bring the estimate and follow-up together.</span></li></ol></div>
         <div class="demo-stage">
-          <div class="mock card conversation-demo" aria-label="Customer chatting with AWC Quote Agent">
-            <div class="mock-bar"><span class="mock-dot"></span><span class="mock-title">AWC / QUOTE AGENT</span><span class="mock-live">SCRIPTED DEMO</span></div>
-            <div class="chat-context"><span>Customer ↔ AWC Quote Agent</span><span>Deck estimate inquiry</span></div>
+          <div class="mock card conversation-demo" aria-label="Customer chatting with Crew Estimate Specialist">
+            <div class="mock-bar"><span class="mock-dot"></span><span class="mock-title">CREW / ESTIMATE SPECIALIST</span><span class="mock-live">SCRIPTED DEMO</span></div>
+            <div class="chat-context"><span>Customer ↔ Crew Estimate Specialist</span><span>Deck estimate inquiry</span></div>
             <div class="conversation-body">
               <div class="chat-history" id="chatHistory" tabindex="0" role="region" aria-label="Customer and agent conversation history">
-                <div class="chat-welcome" id="chatWelcome"><span class="speaker">AWC Quote Agent</span><p>A starting estimate begins with a conversation.</p><small>Watch a customer describe what they need below.</small></div>
+                <div class="chat-welcome" id="chatWelcome"><span class="speaker">Crew Estimate Specialist</span><p>A starting estimate begins with a conversation.</p><small>Watch a customer describe what they need below.</small></div>
                 <div class="conversation-thread" id="conversationThread">
                   <div class="conversation-message customer" data-message="0"><span class="speaker">Customer</span><p>Hi, I’m trying to get an idea of what it might cost to redo my back deck. It’s getting pretty rough.</p></div>
-                  <div class="conversation-message agent" data-message="1"><span class="speaker">AWC Quote Agent</span><p>Absolutely — I can help with a starting estimate. About how large is the deck?</p></div>
+                  <div class="conversation-message agent" data-message="1"><span class="speaker">Crew Estimate Specialist</span><p>Absolutely — I can help with a starting estimate. About how large is the deck?</p></div>
                   <div class="conversation-message customer" data-message="2"><span class="speaker">Customer</span><p>I’m honestly not sure. Maybe 20 by 30? It wraps around the house a little.</p></div>
-                  <div class="conversation-message agent" data-message="3"><span class="speaker">AWC Quote Agent</span><p>We’ll use roughly 600 sq ft for now and confirm it on site. What material are you thinking of?</p></div>
+                  <div class="conversation-message agent" data-message="3"><span class="speaker">Crew Estimate Specialist</span><p>We’ll use roughly 600 sq ft for now and confirm it on site. What material are you thinking of?</p></div>
                   <div class="conversation-message customer" data-message="4"><span class="speaker">Customer</span><p>Not sure. I’d like something I don’t have to keep staining. Is that composite?</p></div>
-                  <div class="conversation-message agent" data-message="5"><span class="speaker">AWC Quote Agent</span><p>Yes, composite is a lower-maintenance option. I’ll use that as a starting point. Does the old decking need removing?</p></div>
+                  <div class="conversation-message agent" data-message="5"><span class="speaker">Crew Estimate Specialist</span><p>Yes, composite is a lower-maintenance option. I’ll use that as a starting point. Does the old decking need removing?</p></div>
                   <div class="conversation-message customer" data-message="6"><span class="speaker">Customer</span><p>Yeah, the boards are pretty bad. I don’t know if the frame underneath can stay, though.</p></div>
-                  <div class="conversation-message agent" data-message="7"><span class="speaker">AWC Quote Agent</span><p>That’s okay. I’ll include decking removal and assume the current frame can stay. If it needs structural repairs, we’ll confirm those at the site inspection before the final proposal. That gives me enough for a preliminary estimate.</p></div>
+                  <div class="conversation-message agent" data-message="7"><span class="speaker">Crew Estimate Specialist</span><p>That’s okay. I’ll include decking removal and assume the current frame can stay. If it needs structural repairs, we’ll confirm those at the site inspection before the final proposal. That gives me enough for a preliminary estimate.</p></div>
                 </div>
-                <div class="conversation-thinking" id="conversationThinking" hidden><span class="speaker">AWC Quote Agent</span><span class="thinking-copy">Thinking</span><span class="thinking-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+                <div class="conversation-thinking" id="conversationThinking" hidden><span class="speaker">Crew Estimate Specialist</span><span class="thinking-copy">Thinking</span><span class="thinking-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
               </div>
               <div class="conversation-estimate" id="conversationEstimate" role="region" aria-label="Preliminary estimate summary" tabindex="0" hidden>
                 <div class="estimate-heading"><span>Preliminary estimate</span><span>Illustrative / 01</span></div>
@@ -1774,7 +1774,7 @@ html[data-theme="light"] .studio-content .agent-steps li.is-operating{border-top
         state('Customer message received',0);
         later(()=>{
           thinking.hidden=false;thinking.querySelector('.thinking-copy').textContent='Thinking…';follow();
-          state('AWC Quote Agent is thinking',0);
+          state('Crew Estimate Specialist is thinking',0);
           later(()=>{
             thinking.hidden=true;messages[index+1].hidden=false;
             extracted.textContent=facts[index/2];follow();state('Project details clarified',index>=4?1:0);

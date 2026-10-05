@@ -67,11 +67,13 @@ async function notify(row,env) {
 function inboxHTML(rows) {
   return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AWC inquiry inbox</title><style>body{font:16px system-ui;margin:32px auto;max-width:900px;padding:16px;background:#fff9f8;color:#32181c}article{border:1px solid #cfb8bc;padding:20px;margin:18px 0;border-radius:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#9d2440}</style><h1>AWC inquiry inbox</h1><p>Owner only. Requests need human confirmation. Email status 'accepted' means the sending service accepted the notification, not verified inbox receipt.</p><p><a href="/">Website</a> · <a href="/signout-with-chatgpt?return_to=/" target="_top">Sign out</a></p>${rows.map(r=>`<article><h2>${escape(r.interest)}</h2><p>${escape(r.name)} · ${escape(r.email)}</p><p>Reference: ${escape(r.id)}<br>${escape(new Date(r.created*1000).toISOString())}<br>Email: ${escape(r.mail_status)}</p><pre>${escape(r.message)}</pre><details><summary>Attached conversation</summary><pre>${escape(JSON.parse(r.transcript).map(t=>`${t.role}: ${t.content}`).join('\n\n'))}</pre></details></article>`).join('') || '<p>No inquiries yet.</p>'}</html>`;
 }
-export function createWorker(html) {
+export function voiceAvailable(env) {const cap=Number(env.CREW_VOICE_SESSION_CAP);return !(env.CREW_VOICE_ENABLED!=='true' || !env.RETELL_API_KEY || !/^agent_[a-zA-Z0-9]+$/.test(env.CREW_RETELL_AGENT_ID||'') || !env.CREW_RETELL_AGENT_VERSION || !/^[a-zA-Z0-9_-]{1,64}$/.test(env.CREW_VOICE_ALLOWANCE_ID||'') || env.CREW_VOICE_REVIEWED!=='true' || !Number.isInteger(cap) || cap<1 || cap>10);}
+export function createWorker(html, assets={}) {
  return { async fetch(request,env,ctx) {
   try {
    const path=new URL(request.url).pathname;
    if(path==='/' && ['GET','HEAD'].includes(request.method)) return request.method==='HEAD'?new Response(null,{headers:baseHeaders}):page(html);
+   if(assets[path] && ['GET','HEAD'].includes(request.method))return new Response(request.method==='HEAD'?null:assets[path],{headers:{...baseHeaders,'Content-Type':'application/javascript; charset=utf-8'}});
    if(path==='/favicon.ico')return new Response(null,{status:204});
    if(!env.DB || !env.SESSION_SECRET) throw new HttpError(503,'The service is being configured. Please try again later.');
    if(path==='/inbox' && request.method==='GET') {
@@ -79,16 +81,35 @@ export function createWorker(html) {
      if(!owner(request,env))throw new HttpError(403,'This inbox is available only to the AWC owner.');
      const rows=await env.DB.prepare('SELECT * FROM inquiries WHERE expires > ? ORDER BY created DESC LIMIT 100').bind(Math.floor(Date.now()/1000)).all();return page(inboxHTML(rows.results));
    }
-   if(!['/api/session','/api/chat','/api/inquiry','/api/estimate'].includes(path))return json({error:'Not found'},404);
+   if(!['/api/session','/api/chat','/api/inquiry','/api/estimate','/api/voice-session'].includes(path))return json({error:'Not found'},404);
    if(request.method!=='POST')return json({error:'Method not allowed'},405);
    sameOrigin(request,env);const input=await body(request);
    ctx?.waitUntil(cleanup(env.DB).catch(()=>{}));
    if(path==='/api/session') {
      await rate(request,env,'session',12,3600);const id=crypto.randomUUID(),expires=Math.floor(Date.now()/1000)+DAY;
      await env.DB.prepare('INSERT INTO chat_sessions(id,history,expires,busy_until) VALUES(?,?,?,0)').bind(id,'[]',expires).run();
-     return json({token:await tokenFor(env.SESSION_SECRET,id,expires),aiAvailable:env.AI_ENABLED==='true' && !!env.OPENAI_API_KEY});
+     return json({token:await tokenFor(env.SESSION_SECRET,id,expires),voiceAvailable:voiceAvailable(env),aiAvailable:env.AI_ENABLED==='true' && !!env.OPENAI_API_KEY});
    }
    const id=await sessionId(request,env);
+   if(path==='/api/voice-session') {
+     if(input.consent!==true)throw new HttpError(400,'Please agree to the voice demo disclosure.');
+     const active=await env.DB.prepare('SELECT history FROM chat_sessions WHERE id=? AND expires>?').bind(id,Math.floor(Date.now()/1000)).first();
+     if(!active)throw new HttpError(401,'Your conversation expired. Please start again.');
+     // Independent website agent, reviewed published version and finite allowance. Never reuse BrightHome implicitly.
+     const cap=Number(env.CREW_VOICE_SESSION_CAP);
+     if(!voiceAvailable(env))throw new HttpError(503,'Voice preview is not enabled yet. Explore Crew with Autumn’s text guide or send an inquiry.');
+     await rate(request,env,'voice',2,3600);
+     const now=Math.floor(Date.now()/1000);
+     if(!await counter(env.DB,'voice-session:'+id,1,now+DAY))throw new HttpError(429,'This conversation already requested a voice session. Use the text guide or inquiry form.');
+     // No refunds or retries: failed/abandoned creations consume allowance too.
+     if(!await counter(env.DB,'voice-allowance:'+env.CREW_VOICE_ALLOWANCE_ID,cap,253402300799))throw new HttpError(429,'Voice demo allowance is exhausted. Please use the text guide.');
+     let response;
+     try {response=await fetch('https://api.retellai.com/v3/create-web-call',{method:'POST',headers:{Authorization:'Bearer '+env.RETELL_API_KEY,'Content-Type':'application/json'},body:JSON.stringify({agent_id:env.CREW_RETELL_AGENT_ID,agent_version:env.CREW_RETELL_AGENT_VERSION,agent_override:{agent:{max_call_duration_ms:120000,data_storage_setting:'basic_attributes_only',contact_memory_config:{enable_read:false,enable_update:false},pre_session_tools:[],post_session_tools:[]}},metadata:{channel:'crew-website-demo'}}),signal:AbortSignal.timeout(15000)});}catch{throw new HttpError(503,'Voice connection failed. Please use the text guide.');}
+     if(!response.ok)throw new HttpError(503,'Voice connection failed. Please use the text guide.');
+     const data=await response.json();
+     if(typeof data.access_token!=='string'||typeof data.call_id!=='string'||data.transport!=='gateway'||!Array.isArray(data.ice_servers)||!Number.isFinite(data.expires_at)||data.expires_at<=Date.now())throw new HttpError(503,'Voice connection failed. Please use the text guide.');
+     return json({access_token:data.access_token,call_id:data.call_id,transport:data.transport,ice_servers:data.ice_servers,expires_at:data.expires_at});
+   }
    if(path==='/api/estimate') {
      await rate(request,env,'estimate',12,60);
      const active=await env.DB.prepare('SELECT history FROM chat_sessions WHERE id=? AND expires>?').bind(id,Math.floor(Date.now()/1000)).first();
@@ -107,7 +128,7 @@ export function createWorker(html) {
          const answer=guideAnswer(message);history.push({role:'user',content:message},{role:'assistant',content:answer});
          await env.DB.prepare('UPDATE chat_sessions SET history=? WHERE id=?').bind(JSON.stringify(history),id).run();return json({answer,mode:'guide'});
        }
-       if(!env.OPENAI_API_KEY)throw new HttpError(503,'Ava is unavailable right now. You can still send an inquiry using the form.');
+       if(!env.OPENAI_API_KEY)throw new HttpError(503,'Autumn is unavailable right now. You can still send an inquiry using the form.');
        if(/\b(price|pricing|cost|quote|budget|discount|refund|payment|insured|insurance)\b|how much|book.*(consultation|appointment)|confirm.*(consultation|appointment)/i.test(message)) {
          const answer='AWC confirms pricing, scope and consultation availability personally. I can help you prepare a request, but I cannot issue a quote or confirm an appointment. Use “Request a consultation” or the contact form and tell us what you want to improve, your project needs and any timing preferences.';
          history.push({role:'user',content:message},{role:'assistant',content:answer});
@@ -117,9 +138,9 @@ export function createWorker(html) {
        if(encoder.encode(JSON.stringify(messages)).length>14000)throw new HttpError(413,'This conversation is too long. Please submit an inquiry.');
        // Reserve two cents BEFORE each model request. No refunds/retries, including failures.
        // At current pinned model prices, <=14k input UTF-8 bytes and 350 output tokens cost <0.02 USD.
-       if(!await counter(env.DB,`budget:${monthKey()}`,500,now+40*DAY))throw new HttpError(429,'Ava has reached her monthly usage limit. Please use the inquiry form.');
+       if(!await counter(env.DB,`budget:${monthKey()}`,500,now+40*DAY))throw new HttpError(429,'Autumn has reached her monthly usage limit. Please use the inquiry form.');
        const response=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{Authorization:`Bearer ${env.OPENAI_API_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({model:MODEL,messages,max_tokens:350,temperature:0.2,store:false}),signal:AbortSignal.timeout(25000)});
-       if(!response.ok)throw new HttpError(503,'Ava is unavailable right now. Please use the inquiry form.');
+       if(!response.ok)throw new HttpError(503,'Autumn is unavailable right now. Please use the inquiry form.');
        const data=await response.json();let answer=data.choices?.[0]?.message?.content;
        if(typeof answer!=='string'||!answer.trim())throw new HttpError(503,'Please use the inquiry form so AWC can help.');
        answer=answer.slice(0,2000);

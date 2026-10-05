@@ -106,7 +106,7 @@
   },
   "demo_replacement_map": {
     "BrightHome": "{{DISPLAY_BUSINESS_NAME}}",
-    "Ava": "{{AGENT_NAME}}",
+    "Autumn": "{{AGENT_NAME}}",
     "standard/deep/recurring cleaning services": "service_catalog",
     "$225 example quote": "{{DETERMINISTIC_QUOTE_RULE}}",
     "demo contacts and policies": "business_profile, faq_policies, handoff",

@@ -1,11 +1,13 @@
 import {offerHTML} from '../src/offers.mjs';
 import {readFileSync,writeFileSync,mkdirSync,cpSync,existsSync,unlinkSync} from 'node:fs';
+const assets={};
+for(const [name,file] of Object.entries({'eventemitter3':'eventemitter3/dist/eventemitter3.umd.js','livekit':'livekit-client/dist/livekit-client.umd.js','retell':'retell-client-js-sdk/dist/index.umd.js'}))assets['/crew-assets/'+name+'.js']=readFileSync('node_modules/'+file,'utf8');
 const html=readFileSync('public/index.html','utf8').replace('<!-- DRAFT_OFFER_CARDS -->',offerHTML());
 if(existsSync('dist/index.html'))unlinkSync('dist/index.html');
 mkdirSync('dist/server',{recursive:true});mkdirSync('dist/.openai',{recursive:true});
 cpSync('src/offers.mjs','dist/server/offers.mjs');
 cpSync('src/worker.mjs','dist/server/worker.mjs');cpSync('src/facts.mjs','dist/server/facts.mjs');
-writeFileSync('dist/server/index.js',`import {createWorker} from './worker.mjs';\nexport default createWorker(${JSON.stringify(html)});\n`);
-cpSync('.openai/hosting.json','dist/.openai/hosting.json');cpSync('drizzle','dist/.openai/drizzle',{recursive:true});
+writeFileSync('dist/server/index.js',`import {createWorker} from './worker.mjs';\nexport default createWorker(${JSON.stringify(html)},${JSON.stringify(assets)});\n`);
+if(existsSync('.openai/hosting.json'))cpSync('.openai/hosting.json','dist/.openai/hosting.json');cpSync('drizzle','dist/.openai/drizzle',{recursive:true});
 writeFileSync('dist/server/wrangler.json',JSON.stringify({name:'awc-website-local',main:'index.js',compatibility_date:'2025-09-25',d1_databases:[{binding:'DB',database_name:'awc-local',database_id:'00000000-0000-0000-0000-000000000001'}]},null,2));
 console.log('AWC Worker built; original design retained.');

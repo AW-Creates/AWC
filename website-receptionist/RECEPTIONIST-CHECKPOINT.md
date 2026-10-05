@@ -2,7 +2,7 @@
 
 User decisions: inquiries to the designated server-side recipient; Resend account switched to match it; AI ceiling $10/month; consultations are requests requiring owner confirmation. Public design retained. No phone/voice/PSTN integration or outreach.
 
-Sources of truth: public/index.html (existing page plus Ava dialog/live inquiry handler), src/facts.mjs (bounded site facts), src/worker.mjs (runtime), db/schema.ts and generated drizzle/ migrations. Do not rerun scripts/upgrade-page.py: it is a one-time recovery transformation and now intentionally fails its assertion rather than duplicating UI.
+Sources of truth: public/index.html (existing page plus Autumn dialog/live inquiry handler), src/facts.mjs (bounded site facts), src/worker.mjs (runtime), db/schema.ts and generated drizzle/ migrations. Do not rerun scripts/upgrade-page.py: it is a one-time recovery transformation and now intentionally fails its assertion rather than duplicating UI.
 
 Runtime secrets belong in Sites only: OPENAI_API_KEY, SESSION_SECRET, OWNER_EMAIL, INQUIRY_TO, RESEND_API_KEY. .env.example documents empty names. MAIL_FROM and AI_ENABLED are nonsecret. Local .dev.vars is test-only and ignored. No key in source or browser.
 
@@ -15,3 +15,5 @@ Inquiries: server validates fields/consent, rate limits, unique id and session o
 Validation so far: six meaningful Node/real-SQLite tests pass (budget boundary/fail-closed, origin/IP/session, consent/idempotency/isolation/XSS, quote/action guard/provider failure, expiry/payload); schema generated and inspected; production npm audit zero vulnerabilities; local browser saved synthetic consultation request and accurately reported unavailable email; AI-disabled fallback preserved visitor question. Live model, delivery, owner sign-in, spoof resistance and mobile QA remain pending, as does the Resend key. Runtime disabled APIs never report success. Do not mark milestone complete until remaining checks pass and user verifies email receipt.
 
 2026-10-01 update: User chose no-spend prepared service information because API generation returned billing_not_active. AI_ENABLED=false and hosted OPENAI_API_KEY removed. Guide uses prepared answers, never calls a provider or reserves budget; seven tests pass and build passes. Public UI discloses automated service guide. Live cross-origin and forged owner-header requests rejected (403). Resend key still absent in canonical .env; notification delivery remains incomplete. Publish this guide revision and verify live before closeout.
+
+2026-10-05: Crew/Autumn source MVP and secure disabled-by-default website voice endpoint implemented. Current status and activation boundaries are in ../docs/crew/WEBSITE-VOICE-MVP.md and ../PROJECT_STATE.md. Earlier dated checkpoints below/above remain historical evidence.

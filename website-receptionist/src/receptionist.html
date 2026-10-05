@@ -1,35 +1,87 @@
 <style>
- .ava-launch{position:fixed;bottom:22px;right:22px;z-index:2000;background:#a31d30;color:#fff;border:1px solid #cf7180;border-radius:30px;padding:15px 23px;font:600 15px Inter,system-ui;box-shadow:0 8px 30px #50122033;cursor:pointer}
- #avaDialog{width:min(420px,calc(100vw - 32px));max-height:85dvh;padding:0;border:1px solid #dec1c7;border-radius:18px;background:#fff9f8;color:#32181c;box-shadow:0 20px 70px #24101655;font-family:Inter,system-ui}
- #avaDialog::backdrop{background:#21111655} .ava-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid #eed9dd} .ava-head h2{font-size:19px;margin:0}.ava-head small{font-size:12px;color:#73545b}
- .ava-close{font-size:22px;border:0;background:transparent;cursor:pointer;color:#652c39;padding:8px} .ava-body{padding:16px 20px;max-height:40dvh;overflow:auto;display:grid;gap:12px;min-height:100px}.ava-msg{padding:12px 14px;border-radius:12px;line-height:1.65;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere;background:#f2e4e7}.ava-msg.user{background:#a31d30;color:white;margin-left:22px}.ava-msg.assistant{margin-right:10px}
- .ava-prompts{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 12px}.ava-prompts button,.ava-actions button{border:1px solid #cda7b0;border-radius:20px;background:#fff;color:#7d2036;padding:8px 12px;cursor:pointer;font:12px Inter,system-ui}
- .ava-input{display:flex;gap:8px;padding:12px 20px;border-top:1px solid #eed9dd}.ava-input textarea{min-width:0;flex:1;padding:10px;border:1px solid #cda7b0;border-radius:8px;resize:vertical;max-height:100px;font:14px Inter,system-ui}.ava-input button{background:#a31d30;color:white;border:0;border-radius:8px;padding:10px;cursor:pointer}.ava-input button:disabled{opacity:.5;cursor:wait}.ava-status{font-size:12px;min-height:20px;padding:0 20px;color:#783047}.ava-actions{display:flex;justify-content:space-between;gap:6px;padding:10px 20px}.ava-note{font-size:11px;line-height:1.6;color:#73545b;padding:0 20px 18px;margin:0}
- @media(max-width:500px){.ava-launch{bottom:14px;right:14px}.ava-body{max-height:34dvh}}
+ .specialist-launch{position:fixed;bottom:22px;right:22px;z-index:2000;background:#a31d30;color:#fff;border:1px solid #cf7180;border-radius:30px;padding:15px 23px;font:600 15px Inter,system-ui;box-shadow:0 8px 30px #50122033;cursor:pointer}
+ #specialistDialog{width:min(420px,calc(100vw - 32px));max-height:85dvh;padding:0;border:1px solid #dec1c7;border-radius:18px;background:#fff9f8;color:#32181c;box-shadow:0 20px 70px #24101655;font-family:Inter,system-ui}
+ #specialistDialog::backdrop{background:#21111655} .specialist-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid #eed9dd} .specialist-head h2{font-size:19px;margin:0}.specialist-head small{font-size:12px;color:#73545b}
+ .specialist-close{font-size:22px;border:0;background:transparent;cursor:pointer;color:#652c39;padding:8px} .specialist-body{padding:16px 20px;max-height:40dvh;overflow:auto;display:grid;gap:12px;min-height:100px}.specialist-msg{padding:12px 14px;border-radius:12px;line-height:1.65;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere;background:#f2e4e7}.specialist-msg.user{background:#a31d30;color:white;margin-left:22px}.specialist-msg.assistant{margin-right:10px}
+ .specialist-prompts{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 12px}.specialist-prompts button,.specialist-actions button{border:1px solid #cda7b0;border-radius:20px;background:#fff;color:#7d2036;padding:8px 12px;cursor:pointer;font:12px Inter,system-ui}
+ .specialist-input{display:flex;gap:8px;padding:12px 20px;border-top:1px solid #eed9dd}.specialist-input textarea{min-width:0;flex:1;padding:10px;border:1px solid #cda7b0;border-radius:8px;resize:vertical;max-height:100px;font:14px Inter,system-ui}.specialist-input button{background:#a31d30;color:white;border:0;border-radius:8px;padding:10px;cursor:pointer}.specialist-input button:disabled{opacity:.5;cursor:wait}.specialist-status{font-size:12px;min-height:20px;padding:0 20px;color:#783047}.specialist-actions{display:flex;justify-content:space-between;gap:6px;padding:10px 20px}.specialist-note{font-size:11px;line-height:1.6;color:#73545b;padding:0 20px 18px;margin:0}
+ @media(max-width:500px){.specialist-launch{bottom:14px;right:14px}.specialist-body{max-height:34dvh}}
 </style>
-<button type="button" class="ava-launch" id="avaLaunch" aria-haspopup="dialog" aria-controls="avaDialog">Ask Ava · AWC assistant</button>
-<dialog id="avaDialog" aria-labelledby="avaTitle">
- <div class="ava-head"><div><h2 id="avaTitle">Ava at AWC</h2><small>Automated service guide · no AI usage</small></div><button type="button" class="ava-close" id="avaClose" aria-label="Close Ava">×</button></div>
- <div class="ava-body" id="avaMessages" role="log" aria-live="polite" aria-relevant="additions"><div class="ava-msg assistant">Hi, I’m Ava, AWC’s automated service guide. I use prepared service information, with no generative AI calls. I can explain our services and help you prepare a request for the studio.</div></div>
- <div class="ava-prompts"><button type="button" data-ava-prompt="What services does AWC offer?">Explore services</button><button type="button" data-ava-prompt="Can you help me request a quote?">Request a quote</button><button type="button" data-ava-prompt="What are the preliminary budget ranges?">Planning ranges</button></div>
- <form class="ava-input" id="avaForm"><textarea id="avaQuestion" aria-label="Message Ava" placeholder="Ask about your project…" maxlength="800" required rows="2"></textarea><button id="avaSend" type="submit">Send</button></form>
- <div class="ava-status" id="avaStatus" role="status"></div>
- <div class="ava-actions"><button type="button" id="avaConsult">Request a consultation</button><button type="button" id="avaNew">New conversation</button></div>
- <p class="ava-note">Prepared answers cover AWC’s published services. The studio confirms scope, pricing and appointments. Chat stays on this site for up to 24 hours; no messages go to an AI provider in this mode. Don’t share sensitive information. Use the form to send an inquiry.</p>
+<button type="button" class="specialist-launch" id="specialistLaunch" aria-haspopup="dialog" aria-controls="specialistDialog">Talk to Autumn · Crew</button>
+<dialog id="specialistDialog" aria-labelledby="specialistTitle">
+ <div class="specialist-head"><div><h2 id="specialistTitle">Autumn Winters</h2><small>Crew by AW Creatives · Customer Experience Specialist</small></div><button type="button" class="specialist-close" id="specialistClose" aria-label="Close Autumn">×</button></div>
+ <style>
+ .crew-voice{padding:18px 20px;border-bottom:1px solid #dec1c7;background:linear-gradient(135deg,#f7e5e8,#fff9f8)}.crew-voice p{font-size:13px;line-height:1.6;margin:8px 0}.crew-voice button,.crew-voice a{font:600 13px system-ui;border:1px solid #b25d6b;border-radius:9px;padding:10px 14px;cursor:pointer;background:#a31d30;color:white;text-decoration:none;display:inline-block}.crew-voice button:disabled{opacity:.6;cursor:default}.crew-controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.crew-orb{display:inline-grid;place-items:center;width:46px;height:46px;border:1px solid #b25d6b;border-radius:50%;background:#a31d30;color:#fff;margin-right:10px;font:600 16px system-ui}.crew-state{display:flex;align-items:center;font-weight:600;font-size:14px}.crew-voice label{display:flex;gap:8px;align-items:flex-start;font-size:12px;line-height:1.5}.crew-voice input{flex-shrink:0;margin-top:3px}#crewEnd{background:transparent;color:inherit}#crewCTA{background:transparent;color:inherit}#crewCTA[hidden]{display:none}.crew-voice :focus-visible,.specialist-launch:focus-visible,.specialist-close:focus-visible{outline:3px solid #d34761;outline-offset:3px}
+ html[data-theme="dark"] #specialistDialog{background:#24191c;color:#fff2f4;border-color:#754752}html[data-theme="dark"] .crew-voice{background:linear-gradient(135deg,#42242e,#24191c);border-color:#754752}html[data-theme="dark"] .specialist-head small,html[data-theme="dark"] .specialist-note,html[data-theme="dark"] .specialist-status{color:#e6bcc6}html[data-theme="dark"] .specialist-msg.assistant{background:#422b33}html[data-theme="dark"] .specialist-close{color:#fff2f4}#specialistDialog{max-height:90dvh;overflow-y:auto}.specialist-body{min-height:70px;max-height:24dvh!important}@media(max-width:500px){.crew-voice{padding:14px 16px}.crew-voice p{font-size:12px}.specialist-body{padding:12px 16px}.specialist-head{padding:14px 16px}}@media(prefers-reduced-motion:reduce){#specialistDialog *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+ </style>
+ <section class="crew-voice" aria-label="Autumn voice demo">
+ <div class="crew-state"><span class="crew-orb" aria-hidden="true">AW</span><span id="crewState" role="status" aria-live="polite" data-state="idle">Ready to meet Autumn</span></div>
+ <p>Experience one specialist. Imagine your own team.</p>
+ <label><input id="crewConsent" type="checkbox"> I agree to try an AI voice demo processed by Retell. Microphone access starts only when I choose Start voice. Please don’t share sensitive information.</label>
+ <div class="crew-controls"><button id="crewStart" type="button">Start voice</button><button id="crewEnd" type="button" disabled>End conversation</button></div>
+ <p id="crewHint">Voice preview requires separate activation. The prepared-answer text guide below is available now. Voice is limited to two minutes; requests and final quotes need human confirmation.</p>
+ <p id="crewError" role="alert"></p><a id="crewCTA" href="#contact" hidden>Shape your own Crew specialist →</a>
+ </section>
+ <script src="/crew-assets/eventemitter3.js"></script><script>window.eventemitter3=window.EventEmitter3;</script><script src="/crew-assets/livekit.js"></script><script>window.livekitClient=window.LivekitClient;</script><script src="/crew-assets/retell.js"></script>
+ <script>
+ (()=>{
+ const dialog=document.getElementById('specialistDialog'),start=document.getElementById('crewStart'),end=document.getElementById('crewEnd'),state=document.getElementById('crewState'),error=document.getElementById('crewError'),cta=document.getElementById('crewCTA'),consent=document.getElementById('crewConsent'),hint=document.getElementById('crewHint');
+ let client=null,stream=null,context=null,frame=null,timer=null,watchdog=null,generation=0,active=false,lastMic=0,lastRemote=0;
+ const labels={idle:'Ready to meet Autumn',connecting:'Connecting to Autumn…',listening:'Listening · your microphone is on',thinking:'Thinking · waiting for Autumn',speaking:'Autumn is speaking',error:'Voice unavailable',ended:'Conversation ended'};
+ function show(value){state.dataset.state=value;state.textContent=labels[value];}
+ function release(){clearTimeout(timer);clearTimeout(watchdog);cancelAnimationFrame(frame);stream?.getTracks().forEach(t=>t.stop());stream=null;context?.close().catch(()=>{});context=null;}
+ function stop(value='ended'){generation++;active=false;release();const previous=client;client=null;previous?.stopCall();start.disabled=false;end.disabled=true;consent.disabled=false;show(value);cta.hidden=false;}
+ function fail(){stop('error');error.textContent='Voice could not connect. Check microphone permission, or use Autumn’s text guide and inquiry form. No automatic retry.';}
+ end.addEventListener('click',()=>stop());dialog.addEventListener('close',()=>{if(active)stop();});dialog.addEventListener('cancel',()=>{if(active)stop();});window.addEventListener('pagehide',()=>stop());
+ cta.addEventListener('click',e=>{e.preventDefault();dialog.close();document.getElementById('finterest').value='Request a consultation';document.getElementById('contact').scrollIntoView({behavior:'instant'});document.getElementById('fname').focus();});
+ start.addEventListener('click',async()=>{
+ if(active)return;error.textContent='';if(!consent.checked){error.textContent='Please agree to the AI voice demo disclosure first.';consent.focus();return;}
+ if(!isSecureContext||!navigator.mediaDevices?.getUserMedia){error.textContent='Voice needs HTTPS and microphone support. Use the text guide below.';return;}
+ if(!window.retellClientJsSdk?.RetellWebClient){error.textContent='Voice tools could not load. Use the text guide below.';return;}
+ active=true;const current=++generation;start.disabled=true;end.disabled=false;consent.disabled=true;cta.hidden=true;show('connecting');
+ watchdog=setTimeout(()=>{if(active&&generation===current)fail();},25000);
+ try{
+ const sessionResponse=await fetch('/api/session',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});const session=await sessionResponse.json();if(!sessionResponse.ok)throw new Error('session');if(generation!==current)return;
+ if(!session.voiceAvailable){stop('error');error.textContent='Voice preview is not enabled yet. Use Autumn’s text guide or shape your own specialist below.';return;}
+ // Ask permission before reserving any provider session; end/cancel also works while permission is pending.
+ const granted=await navigator.mediaDevices.getUserMedia({audio:true});if(generation!==current){granted.getTracks().forEach(t=>t.stop());return;}stream=granted;
+
+ const response=await fetch('/api/voice-session',{method:'POST',headers:{'Content-Type':'application/json','X-AWC-Session':session.token},body:JSON.stringify({consent:true})});const data=await response.json();if(generation!==current)return;if(!response.ok){stop('error');error.textContent=data.error||'Voice is unavailable. Use the text guide.';return;}
+ const Client=window.retellClientJsSdk?.RetellWebClient;if(!Client)throw new Error('sdk');client=new Client();
+ context=new AudioContext();const analyser=context.createAnalyser();analyser.fftSize=512;context.createMediaStreamSource(stream).connect(analyser);const samples=new Uint8Array(analyser.fftSize);
+ // Gateway does not supply turn events. Audio activity estimates are UI hints, not claims about the model’s internal state.
+ hint.textContent='AI voice demo · up to two minutes. Turn labels estimate microphone and playback activity. Voice is not attached to your inquiry; use the form for a human response.';
+ function tick(){if(!active||generation!==current)return;analyser.getByteTimeDomainData(samples);const peak=Math.max(...samples.map(v=>Math.abs(v-128)));const now=performance.now();if(peak>9)lastMic=now;if(now-lastRemote<350)show('speaking');else if(now-lastMic<450)show('listening');else if(now-lastMic<2500&&lastMic>0)show('thinking');else show('listening');frame=requestAnimationFrame(tick);}
+ client.on('call_started',()=>{if(generation!==current)return;clearTimeout(watchdog);show('listening');frame=requestAnimationFrame(tick);});
+ client.on('audio',audio=>{if(generation===current&&audio.some(v=>Math.abs(v)>.02))lastRemote=performance.now();});
+ client.on('call_ended',()=>{if(generation===current)stop();});client.on('error',()=>{if(generation===current)fail();});
+ timer=setTimeout(()=>{if(generation===current)stop();},115000);
+ await client.startCall({accessToken:data.access_token,callId:data.call_id,transport:data.transport,iceServers:data.ice_servers,emitRawAudioSamples:true});
+ }catch{if(generation===current)fail();}
+ });
+ })();
+ </script>
+
+ <div class="specialist-body" id="specialistMessages" role="log" aria-live="polite" aria-relevant="additions"><div class="specialist-msg assistant">Hi, I’m Autumn Winters, Crew’s demo Customer Experience Specialist. I use prepared service information, with no generative AI calls. I can explain our services and help you prepare a request for the studio.</div></div>
+ <div class="specialist-prompts"><button type="button" data-specialist-prompt="What services does AWC offer?">Explore services</button><button type="button" data-specialist-prompt="Can you help me request a quote?">Request a quote</button><button type="button" data-specialist-prompt="What are the preliminary budget ranges?">Planning ranges</button></div>
+ <form class="specialist-input" id="specialistForm"><textarea id="specialistQuestion" aria-label="Message Autumn" placeholder="Ask about your project…" maxlength="800" required rows="2"></textarea><button id="specialistSend" type="submit">Send</button></form>
+ <div class="specialist-status" id="specialistStatus" role="status"></div>
+ <div class="specialist-actions"><button type="button" id="specialistConsult">Request a consultation</button><button type="button" id="specialistNew">New conversation</button></div>
+ <p class="specialist-note">Prepared answers cover AWC’s published services. The studio confirms scope, pricing and appointments. Chat stays on this site for up to 24 hours; no messages go to an AI provider in this mode. Don’t share sensitive information. Use the form to send an inquiry.</p>
 </dialog>
 <script>
 (()=>{
- const dialog=document.getElementById('avaDialog'),messages=document.getElementById('avaMessages'),question=document.getElementById('avaQuestion'),status=document.getElementById('avaStatus'),send=document.getElementById('avaSend');
+ const dialog=document.getElementById('specialistDialog'),messages=document.getElementById('specialistMessages'),question=document.getElementById('specialistQuestion'),status=document.getElementById('specialistStatus'),send=document.getElementById('specialistSend');
  let token=null,sessionPending=null,busy=false,requestId=crypto.randomUUID(),completed=false;
  async function session(){if(token)return token;if(!sessionPending)sessionPending=fetch('/api/session',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'}).then(async r=>{const d=await r.json();if(!r.ok)throw new Error(d.error||'Please try again later.');token=d.token;return token;}).finally(()=>sessionPending=null);return sessionPending;}
  async function call(path,payload){const s=await session();const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-AWC-Session':s},body:JSON.stringify(payload)});let d;try{d=await response.json();}catch{throw new Error('The service is unavailable. Please try again.');}if(!response.ok)throw new Error(d.error||'Please try again.');return d;}
- function append(role,text){const div=document.createElement('div');div.className='ava-msg '+role;div.textContent=text;messages.appendChild(div);messages.scrollTop=messages.scrollHeight;}
- document.getElementById('avaLaunch').addEventListener('click',()=>{dialog.showModal();question.focus();});
- document.getElementById('avaClose').addEventListener('click',()=>dialog.close());
- document.getElementById('avaConsult').addEventListener('click',()=>{dialog.close();document.getElementById('finterest').value='Request a consultation';document.getElementById('contact').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});document.getElementById('fname').focus();});
- document.getElementById('avaNew').addEventListener('click',()=>{if(busy)return;token=null;messages.replaceChildren();append('assistant','A new conversation is ready. How can I help with AWC’s services?');status.textContent='';question.focus();});
- document.querySelectorAll('[data-ava-prompt]').forEach(b=>b.addEventListener('click',()=>{question.value=b.dataset.avaPrompt;document.getElementById('avaForm').requestSubmit();}));
- document.getElementById('avaForm').addEventListener('submit',async e=>{e.preventDefault();if(busy||!question.value.trim())return;const text=question.value.trim();busy=true;send.disabled=true;status.textContent='Finding AWC service information…';try{const d=await call('/api/chat',{message:text});append('user',text);append('assistant',d.answer);question.value='';status.textContent='';}catch(err){status.textContent=err.message;question.value=text;}finally{busy=false;send.disabled=false;}});
+ function append(role,text){const div=document.createElement('div');div.className='specialist-msg '+role;div.textContent=text;messages.appendChild(div);messages.scrollTop=messages.scrollHeight;}
+ document.getElementById('specialistLaunch').addEventListener('click',()=>{dialog.showModal();question.focus();});
+ document.getElementById('specialistClose').addEventListener('click',()=>dialog.close());
+ document.getElementById('specialistConsult').addEventListener('click',()=>{dialog.close();document.getElementById('finterest').value='Request a consultation';document.getElementById('contact').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});document.getElementById('fname').focus();});
+ document.getElementById('specialistNew').addEventListener('click',()=>{if(busy)return;token=null;messages.replaceChildren();append('assistant','A new conversation is ready. How can I help with AWC’s services?');status.textContent='';question.focus();});
+ document.querySelectorAll('[data-specialist-prompt]').forEach(b=>b.addEventListener('click',()=>{question.value=b.dataset.specialistPrompt;document.getElementById('specialistForm').requestSubmit();}));
+ document.getElementById('specialistForm').addEventListener('submit',async e=>{e.preventDefault();if(busy||!question.value.trim())return;const text=question.value.trim();busy=true;send.disabled=true;status.textContent='Finding AWC service information…';try{const d=await call('/api/chat',{message:text});append('user',text);append('assistant',d.answer);question.value='';status.textContent='';}catch(err){status.textContent=err.message;question.value=text;}finally{busy=false;send.disabled=false;}});
 
  const planning=document.getElementById('planningForm');let selectedEstimate=null;
  if(planning){

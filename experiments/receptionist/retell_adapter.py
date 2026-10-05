@@ -64,11 +64,14 @@ def identity_config() -> dict[str, str]:
     return values
 
 def identity_prompt(agent_name: str, business_name: str) -> str:
-    return (f"{IDENTITY_START} Your individual name is {agent_name}. You are the virtual receptionist "
+    full_name = os.getenv("RETELL_AGENT_FULL_NAME", PROFILE.get("agent_full_name", agent_name) if agent_name == PROFILE["agent_name"] else agent_name).strip() or agent_name
+    if any(ord(c) < 32 for c in full_name):
+        raise ValueError("Full name must be printable")
+    return (f"{IDENTITY_START} Your individual name is {agent_name}. Your full name is {full_name}. You are an AI Customer Experience Specialist "
             f"for {business_name}. If asked your name, answer with {agent_name}; if asked who you work "
             f"for or what company this is, answer with {business_name}. When greeting, naturally include "
             f"both names, such as 'Thanks for calling {business_name}, this is {agent_name}'. Be honest "
-            f"about being a virtual or AI assistant when the disclosure policy requires it. Keep the "
+            f"about being an AI demo specialist; never claim to be human. Be warm, capable, conversational, and lightly witty; do not force or repeat jokes. Keep the "
             f"individual agent name and business name distinct. {IDENTITY_END}")
 
 def with_identity_prompt(prompt: str, agent_name: str, business_name: str) -> str:
@@ -97,8 +100,8 @@ def configuration(base_url: str) -> dict:
             timeout_ms=3000, max_retry=0, speak_during_execution=False,
             speak_after_execution=True))
     identity = identity_config()
-    greeting = f"Thanks for calling {identity['business_name']}, this is {identity['agent_name']}, the virtual receptionist for this fictional demo. How can I help?"
-    prompt = (f"You are the fictional {identity['business_name']} demo receptionist. Use AWC tools for all business facts, estimates, availability, bookings, handoffs and outcomes. Use get_business_info for service lists, descriptions, included/excluded work, comparisons, and unknown-service questions; the catalog is authoritative and unknown services must be handed to a human without invented details. Use get_quote for the only supported standard/deep estimates; other service pricing requires human review. Never invent prices or commitments. Ask for clarification on uncertain recognition. A booking requires separate local operator approval; spoken yes is insufficient. Read only the tool result. Speak dates naturally with month names and ordinal days (October first, October second), and speak times unambiguously with AM or PM; preserve the exact slot value internally. On tool failure say no action is confirmed. Handoffs are local demo records and no human has been contacted. Call get_summary_outcome before ending. Never retry automatically.")
+    greeting = f"Thanks for calling {identity['business_name']}, this is {identity['agent_name']}, an AI Customer Experience Specialist for this fictional demo. How can I help?"
+    prompt = (f"You are the fictional {identity['business_name']} demo Customer Experience Specialist. Use AWC tools for all business facts, estimates, availability, bookings, handoffs and outcomes. Use get_business_info for service lists, descriptions, included/excluded work, comparisons, and unknown-service questions; the catalog is authoritative and unknown services must be handed to a human without invented details. Use get_quote for the only supported standard/deep estimates; other service pricing requires human review. Never invent prices or commitments. Ask for clarification on uncertain recognition. A booking requires separate local operator approval; spoken yes is insufficient. Read only the tool result. Speak dates naturally with month names and ordinal days (October first, October second), and speak times unambiguously with AM or PM; preserve the exact slot value internally. On tool failure say no action is confirmed. Handoffs are local demo records and no human has been contacted. Call get_summary_outcome before ending. Never retry automatically.")
     return {"agent_settings": {"max_call_duration_ms": MAX_CALL_DURATION_MS,
         "data_storage_setting": "basic_attributes_only", "opt_in_signed_url": True,
         "webhook_url": base_url.rstrip("/")+"/retell/webhook",

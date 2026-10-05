@@ -1,0 +1,51 @@
+ <style>
+ .crew-voice{padding:18px 20px;border-bottom:1px solid #dec1c7;background:linear-gradient(135deg,#f7e5e8,#fff9f8)}.crew-voice p{font-size:13px;line-height:1.6;margin:8px 0}.crew-voice button,.crew-voice a{font:600 13px system-ui;border:1px solid #b25d6b;border-radius:9px;padding:10px 14px;cursor:pointer;background:#a31d30;color:white;text-decoration:none;display:inline-block}.crew-voice button:disabled{opacity:.6;cursor:default}.crew-controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.crew-orb{display:inline-grid;place-items:center;width:46px;height:46px;border:1px solid #b25d6b;border-radius:50%;background:#a31d30;color:#fff;margin-right:10px;font:600 16px system-ui}.crew-state{display:flex;align-items:center;font-weight:600;font-size:14px}.crew-voice label{display:flex;gap:8px;align-items:flex-start;font-size:12px;line-height:1.5}.crew-voice input{flex-shrink:0;margin-top:3px}#crewEnd{background:transparent;color:inherit}#crewCTA{background:transparent;color:inherit}#crewCTA[hidden]{display:none}.crew-voice :focus-visible,.specialist-launch:focus-visible,.specialist-close:focus-visible{outline:3px solid #d34761;outline-offset:3px}
+ html[data-theme="dark"] #specialistDialog{background:#24191c;color:#fff2f4;border-color:#754752}html[data-theme="dark"] .crew-voice{background:linear-gradient(135deg,#42242e,#24191c);border-color:#754752}html[data-theme="dark"] .specialist-head small,html[data-theme="dark"] .specialist-note,html[data-theme="dark"] .specialist-status{color:#e6bcc6}html[data-theme="dark"] .specialist-msg.assistant{background:#422b33}html[data-theme="dark"] .specialist-close{color:#fff2f4}#specialistDialog{max-height:90dvh;overflow-y:auto}.specialist-body{min-height:70px;max-height:24dvh!important}@media(max-width:500px){.crew-voice{padding:14px 16px}.crew-voice p{font-size:12px}.specialist-body{padding:12px 16px}.specialist-head{padding:14px 16px}}@media(prefers-reduced-motion:reduce){#specialistDialog *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+ </style>
+ <section class="crew-voice" aria-label="Autumn voice demo">
+ <div class="crew-state"><span class="crew-orb" aria-hidden="true">AW</span><span id="crewState" role="status" aria-live="polite" data-state="idle">Ready to meet Autumn</span></div>
+ <p>Experience one specialist. Imagine your own team.</p>
+ <label><input id="crewConsent" type="checkbox"> I agree to try an AI voice demo processed by Retell. Microphone access starts only when I choose Start voice. Please don’t share sensitive information.</label>
+ <div class="crew-controls"><button id="crewStart" type="button">Start voice</button><button id="crewEnd" type="button" disabled>End conversation</button></div>
+ <p id="crewHint">Voice preview requires separate activation. The prepared-answer text guide below is available now. Voice is limited to two minutes; requests and final quotes need human confirmation.</p>
+ <p id="crewError" role="alert"></p><a id="crewCTA" href="#contact" hidden>Shape your own Crew specialist →</a>
+ </section>
+ <script src="/crew-assets/eventemitter3.js"></script><script>window.eventemitter3=window.EventEmitter3;</script><script src="/crew-assets/livekit.js"></script><script>window.livekitClient=window.LivekitClient;</script><script src="/crew-assets/retell.js"></script>
+ <script>
+ (()=>{
+ const dialog=document.getElementById('specialistDialog'),start=document.getElementById('crewStart'),end=document.getElementById('crewEnd'),state=document.getElementById('crewState'),error=document.getElementById('crewError'),cta=document.getElementById('crewCTA'),consent=document.getElementById('crewConsent'),hint=document.getElementById('crewHint');
+ let client=null,stream=null,context=null,frame=null,timer=null,watchdog=null,generation=0,active=false,lastMic=0,lastRemote=0;
+ const labels={idle:'Ready to meet Autumn',connecting:'Connecting to Autumn…',listening:'Listening · your microphone is on',thinking:'Thinking · waiting for Autumn',speaking:'Autumn is speaking',error:'Voice unavailable',ended:'Conversation ended'};
+ function show(value){state.dataset.state=value;state.textContent=labels[value];}
+ function release(){clearTimeout(timer);clearTimeout(watchdog);cancelAnimationFrame(frame);stream?.getTracks().forEach(t=>t.stop());stream=null;context?.close().catch(()=>{});context=null;}
+ function stop(value='ended'){generation++;active=false;release();const previous=client;client=null;previous?.stopCall();start.disabled=false;end.disabled=true;consent.disabled=false;show(value);cta.hidden=false;}
+ function fail(){stop('error');error.textContent='Voice could not connect. Check microphone permission, or use Autumn’s text guide and inquiry form. No automatic retry.';}
+ end.addEventListener('click',()=>stop());dialog.addEventListener('close',()=>{if(active)stop();});dialog.addEventListener('cancel',()=>{if(active)stop();});window.addEventListener('pagehide',()=>stop());
+ cta.addEventListener('click',e=>{e.preventDefault();dialog.close();document.getElementById('finterest').value='Request a consultation';document.getElementById('contact').scrollIntoView({behavior:'instant'});document.getElementById('fname').focus();});
+ start.addEventListener('click',async()=>{
+ if(active)return;error.textContent='';if(!consent.checked){error.textContent='Please agree to the AI voice demo disclosure first.';consent.focus();return;}
+ if(!isSecureContext||!navigator.mediaDevices?.getUserMedia){error.textContent='Voice needs HTTPS and microphone support. Use the text guide below.';return;}
+ if(!window.retellClientJsSdk?.RetellWebClient){error.textContent='Voice tools could not load. Use the text guide below.';return;}
+ active=true;const current=++generation;start.disabled=true;end.disabled=false;consent.disabled=true;cta.hidden=true;show('connecting');
+ watchdog=setTimeout(()=>{if(active&&generation===current)fail();},25000);
+ try{
+ const sessionResponse=await fetch('/api/session',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});const session=await sessionResponse.json();if(!sessionResponse.ok)throw new Error('session');if(generation!==current)return;
+ if(!session.voiceAvailable){stop('error');error.textContent='Voice preview is not enabled yet. Use Autumn’s text guide or shape your own specialist below.';return;}
+ // Ask permission before reserving any provider session; end/cancel also works while permission is pending.
+ const granted=await navigator.mediaDevices.getUserMedia({audio:true});if(generation!==current){granted.getTracks().forEach(t=>t.stop());return;}stream=granted;
+
+ const response=await fetch('/api/voice-session',{method:'POST',headers:{'Content-Type':'application/json','X-AWC-Session':session.token},body:JSON.stringify({consent:true})});const data=await response.json();if(generation!==current)return;if(!response.ok){stop('error');error.textContent=data.error||'Voice is unavailable. Use the text guide.';return;}
+ const Client=window.retellClientJsSdk?.RetellWebClient;if(!Client)throw new Error('sdk');client=new Client();
+ context=new AudioContext();const analyser=context.createAnalyser();analyser.fftSize=512;context.createMediaStreamSource(stream).connect(analyser);const samples=new Uint8Array(analyser.fftSize);
+ // Gateway does not supply turn events. Audio activity estimates are UI hints, not claims about the model’s internal state.
+ hint.textContent='AI voice demo · up to two minutes. Turn labels estimate microphone and playback activity. Voice is not attached to your inquiry; use the form for a human response.';
+ function tick(){if(!active||generation!==current)return;analyser.getByteTimeDomainData(samples);const peak=Math.max(...samples.map(v=>Math.abs(v-128)));const now=performance.now();if(peak>9)lastMic=now;if(now-lastRemote<350)show('speaking');else if(now-lastMic<450)show('listening');else if(now-lastMic<2500&&lastMic>0)show('thinking');else show('listening');frame=requestAnimationFrame(tick);}
+ client.on('call_started',()=>{if(generation!==current)return;clearTimeout(watchdog);show('listening');frame=requestAnimationFrame(tick);});
+ client.on('audio',audio=>{if(generation===current&&audio.some(v=>Math.abs(v)>.02))lastRemote=performance.now();});
+ client.on('call_ended',()=>{if(generation===current)stop();});client.on('error',()=>{if(generation===current)fail();});
+ timer=setTimeout(()=>{if(generation===current)stop();},115000);
+ await client.startCall({accessToken:data.access_token,callId:data.call_id,transport:data.transport,iceServers:data.ice_servers,emitRawAudioSamples:true});
+ }catch{if(generation===current)fail();}
+ });
+ })();
+ </script>

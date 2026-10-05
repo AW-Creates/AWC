@@ -56,7 +56,7 @@ class DemoGate:
         identity = identity_config()
         updated = with_identity_prompt(existing, identity['agent_name'], identity['business_name'])
         greeting = (f"Thanks for calling {identity['business_name']}, this is {identity['agent_name']}, "
-                    "the virtual receptionist for this fictional demo. How can I help?")
+                    "an AI Customer Experience Specialist for this fictional demo. How can I help?")
         agent = self.client.agent.retrieve(self.setup['agent_id']).model_dump(exclude_none=True)
         engine = agent.get('response_engine', {})
         if engine.get('llm_id') != self.setup['llm_id'] or engine.get('type') != 'retell-llm':
