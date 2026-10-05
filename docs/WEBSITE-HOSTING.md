@@ -1,3 +1,7 @@
+# Current hosting checkpoint — 2026-10-05
+
+Crew/Autumn branding, neutral/red palette, prepared guide, planning estimates and inquiry flow are published through the existing Sites Worker (D1 DB binding; no static-only entrypoint). Latest source `38d809abdfbf83a515a264f59bbb4559beb6908c`, version 6; see [Crew publication](crew/CREW-PUBLICATION.md) for deployment IDs, validation and gated voice status. The history below describes the initial static deployment and is superseded by this checkpoint.
+
 # AWC public website hosting
 
 Published 2026-10-01 America/New_York through Sites; deployment succeeded, public audience.

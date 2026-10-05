@@ -1,6 +1,6 @@
 # Crew website voice MVP — 2026-10-05
 
-Canonical implementation is built and tested. It is **not deployed or live voice activated**. Existing public Site remains the prior published guide/estimate/inquiry version. No paid call or provider mutation was performed. Do not describe a mock as an audible acceptance test.
+Canonical implementation is built, tested and **published**. Dedicated Autumn provider configuration is published/read back; voice remains disabled pending server secret and one supervised test. Owner approved 120 seconds/$0.50/no retry; no paid session created. Current operational checkpoint supersedes activation notes below: `CREW-PUBLICATION.md`. Do not describe a mock as audible acceptance.
 
 ## Preview
 
@@ -14,7 +14,7 @@ Pinned Retell browser SDK 3.0.1 and its validated UMD dependencies are served fr
 
 `CREW_VOICE_ENABLED=false` and `CREW_VOICE_REVIEWED=false` by default. Separate website configuration: `CREW_RETELL_AGENT_ID`, `CREW_RETELL_AGENT_VERSION`, `CREW_VOICE_ALLOWANCE_ID`, `CREW_VOICE_SESSION_CAP` (integer 1–10), and server-only `RETELL_API_KEY`. Session allowance is an attempt cap, not a dollar meter; set only after verifying current total rate and an explicitly bounded allowance. Provider maximum 120 seconds and client stop 115 seconds. Failed/abandoned attempts count. Reusing an exhausted allowance ID does not replenish it.
 
-Before enabling: create/review a dedicated published AWC website agent; use the prompt exported by `node scripts/export-voice-config.mjs`, approved AWC facts, Autumn identity/AI greeting, chosen voice, **no tools, states, inherited BrightHome knowledge, calendar or business callbacks**, no pre/post-session tools, basic-attributes-only storage, no contact memory, provider duration limit, and verified rate. Keep BrightHome fictional voice/action acceptance separate. Pin its published version; review/read back provider settings. Do not turn on `CREW_VOICE_REVIEWED` as a substitute for those checks. Current provider agent still retains the prior saved identity until a separately verified nonbillable sync; local rename does not assert provider readback.
+Before enabling: create/review a dedicated published AWC website agent; use the prompt exported by `node scripts/export-voice-config.mjs`, approved AWC facts, Autumn identity/AI greeting, chosen voice, **no tools, states, inherited BrightHome knowledge, calendar or business callbacks**, no pre/post-session tools, basic-attributes-only storage, no contact memory, provider duration limit, and verified rate. Keep BrightHome fictional voice/action acceptance separate. Pin its published version; review/read back provider settings. Do not turn on `CREW_VOICE_REVIEWED` as a substitute for those checks. Dedicated AWC Autumn version 0 is now published and reviewed; fictional BrightHome agent remains separate. See current publication checkpoint for IDs/readback.
 
 The website frontend asks microphone permission only after local/server availability and consent checks, before creating a provider call. End/Escape/close/pagehide release local capture and SDK capture; cancel during pending permission releases a late stream. HTTPS or loopback secure context required. Visitors see concise AI/Retell disclosure and a customization CTA when the call ends or fails.
 
@@ -36,4 +36,4 @@ Browser: desktop dark/light, 390×844 dark/light, consent warning, prepared serv
 
 Exact next milestone: **AWC — Crew Website Publication & Bounded Retell Voice Activation**. Synchronize this canonical Worker to the existing Sites checkout/project, publish the disabled-voice branding/text revision, verify public guide/estimate/inquiry, then review/pin the dedicated AWC Retell agent and approve a numeric test allowance before one supervised browser voice acceptance. Stop after evidence, actual cost reconciliation and state/Git closeout; no phone purchase or outreach.
 
-Visual follow-up: owner requested less pink; Autumn panel now uses neutral paper/charcoal surfaces and clearer red accents. Updated screenshots are `qa/red-desktop-dark.png` and `qa/red-mobile-light.png`. Canonical source change only; publication remains next milestone.
+Visual follow-up: owner requested less pink; Autumn panel now uses neutral paper/charcoal surfaces and clearer red accents. Updated screenshots are `qa/red-desktop-dark.png` and `qa/red-mobile-light.png`. Published in Site version 6; live voice acceptance remains pending.

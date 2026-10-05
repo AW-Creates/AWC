@@ -77,7 +77,7 @@ test('Autumn identity and Crew customization use approved shared facts',async()=
  for(const [message,expected] of [['What is your name?',/Autumn Winters.*Customer Experience Specialist/],['What is Crew?',/customized.*name, voice, personality/],['Can you book an appointment?',/not a confirmed appointment/]]){
  const r=await worker.fetch(request('/api/chat',{message},token),env,ctx);assert.equal(r.status,200);assert.match((await r.json()).answer,expected);}
 });
-function enableVoice(env,cap=1){Object.assign(env,{CREW_VOICE_ENABLED:'true',CREW_VOICE_REVIEWED:'true',RETELL_API_KEY:'private-test-key',CREW_RETELL_AGENT_ID:'agent_test',CREW_RETELL_AGENT_VERSION:'v1',CREW_VOICE_ALLOWANCE_ID:'test-allowance',CREW_VOICE_SESSION_CAP:String(cap)});}
+function enableVoice(env,cap=1){Object.assign(env,{CREW_VOICE_ENABLED:'true',CREW_VOICE_REVIEWED:'true',RETELL_API_KEY:'private-test-key',CREW_RETELL_AGENT_ID:'agent_test',CREW_RETELL_AGENT_VERSION:'0',CREW_VOICE_ALLOWANCE_ID:'test-allowance',CREW_VOICE_SESSION_CAP:String(cap)});}
 test('voice denies origin, forged sessions, consent and disabled config without provider calls',async()=>{
  const {worker,env}=setup(),token=await session(worker,env),original=globalThis.fetch;let calls=0;
  globalThis.fetch=async()=>{calls++;throw new Error('must not fetch');};
@@ -92,7 +92,7 @@ test('voice denies origin, forged sessions, consent and disabled config without 
 });
 test('voice fixes agent/version server-side, returns only join data and reserves finite allowance',async()=>{
  const {worker,env}=setup();enableVoice(env);const token=await session(worker,env),original=globalThis.fetch;let calls=0;
- globalThis.fetch=async(url,init)=>{calls++;assert.equal(url,'https://api.retellai.com/v3/create-web-call');assert.equal(init.headers.Authorization,'Bearer private-test-key');const b=JSON.parse(init.body);assert.equal(b.agent_id,'agent_test');assert.equal(b.agent_version,'v1');assert.equal(b.agent_override.agent.max_call_duration_ms,120000);assert.equal(b.agent_override.agent.data_storage_setting,'basic_attributes_only');return new Response(JSON.stringify({access_token:'short-lived-join-token',call_id:'call_test',transport:'gateway',ice_servers:[],expires_at:Date.now()+60000,private_field:'must-not-reach-browser'}));};
+ globalThis.fetch=async(url,init)=>{calls++;assert.equal(url,'https://api.retellai.com/v3/create-web-call');assert.equal(init.headers.Authorization,'Bearer private-test-key');const b=JSON.parse(init.body);assert.equal(b.agent_id,'agent_test');assert.equal(b.agent_version,0);assert.equal(b.agent_override.agent.max_call_duration_ms,120000);assert.equal(b.agent_override.agent.data_storage_setting,'basic_attributes_only');return new Response(JSON.stringify({access_token:'short-lived-join-token',call_id:'call_test',transport:'gateway',ice_servers:[],expires_at:Date.now()+60000,private_field:'must-not-reach-browser'}));};
  try{
  const r=await worker.fetch(request('/api/voice-session',{consent:true,agent_id:'attacker'},token),env,ctx);assert.equal(r.status,200);const text=await r.text();assert.doesNotMatch(text,/private-test-key|private_field|must-not-reach-browser/);assert.equal(r.headers.get('Cache-Control'),'no-store');
  assert.equal((await worker.fetch(request('/api/voice-session',{consent:true},token),env,ctx)).status,429);

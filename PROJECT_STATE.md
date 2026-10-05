@@ -4,7 +4,7 @@ Updated 2026-10-05 (America/New_York). Canonical repo: `C:/Users/A-Problem/Docum
 
 ## Current milestone
 
-**AWC — Crew Branding + Autumn Website Voice Concierge MVP: source implementation validated; live voice activation/publication deferred.** Bounded work stops at this checkpoint. Do not claim audible or public voice acceptance. Closeout: `docs/crew/WEBSITE-VOICE-MVP.md`.
+**AWC — Crew Website Publication & Bounded Retell Voice Activation: publication complete; dedicated agent reviewed; audible test blocked on server-secret setup.** Public branding/text/estimate/inquiry verified. Voice disabled; no paid call. Current closeout: `docs/crew/CREW-PUBLICATION.md`; source architecture: `docs/crew/WEBSITE-VOICE-MVP.md`.
 
 ## Locked brand / customization model
 
@@ -14,7 +14,7 @@ Crew is the product/platform; **Crew by AW Creatives** is the endorsement. Compa
 
 ## Working result / architecture
 
-Canonical root static page and `website-receptionist/public/index.html` introduce Crew/customization and relabel the scripted estimate as a Crew specialist example. Current guide identity, active demo config/scripts/tests and operator docs use Autumn. Generic variables and Retell identity overrides retained. Historical call evidence remains immutable; current provider identity has not been synced/read back in this milestone.
+Canonical root static page and `website-receptionist/public/index.html` introduce Crew/customization and relabel the scripted estimate as a Crew specialist example. Current guide identity, active demo config/scripts/tests and operator docs use Autumn. Generic variables and Retell identity overrides retained. Historical call evidence remains immutable; dedicated AWC provider identity and configuration published/read back; historical BrightHome agent preserved.
 
 Worker source: `website-receptionist/src/worker.mjs`, shared `facts.mjs`/`offers.mjs`, `src/voice.html`, mirrored dialog source `src/receptionist.html`. Same-origin pinned Retell 3.0.1 assets served by Worker. Voice creation endpoint requires active signed session, same-origin JSON, consent, IP throttling, fixed server agent/version, reviewed/enable flags, finite global attempt allowance and one attempt per conversation. Failures consume allowance. Only temporary join data returned; no browser long-lived key, transcript credential, generic provider proxy, retries/reconnect or automatic budget reset. Provider max 120 seconds; client 115-second stop; basic-attributes-only storage and contact memory disabled.
 
@@ -22,21 +22,23 @@ Frontend: idle/connecting/listening/thinking/speaking/error/ended, mic permissio
 
 Keep lightweight prepared-answer text guide now: it shares business facts, offers, estimates and inquiry persistence, with added Crew/Autumn identity answers. No new generative or parallel chat/action system. Retell remains default; Gemini Live may be a later bounded website-channel benchmark only for a demonstrated need. No migration or benchmark now.
 
-## Existing production checkpoint (retained)
+## Production / provider checkpoint
 
-Public Site: https://aw-creates-ventures.thesml.chatgpt.site. Existing approved preliminary budgets, deterministic guided estimates and inquiry/email/private-inbox flow remain the deployed version. AI_ENABLED=false; no OpenAI billing calls. Owner previously confirmed synthetic inquiry email and private inbox access. Consultation requests require human confirmation. Last published source `ccf53db28eccd07ac49ee4c74327b6510520e9db`, version `appgprj_6abf204484b881919358d57a2d56bd08~appgver_86bace4b328881919965aefc54df1de5`, deployment `appgdep_6ac071f90c3881918b9f45efb784c9e2`, environment revision 4. Canonical sanitized backup is `website-receptionist/`; Sites project/checkout remains documented in `docs/WEBSITE-HOSTING.md`. New Crew branding/widget has not been deployed.
+Public Site: https://aw-creates-ventures.thesml.chatgpt.site. Crew/customization copy, Autumn panel, prepared guide and neutral/red palette published. Existing preliminary budgets, estimator, inquiry persistence/email/private inbox retained; AI_ENABLED=false. Source `38d809abdfbf83a515a264f59bbb4559beb6908c`, saved version 6 `appgprj_6abf204484b881919358d57a2d56bd08~appgver_8400bc2639d881919f3933748c6045ff`, successful deployment `appgdep_6ac41d81dee4819186d194a31067e251`, env revision 5. Reuse existing Sites project, no replacement. Details in `docs/crew/CREW-PUBLICATION.md`.
 
-Retell canonical key previously read-only verified HTTP 200. Historical fictional BrightHome voice/business safety acceptance retained; existing creation allowance consumed, stale callback tunnel inactive. Do not reuse it for website business facts or start the old harness. Local fictional quotes/calendar/operator approvals do not prove client integrations. No CRM/calendar/client onboarding in scope.
+Separate Autumn website agent `agent_7097c8a9a855a9e44f5f628295`, published version 0, `11labs-Kathrine`, standard GPT-4.1-mini. Exact approved export/greeting read back; no callbacks/tools/states/KBs/MCPs, memory off, basic-attributes-only storage, 120-second maximum. Worker sends numeric version zero as a number. Voice transcripts never attach to inquiries. Historical fictional BrightHome agent/evidence remains separate; its old allowance is consumed and stale callback inactive. No real CRM/calendar/client onboarding.
+
+Owner approved one supervised website test, maximum 120 seconds/$0.50, no retry. Server reviewed flag, fixed agent/version, allowance `autumn_owner_20261005_one`, cap 1 prepared. CREW_VOICE_ENABLED=false; RETELL_API_KEY absent from Site runtime. Automatic approval review rejected a stdout credential-transfer command. No bypass attempted. Owner asked to add the key via Site secret settings, not chat. Numeric allowance persists; do not ask again. No provider session created. Once secret confirmed, enable/deploy only for the supervised acceptance, reconcile cost and disable/redeploy.
 
 ## Validation / evidence
 
-21 meaningful Node tests PASS including retained estimate/inquiry/quote/security regressions, Autumn/shared-fact routing, disabled/unreviewed voice, consent, fixed server agent/version, sanitized join data/error, finite/no-retry allowance, all UI states, permission denial/cancel, cleanup and CTA. 45 focused Python demo/identity/business/action tests PASS. Canonical Worker build PASS without requiring the hosted deployment manifest. Runtime dependency audit: zero vulnerabilities; ten development-tool audit findings remain outside this scope.
+21 meaningful Node tests PASS after published numeric-version/prompt correction including retained estimate/inquiry/quote/security regressions, Autumn/shared-fact routing, disabled/unreviewed voice, consent, fixed server agent/version, sanitized join data/error, finite/no-retry allowance, all UI states, permission denial/cancel, cleanup and CTA. 45 focused Python demo/identity/business/action tests PASS. Canonical Worker build PASS without requiring the hosted deployment manifest. Runtime dependency audit: zero vulnerabilities; ten development-tool audit findings remain outside this scope.
 
-Browser: actual desktop dark/light and 390×844 mobile dark/light, consent warning and service-answer path, no horizontal overflow; saved artifacts `docs/crew/qa/`. Mocked SDK/microphone/provider tests are not audible acceptance. Final build checked for no browser secret configuration; actual ignored credential values scanned against changed files before commit. Embedded artwork preserved. No historical benchmark reruns.
+Browser: actual desktop dark/light and 390×844 mobile dark/light, consent warning and service-answer path, no horizontal overflow; saved artifacts `docs/crew/qa/`. Mocked SDK/microphone/provider tests are not audible acceptance. Final build checked for no browser secret configuration; actual ignored credential values scanned against changed files before commit. Embedded artwork preserved. No historical benchmark reruns. Public guide and Launch Website estimate verified; synthetic inquiry `4bd882cc-428f-4974-bbf2-864035e97c13` saved with explicit estimate attachment; owner email accepted by service (delivery not confirmed). Public desktop/mobile captures `docs/crew/qa/published-*.png`, 390px no horizontal overflow.
 
 ## Progress / Cost Gate
 
-Provider/API spend **$0.00**. No calls, provider session creations, purchases, outreach, ads, scraping, integrations, settings changes or deployments. Codex usage cost unavailable. One bounded implementation subagent under milestone skill; no swarm. Visual QA defects corrected (bundle aliases, disabled mic prompt); validation is now passing. Stop/re-scope after two unsuccessful focused attempts under unchanged conditions, two usage-cap hits, two substantial runs without validated progress or deteriorating evidence/cost. Existing demo allowances do not authorize website/production spend. STOP after state, commit, push/sync closeout.
+Provider/API spend **$0.00**. No calls, provider session creations, purchases, outreach, ads, scraping or integrations. Dedicated nonbillable provider configuration and public deployment performed. One test up to $0.50 approved but not consumed; current published approximate rate $0.1078/minute, no phone/add-ons. Codex usage cost unavailable. One bounded implementation subagent under milestone skill; no swarm. Visual QA defects corrected (bundle aliases, disabled mic prompt); validation is now passing. Stop/re-scope after two unsuccessful focused attempts under unchanged conditions, two usage-cap hits, two substantial runs without validated progress or deteriorating evidence/cost. Existing demo allowances do not authorize website/production spend. STOP after state, commit, push/sync closeout.
 
 ## Git checkpoint
 
@@ -44,7 +46,8 @@ Startup clean HEAD and fresh GitHub main: `ca21ff42a4b650cde9c7ce182757ceb53e92b
 
 ## Remaining gaps / exact next milestone
 
-**AWC — Crew Website Publication & Bounded Retell Voice Activation**. Synchronize canonical Worker to the existing Sites project and publish disabled-voice branding/text first; verify public service/estimate/inquiry regressions. Prepare/read back a dedicated AWC Retell published agent using offline `website-receptionist/scripts/export-voice-config.mjs`, no inherited BrightHome facts/tools/states/knowledge/callbacks, approved voice, privacy settings and current rate. Pin reviewed version. Obtain explicit numeric usage allowance before activation/one supervised browser acceptance; reconcile real duration/cost and close out. No phone, outreach, SaaS dashboard or real client integrations. See voice closeout doc for server settings and exact preview steps.
+**AWC — One Supervised Autumn Browser Voice Acceptance & Cost Closeout**. Owner adds RETELL_API_KEY through Site secret settings. Verify metadata, enable and deploy existing saved version, use existing one-attempt approval, owner speaks service/customization/quote/scheduling questions and tests interruption/End. Read actual agent version/duration/cost; no retry on failure. Disable live voice and redeploy; retain consumed allowance; state/Git closeout then STOP. Audible timing/gateway/quality remain unverified. No outreach, phone, integrations, SaaS dashboard, generative chat or Gemini benchmark.
 
-## Visual follow-up — 2026-10-05
-Owner requested less pink. Autumn panel now uses neutral paper/charcoal surfaces, gray borders/text and clearer red controls/focus accents. Existing broader page layout and artwork preserved; canonical source only, not published. Build and desktop/mobile light/dark visual checks pass. No provider usage.
+## Visual follow-up
+
+Owner requested less pink; neutral paper/charcoal surfaces and clearer red controls/focus accents now published. Broader layout/artwork preserved. Published browser screenshots retained alongside earlier source QA. Provider spend $0.00.
