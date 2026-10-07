@@ -1,10 +1,10 @@
 # AWC Project State
 
-Updated 2026-10-05 (America/New_York). Canonical repo: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
+Updated 2026-10-07 (America/New_York). Canonical repo: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
 
 ## Current milestone
 
-**AWC — Crew Website Publication & Bounded Retell Voice Activation: publication complete; dedicated agent reviewed; audible test blocked on server-secret setup.** Public branding/text/estimate/inquiry verified. Voice disabled; no paid call. Current closeout: `docs/crew/CREW-PUBLICATION.md`; source architecture: `docs/crew/WEBSITE-VOICE-MVP.md`.
+**One supervised local Autumn browser test completed; conversational refinement version 1 published/read back; voice disabled and runner stopped.** Owner reported success with pacing/listing/brand feedback. Actual call 114.402 seconds/$0.227416705, within 120 seconds/$0.50 approval. Single attempt consumed; no new paid call. Current closeout: `docs/crew/AUTUMN-REFINEMENT.md`, sanitized evidence `AUTUMN-REFINEMENT.json`. Hosted source sync/secret transfer still pending; no audible acceptance claim for version 1.
 
 ## Locked brand / customization model
 
@@ -24,7 +24,7 @@ Keep lightweight prepared-answer text guide now: it shares business facts, offer
 
 ## Production / provider checkpoint
 
-Public Site: https://aw-creates-ventures.thesml.chatgpt.site. Crew/customization copy, Autumn panel, prepared guide and neutral/red palette published. Existing preliminary budgets, estimator, inquiry persistence/email/private inbox retained; AI_ENABLED=false. Source `38d809abdfbf83a515a264f59bbb4559beb6908c`, saved version 6 `appgprj_6abf204484b881919358d57a2d56bd08~appgver_8400bc2639d881919f3933748c6045ff`, successful deployment `appgdep_6ac41d81dee4819186d194a31067e251`, env revision 5. Reuse existing Sites project, no replacement. Details in `docs/crew/CREW-PUBLICATION.md`.
+Public Site: https://aw-creates-ventures.thesml.chatgpt.site. Crew/customization copy, Autumn panel, prepared guide and neutral/red palette published. Existing preliminary budgets, estimator, inquiry persistence/email/private inbox retained; AI_ENABLED=false. Source `38d809abdfbf83a515a264f59bbb4559beb6908c`, saved version 6 `appgprj_6abf204484b881919358d57a2d56bd08~appgver_8400bc2639d881919f3933748c6045ff`, successful deployment `appgdep_6ac41d81dee4819186d194a31067e251`, env revision 6. Reuse existing Sites project, no replacement. Details in `docs/crew/CREW-PUBLICATION.md`.
 
 Separate Autumn website agent `agent_7097c8a9a855a9e44f5f628295`, published version 0, `11labs-Kathrine`, standard GPT-4.1-mini. Exact approved export/greeting read back; no callbacks/tools/states/KBs/MCPs, memory off, basic-attributes-only storage, 120-second maximum. Worker sends numeric version zero as a number. Voice transcripts never attach to inquiries. Historical fictional BrightHome agent/evidence remains separate; its old allowance is consumed and stale callback inactive. No real CRM/calendar/client onboarding.
 
@@ -38,7 +38,7 @@ Browser: actual desktop dark/light and 390×844 mobile dark/light, consent warni
 
 ## Progress / Cost Gate
 
-Provider/API spend **$0.00**. No calls, provider session creations, purchases, outreach, ads, scraping or integrations. Dedicated nonbillable provider configuration and public deployment performed. One test up to $0.50 approved but not consumed; current published approximate rate $0.1078/minute, no phone/add-ons. Codex usage cost unavailable. One bounded implementation subagent under milestone skill; no swarm. Visual QA defects corrected (bundle aliases, disabled mic prompt); validation is now passing. Stop/re-scope after two unsuccessful focused attempts under unchanged conditions, two usage-cap hits, two substantial runs without validated progress or deteriorating evidence/cost. Existing demo allowances do not authorize website/production spend. STOP after state, commit, push/sync closeout.
+Provider/API spend **$0.227416705** for the one completed supervised local test. Earlier $0.00 checkpoint statements below are historical and superseded by current closeout. No calls, provider session creations, purchases, outreach, ads, scraping or integrations. Dedicated nonbillable provider configuration and public deployment performed. One test up to $0.50 approved but not consumed; current published approximate rate $0.1078/minute, no phone/add-ons. Codex usage cost unavailable. One bounded implementation subagent under milestone skill; no swarm. Visual QA defects corrected (bundle aliases, disabled mic prompt); validation is now passing. Stop/re-scope after two unsuccessful focused attempts under unchanged conditions, two usage-cap hits, two substantial runs without validated progress or deteriorating evidence/cost. Existing demo allowances do not authorize website/production spend. STOP after state, commit, push/sync closeout.
 
 ## Git checkpoint
 
@@ -46,8 +46,6 @@ Startup clean HEAD and fresh GitHub main: `ca21ff42a4b650cde9c7ce182757ceb53e92b
 
 ## Remaining gaps / exact next milestone
 
-**AWC — One Supervised Autumn Browser Voice Acceptance & Cost Closeout**. Owner adds RETELL_API_KEY through Site secret settings. Verify metadata, enable and deploy existing saved version, use existing one-attempt approval, owner speaks service/customization/quote/scheduling questions and tests interruption/End. Read actual agent version/duration/cost; no retry on failure. Disable live voice and redeploy; retain consumed allowance; state/Git closeout then STOP. Audible timing/gateway/quality remain unverified. No outreach, phone, integrations, SaaS dashboard, generative chat or Gemini benchmark.
+**AWC — Secure Hosted Secret/Source Setup & Refined Autumn Acceptance**. Retell agent `agent_7097c8a9a855a9e44f5f628295` version 1 is published with first-name AI greeting, sparse branding, conversational services, agency we, calm pace and voice speed 0.9; readback passed. Website env revision 6 pins version 1, disabled; deployment `appgdep_6ac5eb7e4c948191a75b617bc95884c6` succeeded. Hosted source remains version 6 / `38d809abdfbf83a515a264f59bbb4559beb6908c`; canonical prompt/export refinement not synced because automatic approval rejected repository token stdin transfer. Site RETELL_API_KEY still absent; no verified user secret-settings UI found. Canonical key works; parent AWC.env key differs/401; neither displayed nor copied.
 
-## Visual follow-up
-
-Owner requested less pink; neutral paper/charcoal surfaces and clearer red controls/focus accents now published. Broader layout/artwork preserved. Published browser screenshots retained alongside earlier source QA. Provider spend $0.00.
+Resolve supported hosted secret/source setup. New explicit numeric allowance needed before another test; old attempt consumed and persistent local ledger retained. Test revised voice pacing/listing/greeting/brand/pronunciation/we/interruption/End, reconcile cost, disable, state/Git closeout then STOP. No Gemini migration, outreach, phone or integrations.

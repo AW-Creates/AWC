@@ -1,4 +1,6 @@
-# Crew publication and bounded voice activation — 2026-10-05
+> Superseded acceptance/refinement checkpoint: [Autumn refinement](AUTUMN-REFINEMENT.md). Owner completed the local test; cost $0.227416705. Version 1 reviewed, voice disabled; hosted source sync/secret remain pending.
+
+# Crew publication and bounded voice activation â€” 2026-10-05
 
 Public Site: https://aw-creates-ventures.thesml.chatgpt.site
 
@@ -34,8 +36,8 @@ After owner confirms the secret: verify secret metadata (never reveal its value)
 
 21 Node tests passed after version/prompt correction; canonical and hosted builds passed, diff check passed. Reused earlier 45 Python identity/business tests; no historical benchmarks rerun.
 
-Public browser service guide returned approved packages and human-confirmation boundaries. Planning estimate returned Launch Website $1500–$2500 with exclusions. One synthetic inquiry with explicit estimate attachment saved under `4bd882cc-428f-4974-bbf2-864035e97c13`; email service accepted owner notification (not proof of inbox delivery). Text conversation was not attached. No real client or booking created.
+Public browser service guide returned approved packages and human-confirmation boundaries. Planning estimate returned Launch Website $1500â€“$2500 with exclusions. One synthetic inquiry with explicit estimate attachment saved under `4bd882cc-428f-4974-bbf2-864035e97c13`; email service accepted owner notification (not proof of inbox delivery). Text conversation was not attached. No real client or booking created.
 
 Published desktop/mobile capture and 390px overflow check saved in `docs/crew/qa/published-*.png`; earlier dark/light, reduced-motion and state mock evidence retained. Native focus/dialog behavior and seven states remain. No audio acceptance claim.
 
-Exact next bounded milestone: **AWC — One Supervised Autumn Browser Voice Acceptance & Cost Closeout**. Finish server-secret setup, use the existing one-attempt approval, verify audio/turns/end/fallback and cost, disable live access, then state/Git closeout. No outreach, phone purchase, integrations, dashboard, new chat or provider migration.
+Exact next bounded milestone: **AWC â€” One Supervised Autumn Browser Voice Acceptance & Cost Closeout**. Finish server-secret setup, use the existing one-attempt approval, verify audio/turns/end/fallback and cost, disable live access, then state/Git closeout. No outreach, phone purchase, integrations, dashboard, new chat or provider migration.

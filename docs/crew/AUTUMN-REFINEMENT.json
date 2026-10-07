@@ -1,0 +1,50 @@
+{
+  "completed_calls": [
+    {
+      "call_id": "call_c9b51941b95e4d128fdb1d5b09f",
+      "agent_version": 0,
+      "call_status": "ended",
+      "duration_ms": 114402,
+      "start_timestamp": 1791349919861,
+      "end_timestamp": 1791350034263,
+      "disconnection_reason": "user_hangup",
+      "cost_usd": 0.22741670500000002,
+      "cost_breakdown": [
+        {
+          "cost": 10.5416705,
+          "product": "retell_voice_engine",
+          "unit_price": 0.0916667
+        },
+        {
+          "cost": 7.6666705,
+          "product": "elevenlabs_tts_03_2026",
+          "unit_price": 0.0666667
+        },
+        {
+          "cost": 2.4533295,
+          "product": "gpt_4_1_mini",
+          "unit_price": 0.0213333
+        },
+        {
+          "cost": 2.08,
+          "product": "gpt_5_6_terra_text_testing",
+          "unit_price": 2.08
+        }
+      ]
+    }
+  ],
+  "refinement_version": 1,
+  "checks": {
+    "published": true,
+    "voice_speed": true,
+    "prompt_exact": true,
+    "greeting_exact": true,
+    "duration": true,
+    "storage": true,
+    "no_tools": true,
+    "no_callbacks": true,
+    "memory_off": true
+  },
+  "user_report": "Test worked. Brand repetition/initials pause, numbered service list, rushed pacing. Requested first-name introduction and agency we.",
+  "audible_refinement_verified": false
+}
