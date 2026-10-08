@@ -1,3 +1,5 @@
+> **Canonical identity:** A. Wilcher Creatives designs and builds modern business systems and digital teams. Start with [positioning](docs/brand/AWC-POSITIONING.md), [client explainer](docs/sales/AWC-CLIENT-EXPLAINER.md) and [PROJECT_STATE.md](PROJECT_STATE.md). Crew is the custom Digital Workforce layer; Autumn is one demo specialist.
+
 # A. Wilcher Creatives
 
 Canonical red/pink standalone AWC site recovered from the approved source. The active `index.html` is byte-identical to the preserved recovery copy; the prior gold React/Vite runtime remains available in Git history at the pre-migration checkpoint `awc-gold-pre-red-migration-2026-09-24`.

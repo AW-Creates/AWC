@@ -1,0 +1,78 @@
+[
+  {
+    "id": "390-dark",
+    "overflow": false,
+    "brokenAnchors": [],
+    "title": "A. Wilcher Creatives — Business Systems & Digital Teams",
+    "theme": "dark",
+    "headings": [
+      "Digital Experiences",
+      "Business Systems",
+      "Crew",
+      "Connected Operations"
+    ],
+    "imageFailures": 0,
+    "errors": [],
+    "guidePassed": true,
+    "estimatePassed": true,
+    "dialogPassed": true,
+    "disabledVoicePassed": true
+  },
+  {
+    "id": "390-light",
+    "overflow": false,
+    "brokenAnchors": [],
+    "title": "A. Wilcher Creatives — Business Systems & Digital Teams",
+    "theme": "light",
+    "headings": [
+      "Digital Experiences",
+      "Business Systems",
+      "Crew",
+      "Connected Operations"
+    ],
+    "imageFailures": 0,
+    "errors": [],
+    "guidePassed": true,
+    "estimatePassed": true,
+    "dialogPassed": true,
+    "disabledVoicePassed": true
+  },
+  {
+    "id": "1440-dark",
+    "overflow": false,
+    "brokenAnchors": [],
+    "title": "A. Wilcher Creatives — Business Systems & Digital Teams",
+    "theme": "dark",
+    "headings": [
+      "Digital Experiences",
+      "Business Systems",
+      "Crew",
+      "Connected Operations"
+    ],
+    "imageFailures": 0,
+    "errors": [],
+    "guidePassed": true,
+    "estimatePassed": true,
+    "dialogPassed": true,
+    "disabledVoicePassed": true
+  },
+  {
+    "id": "1440-light",
+    "overflow": false,
+    "brokenAnchors": [],
+    "title": "A. Wilcher Creatives — Business Systems & Digital Teams",
+    "theme": "light",
+    "headings": [
+      "Digital Experiences",
+      "Business Systems",
+      "Crew",
+      "Connected Operations"
+    ],
+    "imageFailures": 0,
+    "errors": [],
+    "guidePassed": true,
+    "estimatePassed": true,
+    "dialogPassed": true,
+    "disabledVoicePassed": true
+  }
+]

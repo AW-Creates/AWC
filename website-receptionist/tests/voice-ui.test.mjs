@@ -27,5 +27,5 @@ test('SDK error and safety timeout stop without reconnect',async()=>{
  for(const kind of ['error','timeout']){const h=harness();h.node('crewConsent').checked=true;await h.click('crewStart');if(kind==='error')h.client.events.error(new Error('test'));else h.timeout(115000);assert.equal(h.node('crewState').dataset.state,kind==='error'?'error':'ended');assert.equal(h.stopped,1);assert.equal(h.closed,1);assert.equal(h.fetches,2);}
 });
 test('browser assets retain AI disclosure and contain no long-lived key configuration',()=>{
- const html=readFileSync('public/index.html','utf8');assert.doesNotMatch(html,/RETELL_API_KEY|CREW_RETELL_AGENT_ID|\bAva\b/);assert.match(html,/AI voice demo processed by Retell/);assert.match(html,/your team gets its own names, voices, personality and scope/);assert.match(html,/prefers-reduced-motion/);
+ const html=readFileSync('public/index.html','utf8');assert.doesNotMatch(html,/RETELL_API_KEY|CREW_RETELL_AGENT_ID|\bAva\b/);assert.match(html,/AI voice demo processed by Retell/);assert.match(html,/Your team gets its own names, voices, personality, language, brand knowledge and workflows/);assert.match(html,/prefers-reduced-motion/);
 });

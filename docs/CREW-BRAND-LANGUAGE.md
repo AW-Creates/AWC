@@ -1,5 +1,7 @@
 # Crew brand language
 
+Company positioning source of truth: [AWC positioning](brand/AWC-POSITIONING.md). A. Wilcher Creatives designs and builds modern business systems and digital teams; Crew is one capability within that company.
+
 - Product/platform: **Crew**. Endorsement: **Crew by AW Creatives**.
 - Legal company: **A. Wilcher Creatives LLC**. AWC is mostly internal shorthand.
 - Category: **Digital Workforce**. Individual unit: **Specialist** or **Digital Team Member**. **AI Agent** is the technical term when it helps explain the technology.

@@ -51,7 +51,7 @@ test('expired token rejected and oversized payload rejected before persistence',
 test('no-spend mode answers service questions without any provider call',async()=>{
  const {worker,env}=setup();env.AI_ENABLED='false';delete env.OPENAI_API_KEY;const token=await session(worker,env),original=globalThis.fetch;let calls=0;
  globalThis.fetch=async()=>{calls++;throw new Error('must not call provider');};
- try{const response=await worker.fetch(request('/api/chat',{message:'What services does AWC offer?'},token),env,ctx);assert.equal(response.status,200);const d=await response.json();assert.equal(d.mode,'guide');assert.match(d.answer,/Brand.*Build.*Intelligence.*Growth/);assert.equal(calls,0);assert.equal(env.DB.raw.prepare('SELECT count(*) n FROM counters WHERE key LIKE \'budget:%\'').get().n,0);}finally{globalThis.fetch=original;}
+ try{const response=await worker.fetch(request('/api/chat',{message:'What services does AWC offer?'},token),env,ctx);assert.equal(response.status,200);const d=await response.json();assert.equal(d.mode,'guide');assert.match(d.answer,/Digital Experiences.*Business Systems.*Crew.*Connected Operations/);assert.equal(calls,0);assert.equal(env.DB.raw.prepare('SELECT count(*) n FROM counters WHERE key LIKE \'budget:%\'').get().n,0);}finally{globalThis.fetch=original;}
 });
 
 test('estimate route requires origin, valid active session and bounded input, and rate limits',async()=>{

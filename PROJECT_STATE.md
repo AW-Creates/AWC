@@ -2,9 +2,23 @@
 
 Updated 2026-10-08 (America/New_York). Canonical repo: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
 
+## Canonical company identity — locked 2026-10-08
+
+**A. Wilcher Creatives designs and builds modern business systems and digital teams.** AW Creatives is customer-facing shorthand; AWC is mostly internal. A client can buy one focused service (including a website redesign without Crew) or a connected system. Crew by AW Creatives is the custom Digital Workforce layer, not the entire company. Autumn Winters is one demo specialist, never the universal client persona.
+
+Mandatory source of truth: `docs/brand/AWC-POSITIONING.md`. Reusable five-version explainer: `docs/sales/AWC-CLIENT-EXPLAINER.md`. Do not drift to web-only or receptionist-only positioning. Website/system integrations, role-specific tools and permissions, specialist/human handoff, and customization are scoped capabilities; unfinished modules must not be advertised as turnkey production features.
+
 ## Current milestone
 
-**One supervised local Autumn browser test completed; conversational refinement version 1 published/read back; voice disabled and runner stopped.** Owner reported success with pacing/listing/brand feedback. Actual call 114.402 seconds/$0.227416705, within 120 seconds/$0.50 approval. Single attempt consumed; no new paid call. Current closeout: `docs/crew/AUTUMN-REFINEMENT.md`, sanitized evidence `AUTUMN-REFINEMENT.json`. Hosted refinement source sync completed in Site version 7; server-secret transfer still pending; no audible acceptance claim for version 1.
+**AWC — Positioning Lock + Website Alignment**. Canonical positioning and client explainer written; red/pink site aligned through existing hero, thesis, four capability rows, Crew/customization, focused-versus-connected engagement and personalized concept invitation. Existing prices, calculator, inquiry handling, components and motion retained. Prepared text facts aligned; provider Autumn version 1 and immutable refinement exports unchanged. No paid call, new allowance, purchase, outreach, lead scraping, CRM rebuild or factory implementation.
+
+Validation and publication evidence: `docs/brand/AWC-POSITIONING-CLOSEOUT.md`; screenshots and browser results: `docs/qa/positioning/`. Existing voice checkpoint below remains authoritative; voice disabled and refined audible acceptance unresolved.
+
+## Exact next milestone / scope
+
+**AWC — Prospect Demo Factory & Owner Ops Foundation**. Start a fresh bounded task: prospect workspace/lead tracking; niche template architecture; public business-information capture; prospect-specific Crew configuration; role/capability permissions and specialist/human handoff; private/unindexed demo deployment; QA pipeline; audit/reuse of Asynk/Twenty/OSS for internal owner ops; first multi-vertical prospect scoring and batch design. Revenue and platform tracks run together; real needs prioritize modules. This is an internal delivery system, not a white-label CRM product. Do not wait for a complete GHL clone to sell feasible services.
+
+No next-milestone implementation started here. Secure hosted voice setup/refined acceptance remains a separate dependency requiring its own scope and numeric call approval; never reuse the consumed test allowance.
 
 ## Locked brand / customization model
 
@@ -50,5 +64,5 @@ Owner explicitly authorized the short-lived repository credential through the pu
 
 Environment readback confirms fixed Retell agent version 1 and CREW_VOICE_ENABLED=false. RETELL_API_KEY is still absent from hosted runtime. Refined voice is configuration-verified but has not had a second audible acceptance. No paid call or usage increase; completed single-test cost remains $0.227416705. Canonical local key remains undisclosed, parent key remains unchanged. No source secrets or private files copied.
 
-Next bounded milestone: **AWC — Secure Hosted Retell Secret Setup & Refined Autumn Acceptance**. Find supported secure server-secret import; do not invent a user settings UI or bypass prior credential-output rejection. A new explicit numeric allowance is required before a second voice test; never reuse/replenish the consumed first allowance. Verify refined pace/service listing/name/we/brand pronunciation/interruption/End, reconcile actual cost, disable and close out. Stop here after state/Git closeout.
+Historical voice follow-up (not the strategic next milestone): **AWC — Secure Hosted Retell Secret Setup & Refined Autumn Acceptance**. Find supported secure server-secret import; do not invent a user settings UI or bypass prior credential-output rejection. A new explicit numeric allowance is required before a second voice test; never reuse/replenish the consumed first allowance. Verify refined pace/service listing/name/we/brand pronunciation/interruption/End, reconcile actual cost, disable and close out. Stop here after state/Git closeout.
 
