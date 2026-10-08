@@ -10,7 +10,7 @@ Mandatory source of truth: `docs/brand/AWC-POSITIONING.md`. Reusable five-versio
 
 ## Current milestone
 
-**AWC — Positioning Lock + Website Alignment**. Canonical positioning and client explainer written; red/pink site aligned through existing hero, thesis, four capability rows, Crew/customization, focused-versus-connected engagement and personalized concept invitation. Existing prices, calculator, inquiry handling, components and motion retained. Prepared text facts aligned; provider Autumn version 1 and immutable refinement exports unchanged. No paid call, new allowance, purchase, outreach, lead scraping, CRM rebuild or factory implementation.
+**AWC — Positioning Lock + Website Alignment — COMPLETE**. Canonical positioning and client explainer written; red/pink site aligned through existing hero, thesis, four capability rows, Crew/customization, focused-versus-connected engagement and personalized concept invitation. Existing prices, calculator, inquiry handling, components and motion retained. Prepared text facts aligned; provider Autumn version 1 and immutable refinement exports unchanged. No paid call, new allowance, purchase, outreach, lead scraping, CRM rebuild or factory implementation.
 
 Validation and publication evidence: `docs/brand/AWC-POSITIONING-CLOSEOUT.md`; screenshots and browser results: `docs/qa/positioning/`. Existing voice checkpoint below remains authoritative; voice disabled and refined audible acceptance unresolved.
 
@@ -38,6 +38,8 @@ Keep lightweight prepared-answer text guide now: it shares business facts, offer
 
 ## Production / provider checkpoint
 
+Current website: Site version 8, source `719afb9abdc0fe47835ce851f5f340ce86134dc1`, successful deployment `appgdep_6ac8263811408191a9c81c1ebfbea355`, unchanged environment revision 6. Positioning is published; voice remains disabled. Canonical validated implementation: `98c93ce67638e82db13343efebc69a3e959dd107`. See positioning closeout for evidence. Older version 6/7 records below are historical checkpoints.
+
 Public Site: https://aw-creates-ventures.thesml.chatgpt.site. Crew/customization copy, Autumn panel, prepared guide and neutral/red palette published. Existing preliminary budgets, estimator, inquiry persistence/email/private inbox retained; AI_ENABLED=false. Source `38d809abdfbf83a515a264f59bbb4559beb6908c`, saved version 6 `appgprj_6abf204484b881919358d57a2d56bd08~appgver_8400bc2639d881919f3933748c6045ff`, successful deployment `appgdep_6ac41d81dee4819186d194a31067e251`, env revision 6. Reuse existing Sites project, no replacement. Details in `docs/crew/CREW-PUBLICATION.md`.
 
 Separate Autumn website agent `agent_7097c8a9a855a9e44f5f628295`, published version 0, `11labs-Kathrine`, standard GPT-4.1-mini. Exact approved export/greeting read back; no callbacks/tools/states/KBs/MCPs, memory off, basic-attributes-only storage, 120-second maximum. Worker sends numeric version zero as a number. Voice transcripts never attach to inquiries. Historical fictional BrightHome agent/evidence remains separate; its old allowance is consumed and stale callback inactive. No real CRM/calendar/client onboarding.
@@ -56,7 +58,7 @@ Provider/API spend **$0.227416705** for the one completed supervised local test.
 
 ## Git checkpoint
 
-Startup clean HEAD and fresh GitHub main: `ca21ff42a4b650cde9c7ce182757ceb53e92b8bf`. Latest validated implementation is the commit containing this state and Crew source/tests/docs; query Git for its hash. Final local/origin/fresh remote equality and clean tree recorded in the task closeout.
+Positioning milestone startup local/origin/fresh remote: `a78c7ebf076ce62ecd54105acc27f939f4227b06`, clean. Validated implementation: `98c93ce67638e82db13343efebc69a3e959dd107`. A separate state checkpoint records that hash without self-reference. Final local/origin/fresh remote equality and clean tree verified after push; query Git for current HEAD.
 
 ## Hosted refinement sync — 2026-10-08
 

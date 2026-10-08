@@ -44,3 +44,5 @@ Autumn published provider version 1 and immutable prompt export unchanged; they 
 
 **AWC — Prospect Demo Factory & Owner Ops Foundation**.
 Prospect workspace/tracking, niche templates, public-information capture, custom Crew config, role permissions and specialist/human handoff, verified private/unindexed demos, QA pipeline, Asynk/Twenty/OSS owner-ops audit/reuse and multi-vertical scoring/batch design. Not started in this milestone. Stop after commit/push/sync closeout.
+
+Validated implementation commit: `98c93ce67638e82db13343efebc69a3e959dd107`. Separate final state checkpoint follows; final HEAD/sync verified in task closeout.
