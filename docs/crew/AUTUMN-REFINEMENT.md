@@ -1,5 +1,15 @@
 # Autumn conversational refinement — 2026-10-07
 
+## Hosted refinement sync — 2026-10-08
+
+Owner explicitly authorized the short-lived repository credential through the publishing helper's hidden input. Source sync completed with no token displayed/persisted. Refined canonical facts/prompt export now published: Sites source `c92c2b9b913667e4893728ff1c1f8b421988f98b`, saved Site version 7 `appgprj_6abf204484b881919358d57a2d56bd08~appgver_4d1142c33d48819185b93f1fd7989c26`, successful deployment `appgdep_6ac7e1bb39b08191b311e5a8f090b509`, environment revision 6. URL https://aw-creates-ventures.thesml.chatgpt.site unchanged. Hosted build passed; prior 21 canonical tests reused with unchanged inputs. Native deployment succeeded; no redundant browser/paid test.
+
+Environment readback confirms fixed Retell agent version 1 and CREW_VOICE_ENABLED=false. RETELL_API_KEY is still absent from hosted runtime. Refined voice is configuration-verified but has not had a second audible acceptance. No paid call or usage increase; completed single-test cost remains $0.227416705. Canonical local key remains undisclosed, parent key remains unchanged. No source secrets or private files copied.
+
+Next bounded milestone: **AWC — Secure Hosted Retell Secret Setup & Refined Autumn Acceptance**. Find supported secure server-secret import; do not invent a user settings UI or bypass prior credential-output rejection. A new explicit numeric allowance is required before a second voice test; never reuse/replenish the consumed first allowance. Verify refined pace/service listing/name/we/brand pronunciation/interruption/End, reconcile actual cost, disable and close out. Stop here after state/Git closeout.
+
+## Prior refinement evidence (hosting gap now resolved above)
+
 Owner completed the supervised local website voice test and reported it worked. The server used the explicitly authorized canonical `AWC/.env` credential only in memory. The parent `AWC.env` credential differed and returned HTTP 401; no secret values were displayed, copied or committed. The local runner has stopped; its persistent one-attempt ledger is retained. Do not restart it with a fresh allowance or enable production on the old approval.
 
 Call `call_c9b51941b95e4d128fdb1d5b09f`, Autumn published version 0: ended by user, 114402 ms, Retell combined cost **$0.227416705** (22.7416705 cents). This is within the approved single-attempt 120-second/$0.50 allowance. Provider breakdown includes a 2.08-cent `gpt_5_6_terra_text_testing` line in addition to voice, TTS and GPT-4.1-mini; it is included in the total, not omitted. No extra playground/test endpoint or new paid call was initiated in the refinement workflow. Do not attribute that billing line to a separate session without evidence.

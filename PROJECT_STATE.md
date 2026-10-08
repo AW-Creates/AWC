@@ -1,10 +1,10 @@
 # AWC Project State
 
-Updated 2026-10-07 (America/New_York). Canonical repo: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
+Updated 2026-10-08 (America/New_York). Canonical repo: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
 
 ## Current milestone
 
-**One supervised local Autumn browser test completed; conversational refinement version 1 published/read back; voice disabled and runner stopped.** Owner reported success with pacing/listing/brand feedback. Actual call 114.402 seconds/$0.227416705, within 120 seconds/$0.50 approval. Single attempt consumed; no new paid call. Current closeout: `docs/crew/AUTUMN-REFINEMENT.md`, sanitized evidence `AUTUMN-REFINEMENT.json`. Hosted source sync/secret transfer still pending; no audible acceptance claim for version 1.
+**One supervised local Autumn browser test completed; conversational refinement version 1 published/read back; voice disabled and runner stopped.** Owner reported success with pacing/listing/brand feedback. Actual call 114.402 seconds/$0.227416705, within 120 seconds/$0.50 approval. Single attempt consumed; no new paid call. Current closeout: `docs/crew/AUTUMN-REFINEMENT.md`, sanitized evidence `AUTUMN-REFINEMENT.json`. Hosted refinement source sync completed in Site version 7; server-secret transfer still pending; no audible acceptance claim for version 1.
 
 ## Locked brand / customization model
 
@@ -44,8 +44,11 @@ Provider/API spend **$0.227416705** for the one completed supervised local test.
 
 Startup clean HEAD and fresh GitHub main: `ca21ff42a4b650cde9c7ce182757ceb53e92b8bf`. Latest validated implementation is the commit containing this state and Crew source/tests/docs; query Git for its hash. Final local/origin/fresh remote equality and clean tree recorded in the task closeout.
 
-## Remaining gaps / exact next milestone
+## Hosted refinement sync — 2026-10-08
 
-**AWC — Secure Hosted Secret/Source Setup & Refined Autumn Acceptance**. Retell agent `agent_7097c8a9a855a9e44f5f628295` version 1 is published with first-name AI greeting, sparse branding, conversational services, agency we, calm pace and voice speed 0.9; readback passed. Website env revision 6 pins version 1, disabled; deployment `appgdep_6ac5eb7e4c948191a75b617bc95884c6` succeeded. Hosted source remains version 6 / `38d809abdfbf83a515a264f59bbb4559beb6908c`; canonical prompt/export refinement not synced because automatic approval rejected repository token stdin transfer. Site RETELL_API_KEY still absent; no verified user secret-settings UI found. Canonical key works; parent AWC.env key differs/401; neither displayed nor copied.
+Owner explicitly authorized the short-lived repository credential through the publishing helper's hidden input. Source sync completed with no token displayed/persisted. Refined canonical facts/prompt export now published: Sites source `c92c2b9b913667e4893728ff1c1f8b421988f98b`, saved Site version 7 `appgprj_6abf204484b881919358d57a2d56bd08~appgver_4d1142c33d48819185b93f1fd7989c26`, successful deployment `appgdep_6ac7e1bb39b08191b311e5a8f090b509`, environment revision 6. URL https://aw-creates-ventures.thesml.chatgpt.site unchanged. Hosted build passed; prior 21 canonical tests reused with unchanged inputs. Native deployment succeeded; no redundant browser/paid test.
 
-Resolve supported hosted secret/source setup. New explicit numeric allowance needed before another test; old attempt consumed and persistent local ledger retained. Test revised voice pacing/listing/greeting/brand/pronunciation/we/interruption/End, reconcile cost, disable, state/Git closeout then STOP. No Gemini migration, outreach, phone or integrations.
+Environment readback confirms fixed Retell agent version 1 and CREW_VOICE_ENABLED=false. RETELL_API_KEY is still absent from hosted runtime. Refined voice is configuration-verified but has not had a second audible acceptance. No paid call or usage increase; completed single-test cost remains $0.227416705. Canonical local key remains undisclosed, parent key remains unchanged. No source secrets or private files copied.
+
+Next bounded milestone: **AWC — Secure Hosted Retell Secret Setup & Refined Autumn Acceptance**. Find supported secure server-secret import; do not invent a user settings UI or bypass prior credential-output rejection. A new explicit numeric allowance is required before a second voice test; never reuse/replenish the consumed first allowance. Verify refined pace/service listing/name/we/brand pronunciation/interruption/End, reconcile actual cost, disable and close out. Stop here after state/Git closeout.
+

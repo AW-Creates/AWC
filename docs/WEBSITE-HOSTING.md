@@ -1,3 +1,15 @@
+# Current hosted refinement — 2026-10-08
+
+## Hosted refinement sync — 2026-10-08
+
+Owner explicitly authorized the short-lived repository credential through the publishing helper's hidden input. Source sync completed with no token displayed/persisted. Refined canonical facts/prompt export now published: Sites source `c92c2b9b913667e4893728ff1c1f8b421988f98b`, saved Site version 7 `appgprj_6abf204484b881919358d57a2d56bd08~appgver_4d1142c33d48819185b93f1fd7989c26`, successful deployment `appgdep_6ac7e1bb39b08191b311e5a8f090b509`, environment revision 6. URL https://aw-creates-ventures.thesml.chatgpt.site unchanged. Hosted build passed; prior 21 canonical tests reused with unchanged inputs. Native deployment succeeded; no redundant browser/paid test.
+
+Environment readback confirms fixed Retell agent version 1 and CREW_VOICE_ENABLED=false. RETELL_API_KEY is still absent from hosted runtime. Refined voice is configuration-verified but has not had a second audible acceptance. No paid call or usage increase; completed single-test cost remains $0.227416705. Canonical local key remains undisclosed, parent key remains unchanged. No source secrets or private files copied.
+
+Next bounded milestone: **AWC — Secure Hosted Retell Secret Setup & Refined Autumn Acceptance**. Find supported secure server-secret import; do not invent a user settings UI or bypass prior credential-output rejection. A new explicit numeric allowance is required before a second voice test; never reuse/replenish the consumed first allowance. Verify refined pace/service listing/name/we/brand pronunciation/interruption/End, reconcile actual cost, disable and close out. Stop here after state/Git closeout.
+
+## Previous hosting checkpoints
+
 # Current hosting checkpoint — 2026-10-05
 
 Crew/Autumn branding, neutral/red palette, prepared guide, planning estimates and inquiry flow are published through the existing Sites Worker (D1 DB binding; no static-only entrypoint). Latest source `38d809abdfbf83a515a264f59bbb4559beb6908c`, version 6; see [Crew publication](crew/CREW-PUBLICATION.md) for deployment IDs, validation and gated voice status. The history below describes the initial static deployment and is superseded by this checkpoint.
