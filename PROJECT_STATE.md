@@ -166,3 +166,5 @@ Validated implementation: a7df38d718bc89e2ec49c54fc7b2e6074a3b3915. Forty public
 ## Demo factory validation checkpoint — 2026-10-09
 
 Configured private-value scan PASS (seven configured values checked without output); private-artifact gate PASS; CRLF-aware staged whitespace gate PASS after trailing-blank cleanup. All 77 intended source/docs/synthetic screenshot files reviewed. No private database/config/transcripts/media tracked. Query Git for implementation and separate checkpoint hashes, fresh remote equality and clean tree. STOP after backup verification.
+
+Validated demo-factory implementation: 5a4d086ed362021030dce4ce1b0b020562344573. Separate state/closeout checkpoint follows. Fresh remote before push remains the recovered 6d0b378 checkpoint, with no unexpected advance; ordinary non-force push and final local/origin/fresh-remote equality are required. No next milestone started.
