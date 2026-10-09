@@ -120,3 +120,7 @@ Validated implementation: `d56ce9c2e99609904dcf5725b0ea3b5613de268a`. Ten Node t
 ## Explicit voice invitation Git checkpoint — 2026-10-09
 
 Validated implementation: `1f57154694e226a7eccb8e3abab3240b1ad085be`. Thirteen Node tests and desktop/390px/360px/reduced-motion browser checks PASS; zero browser errors, autoplay, microphone requests or external requests. Eight screenshots committed; actual existing demo tab verified with primary CTA focusing Talk here. Prior logo milestone: `6b992751e9c1196bfea055a4d10c903b1b762014`. No live voice/callback or provider calls. A separate state checkpoint follows; query Git for final HEAD. Next: Crew Live Prospect Demo Connection & Acceptance. STOP after push/sync verification.
+
+## Prospect channel wiring Git checkpoint — 2026-10-09
+
+Validated implementation: 79b68d4e3ce0072e362b7d409d178646412a5008. Nineteen focused Node tests, desktop/mobile simulated channel flows and retained refresh/reduced-motion/text tests PASS. Actual user browser shows bold italic Talk Here and the approved finite-test consent screen; no automated live session created. Exact staged credential-value, private-path and whitespace gates PASS. One dedicated Ellis configuration published/read back; callback source proposal awaiting purchase approval/destination. Audible acceptance and actual test-cost reconciliation remain pending. A state checkpoint follows; query Git for final local/origin/fresh remote HEAD and clean tree. Next: Crew Live Voice & Callback Acceptance. No unrelated implementation, outreach or analytics dashboard.
