@@ -61,7 +61,8 @@
     "verifiedDestinations": [],
     "liveCallsCreated": 0,
     "callbackEnabled": false,
-    "liveAcceptance": "Pending owner audible browser test; callback not provisioned"
+    "liveAcceptance": "Pending owner audible browser test; callback not provisioned",
+    "callbackApproval": "Owner approved one $2/month source and one $0.50 test; private destination supplied; provisioning blocked HTTP 402"
   },
   "providerContracts": {
     "createEngine": "POST /create-retell-llm",

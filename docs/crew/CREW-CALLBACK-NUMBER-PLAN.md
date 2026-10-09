@@ -1,6 +1,6 @@
 # Crew callback source number plan
 
-Prepared 2026-10-09. Status: review proposal only; no number provisioned, imported, or purchased. No phone call created. Existing readiness audit found zero owned source numbers.
+Prepared 2026-10-09. Status: owner approved one US local number at $2/month recurring, but the single purchase attempt was rejected with HTTP 402. Read-only reconciliation confirmed zero owned source numbers; no number was provisioned, imported, or purchased. No purchase retry was made. Provider billing/payment readiness must be resolved before a subsequent attempt. No phone call created. Existing readiness audit found zero owned source numbers.
 
 ## Browser voice cost evidence
 
@@ -16,4 +16,11 @@ Purchase contract: `POST https://api.retellai.com/create-phone-number`, with `co
 
 ## Required owner approval
 
-Before purchase, obtain explicit approval for ONE assigned US local number at $2/month recurring plus separately bounded callback usage, with retention/release decision. This is separate from the already approved browser test. Before any callback obtain an exact private E.164 destination, confirmation the owner controls it and consents to the call, and a fresh finite callback attempt/budget/expiry grant. Keep callback disabled until source readback and destination verification. Full numbers and routing remain in ignored local configuration. No provision or configuration enablement occurred in this pricing review.
+Owner explicitly approved ONE assigned US local number at $2/month recurring while retained and ONE callback test up to 120 seconds with a $0.50 allowance. The source purchase could not proceed because of the provider payment response. Root retains the privately supplied destination and callback grant; this preparation never created a call. This is separate from the already approved browser test. Owner supplied the exact US destination and consent; these are stored only in ignored callback-approval.json. Create the distinct finite callback attempt/budget/expiry grant only when the source is ready, without resetting the browser grant. Keep callback disabled until source readback and destination verification. Full numbers and routing remain in ignored local configuration. No provision or configuration enablement occurred in this pricing review.
+
+
+## Billing readiness and authorization continuity
+
+The failed response body was discarded; HTTP 402 alone does not identify a missing payment method, insufficient call credits or trial restriction. Number subscriptions require a workspace payment method and are separate from call credits. The owner should review Billing / Change payment methods and the call-credit balance in the same workspace. Card entry/funding remains an owner action; no new funding or automatic recharge was authorized. [Add payment methods](https://docs.retellai.com/accounts/add-payment), [Current billing](https://docs.retellai.com/accounts/billing).
+
+The existing one-number purchase, one-test usage approval and destination consent persist. After billing readiness changes, reconcile inventory and resume the authorized purchase; do not request the same approval again or risk a duplicate number after an ambiguous outcome.

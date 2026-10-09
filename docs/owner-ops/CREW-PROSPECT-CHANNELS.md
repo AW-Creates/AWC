@@ -1,6 +1,6 @@
 # Crew Prospect Channels — Connection Foundation
 
-2026-10-09. Server/client connection foundation validated; dedicated Ellis configuration created, published and read back. Owner approved ONE browser test up to 120 seconds with a $0.50 allowance. The local Cedar preview is enabled for that finite test; audible acceptance remains pending. Callback remains disabled pending source-number purchase approval, verified destination and its separate usage allowance. No live call was created during automated QA.
+2026-10-09. Server/client connection foundation validated; dedicated Ellis configuration created, published and read back. Owner approved ONE browser test up to 120 seconds with a $0.50 allowance. The local Cedar preview is enabled for that finite test; audible acceptance remains pending. Callback purchase/test/destination have since been approved privately; the single source purchase received HTTP 402 and zero source numbers were confirmed. Callback remains disabled pending provider billing readiness. No live call was created during automated QA.
 
 ## Configuration boundary
 
@@ -42,7 +42,7 @@ An initialized allowance ID cannot change its cap, budget, reservation cost or e
 
 19 Node tests pass (13 existing + 6 channel suites). Fake injected provider only: disabled/stale/unpublished state, cross-prospect scope, explicit consent/context limits, one-use token, known-data grounding, response stripping, exact callback allowlist, 120-second cap/30-second ring, concurrent budget reservation, failed/unknown attempt consumption, restart persistence, grant mutation rejection, same-origin owner guard and exact CSP/local SDK serving.
 
-Live audible acceptance remains pending. The fresh browser approval is recorded in private config with cap 1, $0.50 reservation and two-hour expiry; no retry or automatic renewal. At current component prices, ordinary two-minute browser usage estimates $0.2156. This is not a provider-enforced dollar cap; actual provider cost must be reconciled after the test. Callback source-number proposal is $2/month plus usage, awaiting separate purchase approval and a verified test destination. See docs/crew/CREW-CALLBACK-NUMBER-PLAN.md. Mock success is not evidence of an audible conversation or telephone pickup.
+Live audible acceptance remains pending. The fresh browser approval is recorded in private config with cap 1, $0.50 reservation and two-hour expiry; no retry or automatic renewal. At current component prices, ordinary two-minute browser usage estimates $0.2156. This is not a provider-enforced dollar cap; actual provider cost must be reconciled after the test. Callback source is approved at $2/month plus usage, with a separate one-test $0.50 approval and owner-attested destination retained privately. Its single purchase attempt returned HTTP 402; reconciliation confirmed zero sources. Existing approval persists while billing readiness is resolved. See docs/crew/CREW-CALLBACK-NUMBER-PLAN.md. Mock success is not evidence of an audible conversation or telephone pickup.
 
 ## Browser behavior and QA evidence
 
