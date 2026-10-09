@@ -1,6 +1,6 @@
 # Crew callback source number plan
 
-Prepared 2026-10-09. Status: owner approved one US local number at $2/month recurring, but the single purchase attempt was rejected with HTTP 402. Read-only reconciliation confirmed zero owned source numbers; no number was provisioned, imported, or purchased. No purchase retry was made. Provider billing/payment readiness must be resolved before a subsequent attempt. No phone call created. Existing readiness audit found zero owned source numbers.
+Prepared 2026-10-09. Owner approved ONE US local number at $2/month recurring and now intends to retain it as the business demo number. The latest authorized balance-funded purchase request returned HTTP 402: "This item requires a card on file. Please add payment." Fresh inventory and post-attempt read-only reconciliation both confirmed zero sources. Retell subscriptions cannot be paid with usage credits; rental requires the workspace payment method. No source exists and callback remains disabled. No further purchase retry or live call was made.
 
 ## Browser voice cost evidence
 
@@ -24,3 +24,12 @@ Owner explicitly approved ONE assigned US local number at $2/month recurring whi
 The failed response body was discarded; HTTP 402 alone does not identify a missing payment method, insufficient call credits or trial restriction. Number subscriptions require a workspace payment method and are separate from call credits. The owner should review Billing / Change payment methods and the call-credit balance in the same workspace. Card entry/funding remains an owner action; no new funding or automatic recharge was authorized. [Add payment methods](https://docs.retellai.com/accounts/add-payment), [Current billing](https://docs.retellai.com/accounts/billing).
 
 The existing one-number purchase, one-test usage approval and destination consent persist. After billing readiness changes, reconcile inventory and resume the authorized purchase; do not request the same approval again or risk a duplicate number after an ambiguous outcome.
+## Latest authorized balance-funded attempt
+
+The owner explicitly authorized proceeding using the Retell balance for one business demo number. Fresh complete inventory was zero; exactly one subsequent purchase request was made and rejected with HTTP402. Provider reason: 'This item requires a card on file. Please add payment.' Read-only reconciliation again confirmed zero owned source numbers. No further retry, funding, payment-method change, auto-recharge, call creation, or channel enablement occurred.
+
+Current official billing documentation establishes that phone-number subscriptions are not paid using prepaid credits. They are charged to the payment method on file at billing-cycle end, prorated when purchased mid-month. Therefore the balance-funded purchase mechanism requested by the owner is unavailable for this item. Existing purchase authorization is retained; progress now requires the owner to resolve the card-on-file requirement in Retell, rather than approving the same purchase again. [Official billing mechanism](https://docs.retellai.com/accounts/billing).
+
+Private checkpoint and complete failed response: owner-ops/.local/ellis-provider-plan.json, numberProvisionPhase=not-provisioned-payment-required, numberReconciledCount=0. No callback source number exists.
+
+Retention decision: once provisioned, keep the source as the business demo number. Disable calling after finite acceptance; do not release the number merely because the test ends.
