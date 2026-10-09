@@ -79,26 +79,28 @@
     for (const [channel, key] of [['talk','talkAvailable'],['call','callAvailable']]) {
       const control=document.querySelector('[data-crew-channel="'+channel+'"]');
       control.setAttribute('aria-disabled', String(!availability[key]));
-      control.querySelector('small').textContent=availability[key] ? (channel==='talk'?'Available · Up to two minutes':'Available · Verified demo number only') : (channel==='talk'?'Voice preview / Not connected':'Planned / Not connected');
+      control.querySelector('small').textContent=availability[key] ? (channel==='talk'?'Available · Up to two minutes':'Available · Verified demo number only') : 'Currently unavailable';
     }
     start.disabled=!availability.talkAvailable || talkAttempted || active;
     callSubmit.disabled=!availability.callAvailable || callAttempted || callbackBusy;
     document.querySelector('[data-crew-copy-preview]').hidden=availability.talkAvailable;
     document.querySelector('[data-crew-copy-live]').hidden=!availability.talkAvailable;
     document.querySelector('#invitation-voice-status').textContent=availability.talkAvailable?'Voice available · Microphone starts with your permission.':'Voice preview — not connected yet.';
-    launcherCaption.textContent=availability.talkAvailable?'AI specialist · Voice available':originalLauncherCaption;
+    launcherCaption.textContent=availability.talkAvailable?'AI specialist · Voice available':availability.callAvailable?'AI specialist · Phone demo available':originalLauncherCaption;
     const anyAvailable=availability.talkAvailable || availability.callAvailable;
     if (availability.talkAvailable) {
       const liveCopy=document.querySelector('[data-crew-copy-live]');
       greeting.replaceChildren(...[...liveCopy.childNodes].map(node=>node.cloneNode(true)));
-      greeting.append(' I can explain the reviewed services and help prepare your request for the team. '+(availability.callAvailable?'Call me is also available for the verified demo number.':'Call me is not connected yet.')+' Chat is available if you prefer typing. Use fictional details in this private concept.');
+      greeting.append(' I can explain the reviewed services and help prepare your request for the team. '+(availability.callAvailable?'Call me is also available for the verified demo number.':'Call me is currently unavailable.')+' Chat is available if you prefer typing. Use fictional details in this private concept.');
+    } else if (availability.callAvailable) {
+      greeting.textContent='Hi, I’m '+specialist+'. Call me is available for a real phone conversation at the verified demo number. I can explain the reviewed services and help you choose a useful next step. Talk Here is currently unavailable; you can keep typing in Chat. Use fictional details in this private concept.';
     } else greeting.replaceChildren(...[...originalGreeting.childNodes].map(node=>node.cloneNode(true)));
     const availabilityNote=document.querySelector('[data-crew-availability-note]');
-    if(availabilityNote) availabilityNote.textContent=anyAvailable?'Chat works here. '+(availability.talkAvailable?'Talk Here is available after consent. ':'Talk Here is not connected yet. ')+(availability.callAvailable?'Call me is available for the verified demo number.':'Call me is not connected yet.'):'Chat works in this demo. Talk Here and Call me are not connected.';
+    if(availabilityNote) availabilityNote.textContent=anyAvailable?'Chat works here. '+(availability.talkAvailable?'Talk Here is available after consent. ':'Talk Here is currently unavailable. ')+(availability.callAvailable?'Call me is available for the verified demo number.':'Call me is currently unavailable.'):'Chat works in this demo. Talk Here and Call me are currently unavailable.';
     document.querySelector('#voice-context-availability').textContent=anyAvailable?'Talk Here uses your microphone and plays replies in this window when available. Call me requests a phone call when available. Each starts only after your consent.':'Talk Here would use your browser microphone. Call me would request a phone call. Each requires explicit consent and a validated connection; neither is enabled here.';
     document.querySelector('#voice-context-handoff').textContent=anyAvailable?'You can optionally share your recent text request with this AI connection. A callback requires consent and the verified demo number. This demo cannot confirm bookings or transfer you to another specialist.':'In a connected Crew, you could agree to a call from a digital Sales Specialist with your needs, preferences and unanswered questions carried forward. Keep chatting, decline, or request a person instead. This preview collects no number and schedules no call.';
     document.querySelector('#voice-context-privacy').textContent=anyAvailable?'This summary stays in page memory unless you explicitly choose to share it for a voice or callback request.':'This summary stays in page memory. It is not sent to a voice service.';
-    if(!active && step.hidden && callForm.hidden) say(anyAvailable?'Choose Talk Here for a conversation in this window, Call me for an available phone alternative, or Chat below.':'Talk Here and Call me are not connected yet. Chat works below.');
+    if(!active && step.hidden && callForm.hidden) say(availability.talkAvailable?'Choose Talk Here for a conversation in this window, Call me for an available phone alternative, or Chat below.':availability.callAvailable?'Choose Call me for a phone conversation at the verified demo number, or Chat below. Talk Here is currently unavailable.':'Talk Here and Call me are not connected yet. Chat works below.');
     return availability;
   }
   function open(channel) {
@@ -171,7 +173,7 @@
       say('Request accepted by the call service. Pickup is not confirmed from this page.','accepted');
       track('crew_handoff_requested',{channel:'call',destination:'phone',draftOnly:false,connected:false});
     } catch(error) {say(error.message || 'Call request unavailable. Please use Chat.','error');}
-    finally {callbackBusy=false; callSubmit.disabled=callAttempted || !availability.callAvailable;}
+    finally {callbackBusy=false; callSubmit.disabled=callAttempted || !availability.callAvailable;await refreshAvailability();}
   });
   window.crewVoice={open,refreshAvailability,get availability(){return availability;}};
   refreshAvailability();

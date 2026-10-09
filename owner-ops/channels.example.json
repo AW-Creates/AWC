@@ -1,12 +1,22 @@
 {
   "enabled": false,
-  "allowance": {
-    "id": null,
-    "approved": false,
-    "expiresAt": null,
-    "cap": null,
-    "approvedBudgetUsd": null,
-    "maxCostPerAttemptUsd": null
+  "allowances": {
+    "talk": {
+      "id": null,
+      "approved": false,
+      "expiresAt": null,
+      "cap": null,
+      "approvedBudgetUsd": null,
+      "maxCostPerAttemptUsd": null
+    },
+    "call": {
+      "id": null,
+      "approved": false,
+      "expiresAt": null,
+      "cap": null,
+      "approvedBudgetUsd": null,
+      "maxCostPerAttemptUsd": null
+    }
   },
   "prospects": {
     "PROSPECT_ID": {

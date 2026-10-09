@@ -1,6 +1,6 @@
 # Crew Prospect Channels — Connection Foundation
 
-2026-10-09. Server/client connection foundation validated; dedicated Ellis configuration created, published and read back. Owner approved ONE browser test up to 120 seconds with a $0.50 allowance. The local Cedar preview is enabled for that finite test; audible acceptance remains pending. Callback purchase/test/destination have since been approved privately; the single source purchase received HTTP 402 and zero source numbers were confirmed. Callback remains disabled pending provider billing readiness. No live call was created during automated QA.
+2026-10-09. Connection foundation validated; dedicated Ellis is published and read back. The owner-purchased business source is verified and bound to Ellis v0. Exactly one approved callback was placed through the actual local endpoint; the owner confirmed ringing and two-way conversation. Its allowance is consumed. The unused browser window expired during billing setup, and fresh explicit owner approval created a new independent one-attempt browser allowance. Audible browser acceptance remains tracked separately. No real calls were created by automated QA.
 
 ## Configuration boundary
 
@@ -8,7 +8,7 @@
 
 Required enabled configuration:
 - `enabled:true` and server API key.
-- `allowance`: fresh unique `id`, `approved:true`, finite future ISO `expiresAt`, integer `cap` 1–10, positive numeric `approvedBudgetUsd` and conservative `maxCostPerAttemptUsd`. The latter must cover the reviewed worst-case attempt, including applicable calling charges. Budget is reserved conservatively in integer microdollars; actual billing is not inferred or reconciled.
+- `allowances.talk` and `allowances.call`: separate fresh unique `id`, `approved:true`, finite future ISO `expiresAt`, integer `cap` 1–10, positive numeric `approvedBudgetUsd` and conservative `maxCostPerAttemptUsd`. Use a conservative reservation that accounts for applicable calling charges; it is not a provider-enforced dollar stop. Budget is reserved in integer microdollars; actual billing is reconciled independently. IDs must differ between channels. An explicitly present allowances map never falls back to a legacy shared grant for a missing channel.
 - `prospects[id]`: `reviewed:true`, exact current `revisionHash`, a dedicated reviewed published `agentId`, integer pinned `agentVersion` (including zero), and explicit `talkEnabled` / `callEnabled` booleans.
 - Callback: configured E.164 `fromNumber`; each permitted destination is `{phone,verified:true,consentAttested:true}`. Both phone verification and destination-owner consent attestation are operator prerequisites, not claims proved by the local code.
 
@@ -34,15 +34,15 @@ Provider endpoints: Retell `POST /v3/create-web-call`, `POST /v2/create-phone-ca
 
 ## Persistence and spending
 
-Before each provider creation, an SQLite `BEGIN IMMEDIATE` transaction consumes the one-use session, increments the shared allowance attempt counter and reserves the conservative cost. Budget exhaustion, cap exhaustion, stale token/hash, changed routing, cross-prospect requests or invalid consent/destination fail before provider creation. Provider failures, timeouts, cancellation races and malformed accepted responses consume the reservation. No refunds/retries. Restart retains allowance and attempt consumption.
+Before each provider creation, an SQLite `BEGIN IMMEDIATE` transaction consumes the one-use session, increments only the selected channel allowance attempt counter and reserves the conservative cost. Budget exhaustion, cap exhaustion, stale token/hash, changed routing, cross-prospect requests or invalid consent/destination fail before provider creation. Provider failures, timeouts, cancellation races and malformed accepted responses consume the reservation. No refunds/retries. Restart retains allowance and attempt consumption.
 
 An initialized allowance ID cannot change its cap, budget, reservation cost or expiry. Renewed approval needs a new ID; never reuse a prior consumed grant. SQLite stores configured prospect identity/service snapshot, token hash and categorical attempts/outcomes, not full phone numbers, access tokens, provider response bodies, visitor context or transcripts. Session snapshot includes pinned routing and allowance identity; no public configuration response exposes them.
 
 ## Verification / remaining acceptance
 
-19 Node tests pass (13 existing + 6 channel suites). Fake injected provider only: disabled/stale/unpublished state, cross-prospect scope, explicit consent/context limits, one-use token, known-data grounding, response stripping, exact callback allowlist, 120-second cap/30-second ring, concurrent budget reservation, failed/unknown attempt consumption, restart persistence, grant mutation rejection, same-origin owner guard and exact CSP/local SDK serving.
+21 Node tests pass (13 retained + 8 channel suites), including independent channel spending/restart persistence, cross-channel token rejection, expired/missing grant isolation and duplicate-ID rejection. Fake injected provider only: disabled/stale/unpublished state, cross-prospect scope, explicit consent/context limits, one-use token, known-data grounding, response stripping, exact callback allowlist, 120-second cap/30-second ring, concurrent budget reservation, failed/unknown attempt consumption, restart persistence, grant mutation rejection, same-origin owner guard and exact CSP/local SDK serving.
 
-Live audible acceptance remains pending. The fresh browser approval is recorded in private config with cap 1, $0.50 reservation and two-hour expiry; no retry or automatic renewal. At current component prices, ordinary two-minute browser usage estimates $0.2156. This is not a provider-enforced dollar cap; actual provider cost must be reconciled after the test. Callback source is approved at $2/month plus usage, with a separate one-test $0.50 approval and owner-attested destination retained privately. Its single purchase attempt returned HTTP 402; reconciliation confirmed zero sources. Existing approval persists while billing readiness is resolved. See docs/crew/CREW-CALLBACK-NUMBER-PLAN.md. Mock success is not evidence of an audible conversation or telephone pickup.
+Actual callback acceptance passed with owner-confirmed ringing and two-way speech. One phone attempt was consumed; source retention is intentional. Browser audible acceptance remains separate, with one newly approved allowance available until 2026-10-09 20:48:15 UTC or consumption. See docs/qa/prospect-channels/live-acceptance.json for provider duration/cost and the latest browser status. Estimated call costs are not hard dollar stops. No automatic renewal, another purchase or public/unbounded calling is authorized.
 
 ## Browser behavior and QA evidence
 
@@ -52,7 +52,7 @@ Start Talking requires the AI disclosure checkbox, then microphone permission. N
 
 Provider-neutral event names retained: crew_launcher_seen, crew_launcher_opened, crew_talk_clicked, crew_call_clicked, crew_chat_started, crew_conversation_started, crew_conversation_completed, crew_lead_captured, crew_handoff_requested. Intent clicks have connected:false; voice-start is emitted only on SDK call_started. Completion follows an explicit End/provider-ended event, not generic dialog closure. Events contain categorical metadata, never phone numbers, credentials, access tokens, transcripts or shared context; no third-party analytics added.
 
-Focused browser report: docs/qa/prospect-channels/browser-results.json. Desktop 1440 and mobile 390 simulated SDK/provider flows pass consent-before-mic, scoped joins, explicit End cleanup, callback consent/accepted status/phone clearing, text fallback and event safety. Late permission cancellation and denial create no provider attempt. Disabled-state typography and no microphone pass. Four simulated provider attempts; zero external browser requests/errors.
+Focused browser report: docs/qa/prospect-channels/browser-results.json. Desktop 1440 and mobile 390 simulated SDK/provider flows pass consent-before-mic, scoped joins, explicit End cleanup, callback consent/accepted status/phone clearing, text fallback and event safety. Late permission cancellation and denial create no provider attempt. Disabled-state typography and no microphone pass. Four simulated provider attempts; zero external browser requests/errors. Callback-only mobile readiness remains truthful when the separate browser grant expires; no autoplay.
 
 Fresh-load invitation QA: docs/qa/voice-invitation/browser-results.json. Desktop, 390px, 360px and reduced-motion checks pass; six-second invitation returns after full refresh and dismissal lasts only for the document. No autoplay or microphone/external requests. Other niche identities and text prompts remain intact.
 

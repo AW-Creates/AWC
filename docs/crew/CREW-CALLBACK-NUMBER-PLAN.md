@@ -1,35 +1,19 @@
-# Crew callback source number plan
+# Crew business demo number
 
-Prepared 2026-10-09. Owner approved ONE US local number at $2/month recurring and now intends to retain it as the business demo number. The latest authorized balance-funded purchase request returned HTTP 402: "This item requires a card on file. Please add payment." Fresh inventory and post-attempt read-only reconciliation both confirmed zero sources. Retell subscriptions cannot be paid with usage credits; rental requires the workspace payment method. No source exists and callback remains disabled. No further purchase retry or live call was made.
+Updated 2026-10-09. The owner purchased ONE US local Retell/Twilio number after adding the workspace payment method. The exact owned source was verified by API readback and named **AW Creatives Business Demo**. Do not purchase a replacement or release it after a test: the owner intends to retain it for business demos.
 
-## Browser voice cost evidence
+Outbound routing is bound only to the dedicated published Ellis agent, version 0. Inbound answering, inbound webhook, fallback and SMS routing are disabled. Calling is restricted to the US. No paid add-ons or auto-recharge were enabled. The full source and privately supplied destination remain in ignored local configuration.
 
-Read-only voice metadata confirms Ellis reuses an ElevenLabs standard voice. With standard `gpt-4.1-mini`, no high-priority tier or paid add-ons, public component prices are $0.055/min voice infrastructure + $0.040/min ElevenLabs + $0.0128/min model = $0.1078/min; 120 seconds estimates $0.2156. Browser voice has no PSTN telephony charge. [Official pricing](https://www.retellai.com/pricing).
+The source costs $2/month while retained, plus call usage. Phone subscriptions bill the payment method separately from usage credits; the earlier HTTP 402 blocker is resolved by the owner’s purchase. [Official billing](https://docs.retellai.com/accounts/billing), [Official pricing](https://www.retellai.com/pricing).
 
-This is a base estimate, not a guaranteed worst-case dollar cap. Current billing documentation scales usage when total prompt context exceeds 4,000 tokens, including conversation transcript. A conservative full-cost scaling factor of 2 would estimate $0.4312 for two minutes, still within $0.50, but the provider exposes no quoted hard dollar stop for this call. The approved one-attempt allowance must not be described as a provider-enforced monetary ceiling. Keep the reviewed prompt and test conversation short, omit optional shared context, and reconcile actual call cost afterward. [Billing exceptions](https://docs.retellai.com/accounts/billing-exceptions).
+## Approved tests and current result
 
-## Concrete number proposal
+The owner approved one callback test, up to 120 seconds with a $0.50 allowance, to their privately supplied and consented test destination. Source readback passed before activation. Exactly one request was placed through the actual loopback callback endpoint; Retell accepted it. The owner confirmed that the phone rang and Ellis held a two-way conversation. Acceptance and user-confirmed pickup are separate evidence; API acceptance alone does not prove pickup.
 
-Provision ONE US local, non-toll-free Retell-managed Twilio source number. Public recurring rental is $2/month while retained; usage charges are additional (public US telephony estimate $0.015/min). No SMS subscription, branded calling, verified-number add-on, or international calling is proposed. Confirm checkout/account charges before purchase; tax, proration and refund terms are not established by the public component table. [Official pricing](https://www.retellai.com/pricing).
+The callback attempt is consumed and cannot retry or automatically renew. The separate browser grant was renewed by the owner after the original unused window expired; neither channel can borrow the other channel’s approval. Each grant has its own ID, one-attempt cap, $0.50 reservation and finite expiry. The old grant is preserved, not reset. This is a private acceptance setup, not an unrestricted prospect calling service.
 
-Purchase contract: `POST https://api.retellai.com/create-phone-number`, with `country_code:"US"`, `number_provider:"twilio"`, `toll_free:false`, nickname `Crew private callback test`, US-only country lists, no inbound agent/webhook, and outbound binding only to reviewed published Ellis. Omit an exact number and area code for available US assignment. An optional US area code or exact E.164 number is supported, but no pre-purchase inventory/reservation endpoint was established in this audit; an exact available number is therefore not promised. [Create Phone Number](https://docs.retellai.com/api-references/create-phone-number).
+## Cost interpretation
 
-## Required owner approval
+With standard gpt-4.1-mini and the reviewed ElevenLabs voice, ordinary browser components estimate $0.1078/min ($0.2156 for two minutes). US phone telephony adds approximately $0.015/min, for an ordinary two-minute phone estimate of $0.2456. These estimates exclude token-scaling exceptions and are not provider-enforced dollar stops. Keep the short approved prompt and omit optional visitor context; reconcile actual provider cost after each test. [Pricing](https://www.retellai.com/pricing), [Billing exceptions](https://docs.retellai.com/accounts/billing-exceptions).
 
-Owner explicitly approved ONE assigned US local number at $2/month recurring while retained and ONE callback test up to 120 seconds with a $0.50 allowance. The source purchase could not proceed because of the provider payment response. Root retains the privately supplied destination and callback grant; this preparation never created a call. This is separate from the already approved browser test. Owner supplied the exact US destination and consent; these are stored only in ignored callback-approval.json. Create the distinct finite callback attempt/budget/expiry grant only when the source is ready, without resetting the browser grant. Keep callback disabled until source readback and destination verification. Full numbers and routing remain in ignored local configuration. No provision or configuration enablement occurred in this pricing review.
-
-
-## Billing readiness and authorization continuity
-
-The failed response body was discarded; HTTP 402 alone does not identify a missing payment method, insufficient call credits or trial restriction. Number subscriptions require a workspace payment method and are separate from call credits. The owner should review Billing / Change payment methods and the call-credit balance in the same workspace. Card entry/funding remains an owner action; no new funding or automatic recharge was authorized. [Add payment methods](https://docs.retellai.com/accounts/add-payment), [Current billing](https://docs.retellai.com/accounts/billing).
-
-The existing one-number purchase, one-test usage approval and destination consent persist. After billing readiness changes, reconcile inventory and resume the authorized purchase; do not request the same approval again or risk a duplicate number after an ambiguous outcome.
-## Latest authorized balance-funded attempt
-
-The owner explicitly authorized proceeding using the Retell balance for one business demo number. Fresh complete inventory was zero; exactly one subsequent purchase request was made and rejected with HTTP402. Provider reason: 'This item requires a card on file. Please add payment.' Read-only reconciliation again confirmed zero owned source numbers. No further retry, funding, payment-method change, auto-recharge, call creation, or channel enablement occurred.
-
-Current official billing documentation establishes that phone-number subscriptions are not paid using prepaid credits. They are charged to the payment method on file at billing-cycle end, prorated when purchased mid-month. Therefore the balance-funded purchase mechanism requested by the owner is unavailable for this item. Existing purchase authorization is retained; progress now requires the owner to resolve the card-on-file requirement in Retell, rather than approving the same purchase again. [Official billing mechanism](https://docs.retellai.com/accounts/billing).
-
-Private checkpoint and complete failed response: owner-ops/.local/ellis-provider-plan.json, numberProvisionPhase=not-provisioned-payment-required, numberReconciledCount=0. No callback source number exists.
-
-Retention decision: once provisioned, keep the source as the business demo number. Disable calling after finite acceptance; do not release the number merely because the test ends.
+Number verification evidence, approvals and actual call identifiers stay in ignored owner-ops/.local files. Public sanitized acceptance evidence is stored in docs/qa/prospect-channels/live-acceptance.json. No transcripts, recordings, private destination or credentials belong in Git. Retain the business number; disable future calling when finite test grants are consumed or expired.

@@ -1,0 +1,37 @@
+{
+  "noPrivateDestinationCredentialsTranscriptOrRecording": true,
+  "callback": {
+    "sourceMatches": true,
+    "approvedBudgetUsd": 0.5,
+    "combinedCostUsd": 0.268446707,
+    "providerTimestampOvershootSeconds": 0.002,
+    "ownerConfirmedTwoWay": true,
+    "status": "ended",
+    "retryAllowed": false,
+    "destinationMatches": true,
+    "attempts": 1,
+    "durationSeconds": 120.002,
+    "disconnectionReason": "max_duration_reached",
+    "configuredMaxDurationSeconds": 120,
+    "ownerConfirmedRinging": true,
+    "agentVersion": 0,
+    "businessSourceRetained": true,
+    "withinApprovedBudget": true,
+    "allowanceConsumed": true
+  },
+  "provider": "Retell",
+  "browser": {
+    "approvedBudgetUsd": 0.5,
+    "cap": 1,
+    "attempts": 0,
+    "maxDurationSeconds": 120,
+    "automaticRenewal": false,
+    "ownerAudibleAcceptance": "not-yet-tried",
+    "expiresAt": "2026-10-09T20:48:15.1965900+00:00",
+    "connectedConfiguration": true,
+    "clientStopSeconds": 115
+  },
+  "mode": "actual-provider-call-and-owner-confirmation",
+  "checkedAt": "2026-10-09T18:52:28.744Z",
+  "automatedBrowserQA": "simulated-provider-and-sdk-only"
+}

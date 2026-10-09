@@ -36,6 +36,11 @@
       "permissionDenied": true,
       "noProviderReservation": true,
       "truthfulError": true
+    },
+    {
+      "expiredTalkIndependentCallback": true,
+      "truthfulCallOnlyGreeting": true,
+      "noAutoplay": true
     }
   ],
   "errors": [],

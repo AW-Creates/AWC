@@ -21,7 +21,7 @@ const {chromium}=require('C:/Users/A-Problem/AppData/Local/npm-cache/_npx/9833c1
     return new Response(JSON.stringify(url.endsWith('create-web-call')?{access_token:'synthetic-join-token',call_id:'synthetic-call',transport:'gateway',ice_servers:[],expires_at:Date.now()+60000}:{call_id:'synthetic-phone-call'}));
   };
   const fakeSDK=`window.retellClientJsSdk={RetellWebClient:class {constructor(){this.handlers={};}on(name,fn){this.handlers[name]=fn;}async startCall(){window.__joined++;this.handlers.call_started?.();}stopCall(){window.__stopped++;this.handlers.call_ended?.();}}};`;
-  async function prepare(width,enabled){
+  async function prepare(width,enabled,callOnly=false){
     const ctx=await browser.newContext({viewport:{width,height:width===1440?1000:844},reducedMotion:'reduce'});
     const page=await ctx.newPage();page.on('pageerror',e=>report.errors.push(e.message));
     await page.route('**/*',route=>{const url=route.request().url();if(!url.startsWith(base)){report.externalRequests.push(url);return route.abort();}if(url.endsWith('/crew-assets/retell.js'))return route.fulfill({contentType:'text/javascript',body:fakeSDK});return route.continue();});
@@ -32,6 +32,10 @@ const {chromium}=require('C:/Users/A-Problem/AppData/Local/npm-cache/_npx/9833c1
       assert(!(await page.locator('#messages .message span').first().textContent()).includes('When connected'));
       assert((await page.locator('#messages .message span').first().textContent()).includes('Call me is also available'));
       assert(!(await page.locator('#voice-context-availability').textContent()).includes('neither is enabled'));
+    } else if(callOnly){
+      assert((await page.locator('#messages .message span').first().textContent()).includes('Call me is available for a real phone conversation'));
+      assert((await page.locator('#crew-launcher small').textContent()).includes('Phone demo available'));
+      assert((await page.locator('[data-crew-availability-note]').textContent()).includes('Call me is available'));
     } else assert((await page.locator('#crew-launcher small').textContent()).startsWith(realty.crew.role));
     assert.equal(await page.evaluate(()=>window.__mic),0);
     await page.locator('#crew-invitation').waitFor({state:'visible'});
@@ -53,6 +57,8 @@ const {chromium}=require('C:/Users/A-Problem/AppData/Local/npm-cache/_npx/9833c1
     await disabled.ctx.close();await app.close();
     process.env.RETELL_API_KEY='synthetic-unit-test-key';
     const config={enabled:true,allowance:{id:'synthetic-browser-only',approved:true,expiresAt:new Date(Date.now()+3600000).toISOString(),cap:8,approvedBudgetUsd:4,maxCostPerAttemptUsd:.5},prospects:{[realty.id]:{reviewed:true,revisionHash:revisionHash(realty),agentId:'agent_TestEllis',agentVersion:0,talkEnabled:true,callEnabled:true}},callback:{fromNumber:'+12025550122',allowedDestinations:[{phone:'+12025550123',verified:true,consentAttested:true}]}};
+    config.allowances={talk:{...config.allowance,id:'synthetic-talk'},call:{...config.allowance,id:'synthetic-call'}};
+    delete config.allowance;
     app=createOwnerServer({dataDir:dir,channelConfig:config,providerFetch:fakeProvider});await new Promise(r=>app.server.listen(0,'127.0.0.1',r));base='http://127.0.0.1:'+app.server.address().port;
     for(const width of [1440,390]){
       const {ctx,page}=await prepare(width,true);
@@ -100,6 +106,15 @@ const {chromium}=require('C:/Users/A-Problem/AppData/Local/npm-cache/_npx/9833c1
     await denied.page.locator('#voice-status').getByText('Voice could not connect.',{exact:false}).waitFor();
     assert.equal(await denied.page.evaluate(()=>window.__joined),0);assert.equal(calls.length,4);
     report.checks.push({permissionDenied:true,noProviderReservation:true,truthfulError:true});await denied.ctx.close();
+    await app.close();config.allowances.talk.expiresAt=new Date(Date.now()-1000).toISOString();
+    app=createOwnerServer({dataDir:dir,channelConfig:config,providerFetch:fakeProvider});await new Promise(r=>app.server.listen(0,'127.0.0.1',r));base='http://127.0.0.1:'+app.server.address().port;
+    const callOnly=await prepare(390,false,true);
+    await callOnly.page.locator('#crew-launcher').click();await callOnly.page.locator('[data-crew-channel=call]').click();
+    assert.equal(await callOnly.page.locator('#crew-callback-form').isVisible(),true);
+    assert.equal(await callOnly.page.locator('#crew-voice-step').isVisible(),false);
+    assert.equal(await callOnly.page.evaluate(()=>window.__audio),0);
+    await callOnly.page.screenshot({animations:'disabled',path:path.join(out,'390-callback-only-simulated.png')});
+    report.checks.push({expiredTalkIndependentCallback:true,truthfulCallOnlyGreeting:true,noAutoplay:true});await callOnly.ctx.close();
     assert.equal(calls.length,4);assert(calls.every(c=>c.body.agent_override.agent.max_call_duration_ms===120000));
     assert(calls.every(c=>c.body.retell_llm_dynamic_variables.visitor_context==='No visitor context shared.'));
     report.providerAttempts=calls.length;
