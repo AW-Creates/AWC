@@ -1,7 +1,28 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {mkdtempSync,rmSync} from 'node:fs';import {tmpdir} from 'node:os';import {join} from 'node:path';import {openStore} from '../store.mjs';import {createChannels} from '../channels.mjs';import {createOwnerServer} from '../server.mjs';import {revisionHash} from '../model.mjs';
+import test from 'node:test';import assert from 'node:assert/strict';import {mkdtempSync,rmSync} from 'node:fs';import {tmpdir} from 'node:os';import {join} from 'node:path';import {openStore} from '../store.mjs';import {createChannels} from '../channels.mjs';import {createOwnerServer} from '../server.mjs';import {revisionHash} from '../model.mjs';import {providerAdapter} from '../channel-provider.mjs';
 const web=()=>new Response(JSON.stringify({access_token:'ephemeral-test-token',call_id:'call_mock',transport:'gateway',ice_servers:[{urls:'stun:relay.example',username:'temporary',credential:'ephemeral',ignored:'must-drop'}],expires_at:Date.now()+60000,secret_field:'must-drop'}));
 function setup(cap=3,budget=3){const dir=mkdtempSync(join(tmpdir(),'awc-channels-')),store=openStore(join(dir,'owner-ops.sqlite'));const prospects=store.list();for(const p of prospects){p.builtRevision=p.inputRevision;p.artifact={inputHash:revisionHash(p)};store.save(p);}const p=prospects[1],config={enabled:true,allowance:{id:'fresh_mock_grant',approved:true,cap,approvedBudgetUsd:budget,maxCostPerAttemptUsd:1,expiresAt:new Date(Date.now()+3600000).toISOString()},prospects:Object.fromEntries(prospects.map(p=>[p.id,{reviewed:true,revisionHash:revisionHash(p),agentId:'agent_mock',agentVersion:0,talkEnabled:true,callEnabled:true}])),callback:{fromNumber:'+15555550100',allowedDestinations:[{phone:'+15555550101',verified:true,consentAttested:true}]}};return {dir,store,p,prospects,config,close(){store.close();rmSync(dir,{recursive:true});}};}
 const request=token=>({sessionToken:token,consent:true,shareContext:false});
+test('documented gateway tokens with longer expiry and empty optional ICE strings remain joinable',async()=>{
+ const x=setup(1,1);try{
+  const expires=Date.now()+3600000;
+  const c=createChannels({store:x.store,channelConfig:x.config,apiKey:'mock',providerFetch:async()=>new Response(JSON.stringify({access_token:'synthetic-token',call_id:'call_contract',transport:'gateway',expires_at:expires,ice_servers:[{urls:'stun:stun.l.google.com:19302',username:'',credential:''}],ignored:'do-not-forward'}))});
+  const session=c.session(x.p,{channel:'talk'});assert(Date.parse(session.expiresAt)<=Date.now()+600000);
+  const join=await c.connect(x.p,'talk',request(session.sessionToken));
+  assert.equal(join.expires_at,expires);assert.equal(join.ice_servers[0].credential,'');assert(!('ignored' in join));
+  assert.equal(c.status(x.p).talkAvailable,false);
+ }finally{x.close();}
+});
+test('failure diagnostics classify network, HTTP, response and join failures without sensitive logs',async()=>{
+ const logs=[],prior=console.warn;console.warn=value=>logs.push(JSON.parse(value));
+ const input={channel:'talk',binding:{agentId:'agent_mock',agentVersion:0},snapshot:{business:'Fixture',specialist:'Ellis',role:'Support',services:[]},context:null,requestId:'synthetic'};
+ const valid={access_token:'secret-token-not-logged',call_id:'private-call-not-logged',transport:'gateway',expires_at:Date.now()+60000,ice_servers:[]};
+ try{
+  const cases=[['network',async()=>{throw Error('private-provider-exception');}],['http',async()=>new Response('private-provider-error',{status:422})],['response',async()=>new Response('private-invalid-json')],['expiry',async()=>new Response(JSON.stringify({...valid,expires_at:Math.floor(Date.now()/1000)}))],['join',async()=>new Response(JSON.stringify({...valid,transport:'unsupported'}))],['ice',async()=>new Response(JSON.stringify({...valid,ice_servers:[{urls:'https://untrusted.example'}]}))]];
+  for(const [reason,fetcher] of cases)await assert.rejects(()=>providerAdapter(fetcher,'private-api-key')(input),error=>error.failureReason===reason&&!error.message.includes('private-'));
+  assert.deepEqual(logs.map(l=>l.reason),cases.map(c=>c[0]));assert.equal(logs[1].httpStatus,422);
+  assert.doesNotMatch(JSON.stringify(logs),/private-|secret-token|agent_mock|Fixture/);
+ }finally{console.warn=prior;}
+});
 test('separate channel grants cannot cross-spend, cross-use sessions or replenish after restart',async()=>{
  const x=setup(1,1);let reopened;
  try{

@@ -41,9 +41,21 @@
       "expiredTalkIndependentCallback": true,
       "truthfulCallOnlyGreeting": true,
       "noAutoplay": true
+    },
+    {
+      "providerFailureMessage": true,
+      "failedAttemptConsumed": true,
+      "noJoinOrRetry": true,
+      "microphoneCleanup": true,
+      "usedAllowanceGreeting": true
+    },
+    {
+      "endRefreshesConsumedAllowance": true,
+      "endedStatusPreserved": true,
+      "noAdditionalProviderAttempt": true
     }
   ],
   "errors": [],
   "externalRequests": [],
-  "providerAttempts": 4
+  "providerAttempts": 6
 }

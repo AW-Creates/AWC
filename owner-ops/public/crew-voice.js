@@ -29,7 +29,11 @@
       body:JSON.stringify(input)
     });
     const data = await response.json();
-    if (!response.ok) throw Error(data.error || 'Connection unavailable. Please use Chat.');
+    if (!response.ok) {
+      const error=Error('Connection unavailable. Please use Chat.');
+      error.connectionMessage=typeof data.error==='string'&&data.error.length<=500?data.error:error.message;
+      throw error;
+    }
     return data;
   }
   function say(text, state='idle') {
@@ -56,6 +60,7 @@
       track('crew_conversation_completed', {channel:'talk', outcome});
     }
     if (outcome !== 'closed') say(outcome === 'error' ? 'Voice could not connect. Use Chat below. No automatic retry.' : 'Voice conversation ended. You can continue in Chat.', outcome === 'error' ? 'error' : 'ended');
+    if(talkAttempted && outcome!=='closed') refreshAvailability();
   }
   function loadScript(src) {
     return new Promise((resolve, reject) => {
@@ -85,7 +90,7 @@
     callSubmit.disabled=!availability.callAvailable || callAttempted || callbackBusy;
     document.querySelector('[data-crew-copy-preview]').hidden=availability.talkAvailable;
     document.querySelector('[data-crew-copy-live]').hidden=!availability.talkAvailable;
-    document.querySelector('#invitation-voice-status').textContent=availability.talkAvailable?'Voice available · Microphone starts with your permission.':'Voice preview — not connected yet.';
+    document.querySelector('#invitation-voice-status').textContent=availability.talkAvailable?'Voice available · Microphone starts with your permission.':availability.reason?.includes('exhausted')?'Voice test allowance used · Chat remains available.':'Voice preview — not connected yet.';
     launcherCaption.textContent=availability.talkAvailable?'AI specialist · Voice available':availability.callAvailable?'AI specialist · Phone demo available':originalLauncherCaption;
     const anyAvailable=availability.talkAvailable || availability.callAvailable;
     if (availability.talkAvailable) {
@@ -94,6 +99,9 @@
       greeting.append(' I can explain the reviewed services and help prepare your request for the team. '+(availability.callAvailable?'Call me is also available for the verified demo number.':'Call me is currently unavailable.')+' Chat is available if you prefer typing. Use fictional details in this private concept.');
     } else if (availability.callAvailable) {
       greeting.textContent='Hi, I’m '+specialist+'. Call me is available for a real phone conversation at the verified demo number. I can explain the reviewed services and help you choose a useful next step. Talk Here is currently unavailable; you can keep typing in Chat. Use fictional details in this private concept.';
+    } else if(availability.reason?.includes('exhausted')) {
+      launcherCaption.textContent='AI specialist · Voice test used';
+      greeting.textContent='The supervised voice test allowance has been used. You can continue with '+specialist+' in Chat while a new voice test is prepared.';
     } else greeting.replaceChildren(...[...originalGreeting.childNodes].map(node=>node.cloneNode(true)));
     const availabilityNote=document.querySelector('[data-crew-availability-note]');
     if(availabilityNote) availabilityNote.textContent=anyAvailable?'Chat works here. '+(availability.talkAvailable?'Talk Here is available after consent. ':'Talk Here is currently unavailable. ')+(availability.callAvailable?'Call me is available for the verified demo number.':'Call me is currently unavailable.'):'Chat works in this demo. Talk Here and Call me are currently unavailable.';
@@ -110,8 +118,8 @@
     shareContainer.hidden=!(channel==='talk'?availability.talkAvailable:availability.callAvailable);
     step.hidden=channel!=='talk' || !availability.talkAvailable;
     callForm.hidden=channel!=='call' || !availability.callAvailable;
-    if (channel==='talk') say(availability.talkAvailable ? 'Speak to '+specialist+' right here. Agree to the AI voice disclosure, then choose Start Talking.' : 'Talk Here is not connected yet. In the connected setup, speak through your microphone and hear replies in this window. Chat works below.');
-    else say(availability.callAvailable ? 'Enter your verified demo number and agree to receive this AI call. The call starts only after you choose Call Me Now.' : 'Call me is not connected yet. No phone call can be requested from this preview. Chat works below.');
+    if (channel==='talk') say(availability.talkAvailable ? 'Speak to '+specialist+' right here. Agree to the AI voice disclosure, then choose Start Talking.' : 'Talk Here is currently unavailable. Chat works below.');
+    else say(availability.callAvailable ? 'Enter your verified demo number and agree to receive this AI call. The call starts only after you choose Call Me Now.' : 'Call me is currently unavailable. Chat works below.');
   }
   start.addEventListener('click', async () => {
     if (active || talkAttempted || !availability.talkAvailable) return;
@@ -120,21 +128,23 @@
     active=true; const current=++generation; start.disabled=true; end.disabled=false; consent.disabled=true; share.disabled=true;
     say('Preparing voice…','connecting');
     watchdog=setTimeout(()=>{if (generation===current) stop('error');},25000);
+    let phase='availability';
     try {
       await refreshAvailability();
       if (generation!==current) return;
       if (!availability.talkAvailable) throw Error('Voice is unavailable. Use Chat.');
-      await sdk(); if (generation!==current) return;
+      phase='tools';await sdk(); if (generation!==current) return;
+      phase='microphone';
       const granted=await navigator.mediaDevices.getUserMedia({audio:true});
       if (generation!==current) {granted.getTracks().forEach(track=>track.stop()); return;}
       preflight=granted;
-      const session=await api('channel-session',{channel:'talk'});
+      phase='session';const session=await api('channel-session',{channel:'talk'});
       if (generation!==current) return;
       talkAttempted=true;
-      const join=await api('voice-session',{sessionToken:session.sessionToken,consent:true,...context()});
+      phase='provider';const join=await api('voice-session',{sessionToken:session.sessionToken,consent:true,...context()});
       if (generation!==current) return;
       preflight.getTracks().forEach(track=>track.stop()); preflight=null;
-      const joiningClient=new window.retellClientJsSdk.RetellWebClient();
+      phase='audio';const joiningClient=new window.retellClientJsSdk.RetellWebClient();
       client=joiningClient;
       client.on('call_started',()=>{
         if (generation!==current) return;
@@ -143,11 +153,17 @@
         track('crew_conversation_started',{channel:'talk',connected:true});
       });
       client.on('call_ended',()=>{if(generation===current)stop('provider-ended');});
-      client.on('error',()=>{if(generation===current)stop('error');});
+      client.on('error',()=>{if(generation===current){stop('error');say('Browser audio could not connect. The test attempt has been used; no automatic retry. Please use Chat.','error');}});
       timer=setTimeout(()=>{if(generation===current)stop('visitor-ended');},115000);
       await joiningClient.startCall({accessToken:join.access_token,callId:join.call_id,transport:join.transport,iceServers:join.ice_servers});
       if (generation!==current) {try{joiningClient.stopCall();}catch{} return;}
-    } catch {if(generation===current)stop('error');}
+    } catch(error) {
+      if(generation===current){
+        stop('error');
+        const detail=error.connectionMessage || (phase==='microphone'?'Microphone access failed. Check browser permission and your input device; no provider call was requested.':phase==='tools'?'Browser voice tools could not load. No provider call was requested.':'Voice could not connect at the '+phase+' step. Please use Chat; no automatic retry.');
+        say(detail,'error');
+      }
+    }
   });
   end.addEventListener('click',()=>stop('visitor-ended'));
   function close(){if(active)stop();else generation++;phone.value='';callConsent.checked=false;}

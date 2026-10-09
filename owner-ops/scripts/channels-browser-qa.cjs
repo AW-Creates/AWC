@@ -16,12 +16,13 @@ const {chromium}=require('C:/Users/A-Problem/AppData/Local/npm-cache/_npx/9833c1
   const priorKey=process.env.RETELL_API_KEY;
   const report={mode:'simulated-provider-and-sdk',checks:[],errors:[],externalRequests:[],providerAttempts:0};
   const calls=[];
+  let providerFailure=false;
   const fakeProvider=async(url,request)=>{
     calls.push({channel:url.endsWith('create-web-call')?'talk':'call',body:JSON.parse(request.body)});
-    return new Response(JSON.stringify(url.endsWith('create-web-call')?{access_token:'synthetic-join-token',call_id:'synthetic-call',transport:'gateway',ice_servers:[],expires_at:Date.now()+60000}:{call_id:'synthetic-phone-call'}));
+    return new Response(JSON.stringify(url.endsWith('create-web-call')?{access_token:'synthetic-join-token',call_id:'synthetic-call',transport:'gateway',ice_servers:[],expires_at:providerFailure?Date.now()-1000:Date.now()+3600000}:{call_id:'synthetic-phone-call'}));
   };
   const fakeSDK=`window.retellClientJsSdk={RetellWebClient:class {constructor(){this.handlers={};}on(name,fn){this.handlers[name]=fn;}async startCall(){window.__joined++;this.handlers.call_started?.();}stopCall(){window.__stopped++;this.handlers.call_ended?.();}}};`;
-  async function prepare(width,enabled,callOnly=false){
+  async function prepare(width,enabled,callOnly=false,hasCallback=true){
     const ctx=await browser.newContext({viewport:{width,height:width===1440?1000:844},reducedMotion:'reduce'});
     const page=await ctx.newPage();page.on('pageerror',e=>report.errors.push(e.message));
     await page.route('**/*',route=>{const url=route.request().url();if(!url.startsWith(base)){report.externalRequests.push(url);return route.abort();}if(url.endsWith('/crew-assets/retell.js'))return route.fulfill({contentType:'text/javascript',body:fakeSDK});return route.continue();});
@@ -30,7 +31,7 @@ const {chromium}=require('C:/Users/A-Problem/AppData/Local/npm-cache/_npx/9833c1
     await page.waitForFunction(expected=>window.crewVoice&&window.crewVoice.availability.talkAvailable===expected,enabled);
     if(enabled){
       assert(!(await page.locator('#messages .message span').first().textContent()).includes('When connected'));
-      assert((await page.locator('#messages .message span').first().textContent()).includes('Call me is also available'));
+      assert((await page.locator('#messages .message span').first().textContent()).includes(hasCallback?'Call me is also available':'Call me is currently unavailable'));
       assert(!(await page.locator('#voice-context-availability').textContent()).includes('neither is enabled'));
     } else if(callOnly){
       assert((await page.locator('#messages .message span').first().textContent()).includes('Call me is available for a real phone conversation'));
@@ -103,7 +104,7 @@ const {chromium}=require('C:/Users/A-Problem/AppData/Local/npm-cache/_npx/9833c1
     const denied=await prepare(390,true);
     await denied.page.evaluate(()=>{navigator.mediaDevices.getUserMedia=async()=>{window.__mic++;throw Error('Synthetic permission denial');};});
     await denied.page.locator('.invitation-action').click();await denied.page.locator('#crew-voice-consent').check();await denied.page.locator('#crew-voice-start').click();
-    await denied.page.locator('#voice-status').getByText('Voice could not connect.',{exact:false}).waitFor();
+    await denied.page.locator('#voice-status').getByText('Microphone access failed.',{exact:false}).waitFor();
     assert.equal(await denied.page.evaluate(()=>window.__joined),0);assert.equal(calls.length,4);
     report.checks.push({permissionDenied:true,noProviderReservation:true,truthfulError:true});await denied.ctx.close();
     await app.close();config.allowances.talk.expiresAt=new Date(Date.now()-1000).toISOString();
@@ -115,7 +116,27 @@ const {chromium}=require('C:/Users/A-Problem/AppData/Local/npm-cache/_npx/9833c1
     assert.equal(await callOnly.page.evaluate(()=>window.__audio),0);
     await callOnly.page.screenshot({animations:'disabled',path:path.join(out,'390-callback-only-simulated.png')});
     report.checks.push({expiredTalkIndependentCallback:true,truthfulCallOnlyGreeting:true,noAutoplay:true});await callOnly.ctx.close();
-    assert.equal(calls.length,4);assert(calls.every(c=>c.body.agent_override.agent.max_call_duration_ms===120000));
+    await app.close();config.allowances.talk={...config.allowances.talk,id:'synthetic-response-failure',cap:1,approvedBudgetUsd:.5,expiresAt:new Date(Date.now()+3600000).toISOString()};config.prospects[realty.id].callEnabled=false;providerFailure=true;
+    app=createOwnerServer({dataDir:dir,channelConfig:config,providerFetch:fakeProvider});await new Promise(r=>app.server.listen(0,'127.0.0.1',r));base='http://127.0.0.1:'+app.server.address().port;
+    const rejected=await prepare(390,true,false,false);
+    await rejected.page.locator('.invitation-action').click();await rejected.page.locator('#crew-voice-consent').check();await rejected.page.locator('#crew-voice-start').click();
+    await rejected.page.locator('#voice-status').getByText('expired or invalid connection token',{exact:false}).waitFor();
+    assert.equal(await rejected.page.evaluate(()=>window.__joined),0);assert.equal(await rejected.page.evaluate(()=>window.__tracksStopped),1);assert.equal(await rejected.page.locator('#crew-voice-start').isDisabled(),true);
+    await rejected.page.screenshot({animations:'disabled',path:path.join(out,'390-provider-failure-simulated.png')});
+    await rejected.page.reload();await rejected.page.locator('#crew-launcher small').getByText('Voice test used',{exact:false}).waitFor();
+    assert((await rejected.page.locator('#messages .message span').first().textContent()).includes('test allowance has been used'));
+    report.checks.push({providerFailureMessage:true,failedAttemptConsumed:true,noJoinOrRetry:true,microphoneCleanup:true,usedAllowanceGreeting:true});await rejected.ctx.close();
+    await app.close();config.allowances.talk.id='synthetic-final-end-refresh';providerFailure=false;
+    app=createOwnerServer({dataDir:dir,channelConfig:config,providerFetch:fakeProvider});await new Promise(r=>app.server.listen(0,'127.0.0.1',r));base='http://127.0.0.1:'+app.server.address().port;
+    const ended=await prepare(390,true,false,false);
+    await ended.page.locator('.invitation-action').click();await ended.page.locator('#crew-voice-consent').check();await ended.page.locator('#crew-voice-start').click();
+    await ended.page.locator('#voice-status').getByText('Connected to Ellis',{exact:false}).waitFor();await ended.page.locator('#crew-voice-end').click();
+    await ended.page.locator('#crew-launcher small').getByText('Voice test used',{exact:false}).waitFor({state:'attached'});
+    assert.equal(await ended.page.locator('[data-crew-channel=talk]').getAttribute('aria-disabled'),'true');
+    assert((await ended.page.locator('#voice-status').textContent()).includes('Voice conversation ended'));
+    assert.equal(await ended.page.evaluate(()=>window.__stopped),1);
+    report.checks.push({endRefreshesConsumedAllowance:true,endedStatusPreserved:true,noAdditionalProviderAttempt:true});await ended.ctx.close();
+    assert.equal(calls.length,6);assert(calls.every(c=>c.body.agent_override.agent.max_call_duration_ms===120000));
     assert(calls.every(c=>c.body.retell_llm_dynamic_variables.visitor_context==='No visitor context shared.'));
     report.providerAttempts=calls.length;
     assert.deepEqual(report.errors,[]);assert.deepEqual(report.externalRequests,[]);
