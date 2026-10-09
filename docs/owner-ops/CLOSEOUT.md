@@ -22,6 +22,6 @@ Exact Asynk/Twenty sources were not found in the verified workspace inventory. N
 
 ## Git and continuation
 
-Startup local/origin/fresh remote: `deac07194c64f6d196eb44f94632057246bdb1cc`, clean main. Implementation hash recorded by subsequent checkpoint; final HEAD can be queried from Git. Final secret scan and clean/sync status recorded at commit closeout.
+Startup local/origin/fresh remote: `deac07194c64f6d196eb44f94632057246bdb1cc`, clean main. Validated implementation: `f380f19151440c327d80b87d11b543256f088bc4`. Actual ignored credential values and secret-like literals scanned against 21 intended text files: PASS, values undisclosed. No private database, generated artifacts, credentials or raw video staged. Whitespace gate passes. Final HEAD/sync/clean status is verified after the checkpoint push; query Git for the resulting HEAD.
 
 Exact next milestone: **AWC — First Verified Prospect Concepts & Private Demo Delivery**. Small manual verified research batch, original concepts, authenticated private remote delivery and QA, exact OSS source discovery. No outreach until separately authorized. Stop after this closeout.

@@ -68,3 +68,7 @@ Environment readback confirms fixed Retell agent version 1 and CREW_VOICE_ENABLE
 
 Historical voice follow-up (not the strategic next milestone): **AWC — Secure Hosted Retell Secret Setup & Refined Autumn Acceptance**. Find supported secure server-secret import; do not invent a user settings UI or bypass prior credential-output rejection. A new explicit numeric allowance is required before a second voice test; never reuse/replenish the consumed first allowance. Verify refined pace/service listing/name/we/brand pronunciation/interruption/End, reconcile actual cost, disable and close out. Stop here after state/Git closeout.
 
+
+## Owner foundation Git checkpoint - 2026-10-08
+
+Validated implementation: f380f19151440c327d80b87d11b543256f088bc4. Startup deac07194c64f6d196eb44f94632057246bdb1cc. Seven tests and four browser cases PASS; intended text secret scan PASS; private data/raw media excluded. Separate closeout checkpoint follows; query Git for final HEAD. Next: AWC - First Verified Prospect Concepts & Private Demo Delivery. STOP; no outreach or next implementation started.
