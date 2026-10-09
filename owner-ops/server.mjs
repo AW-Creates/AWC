@@ -1,3 +1,4 @@
+import {factoryAccess} from './factory-access.mjs';
 import {createServer} from 'node:http';
 import {fileURLToPath} from 'node:url';
 import {dirname,join,resolve} from 'node:path';
@@ -10,6 +11,7 @@ import {createProspect,updateProspect,reviewProspect,score,qa,renderDemo,routeMe
 const root=dirname(fileURLToPath(import.meta.url));
 export function createOwnerServer({dataDir=join(root,'.local'),seed=true,channelConfig=null,providerFetch=fetch}={}){
  const store=openStore(join(dataDir,'owner-ops.sqlite'),{seed});const channels=createChannels({store,channelConfig,providerFetch,apiKey:process.env.RETELL_API_KEY||''});mkdirSync(join(dataDir,'demos'),{recursive:true});
+ const access=factoryAccess(store);
  const server=createServer(async(req,res)=>{
   const origin='http://127.0.0.1:'+server.address().port;
   res.setHeader('X-Robots-Tag','noindex, nofollow, noarchive');res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','no-referrer');res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
@@ -18,14 +20,16 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true,channel
    if(req.headers.host!=='127.0.0.1:'+server.address().port)throw new ValidationError('Open the loopback address printed by the owner workbench.',403);
    const url=new URL(req.url,origin),parts=url.pathname.split('/').filter(Boolean);const method=req.method;
    if(url.pathname.startsWith('/api/')&&(req.headers['sec-fetch-site']==='cross-site'||(req.headers.origin&&req.headers.origin!==origin)))throw new ValidationError('Use the local owner workbench.',403);
-   const assets={'/':'index.html','/app.js':'app.js','/app.css':'app.css','/demo.js':'demo.js','/crew-voice.js':'crew-voice.js','/cedar-lane-mark.svg':'cedar-lane-mark.svg','/demo.css':'demo.css','/estate-modern.css':'estate-modern.css','/estate-polish.css':'estate-polish.css','/estate-courtyard.webp':'estate-courtyard.webp','/estate-neighborhood.webp':'estate-neighborhood.webp','/showcase-estate.png':'showcase-estate.png','/showcase-interior.png':'showcase-interior.png'};
+   const assets={'/':'index.html','/app.js':'app.js','/app.css':'app.css','/demo.js':'demo.js','/crew-voice.js':'crew-voice.js','/cedar-lane-mark.svg':'cedar-lane-mark.svg','/demo.css':'demo.css','/estate-modern.css':'estate-modern.css','/estate-directions.css':'estate-directions.css','/estate-polish.css':'estate-polish.css','/estate-courtyard.webp':'estate-courtyard.webp','/estate-neighborhood.webp':'estate-neighborhood.webp','/showcase-estate.png':'showcase-estate.png','/showcase-interior.png':'showcase-interior.png'};
    const vendor={'/crew-assets/eventemitter3.js':'eventemitter3/dist/eventemitter3.umd.js','/crew-assets/livekit.js':'livekit-client/dist/livekit-client.umd.js','/crew-assets/retell.js':'retell-client-js-sdk/dist/index.umd.js'};
    if(method==='GET'&&vendor[url.pathname])return respond(200,readFileSync(join(root,'../website-receptionist/node_modules',vendor[url.pathname])),'text/javascript; charset=utf-8');
    if(method==='GET'&&assets[url.pathname]){const f=assets[url.pathname];return respond(200,readFileSync(join(root,'public',f)),f.endsWith('.svg')?'image/svg+xml':f.endsWith('.webp')?'image/webp':f.endsWith('.png')?'image/png':f.endsWith('.js')?'text/javascript; charset=utf-8':f.endsWith('.css')?'text/css; charset=utf-8':'text/html; charset=utf-8');}
    if(method==='GET'&&url.pathname==='/robots.txt')return respond(200,'User-agent: *\nDisallow: /\n','text/plain');
    if(parts[0]==='demo'&&parts.length===2&&method==='GET'){
-    const p=store.get(parts[1]);if(!p?.artifact)throw new ValidationError('Generate a reviewed concept first.',404);if(!qa(p).passed)throw new ValidationError('This concept is stale. Review and regenerate the current configuration.',409);
+    const p=store.get(parts[1]);if(!p?.artifact)throw new ValidationError('Generate a reviewed concept first.',404);
     try{resolveRoute({surface:'private_demo',prospect:p,reviewed:true});}catch{throw new ValidationError('This private demo is unavailable or expired.',410);}
+    if(!qa(p).passed)throw new ValidationError('This concept is stale. Review and regenerate the current configuration.',409);
+    if(p.demoConfig){const cookie=access.visit(p,req.headers.cookie||'');if(cookie)res.setHeader('Set-Cookie',cookie);}
     if(channels.status(p).talkAvailable)res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.retellai.com; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
     return respond(200,readFileSync(join(dataDir,'demos',p.id+'.html')),'text/html; charset=utf-8');
    }
@@ -61,8 +65,10 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true,channel
     const html=renderDemo(p);const inputHash=revisionHash(p);writeFileSync(join(dataDir,'demos',p.id+'.html'),html);p.builtRevision=p.inputRevision;p.artifact={generatedAt:new Date().toISOString(),inputHash,previewPath:'/demo/'+p.id,access:'loopback-only',remoteURL:null};p.stage='concept-ready';store.save(p);return respond(200,{prospect:p,qa:qa(p)});
    }
    if(action==='chat'){
-    if(!qa(p).passed)throw new ValidationError('Generate the current reviewed concept before trying its specialist.',409);
+
     let route;try{route=resolveRoute({surface:'private_demo',prospect:p,reviewed:true});}catch{throw new ValidationError('This private demo is unavailable or expired.',410);}
+    if(!qa(p).passed)throw new ValidationError('Generate the current reviewed concept before trying its specialist.',409);
+    if(p.demoConfig)access.message(p,req.headers.cookie||'');
     const result=routeMessage(p,input.message);const handoff=result.type.endsWith('-draft')?store.handoff(p.id,result,input.message):null;return respond(200,{...result,handoff,routing:{business_id:route.business_id,demo_id:route.demo_id,specialist_id:route.specialist.specialist_id,specialist_role:route.specialist.role,theme_id:route.theme_id,analytics_namespace:route.analytics_namespace}});
    }
    throw new ValidationError('Not found.',404);

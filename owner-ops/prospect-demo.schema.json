@@ -1,0 +1,645 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "demo_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "business": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "website": {
+          "type": "string",
+          "format": "uri"
+        },
+        "fictional": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "website",
+        "fictional"
+      ]
+    },
+    "niche": {
+      "const": "real-estate"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 150
+          },
+          "excerpt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3000
+          },
+          "capturedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "kind": {
+            "enum": [
+              "public",
+              "fictional"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "title",
+          "excerpt",
+          "capturedAt",
+          "kind"
+        ]
+      },
+      "maxItems": 12
+    },
+    "facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "about": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 900
+            },
+            "sourceId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            },
+            "review": {
+              "enum": [
+                "approved",
+                "uncertain",
+                "unsupported"
+              ]
+            },
+            "question": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "required": [
+            "value",
+            "sourceId",
+            "review"
+          ]
+        },
+        "serviceArea": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 900
+            },
+            "sourceId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            },
+            "review": {
+              "enum": [
+                "approved",
+                "uncertain",
+                "unsupported"
+              ]
+            },
+            "question": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "required": [
+            "value",
+            "sourceId",
+            "review"
+          ]
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 900
+              },
+              "sourceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "review": {
+                "enum": [
+                  "approved",
+                  "uncertain",
+                  "unsupported"
+                ]
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            },
+            "required": [
+              "value",
+              "sourceId",
+              "review"
+            ]
+          },
+          "maxItems": 8
+        },
+        "faqs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 900
+              },
+              "sourceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "review": {
+                "enum": [
+                  "approved",
+                  "uncertain",
+                  "unsupported"
+                ]
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            },
+            "required": [
+              "value",
+              "sourceId",
+              "review"
+            ]
+          },
+          "maxItems": 8
+        },
+        "hours": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 900
+              },
+              "sourceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "review": {
+                "enum": [
+                  "approved",
+                  "uncertain",
+                  "unsupported"
+                ]
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            },
+            "required": [
+              "value",
+              "sourceId",
+              "review"
+            ]
+          },
+          "maxItems": 8
+        },
+        "team": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 900
+              },
+              "sourceId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "review": {
+                "enum": [
+                  "approved",
+                  "uncertain",
+                  "unsupported"
+                ]
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            },
+            "required": [
+              "value",
+              "sourceId",
+              "review"
+            ]
+          },
+          "maxItems": 8
+        }
+      },
+      "required": [
+        "about",
+        "serviceArea",
+        "services",
+        "faqs",
+        "hours",
+        "team"
+      ]
+    },
+    "branding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "mark",
+            "wordmark"
+          ]
+        },
+        "logo": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "const": "builtin"
+                },
+                "asset": {
+                  "const": "cedar-lane-mark"
+                }
+              },
+              "required": [
+                "kind",
+                "asset"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "const": "upload"
+                },
+                "hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2048
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2048
+                }
+              },
+              "required": [
+                "kind",
+                "hash",
+                "width",
+                "height"
+              ]
+            }
+          ]
+        },
+        "surface": {
+          "enum": [
+            "light",
+            "dark",
+            "transparent"
+          ]
+        }
+      },
+      "required": [
+        "mode",
+        "logo",
+        "surface"
+      ]
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "enum": [
+              "/estate-courtyard.webp",
+              "/estate-neighborhood.webp",
+              "/showcase-estate.png",
+              "/showcase-interior.png"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "concept",
+              "generated"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 150
+          }
+        },
+        "required": [
+          "path",
+          "kind",
+          "label"
+        ]
+      },
+      "maxItems": 8
+    },
+    "specialist": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "role": {
+          "enum": [
+            "Customer Experience",
+            "Lead Qualification",
+            "Scheduling",
+            "Support"
+          ]
+        },
+        "personality": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "maxItems": 8
+        },
+        "tools": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "maxItems": 8
+        },
+        "handoffs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "scheduling": {
+              "const": "Scheduling"
+            },
+            "support": {
+              "const": "Support"
+            },
+            "human": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            }
+          },
+          "required": [
+            "scheduling",
+            "support",
+            "human"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "role",
+        "personality",
+        "permissions",
+        "tools",
+        "handoffs"
+      ]
+    },
+    "disclosure": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 600
+    },
+    "visual_direction": {
+      "enum": [
+        "editorial-luxury",
+        "modern-architectural",
+        "personal-brand"
+      ]
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "active",
+        "revoked"
+      ]
+    },
+    "analytics_namespace": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "guardrails": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_sessions": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "max_chat_requests": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 40
+        },
+        "max_session_seconds": {
+          "type": "integer",
+          "minimum": 30,
+          "maximum": 900
+        },
+        "paid_budget_usd": {
+          "const": 0
+        },
+        "max_paid_sessions": {
+          "const": 0
+        },
+        "private_access": {
+          "const": "loopback-only"
+        }
+      },
+      "required": [
+        "max_sessions",
+        "max_chat_requests",
+        "max_session_seconds",
+        "paid_budget_usd",
+        "max_paid_sessions",
+        "private_access"
+      ]
+    },
+    "channels": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "chat": {
+          "const": true
+        },
+        "talk_here": {
+          "const": "disabled"
+        },
+        "call_me": {
+          "const": "disabled"
+        }
+      },
+      "required": [
+        "chat",
+        "talk_here",
+        "call_me"
+      ]
+    },
+    "actions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "booking": {
+          "const": false
+        },
+        "payments": {
+          "const": false
+        }
+      },
+      "required": [
+        "booking",
+        "payments"
+      ]
+    },
+    "operator_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "confirmed": {
+          "const": true
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      },
+      "required": [
+        "confirmed",
+        "reviewer"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "demo_id",
+    "business",
+    "niche",
+    "sources",
+    "facts",
+    "branding",
+    "assets",
+    "specialist",
+    "disclosure",
+    "visual_direction",
+    "expires_at",
+    "status",
+    "analytics_namespace",
+    "guardrails",
+    "channels",
+    "actions",
+    "operator_review"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://awcreatives.example/schemas/prospect-demo-v1",
+  "title": "AWC Prospect Demo Factory Configuration",
+  "description": "Runtime validator additionally checks source excerpts, role permissions, identity binding, expiry and secret patterns. Unsupported and uncertain facts are omitted; all approved claims require source-bound operator review."
+}

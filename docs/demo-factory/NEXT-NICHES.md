@@ -1,0 +1,14 @@
+# Next niche recommendations — do not build yet
+
+These are prioritization judgments, not measured AWC conversion results. Public evidence was checked October 9, 2026; figures below describe the reports' dates, not current individual businesses. Score 1–5, higher is more favorable; equal weights provide a transparent comparison rather than a forecast.
+
+| Niche | Lead value | Inbound inquiry opportunity | FAQ/scheduling burden | Public facts available | Ability to pay | Redesign opportunity | Total |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Design-build remodelers / premium renovation firms | 5 | 4 | 4 | 5 | 4 | 5 | 27/30 |
+| Established medical spas / aesthetic practices | 4 | 5 | 5 | 4 | 4 | 4 | 26/30 |
+
+1. **Design-build remodeling first.** Large projects make a well-qualified inquiry valuable. Project type, service area, scope, budget expectations and consultation logistics fit prepared knowledge and human review. Public portfolios, service descriptions and business FAQs are often available, and architecture-led visuals can reuse the real-estate design vocabulary. Harvard's 2025 housing report describes a remodeling/repair market above $600 billion through 2025 and growing concentration among high-spending households. This supports market scale, not a claim that any particular contractor can afford AWC. Validate website quality, active capacity, project size and actual inbound volume prospect by prospect. [Harvard JCHS 2025 report announcement](https://www.jchs.harvard.edu/press-releases/remodeling-soars-new-heights-industry-struggles-address-labor-shortages-and-urgent).
+
+2. **Established medical spas second.** Repeat visits and frequent service/logistics questions offer a plausible inquiry-and-consultation use case. AmSpa's 2024 report recap gives average annual revenue of about $1.4 million; its industry-size article reports 245 monthly visits and 73% repeat patients. Those are dated survey averages, not prospect-specific revenue or demand. Public menus/team/hours can ground logistics answers, but clinical suitability, outcomes, contraindications and treatment advice must go to a qualified person. Keep a future demo to public administrative facts, with no patient intake or clinical claims. The extra review boundary makes this second, despite frequent scheduling opportunities. [AmSpa report recap](https://www.americanmedspa.org/news/2024-medical-spa-state-of-the-industry-executive-report-recap/), [AmSpa industry size and repeat visits](https://www.americanmedspa.org/news/medical-spas-are-safe-repeat-patients-and-industry-size/).
+
+Revenue comes first: validate real-estate prospect response and willingness to pay before implementing either niche. These scores are operator hypotheses; inquiry volume, redesign need and purchasing appetite still require direct qualification.

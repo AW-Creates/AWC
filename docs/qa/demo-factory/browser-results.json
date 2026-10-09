@@ -1,0 +1,486 @@
+{
+  "startedAt": "2026-10-09T21:41:25.205Z",
+  "checks": [
+    {
+      "id": "11000000-0000-4000-8000-000000000001",
+      "name": "Cedar Lane Realty",
+      "direction": "editorial-luxury",
+      "label": "desktop",
+      "width": 1440,
+      "passed": true,
+      "seconds": 4.09,
+      "images": 4,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000001",
+      "name": "Cedar Lane Realty",
+      "direction": "editorial-luxury",
+      "label": "mobile",
+      "width": 390,
+      "passed": true,
+      "seconds": 3.14,
+      "images": 4,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000001",
+      "name": "Cedar Lane Realty",
+      "direction": "editorial-luxury",
+      "label": "mobile-small",
+      "width": 360,
+      "passed": true,
+      "seconds": 3.11,
+      "images": 4,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000001",
+      "name": "Cedar Lane Realty",
+      "direction": "editorial-luxury",
+      "label": "reduced-motion",
+      "width": 1440,
+      "passed": true,
+      "seconds": 2.55,
+      "images": 4,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000002",
+      "name": "Forma House Brokerage",
+      "direction": "modern-architectural",
+      "label": "desktop",
+      "width": 1440,
+      "passed": true,
+      "seconds": 3.26,
+      "images": 3,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000002",
+      "name": "Forma House Brokerage",
+      "direction": "modern-architectural",
+      "label": "mobile",
+      "width": 390,
+      "passed": true,
+      "seconds": 3.09,
+      "images": 3,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000002",
+      "name": "Forma House Brokerage",
+      "direction": "modern-architectural",
+      "label": "mobile-small",
+      "width": 360,
+      "passed": true,
+      "seconds": 2.96,
+      "images": 3,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000002",
+      "name": "Forma House Brokerage",
+      "direction": "modern-architectural",
+      "label": "reduced-motion",
+      "width": 1440,
+      "passed": true,
+      "seconds": 1.79,
+      "images": 3,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000003",
+      "name": "Maren Vale Realty",
+      "direction": "personal-brand",
+      "label": "desktop",
+      "width": 1440,
+      "passed": true,
+      "seconds": 3.13,
+      "images": 2,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000003",
+      "name": "Maren Vale Realty",
+      "direction": "personal-brand",
+      "label": "mobile",
+      "width": 390,
+      "passed": true,
+      "seconds": 2.79,
+      "images": 2,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000003",
+      "name": "Maren Vale Realty",
+      "direction": "personal-brand",
+      "label": "mobile-small",
+      "width": 360,
+      "passed": true,
+      "seconds": 2.77,
+      "images": 2,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    },
+    {
+      "id": "11000000-0000-4000-8000-000000000003",
+      "name": "Maren Vale Realty",
+      "direction": "personal-brand",
+      "label": "reduced-motion",
+      "width": 1440,
+      "passed": true,
+      "seconds": 1.92,
+      "images": 2,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_specialist_started",
+        "crew_handoff_requested"
+      ]
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-desktop-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-desktop-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-desktop-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-desktop-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-mobile-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-mobile-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-mobile-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-mobile-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-mobile-small-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-mobile-small-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-mobile-small-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-mobile-small-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-reduced-motion-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-reduced-motion-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-reduced-motion-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000001-reduced-motion-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-desktop-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-desktop-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-desktop-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-desktop-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-mobile-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-mobile-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-mobile-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-mobile-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-mobile-small-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-mobile-small-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-mobile-small-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-mobile-small-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-reduced-motion-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-reduced-motion-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-reduced-motion-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000002-reduced-motion-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-desktop-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-desktop-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-desktop-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-desktop-team-story.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-desktop-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-team-story.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-small-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-small-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-small-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-small-team-story.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-mobile-small-crew-open.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-reduced-motion-hero-closed.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-reduced-motion-full.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-reduced-motion-mid.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-reduced-motion-team-story.png",
+    "docs/qa/demo-factory/11000000-0000-4000-8000-000000000003-reduced-motion-crew-open.png"
+  ],
+  "generationSeconds": 0.11,
+  "factorySummary": {
+    "generatedAt": "2026-10-09T21:41:25.314Z",
+    "elapsed_ms": 42,
+    "paid_spend_usd": 0,
+    "dataDir": "C:\\Users\\A-PROB~1\\AppData\\Local\\Temp\\awc-factory-qa-OhwRLJ",
+    "demos": [
+      {
+        "demo_id": "11000000-0000-4000-8000-000000000001",
+        "business": "Cedar Lane Realty",
+        "theme": "editorial-luxury",
+        "route": "/demo/11000000-0000-4000-8000-000000000001",
+        "expiry": "2026-10-30T23:59:00.000Z",
+        "specialist": "Ellis",
+        "preflight": {
+          "passed": true,
+          "checks": [
+            {
+              "label": "Identity, provenance, expiry and finite guardrails",
+              "passed": true
+            },
+            {
+              "label": "Specialist role and tools",
+              "passed": true
+            },
+            {
+              "label": "Analytics isolation",
+              "passed": true
+            },
+            {
+              "label": "Reviewed artifact",
+              "passed": true
+            },
+            {
+              "label": "Noindex and responsive viewport",
+              "passed": true
+            },
+            {
+              "label": "Theme selected",
+              "passed": true
+            },
+            {
+              "label": "Concept disclosure",
+              "passed": true
+            },
+            {
+              "label": "Paid channels disabled",
+              "passed": true
+            },
+            {
+              "label": "No secrets",
+              "passed": true
+            }
+          ],
+          "omitted": [],
+          "route": "/demo/11000000-0000-4000-8000-000000000001",
+          "visualReviewRequired": true
+        }
+      },
+      {
+        "demo_id": "11000000-0000-4000-8000-000000000002",
+        "business": "Forma House Brokerage",
+        "theme": "modern-architectural",
+        "route": "/demo/11000000-0000-4000-8000-000000000002",
+        "expiry": "2026-10-30T23:59:00.000Z",
+        "specialist": "Nora",
+        "preflight": {
+          "passed": true,
+          "checks": [
+            {
+              "label": "Identity, provenance, expiry and finite guardrails",
+              "passed": true
+            },
+            {
+              "label": "Specialist role and tools",
+              "passed": true
+            },
+            {
+              "label": "Analytics isolation",
+              "passed": true
+            },
+            {
+              "label": "Reviewed artifact",
+              "passed": true
+            },
+            {
+              "label": "Noindex and responsive viewport",
+              "passed": true
+            },
+            {
+              "label": "Theme selected",
+              "passed": true
+            },
+            {
+              "label": "Concept disclosure",
+              "passed": true
+            },
+            {
+              "label": "Paid channels disabled",
+              "passed": true
+            },
+            {
+              "label": "No secrets",
+              "passed": true
+            }
+          ],
+          "omitted": [],
+          "route": "/demo/11000000-0000-4000-8000-000000000002",
+          "visualReviewRequired": true
+        }
+      },
+      {
+        "demo_id": "11000000-0000-4000-8000-000000000003",
+        "business": "Maren Vale Realty",
+        "theme": "personal-brand",
+        "route": "/demo/11000000-0000-4000-8000-000000000003",
+        "expiry": "2026-10-30T23:59:00.000Z",
+        "specialist": "Avery",
+        "preflight": {
+          "passed": true,
+          "checks": [
+            {
+              "label": "Identity, provenance, expiry and finite guardrails",
+              "passed": true
+            },
+            {
+              "label": "Specialist role and tools",
+              "passed": true
+            },
+            {
+              "label": "Analytics isolation",
+              "passed": true
+            },
+            {
+              "label": "Reviewed artifact",
+              "passed": true
+            },
+            {
+              "label": "Noindex and responsive viewport",
+              "passed": true
+            },
+            {
+              "label": "Theme selected",
+              "passed": true
+            },
+            {
+              "label": "Concept disclosure",
+              "passed": true
+            },
+            {
+              "label": "Paid channels disabled",
+              "passed": true
+            },
+            {
+              "label": "No secrets",
+              "passed": true
+            }
+          ],
+          "omitted": [],
+          "route": "/demo/11000000-0000-4000-8000-000000000003",
+          "visualReviewRequired": true
+        }
+      }
+    ]
+  },
+  "guardrails": {
+    "revokedRouteBlocked": true,
+    "expiredRouteBlocked": true,
+    "finiteChatRequests": true,
+    "finiteSessions": true,
+    "crossDemoCookieRejected": true
+  },
+  "passed": true,
+  "elapsedSeconds": 36.07
+}

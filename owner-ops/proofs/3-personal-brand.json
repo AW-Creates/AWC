@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "demo_id": "11000000-0000-4000-8000-000000000003",
+  "business": {
+    "name": "Maren Vale Realty",
+    "website": "https://proof-3.example/",
+    "fictional": true
+  },
+  "niche": "real-estate",
+  "sources": [
+    {
+      "id": "fixture",
+      "url": "https://proof-3.example/",
+      "title": "AW Creatives fictional proof specification",
+      "excerpt": " Fictional fixture. Maren Vale Realty is a fictional real estate concept for thoughtful buyer and seller conversations. Illustrative local focus: Charleston and nearby communities Buyer guidance Seller consultation Property inquiry preparation Property availability is not connected in this concept. A licensed team member must confirm current listing details. Maren Vale is the fictional team lead in this concept, with a listening-first approach to buyer priorities and seller preparation.",
+      "capturedAt": "2026-10-09",
+      "kind": "fictional"
+    }
+  ],
+  "facts": {
+    "about": {
+      "value": "Maren Vale Realty is a fictional real estate concept for thoughtful buyer and seller conversations.",
+      "sourceId": "fixture",
+      "review": "approved"
+    },
+    "serviceArea": {
+      "value": "Illustrative local focus: Charleston and nearby communities",
+      "sourceId": "fixture",
+      "review": "approved"
+    },
+    "services": [
+      {
+        "value": "Buyer guidance",
+        "sourceId": "fixture",
+        "review": "approved"
+      },
+      {
+        "value": "Seller consultation",
+        "sourceId": "fixture",
+        "review": "approved"
+      },
+      {
+        "value": "Property inquiry preparation",
+        "sourceId": "fixture",
+        "review": "approved"
+      }
+    ],
+    "faqs": [
+      {
+        "value": "Property availability is not connected in this concept. A licensed team member must confirm current listing details.",
+        "sourceId": "fixture",
+        "review": "approved",
+        "question": "Can you confirm a property is available?"
+      }
+    ],
+    "hours": [],
+    "team": [
+      {
+        "value": "Maren Vale is the fictional team lead in this concept, with a listening-first approach to buyer priorities and seller preparation.",
+        "sourceId": "fixture",
+        "review": "approved"
+      }
+    ]
+  },
+  "branding": {
+    "mode": "mark",
+    "logo": null,
+    "surface": "transparent"
+  },
+  "assets": [
+    {
+      "path": "/estate-courtyard.webp",
+      "kind": "concept",
+      "label": "Concept residence imagery; not a listing"
+    },
+    {
+      "path": "/estate-neighborhood.webp",
+      "kind": "concept",
+      "label": "Concept neighborhood imagery; illustrative only"
+    },
+    {
+      "path": "/showcase-estate.png",
+      "kind": "generated",
+      "label": "Original generated design concept; not a listing or completed client work"
+    },
+    {
+      "path": "/showcase-interior.png",
+      "kind": "generated",
+      "label": "Original generated design concept; not a listing or completed client work"
+    }
+  ],
+  "specialist": {
+    "id": "demo_11000000-0000-4000-8000-000000000003_concierge",
+    "name": "Avery",
+    "role": "Customer Experience",
+    "personality": "Warm, clear, thoughtful; asks one useful question at a time.",
+    "permissions": [
+      "answer_faq",
+      "qualify_interest",
+      "draft_handoff"
+    ],
+    "tools": [
+      "answer_faq",
+      "qualify_interest",
+      "draft_handoff"
+    ],
+    "handoffs": {
+      "scheduling": "Scheduling",
+      "support": "Support",
+      "human": "Maren Vale Realty concept operator"
+    }
+  },
+  "disclosure": "Fictional concept demo. AI specialist; no live listings, booking or payments.",
+  "visual_direction": "personal-brand",
+  "expires_at": "2026-10-30T23:59:00.000Z",
+  "status": "active",
+  "analytics_namespace": "demo_11000000-0000-4000-8000-000000000003",
+  "guardrails": {
+    "max_chat_requests": 20,
+    "max_session_seconds": 600,
+    "paid_budget_usd": 0,
+    "max_paid_sessions": 0,
+    "private_access": "loopback-only",
+    "max_sessions": 10
+  },
+  "channels": {
+    "chat": true,
+    "talk_here": "disabled",
+    "call_me": "disabled"
+  },
+  "actions": {
+    "booking": false,
+    "payments": false
+  },
+  "operator_review": {
+    "confirmed": true,
+    "reviewer": "AWC fictional fixture review"
+  }
+}
