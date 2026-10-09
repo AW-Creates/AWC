@@ -78,3 +78,7 @@ Historical voice follow-up (not the strategic next milestone): **AWC — Secure 
 ## Owner foundation Git checkpoint - 2026-10-08
 
 Validated implementation: f380f19151440c327d80b87d11b543256f088bc4. Startup deac07194c64f6d196eb44f94632057246bdb1cc. Seven tests and four browser cases PASS; intended text secret scan PASS; private data/raw media excluded. Separate closeout checkpoint follows; query Git for final HEAD. Next: AWC - First Verified Prospect Concepts & Private Demo Delivery. STOP; no outreach or next implementation started.
+
+## Niche template Git checkpoint - 2026-10-08
+
+Validated implementation: 4869d8aad5ee34ff3a676cd0712981fc03a675d1. 8 focused tests/4 browser cases/mobile context and verified capture PASS. Secret/whitespace gates PASS. Next AWC - First Verified Prospect Concepts & Private Demo Delivery. Live conversation-to-voice remains separately gated; no calls/outreach. STOP after sync closeout.
