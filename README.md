@@ -4,6 +4,10 @@
 
 Canonical red/pink standalone AWC site recovered from the approved source. The active `index.html` is byte-identical to the preserved recovery copy; the prior gold React/Vite runtime remains available in Git history at the pre-migration checkpoint `awc-gold-pre-red-migration-2026-09-24`.
 
+## Local owner workbench
+
+Run `node owner-ops/server.mjs` and open http://127.0.0.1:4186/ . See [operating guide](owner-ops/README.md) and [validated foundation closeout](docs/owner-ops/CLOSEOUT.md). Local fictional concepts and handoff drafts; remote authenticated delivery remains deferred.
+
 ## Local preview
 
 Use Node.js 24 (`.nvmrc`). No dependencies, install step, or build step is required.

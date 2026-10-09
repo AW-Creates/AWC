@@ -47,7 +47,9 @@ Today, describe a tailored concept as something to discuss and scope. Do not pro
 
 Validated: responsive red/pink website; preliminary budget calculator; prepared-answer text guide; inquiry persistence/email status/private inbox; scripted estimate example; planning-only client-specialist template. Autumn's local supervised voice test completed; refined provider version 1 is configuration-verified. Hosted voice remains disabled, hosted secret setup/refined audible acceptance unresolved. No new voice allowance is granted here.
 
-CRM/owner-ops modules, real calendar booking, payment execution, quote/invoice issuance, social publishing, multi-specialist permissions/handoff execution and the Prospect Demo Factory are **not established as production-ready**. We can design/build/integrate these within a validated human-approved scope; do not market them as included, turnkey live SaaS features. Proposals must establish feasibility, permissions, provider costs, action limits and acceptance tests.
+A local owner-workbench foundation now supports manual prospect/source review, original niche concepts, custom role-limited text specialists and local handoff drafts. It is not authenticated remote delivery or live multi-specialist execution. See `docs/owner-ops/CLOSEOUT.md`.
+
+Production CRM/owner-ops modules, real calendar booking, payment execution, quote/invoice issuance, social publishing, multi-specialist permissions/handoff execution and the Prospect Demo Factory are **not established as production-ready**. We can design/build/integrate these within a validated human-approved scope; do not market them as included, turnkey live SaaS features. Proposals must establish feasibility, permissions, provider costs, action limits and acceptance tests.
 
 Website inquiries are not appointments, purchases or accepted quotes. Never claim live tool actions, escalations or guaranteed email delivery from a demo. No unsupported revenue guarantees, testimonials, SLA or staffing claims.
 
@@ -55,4 +57,4 @@ Website inquiries are not appointments, purchases or accepted quotes. Never clai
 
 Future sessions must preserve this positioning and distinguish service ambition from validated delivery. Update this document when evidence changes, rather than drifting back to a web-only or receptionist-only company.
 
-Exact next milestone: **AWC — Prospect Demo Factory & Owner Ops Foundation**.
+Exact next milestone: **AWC — First Verified Prospect Concepts & Private Demo Delivery**.

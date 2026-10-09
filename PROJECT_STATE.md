@@ -10,15 +10,15 @@ Mandatory source of truth: `docs/brand/AWC-POSITIONING.md`. Reusable five-versio
 
 ## Current milestone
 
-**AWC — Positioning Lock + Website Alignment — COMPLETE**. Canonical positioning and client explainer written; red/pink site aligned through existing hero, thesis, four capability rows, Crew/customization, focused-versus-connected engagement and personalized concept invitation. Existing prices, calculator, inquiry handling, components and motion retained. Prepared text facts aligned; provider Autumn version 1 and immutable refinement exports unchanged. No paid call, new allowance, purchase, outreach, lead scraping, CRM rebuild or factory implementation.
+**AWC — Prospect Demo Factory & Owner Ops Foundation — COMPLETE (local foundation)**. Runnable loopback owner workbench: persistent prospect workspaces, manual source capture/review, three original niche concepts, custom role-limited Crew configuration, revision/hash QA gates, deterministic prepared replies and local specialist/human handoff drafts. JSON export available. Three fictional fixtures only; no real prospect research or outreach. Public Site version 8, service pricing, Autumn provider configuration and disabled voice unchanged.
 
-Validation and publication evidence: `docs/brand/AWC-POSITIONING-CLOSEOUT.md`; screenshots and browser results: `docs/qa/positioning/`. Existing voice checkpoint below remains authoritative; voice disabled and refined audible acceptance unresolved.
+Evidence: `docs/owner-ops/CLOSEOUT.md`, architecture `docs/owner-ops/FOUNDATION.md`, operating guide `owner-ops/README.md`, screenshots/browser results `docs/qa/owner-ops/`. Seven focused tests and four desktop/mobile dark/light browser cases pass. Provider/API spend this milestone $0; no new dependencies or purchases. Raw synthetic silent capture verified outside Git.
 
 ## Exact next milestone / scope
 
-**AWC — Prospect Demo Factory & Owner Ops Foundation**. Start a fresh bounded task: prospect workspace/lead tracking; niche template architecture; public business-information capture; prospect-specific Crew configuration; role/capability permissions and specialist/human handoff; private/unindexed demo deployment; QA pipeline; audit/reuse of Asynk/Twenty/OSS for internal owner ops; first multi-vertical prospect scoring and batch design. Revenue and platform tracks run together; real needs prioritize modules. This is an internal delivery system, not a white-label CRM product. Do not wait for a complete GHL clone to sell feasible services.
+**AWC — First Verified Prospect Concepts & Private Demo Delivery**. Small manual public-business research batch; verify facts/content rights; refine original concepts; authenticated private remote demo delivery with separate owner/prospect access and deployed QA. Locate the exact Asynk/Twenty repositories before license/security/reuse adoption. No outreach until separately authorized; no next-milestone work started here.
 
-No next-milestone implementation started here. Secure hosted voice setup/refined acceptance remains a separate dependency requiring its own scope and numeric call approval; never reuse the consumed test allowance.
+Current foundation is local-only, unauthenticated, unencrypted and noindex. Noindex is not private remote access. Specialist routing creates drafts, not another live specialist. No calendar booking, quote/invoice issuance, payments, messaging delivery, social publishing or production CRM. Voice/language choices are planning preferences; concept replies are English text. Hosted voice/refined audible acceptance remains a separate dependency requiring a new explicit numeric allowance; never reuse the consumed test allowance.
 
 ## Locked brand / customization model
 

@@ -22,3 +22,6 @@ tmp/
 __pycache__/
 *.pyc
 .venv/
+
+# Owner workbench: private prospect data and generated concepts
+owner-ops/.local/
