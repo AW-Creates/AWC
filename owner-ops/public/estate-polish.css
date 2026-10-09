@@ -1,0 +1,64 @@
+/* Finishing details for the approved modern residential direction. */
+body[data-template="real-estate"] header nav a {
+  position:relative;
+  padding:8px 0;
+  letter-spacing:.09em;
+}
+body[data-template="real-estate"] header nav a::after {
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:1px;
+  background:#d5e7b4;
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .22s ease;
+}
+body[data-template="real-estate"] header nav a:is(:hover,:focus-visible)::after {
+  transform:scaleX(1);
+}
+.modern-hero-index > span::before {
+  content:"";
+  display:inline-block;
+  width:26px;
+  height:1px;
+  background:#d5e7b4;
+  margin:0 12px 3px 0;
+}
+.modern-story > img {
+  outline:1px solid #ffffff60;
+  outline-offset:-12px;
+}
+.modern-story .eyebrow { letter-spacing:.2em; }
+.modern-story:focus-within > img { filter:saturate(1); }
+.modern-move-image > span {
+  padding:9px 13px;
+  border:1px solid #ffffff60;
+  background:#18372c45;
+  border-radius:3px;
+  backdrop-filter:blur(6px);
+}
+body[data-template="real-estate"] .button > span,
+.intent-option > span {
+  transition:transform .2s ease;
+}
+body[data-template="real-estate"] .button:is(:hover,:focus-visible) > span,
+.intent-option:is(:hover,:focus-visible) > span {
+  transform:translate(2px,-2px);
+}
+.modern-inquiry {
+  background:radial-gradient(ellipse at 50% 80%,#234537,transparent 70%),#112d25;
+}
+.modern-local-caption { letter-spacing:.05em; }
+@media(max-width:760px) {
+  .modern-story > img { outline-offset:-9px; }
+  .modern-hero-index > span::before { width:14px; margin-right:7px; }
+  .modern-move-image > span { padding:7px 10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body[data-template="real-estate"] header nav a::after,
+  body[data-template="real-estate"] .button > span,
+  .intent-option > span { transition:none; }
+  body[data-template="real-estate"] .button:is(:hover,:focus-visible) > span,
+  .intent-option:is(:hover,:focus-visible) > span { transform:none; }
+}

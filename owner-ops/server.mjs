@@ -1,7 +1,8 @@
 import {createServer} from 'node:http';
 import {fileURLToPath} from 'node:url';
 import {dirname,join,resolve} from 'node:path';
-import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync,existsSync,unlinkSync} from 'node:fs';
+import {validateLogoPNG} from './logo.mjs';
 import {openStore} from './store.mjs';
 import {createProspect,updateProspect,reviewProspect,score,qa,renderDemo,routeMessage,revisionHash,ValidationError} from './model.mjs';
 const root=dirname(fileURLToPath(import.meta.url));
@@ -15,8 +16,8 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true}={}){
    if(req.headers.host!=='127.0.0.1:'+server.address().port)throw new ValidationError('Open the loopback address printed by the owner workbench.',403);
    const url=new URL(req.url,origin),parts=url.pathname.split('/').filter(Boolean);const method=req.method;
    if(url.pathname.startsWith('/api/')&&(req.headers['sec-fetch-site']==='cross-site'||(req.headers.origin&&req.headers.origin!==origin)))throw new ValidationError('Use the local owner workbench.',403);
-   const assets={'/':'index.html','/app.js':'app.js','/app.css':'app.css','/demo.js':'demo.js','/demo.css':'demo.css','/estate-modern.css':'estate-modern.css','/estate-courtyard.webp':'estate-courtyard.webp','/estate-neighborhood.webp':'estate-neighborhood.webp','/showcase-estate.png':'showcase-estate.png','/showcase-interior.png':'showcase-interior.png'};
-   if(method==='GET'&&assets[url.pathname]){const f=assets[url.pathname];return respond(200,readFileSync(join(root,'public',f)),f.endsWith('.webp')?'image/webp':f.endsWith('.png')?'image/png':f.endsWith('.js')?'text/javascript; charset=utf-8':f.endsWith('.css')?'text/css; charset=utf-8':'text/html; charset=utf-8');}
+   const assets={'/':'index.html','/app.js':'app.js','/app.css':'app.css','/demo.js':'demo.js','/cedar-lane-mark.svg':'cedar-lane-mark.svg','/demo.css':'demo.css','/estate-modern.css':'estate-modern.css','/estate-polish.css':'estate-polish.css','/estate-courtyard.webp':'estate-courtyard.webp','/estate-neighborhood.webp':'estate-neighborhood.webp','/showcase-estate.png':'showcase-estate.png','/showcase-interior.png':'showcase-interior.png'};
+   if(method==='GET'&&assets[url.pathname]){const f=assets[url.pathname];return respond(200,readFileSync(join(root,'public',f)),f.endsWith('.svg')?'image/svg+xml':f.endsWith('.webp')?'image/webp':f.endsWith('.png')?'image/png':f.endsWith('.js')?'text/javascript; charset=utf-8':f.endsWith('.css')?'text/css; charset=utf-8':'text/html; charset=utf-8');}
    if(method==='GET'&&url.pathname==='/robots.txt')return respond(200,'User-agent: *\nDisallow: /\n','text/plain');
    if(parts[0]==='demo'&&parts.length===2&&method==='GET'){
     const p=store.get(parts[1]);if(!p?.artifact)throw new ValidationError('Generate a reviewed concept first.',404);if(!qa(p).passed)throw new ValidationError('This concept is stale. Review and regenerate the current configuration.',409);
@@ -24,18 +25,26 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true}={}){
    }
    if(parts[0]!=='api'||parts[1]!=='prospects')throw new ValidationError('Not found.',404);
    if(method==='GET'&&parts.length===2)return respond(200,{prospects:store.list().map(p=>({...p,score:score(p.signals,p.reviewedRevision===p.inputRevision),qa:qa(p)}))});
+   if(method==='GET'&&parts[0]==='api'&&parts[1]==='prospects'&&parts.length===5&&parts[3]==='logo'){
+    const p=store.get(parts[2]),logo=p?.branding?.logo;if(!p||logo?.kind!=='upload'||logo.hash!==parts[4]||!/^[a-f0-9]{64}$/.test(parts[4])||!/^[a-f0-9-]{36}$/.test(p.id))throw new ValidationError('Logo not found.',404);return respond(200,readFileSync(join(dataDir,'logos',p.id+'-'+logo.hash+'.png')),'image/png');
+   }
    if(method==='GET'&&parts.length===3&&parts[2]==='export'){res.setHeader('Content-Disposition','attachment; filename="awc-prospect-workspaces.json"');return respond(200,{schemaVersion:1,exportedAt:new Date().toISOString(),deployment:'local-only',prospects:store.list().map(p=>({...p,handoffs:store.handoffs(p.id)}))});}
    if(method==='GET'&&parts.length===3){const p=store.get(parts[2]);if(!p)throw new ValidationError('Prospect not found.',404);return respond(200,{...p,score:score(p.signals,p.reviewedRevision===p.inputRevision),qa:qa(p),handoffs:store.handoffs(p.id)});}
    if(!['POST','PATCH'].includes(method))throw new ValidationError('Method not allowed.',405);
    if(req.headers.origin!==origin||req.headers['x-owner-action']!=='local-workbench'||!req.headers['content-type']?.startsWith('application/json'))throw new ValidationError('Use a same-origin JSON owner action.',403);
-   let bytes=0,body='';for await(const chunk of req){bytes+=chunk.length;if(bytes>32000)throw new ValidationError('Request is too large.',413);body+=chunk;}
+   let bytes=0,body='';for await(const chunk of req){bytes+=chunk.length;if(bytes>(parts.length===4&&parts[3]==='logo'?360000:32000))throw new ValidationError('Request is too large.',413);body+=chunk;}
    let input;try{input=JSON.parse(body);}catch{throw new ValidationError('Invalid JSON.');}
    if(input===null||typeof input!=='object'||Array.isArray(input))throw new ValidationError('Use a JSON object.');
    if(parts.length===2&&method==='POST')return respond(201,store.save(createProspect(input)));
    const p=store.get(parts[2]);if(!p)throw new ValidationError('Prospect not found.',404);
-   if(parts.length===3&&method==='PATCH'){if(input.expectedRevision!==p.inputRevision)throw new ValidationError('This workspace changed. Refresh before saving.',409);return respond(200,store.save(updateProspect(p,input)));}
+   if(parts.length===3&&method==='PATCH'){if(input.branding?.logo?.kind==='upload'&&JSON.stringify(input.branding.logo)!==JSON.stringify(p.branding?.logo))throw new ValidationError('Upload logo files through the logo action.');if(input.expectedRevision!==p.inputRevision)throw new ValidationError('This workspace changed. Refresh before saving.',409);return respond(200,store.save(updateProspect(p,input)));}
    const action=parts[3];
    if(parts.length!==4||method!=='POST')throw new ValidationError('Not found.',404);
+   if(action==='logo'){
+    if(input.expectedRevision!==p.inputRevision)throw new ValidationError('This workspace changed. Refresh before saving.',409);if(!/^[a-f0-9-]{36}$/.test(p.id))throw new ValidationError('Invalid workspace asset scope.');const old=p.branding?.logo;if(input.surface!==undefined&&!['light','dark','transparent'].includes(input.surface))throw new ValidationError('Choose a logo surface.');if(input.mode!==undefined&&!['mark','wordmark'].includes(input.mode))throw new ValidationError('Choose mark with name or wordmark.');
+    let logo=null;if(input.remove!==true){const validated=validateLogoPNG(input);logo={kind:'upload',hash:validated.hash,width:validated.width,height:validated.height};mkdirSync(join(dataDir,'logos'),{recursive:true});writeFileSync(join(dataDir,'logos',p.id+'-'+logo.hash+'.png'),validated.bytes);}
+    const updated=updateProspect(p,{branding:{mode:input.mode||p.branding?.mode||'mark',logo,surface:input.surface||(logo?.kind==='upload'?'light':'transparent')}});store.save(updated);if(old?.kind==='upload'&&old.hash!==logo?.hash&&/^[a-f0-9]{64}$/.test(old.hash)){const file=join(dataDir,'logos',p.id+'-'+old.hash+'.png');if(existsSync(file))unlinkSync(file);}return respond(200,updated);
+   }
    if(['review','generate'].includes(action)&&input.expectedRevision!==p.inputRevision)throw new ValidationError('This workspace changed. Refresh before continuing.',409);
    if(action==='review'){if(input.confirmed!==true)throw new ValidationError('Confirm manual source and configuration review.');return respond(200,store.save(reviewProspect(p)));}
    if(action==='generate'){

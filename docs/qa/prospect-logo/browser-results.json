@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "uploadUI": true,
+      "reviewInvalidated": true,
+      "markName": true,
+      "wordmarkNoDuplicate": true,
+      "headerFooter": true,
+      "contrastSurfaces": true,
+      "removeFallback": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "uploadUI": true,
+      "reviewInvalidated": true,
+      "markName": true,
+      "wordmarkNoDuplicate": true,
+      "headerFooter": true,
+      "contrastSurfaces": true,
+      "removeFallback": true,
+      "noOverflow": true
+    }
+  ],
+  "errors": []
+}
