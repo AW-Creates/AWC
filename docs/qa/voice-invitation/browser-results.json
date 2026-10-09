@@ -1,0 +1,64 @@
+{
+  "checks": [
+    {
+      "label": "desktop",
+      "explicitAudioCopy": true,
+      "voiceEntryFocusAndEvent": true,
+      "truthfulDisabledChannels": true,
+      "typingFallback": true,
+      "pageSessionDismissal": true,
+      "refreshGreeting": true,
+      "noOverflow": true,
+      "noAutoplayOrMicrophone": true,
+      "reducedMotion": false
+    },
+    {
+      "label": "mobile",
+      "explicitAudioCopy": true,
+      "voiceEntryFocusAndEvent": true,
+      "truthfulDisabledChannels": true,
+      "typingFallback": true,
+      "pageSessionDismissal": true,
+      "refreshGreeting": true,
+      "noOverflow": true,
+      "noAutoplayOrMicrophone": true,
+      "reducedMotion": false
+    },
+    {
+      "label": "small-mobile",
+      "explicitAudioCopy": true,
+      "voiceEntryFocusAndEvent": true,
+      "truthfulDisabledChannels": true,
+      "typingFallback": true,
+      "pageSessionDismissal": true,
+      "refreshGreeting": false,
+      "noOverflow": true,
+      "noAutoplayOrMicrophone": true,
+      "reducedMotion": true
+    },
+    {
+      "label": "reduced-motion",
+      "explicitAudioCopy": true,
+      "voiceEntryFocusAndEvent": true,
+      "truthfulDisabledChannels": true,
+      "typingFallback": true,
+      "pageSessionDismissal": true,
+      "refreshGreeting": false,
+      "noOverflow": true,
+      "noAutoplayOrMicrophone": true,
+      "reducedMotion": true
+    },
+    {
+      "niche": "cleaning",
+      "ownIdentity": true,
+      "sharedVoiceCopy": true
+    },
+    {
+      "niche": "professional-services",
+      "ownIdentity": true,
+      "sharedVoiceCopy": true
+    }
+  ],
+  "errors": [],
+  "externalRequests": []
+}
