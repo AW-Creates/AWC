@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "id": "390-dark",
+      "workbenchOverflow": false,
+      "demoOverflow": false,
+      "dialogEscape": true
+    },
+    {
+      "id": "390-light",
+      "workbenchOverflow": false,
+      "demoOverflow": false,
+      "dialogEscape": true
+    },
+    {
+      "id": "1440-dark",
+      "workbenchOverflow": false,
+      "demoOverflow": false,
+      "dialogEscape": true
+    },
+    {
+      "id": "1440-light",
+      "workbenchOverflow": false,
+      "demoOverflow": false,
+      "dialogEscape": true
+    }
+  ],
+  "flows": [
+    "Floating widget persists at page end; Escape/focus return; messages retained; disabled voice controls + bounded context",
+    "Reviewed cleaning concept + business-specific answer + scheduling draft + owner visibility",
+    "Three niche templates generated and rendered",
+    "Create -> manual source capture -> custom Rowan Scheduling Specialist -> review -> concept -> permitted request draft",
+    "Configuration edit invalidates review and preview"
+  ],
+  "errors": []
+}

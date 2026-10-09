@@ -8,9 +8,15 @@ Updated 2026-10-08 (America/New_York). Canonical repo: `C:/Users/A-Problem/Docum
 
 Mandatory source of truth: `docs/brand/AWC-POSITIONING.md`. Reusable five-version explainer: `docs/sales/AWC-CLIENT-EXPLAINER.md`. Do not drift to web-only or receptionist-only positioning. Website/system integrations, role-specific tools and permissions, specialist/human handoff, and customization are scoped capabilities; unfinished modules must not be advertised as turnkey production features.
 
+## Approved template and channel direction — 2026-10-08
+
+Prospect sites must use industry-authentic structures and business-specific identity, not AWC company-site styling. Original reusable HTML/CSS template families; template catalogs serve as references, no copied proprietary assets. Persistent floating Crew widget plus contextual entry points. Approved target: move text into browser voice or explicitly requested callback with bounded conversation context and the same role/permissions. Live channels stay unavailable until server integration, consent, limits and separately authorized acceptance pass. See `docs/owner-ops/NICHE-TEMPLATES-AND-CONTINUITY.md`.
+
 ## Current milestone
 
-**AWC — Prospect Demo Factory & Owner Ops Foundation — COMPLETE (local foundation)**. Runnable loopback owner workbench: persistent prospect workspaces, manual source capture/review, three original niche concepts, custom role-limited Crew configuration, revision/hash QA gates, deterministic prepared replies and local specialist/human handoff drafts. JSON export available. Three fictional fixtures only; no real prospect research or outreach. Public Site version 8, service pricing, Autumn provider configuration and disabled voice unchanged.
+**AWC — Industry Templates & Crew Conversation Continuity — COMPLETE (local concept experience)**. Three distinct original niche structures, persistent accessible Crew widget, contextual entry points, retained page-memory conversation and visible bounded context preview. Talk here / Call me remain disabled; no live calling. Eight focused tests and four browser theme/viewport cases pass; final silent recording decode/playback and visual review pass. See `docs/owner-ops/NICHE-TEMPLATES-CLOSEOUT.md`. Public Site8/Autumn/provider allowances unchanged; no outreach or real prospects.
+
+Prior result: **AWC — Prospect Demo Factory & Owner Ops Foundation — COMPLETE (local foundation)**. Runnable loopback owner workbench: persistent prospect workspaces, manual source capture/review, three original niche concepts, custom role-limited Crew configuration, revision/hash QA gates, deterministic prepared replies and local specialist/human handoff drafts. JSON export available. Three fictional fixtures only; no real prospect research or outreach. Public Site version 8, service pricing, Autumn provider configuration and disabled voice unchanged.
 
 Evidence: `docs/owner-ops/CLOSEOUT.md`, architecture `docs/owner-ops/FOUNDATION.md`, operating guide `owner-ops/README.md`, screenshots/browser results `docs/qa/owner-ops/`. Seven focused tests and four desktop/mobile dark/light browser cases pass. Provider/API spend this milestone $0; no new dependencies or purchases. Raw synthetic silent capture verified outside Git.
 

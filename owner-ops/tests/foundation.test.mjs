@@ -53,3 +53,13 @@ test('local API enforces origin, current revision, data scope and generated-prev
  const created=await call('/api/prospects','POST',{name:'New real prospect',niche:'cleaning',website:'https://public.example'});assert.equal(created.status,201);const p=await created.json();assert.equal(p.synthetic,false);assert.equal(p.reviewedRevision,0);assert.equal((await call('/api/prospects/'+p.id+'/generate','POST',{expectedRevision:p.inputRevision})).status,400);
  }finally{await app.close();rmSync(dir,{recursive:true});}
 });
+
+test('niche structures are distinct, original and truthful; floating conversation has explicit voice gates',()=>{
+ const [home,realty,studio]=fixtures();const pages=[home,realty,studio].map(renderDemo);
+ assert.match(pages[0],/A fresh home/);assert.match(pages[0],/Choose your service/);
+ assert.match(pages[1],/Find your way/);assert.match(pages[1],/This concept contains no active listings/);assert.match(pages[1],/Original architectural illustration/);
+ assert.match(pages[2],/Clarity first/);assert.match(pages[2],/Frame the challenge/);
+ for(const html of pages){assert.match(html,/id="crew-launcher" aria-haspopup="dialog"/);assert.match(html,/<dialog id="crew-panel" aria-labelledby="crew-title"/);assert.match(html,/data-context=/);assert.match(html,/disabled aria-describedby="voice-status">Talk here/);assert.match(html,/disabled aria-describedby="voice-status">Call me/);assert.doesNotMatch(html,/https?:\/\/.*\.(jpg|png)|api\.retell|tel:/);}
+ // Artifacts made with the previous renderer hash cannot pass the current QA gate.
+ const old=structuredClone(home);old.builtRevision=old.inputRevision;old.artifact={inputHash:'old-renderer-hash'};assert.equal(qa(old).passed,false);
+});
