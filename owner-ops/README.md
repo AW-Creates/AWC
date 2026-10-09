@@ -51,3 +51,9 @@ The persistent floating Crew widget supports contextual entry points, keyboard c
 ## Realtor showcase update
 
 The realtor family now uses original generated photographic concept imagery and richer editorial presentation. The shared widget shows a dismissible once-per-visit invitation after six seconds or meaningful scroll, without unsolicited audio or opening the dialog. Channel meanings appear directly in the panel; Chat works, Talk here and Call me remain unavailable. The consent-based digital Sales callback/human alternative is a documented future journey, not a live handoff. New QA evidence is under `docs/qa/realtor-showcase/`; historical captures retained. See [showcase closeout](../docs/owner-ops/REALTOR-SHOWCASE-CLOSEOUT.md).
+
+## Current modern realtor revision — 2026-10-09
+
+The modern residential portfolio supersedes the earlier cream/Georgia realtor treatment. Every realtor body section is redesigned, with two additional original WebP lifestyle concepts. Crew's niche-specific invitation offers two one-click buying/selling examples; explicit example clicks immediately submit the selected question and show useful prepared guidance. Talk here and Call me remain unavailable pending secure connection/acceptance. The invitation returns six seconds after every full load; dismissal is in document memory only. These rules supersede older once-per-visit notes above.
+
+Node imports renderer modules at startup. After changing templates/model/server, stop the old workbench process, start `node owner-ops/server.mjs` again, and regenerate reviewed concepts. CSS changes alone appear immediately; a stale Node process can otherwise mix new styling with old generated HTML. Verify the actual preview tab. New QA: `node owner-ops/scripts/modern-residential-qa.cjs`; evidence `docs/qa/modern-residential/`.

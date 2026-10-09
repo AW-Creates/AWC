@@ -1,0 +1,108 @@
+{
+  "checks": [
+    {
+      "label": "desktop",
+      "overflow": false,
+      "refreshGreeting": true,
+      "dismissalPageOnly": true,
+      "quickPromptOneClick": true,
+      "intentCTA": true,
+      "imagesLoaded": true,
+      "chatAndDraft": true,
+      "truthfulVoice": true,
+      "noAutoplay": true,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_handoff_requested"
+      ],
+      "reducedMotion": false
+    },
+    {
+      "label": "mobile",
+      "overflow": false,
+      "refreshGreeting": true,
+      "dismissalPageOnly": true,
+      "quickPromptOneClick": true,
+      "intentCTA": true,
+      "imagesLoaded": true,
+      "chatAndDraft": true,
+      "truthfulVoice": true,
+      "noAutoplay": true,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_handoff_requested"
+      ],
+      "reducedMotion": false
+    },
+    {
+      "label": "mobile-small",
+      "overflow": false,
+      "refreshGreeting": true,
+      "dismissalPageOnly": true,
+      "quickPromptOneClick": true,
+      "intentCTA": true,
+      "imagesLoaded": true,
+      "chatAndDraft": true,
+      "truthfulVoice": true,
+      "noAutoplay": true,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_handoff_requested"
+      ],
+      "reducedMotion": false
+    },
+    {
+      "label": "reduced-motion",
+      "overflow": false,
+      "refreshGreeting": true,
+      "dismissalPageOnly": true,
+      "quickPromptOneClick": true,
+      "intentCTA": true,
+      "imagesLoaded": true,
+      "chatAndDraft": true,
+      "truthfulVoice": true,
+      "noAutoplay": true,
+      "events": [
+        "crew_launcher_seen",
+        "crew_launcher_seen",
+        "crew_launcher_opened",
+        "crew_chat_started",
+        "crew_conversation_started",
+        "crew_launcher_opened",
+        "crew_launcher_opened",
+        "crew_talk_clicked",
+        "crew_call_clicked",
+        "crew_handoff_requested"
+      ],
+      "reducedMotion": true
+    },
+    {
+      "otherNicheRoutesAndChat": true
+    }
+  ],
+  "errors": []
+}
