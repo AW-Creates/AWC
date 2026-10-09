@@ -108,3 +108,7 @@ Validated implementation: `662c392a8d49a927ef79053a44f6d42c89a819ac`. Nine Node 
 ## Modern residential Git checkpoint — 2026-10-09
 
 Validated implementation: `d56ce9c2e99609904dcf5725b0ea3b5613de268a`. Ten Node tests and desktop/390/360/reduced-motion browser cases PASS, zero errors. Actual existing browser tab verified after stale-server restart/regeneration; one-click buyer example returns useful guidance. Forty-four screenshots, provenance/review notes and event/privacy checks committed. Owner aesthetic acceptance pending; voice/callback unchanged and no paid sessions. Whitespace/staged secret-pattern gates PASS. Separate state checkpoint follows; query Git for final local/origin/fresh remote HEAD and clean tree. Next: Crew Live Prospect Demo Connection & Acceptance, then remaining niche revisions. STOP after sync.
+
+## Explicit voice invitation Git checkpoint — 2026-10-09
+
+Validated implementation: `1f57154694e226a7eccb8e3abab3240b1ad085be`. Thirteen Node tests and desktop/390px/360px/reduced-motion browser checks PASS; zero browser errors, autoplay, microphone requests or external requests. Eight screenshots committed; actual existing demo tab verified with primary CTA focusing Talk here. Prior logo milestone: `6b992751e9c1196bfea055a4d10c903b1b762014`. No live voice/callback or provider calls. A separate state checkpoint follows; query Git for final HEAD. Next: Crew Live Prospect Demo Connection & Acceptance. STOP after push/sync verification.
