@@ -100,3 +100,7 @@ Validated implementation: ffbfe1a981f7db5b40997515db78c76bb5ab1bec. Nine tests, 
 ## Premium voice Git checkpoint — 2026-10-08
 
 Validated implementation: `662c392a8d49a927ef79053a44f6d42c89a819ac`. Nine Node tests and desktop/mobile/reduced-motion browser flows plus other niche routes/chat PASS; zero browser errors. Director before/after visual gate passes after mobile pacing refinement. Fifteen screenshots and report committed; whitespace/staged secret-pattern gates PASS. Voice/callback remain disabled, text live locally; no paid connections, outreach or analytics transport. Separate checkpoint commit follows; query Git for final HEAD. Next: First Verified Prospect Concept & Private Demo Delivery. STOP after push/sync verification.
+
+## Modern residential Git checkpoint — 2026-10-09
+
+Validated implementation: `d56ce9c2e99609904dcf5725b0ea3b5613de268a`. Ten Node tests and desktop/390/360/reduced-motion browser cases PASS, zero errors. Actual existing browser tab verified after stale-server restart/regeneration; one-click buyer example returns useful guidance. Forty-four screenshots, provenance/review notes and event/privacy checks committed. Owner aesthetic acceptance pending; voice/callback unchanged and no paid sessions. Whitespace/staged secret-pattern gates PASS. Separate state checkpoint follows; query Git for final local/origin/fresh remote HEAD and clean tree. Next: Crew Live Prospect Demo Connection & Acceptance, then remaining niche revisions. STOP after sync.
