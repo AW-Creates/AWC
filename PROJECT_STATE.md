@@ -88,3 +88,7 @@ Validated implementation: f380f19151440c327d80b87d11b543256f088bc4. Startup deac
 ## Niche template Git checkpoint - 2026-10-08
 
 Validated implementation: 4869d8aad5ee34ff3a676cd0712981fc03a675d1. 8 focused tests/4 browser cases/mobile context and verified capture PASS. Secret/whitespace gates PASS. Next AWC - First Verified Prospect Concepts & Private Demo Delivery. Live conversation-to-voice remains separately gated; no calls/outreach. STOP after sync closeout.
+
+## Realtor showcase Git checkpoint - 2026-10-08
+
+Validated implementation: ffbfe1a981f7db5b40997515db78c76bb5ab1bec. Nine tests, four browser cases, mobile context and verified capture PASS. Credential/whitespace/private-artifact checks PASS. Next First Verified Prospect Concepts & Private Demo Delivery after visual review. No live calls, provider session, outreach or next implementation. STOP after sync.
