@@ -17,3 +17,5 @@ Preserved private loopback behavior, noindex, no live booking/payments, prospect
 Next milestone: **AWC — First Verified Prospect Concept & Private Demo Delivery**: one manually verified business, approved brand/rights assets, optimized image delivery, authenticated owner/prospect access and desktop/mobile QA; no outreach. Live voice/callback remains separately authorized.
 
 Director reviewed baseline and final desktop hero/full page, mid-page transition, invitation, opened panel and mobile hero/panel. Premium bespoke concept gate passes after one refinement. PROJECT_STATE records the decisions and next scope. Git implementation/checkpoint hashes and final sync are recorded below at closeout.
+
+Validated implementation: `662c392a8d49a927ef79053a44f6d42c89a819ac`. Startup local/origin/fresh remote: `389ed611068700d83dbff82291c63d4395967203`. Whitespace/staged secret-pattern gates pass. A separate checkpoint records this implementation hash; final local/origin/fresh remote equality and clean tree are verified after push, query Git for final HEAD.
