@@ -2,12 +2,13 @@ import {createServer} from 'node:http';
 import {fileURLToPath} from 'node:url';
 import {dirname,join,resolve} from 'node:path';
 import {readFileSync,writeFileSync,mkdirSync,existsSync,unlinkSync} from 'node:fs';
+import {createChannels} from './channels.mjs';
 import {validateLogoPNG} from './logo.mjs';
 import {openStore} from './store.mjs';
 import {createProspect,updateProspect,reviewProspect,score,qa,renderDemo,routeMessage,revisionHash,ValidationError} from './model.mjs';
 const root=dirname(fileURLToPath(import.meta.url));
-export function createOwnerServer({dataDir=join(root,'.local'),seed=true}={}){
- const store=openStore(join(dataDir,'owner-ops.sqlite'),{seed});mkdirSync(join(dataDir,'demos'),{recursive:true});
+export function createOwnerServer({dataDir=join(root,'.local'),seed=true,channelConfig=null,providerFetch=fetch}={}){
+ const store=openStore(join(dataDir,'owner-ops.sqlite'),{seed});const channels=createChannels({store,channelConfig,providerFetch,apiKey:process.env.RETELL_API_KEY||''});mkdirSync(join(dataDir,'demos'),{recursive:true});
  const server=createServer(async(req,res)=>{
   const origin='http://127.0.0.1:'+server.address().port;
   res.setHeader('X-Robots-Tag','noindex, nofollow, noarchive');res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','no-referrer');res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
@@ -16,15 +17,19 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true}={}){
    if(req.headers.host!=='127.0.0.1:'+server.address().port)throw new ValidationError('Open the loopback address printed by the owner workbench.',403);
    const url=new URL(req.url,origin),parts=url.pathname.split('/').filter(Boolean);const method=req.method;
    if(url.pathname.startsWith('/api/')&&(req.headers['sec-fetch-site']==='cross-site'||(req.headers.origin&&req.headers.origin!==origin)))throw new ValidationError('Use the local owner workbench.',403);
-   const assets={'/':'index.html','/app.js':'app.js','/app.css':'app.css','/demo.js':'demo.js','/cedar-lane-mark.svg':'cedar-lane-mark.svg','/demo.css':'demo.css','/estate-modern.css':'estate-modern.css','/estate-polish.css':'estate-polish.css','/estate-courtyard.webp':'estate-courtyard.webp','/estate-neighborhood.webp':'estate-neighborhood.webp','/showcase-estate.png':'showcase-estate.png','/showcase-interior.png':'showcase-interior.png'};
+   const assets={'/':'index.html','/app.js':'app.js','/app.css':'app.css','/demo.js':'demo.js','/crew-voice.js':'crew-voice.js','/cedar-lane-mark.svg':'cedar-lane-mark.svg','/demo.css':'demo.css','/estate-modern.css':'estate-modern.css','/estate-polish.css':'estate-polish.css','/estate-courtyard.webp':'estate-courtyard.webp','/estate-neighborhood.webp':'estate-neighborhood.webp','/showcase-estate.png':'showcase-estate.png','/showcase-interior.png':'showcase-interior.png'};
+   const vendor={'/crew-assets/eventemitter3.js':'eventemitter3/dist/eventemitter3.umd.js','/crew-assets/livekit.js':'livekit-client/dist/livekit-client.umd.js','/crew-assets/retell.js':'retell-client-js-sdk/dist/index.umd.js'};
+   if(method==='GET'&&vendor[url.pathname])return respond(200,readFileSync(join(root,'../website-receptionist/node_modules',vendor[url.pathname])),'text/javascript; charset=utf-8');
    if(method==='GET'&&assets[url.pathname]){const f=assets[url.pathname];return respond(200,readFileSync(join(root,'public',f)),f.endsWith('.svg')?'image/svg+xml':f.endsWith('.webp')?'image/webp':f.endsWith('.png')?'image/png':f.endsWith('.js')?'text/javascript; charset=utf-8':f.endsWith('.css')?'text/css; charset=utf-8':'text/html; charset=utf-8');}
    if(method==='GET'&&url.pathname==='/robots.txt')return respond(200,'User-agent: *\nDisallow: /\n','text/plain');
    if(parts[0]==='demo'&&parts.length===2&&method==='GET'){
     const p=store.get(parts[1]);if(!p?.artifact)throw new ValidationError('Generate a reviewed concept first.',404);if(!qa(p).passed)throw new ValidationError('This concept is stale. Review and regenerate the current configuration.',409);
+    if(channels.status(p).talkAvailable)res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.retellai.com; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
     return respond(200,readFileSync(join(dataDir,'demos',p.id+'.html')),'text/html; charset=utf-8');
    }
    if(parts[0]!=='api'||parts[1]!=='prospects')throw new ValidationError('Not found.',404);
    if(method==='GET'&&parts.length===2)return respond(200,{prospects:store.list().map(p=>({...p,score:score(p.signals,p.reviewedRevision===p.inputRevision),qa:qa(p)}))});
+   if(method==='GET'&&parts.length===4&&parts[3]==='channels'){const p=store.get(parts[2]);if(!p)throw new ValidationError('Prospect not found.',404);return respond(200,channels.status(p));}
    if(method==='GET'&&parts[0]==='api'&&parts[1]==='prospects'&&parts.length===5&&parts[3]==='logo'){
     const p=store.get(parts[2]),logo=p?.branding?.logo;if(!p||logo?.kind!=='upload'||logo.hash!==parts[4]||!/^[a-f0-9]{64}$/.test(parts[4])||!/^[a-f0-9-]{36}$/.test(p.id))throw new ValidationError('Logo not found.',404);return respond(200,readFileSync(join(dataDir,'logos',p.id+'-'+logo.hash+'.png')),'image/png');
    }
@@ -40,6 +45,9 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true}={}){
    if(parts.length===3&&method==='PATCH'){if(input.branding?.logo?.kind==='upload'&&JSON.stringify(input.branding.logo)!==JSON.stringify(p.branding?.logo))throw new ValidationError('Upload logo files through the logo action.');if(input.expectedRevision!==p.inputRevision)throw new ValidationError('This workspace changed. Refresh before saving.',409);return respond(200,store.save(updateProspect(p,input)));}
    const action=parts[3];
    if(parts.length!==4||method!=='POST')throw new ValidationError('Not found.',404);
+   if(action==='channel-session')return respond(200,channels.session(p,input));
+   if(action==='voice-session')return respond(200,await channels.connect(p,'talk',input));
+   if(action==='callback')return respond(200,await channels.connect(p,'call',input));
    if(action==='logo'){
     if(input.expectedRevision!==p.inputRevision)throw new ValidationError('This workspace changed. Refresh before saving.',409);if(!/^[a-f0-9-]{36}$/.test(p.id))throw new ValidationError('Invalid workspace asset scope.');const old=p.branding?.logo;if(input.surface!==undefined&&!['light','dark','transparent'].includes(input.surface))throw new ValidationError('Choose a logo surface.');if(input.mode!==undefined&&!['mark','wordmark'].includes(input.mode))throw new ValidationError('Choose mark with name or wordmark.');
     let logo=null;if(input.remove!==true){const validated=validateLogoPNG(input);logo={kind:'upload',hash:validated.hash,width:validated.width,height:validated.height};mkdirSync(join(dataDir,'logos'),{recursive:true});writeFileSync(join(dataDir,'logos',p.id+'-'+logo.hash+'.png'),validated.bytes);}
@@ -55,11 +63,12 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true}={}){
     const result=routeMessage(p,input.message);const handoff=result.type.endsWith('-draft')?store.handoff(p.id,result,input.message):null;return respond(200,{...result,handoff});
    }
    throw new ValidationError('Not found.',404);
-  }catch(e){respond(e.status||500,{error:e instanceof ValidationError?e.message:'Local workbench error. No external action was attempted.'});}
+  }catch(e){respond(e.status||500,{error:e instanceof ValidationError?e.message:'Local workbench error. Please use Chat or return to the owner workbench.'});}
  });
  return {server,store,close:()=>new Promise(r=>server.close(()=>{store.close();r();}))};
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const port=Number(process.env.OWNER_OPS_PORT||4186);if(!Number.isInteger(port)||port<1024||port>65535)throw Error('Use a local port from 1024 to 65535.');
- const app=createOwnerServer({dataDir:process.env.OWNER_OPS_DATA_DIR?resolve(process.env.OWNER_OPS_DATA_DIR):join(root,'.local')});app.server.listen(port,'127.0.0.1',()=>console.log('AWC Owner Workbench: http://127.0.0.1:'+port+' — local only; synthetic examples; no paid providers or outreach.'));
+ const dataDir=process.env.OWNER_OPS_DATA_DIR?resolve(process.env.OWNER_OPS_DATA_DIR):join(root,'.local'),configPath=join(dataDir,'channels.json');let channelConfig=null;if(existsSync(configPath)){try{channelConfig=JSON.parse(readFileSync(configPath,'utf8'));}catch{console.error('Channel configuration is invalid; voice remains disabled.');}}
+ const app=createOwnerServer({dataDir,channelConfig});app.server.listen(port,'127.0.0.1',()=>console.log('AWC Owner Workbench: http://127.0.0.1:'+port+' — local only; explicitly configured finite channels only; outreach disabled.'));
 }

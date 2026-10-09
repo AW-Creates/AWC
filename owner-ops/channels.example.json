@@ -1,0 +1,25 @@
+{
+  "enabled": false,
+  "allowance": {
+    "id": null,
+    "approved": false,
+    "expiresAt": null,
+    "cap": null,
+    "approvedBudgetUsd": null,
+    "maxCostPerAttemptUsd": null
+  },
+  "prospects": {
+    "PROSPECT_ID": {
+      "reviewed": false,
+      "revisionHash": null,
+      "agentId": null,
+      "agentVersion": null,
+      "talkEnabled": false,
+      "callEnabled": false
+    }
+  },
+  "callback": {
+    "fromNumber": null,
+    "allowedDestinations": []
+  }
+}

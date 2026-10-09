@@ -1,0 +1,44 @@
+{
+  "mode": "simulated-provider-and-sdk",
+  "checks": [
+    {
+      "disabled": true,
+      "boldItalicTitleCase": true,
+      "noMic": true,
+      "formsUnavailable": true
+    },
+    {
+      "width": 1440,
+      "consentBeforeMic": true,
+      "simulatedJoin": true,
+      "explicitEndCleanup": true,
+      "voiceEvents": true,
+      "callbackConsentAndAccepted": true,
+      "phoneCleared": true,
+      "textFallback": true
+    },
+    {
+      "width": 390,
+      "consentBeforeMic": true,
+      "simulatedJoin": true,
+      "explicitEndCleanup": true,
+      "voiceEvents": true,
+      "callbackConsentAndAccepted": true,
+      "phoneCleared": true,
+      "textFallback": true
+    },
+    {
+      "latePermissionCancellation": true,
+      "noProviderReservation": true,
+      "tracksReleased": true
+    },
+    {
+      "permissionDenied": true,
+      "noProviderReservation": true,
+      "truthfulError": true
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "providerAttempts": 4
+}

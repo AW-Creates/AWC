@@ -58,7 +58,7 @@ const {chromium} = require('C:/Users/A-Problem/AppData/Local/npm-cache/_npx/9833
       await page.locator('.invitation-action').click();
       assert.equal(await page.locator('[data-crew-channel=talk]').evaluate(e => e === document.activeElement), true);
       assert.equal(await page.locator('#messages').evaluate(e => e.scrollTop), 0);
-      assert.match(await page.locator('#voice-status').innerText(), /microphone.*hear replies.*not connected yet/);
+      assert.match(await page.locator('#voice-status').innerText(), /not connected yet.*microphone.*hear replies/);
       assert.equal(await page.locator('[data-crew-channel=talk]').getAttribute('aria-disabled'), 'true');
       assert.equal(await page.locator('[data-crew-channel=call]').getAttribute('aria-disabled'), 'true');
       const events = await page.evaluate(() => window.crewEngagement.events);
