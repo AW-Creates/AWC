@@ -30,6 +30,8 @@
   },
   "callback": {
     "fromNumber": null,
-    "allowedDestinations": []
+    "allowedDestinations": [],
+    "numberRole": "aw_business_number",
+    "sharedTemporary": true
   }
 }

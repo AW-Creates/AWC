@@ -1,0 +1,15 @@
+{
+  "providerReadback": "verified_v2",
+  "configuredNumberCount": 1,
+  "hasMore": false,
+  "retainedSourceMatches": true,
+  "roles": [
+    {
+      "retainedSource": true,
+      "inboundAgentConfigured": false,
+      "inboundWebhookConfigured": false,
+      "outboundAgentConfigured": true,
+      "outboundMatchesProspectBinding": true
+    }
+  ]
+}

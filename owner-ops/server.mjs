@@ -2,6 +2,7 @@ import {createServer} from 'node:http';
 import {fileURLToPath} from 'node:url';
 import {dirname,join,resolve} from 'node:path';
 import {readFileSync,writeFileSync,mkdirSync,existsSync,unlinkSync} from 'node:fs';
+import {resolveRoute} from '../website-receptionist/src/crew-routing.mjs';
 import {createChannels} from './channels.mjs';
 import {validateLogoPNG} from './logo.mjs';
 import {openStore} from './store.mjs';
@@ -24,6 +25,7 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true,channel
    if(method==='GET'&&url.pathname==='/robots.txt')return respond(200,'User-agent: *\nDisallow: /\n','text/plain');
    if(parts[0]==='demo'&&parts.length===2&&method==='GET'){
     const p=store.get(parts[1]);if(!p?.artifact)throw new ValidationError('Generate a reviewed concept first.',404);if(!qa(p).passed)throw new ValidationError('This concept is stale. Review and regenerate the current configuration.',409);
+    try{resolveRoute({surface:'private_demo',prospect:p,reviewed:true});}catch{throw new ValidationError('This private demo is unavailable or expired.',410);}
     if(channels.status(p).talkAvailable)res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.retellai.com; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
     return respond(200,readFileSync(join(dataDir,'demos',p.id+'.html')),'text/html; charset=utf-8');
    }
@@ -60,7 +62,8 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true,channel
    }
    if(action==='chat'){
     if(!qa(p).passed)throw new ValidationError('Generate the current reviewed concept before trying its specialist.',409);
-    const result=routeMessage(p,input.message);const handoff=result.type.endsWith('-draft')?store.handoff(p.id,result,input.message):null;return respond(200,{...result,handoff});
+    let route;try{route=resolveRoute({surface:'private_demo',prospect:p,reviewed:true});}catch{throw new ValidationError('This private demo is unavailable or expired.',410);}
+    const result=routeMessage(p,input.message);const handoff=result.type.endsWith('-draft')?store.handoff(p.id,result,input.message):null;return respond(200,{...result,handoff,routing:{business_id:route.business_id,demo_id:route.demo_id,specialist_id:route.specialist.specialist_id,specialist_role:route.specialist.role,theme_id:route.theme_id,analytics_namespace:route.analytics_namespace}});
    }
    throw new ValidationError('Not found.',404);
   }catch(e){respond(e.status||500,{error:e instanceof ValidationError?e.message:'Local workbench error. Please use Chat or return to the owner workbench.'});}

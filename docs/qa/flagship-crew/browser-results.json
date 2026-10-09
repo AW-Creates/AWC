@@ -1,0 +1,115 @@
+{
+  "mode": "local-real-prepared-role-handoff",
+  "errors": [],
+  "externalRequests": [],
+  "blockedFontRequests": [
+    "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700;800&display=swap",
+    "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700;800&display=swap"
+  ],
+  "checks": [
+    {
+      "width": 1440,
+      "offer": true,
+      "accepted": true,
+      "contextConsent": true,
+      "salesIdentity": true,
+      "continued": true,
+      "newSessionReset": true,
+      "noOverflow": true,
+      "noMicrophone": true,
+      "events": [
+        {
+          "event": "crew_specialist_started",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "concierge",
+          "channel": "chat"
+        },
+        {
+          "event": "crew_specialist_handoff_offered",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "concierge",
+          "channel": "chat",
+          "target_role": "sales"
+        },
+        {
+          "event": "crew_specialist_handoff_accepted",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "concierge",
+          "channel": "chat",
+          "target_role": "sales"
+        },
+        {
+          "event": "crew_specialist_handoff_completed",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "sales",
+          "channel": "chat",
+          "target_role": "sales"
+        },
+        {
+          "event": "crew_specialist_started",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "sales",
+          "channel": "chat"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "offer": true,
+      "accepted": true,
+      "contextConsent": false,
+      "salesIdentity": true,
+      "continued": true,
+      "newSessionReset": true,
+      "noOverflow": true,
+      "noMicrophone": true,
+      "events": [
+        {
+          "event": "crew_specialist_started",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "concierge",
+          "channel": "chat"
+        },
+        {
+          "event": "crew_specialist_handoff_offered",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "concierge",
+          "channel": "chat",
+          "target_role": "sales"
+        },
+        {
+          "event": "crew_specialist_handoff_accepted",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "concierge",
+          "channel": "chat",
+          "target_role": "sales"
+        },
+        {
+          "event": "crew_specialist_handoff_completed",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "sales",
+          "channel": "chat",
+          "target_role": "sales"
+        },
+        {
+          "event": "crew_specialist_started",
+          "business_id": "aw_creatives",
+          "demo_id": null,
+          "specialist_role": "sales",
+          "channel": "chat"
+        }
+      ]
+    }
+  ],
+  "providerCalls": 0,
+  "video": "C:\\Users\\A-Problem\\.codex\\visualizations\\2026\\10\\09\\01a12279-5cc2-7513-b3b5-0f5673ed0f74\\flagship-capture\\page@3725a0d00309c2cfb55de3078161a0b4.webm"
+}

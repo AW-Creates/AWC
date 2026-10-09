@@ -10,7 +10,7 @@ export function providerAdapter(providerFetch,apiKey){return async({channel,bind
  };
  const agent={max_call_duration_ms:120000,data_storage_setting:'basic_attributes_only',contact_memory_config:{enable_read:false,enable_update:false},pre_session_tools:[],post_session_tools:[]};
  if(channel==='call')agent.ring_duration_ms=30000;
- const variables={business:snapshot.business,specialist:snapshot.specialist,role:snapshot.role,services:snapshot.services.join('; '),visitor_context:context?JSON.stringify(context):'No visitor context shared.'};
+ const variables={business_id:snapshot.business_id,demo_id:snapshot.demo_id,specialist_id:snapshot.specialist_id,number_role:snapshot.number_role,business:snapshot.business,specialist:snapshot.specialist,role:snapshot.role,services:snapshot.services.join('; '),visitor_context:context?JSON.stringify(context):'No visitor context shared.'};
  const payload=channel==='talk'?{agent_id:binding.agentId,agent_version:binding.agentVersion,agent_override:{agent},retell_llm_dynamic_variables:variables}:{from_number:callback.fromNumber,to_number:callback.phone,override_agent_id:binding.agentId,override_agent_version:binding.agentVersion,agent_override:{agent},retell_llm_dynamic_variables:variables,idempotency_key:requestId};
  let response;
  try{response=await providerFetch('https://api.retellai.com/'+(channel==='talk'?'v3/create-web-call':'v2/create-phone-call'),{method:'POST',headers:{Authorization:'Bearer '+apiKey,'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(15000)});}

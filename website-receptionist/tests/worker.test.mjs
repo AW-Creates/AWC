@@ -77,7 +77,7 @@ test('Autumn identity and Crew customization use approved shared facts',async()=
  for(const [message,expected] of [['What is your name?',/Autumn Winters.*Customer Experience Specialist/],['What is Crew?',/customized.*name, voice, personality/],['Can you book an appointment?',/not a confirmed appointment/]]){
  const r=await worker.fetch(request('/api/chat',{message},token),env,ctx);assert.equal(r.status,200);assert.match((await r.json()).answer,expected);}
 });
-function enableVoice(env,cap=1){Object.assign(env,{CREW_VOICE_ENABLED:'true',CREW_VOICE_REVIEWED:'true',RETELL_API_KEY:'private-test-key',CREW_RETELL_AGENT_ID:'agent_test',CREW_RETELL_AGENT_VERSION:'0',CREW_VOICE_ALLOWANCE_ID:'test-allowance',CREW_VOICE_SESSION_CAP:String(cap)});}
+function enableVoice(env,cap=1){Object.assign(env,{CREW_VOICE_ENABLED:'true',CREW_VOICE_BUSINESS_ID:'aw_creatives',CREW_VOICE_SPECIALIST_ID:'awc_concierge',CREW_VOICE_EXPIRES_AT:new Date(Date.now()+3600000).toISOString(),CREW_VOICE_REVIEWED:'true',RETELL_API_KEY:'private-test-key',CREW_RETELL_AGENT_ID:'agent_test',CREW_RETELL_AGENT_VERSION:'0',CREW_VOICE_ALLOWANCE_ID:'test-allowance',CREW_VOICE_SESSION_CAP:String(cap)});}
 test('voice denies origin, forged sessions, consent and disabled config without provider calls',async()=>{
  const {worker,env}=setup(),token=await session(worker,env),original=globalThis.fetch;let calls=0;
  globalThis.fetch=async()=>{calls++;throw new Error('must not fetch');};
@@ -86,7 +86,7 @@ test('voice denies origin, forged sessions, consent and disabled config without 
  assert.equal((await worker.fetch(request('/api/voice-session',{consent:true},'forged'),env,ctx)).status,401);
  assert.equal((await worker.fetch(request('/api/voice-session',{},token),env,ctx)).status,400);
  assert.equal((await worker.fetch(request('/api/voice-session',{consent:true},token),env,ctx)).status,503);
- enableVoice(env);env.CREW_VOICE_REVIEWED='false';assert.equal((await worker.fetch(request('/api/voice-session',{consent:true},token),env,ctx)).status,503);
+ enableVoice(env);env.CREW_VOICE_BUSINESS_ID='prospect_cedar';assert.equal((await worker.fetch(request('/api/voice-session',{consent:true},token),env,ctx)).status,503);env.CREW_VOICE_BUSINESS_ID='aw_creatives';env.CREW_VOICE_EXPIRES_AT='2020-01-01';assert.equal((await worker.fetch(request('/api/voice-session',{consent:true},token),env,ctx)).status,503);env.CREW_VOICE_EXPIRES_AT=new Date(Date.now()+3600000).toISOString();env.CREW_VOICE_REVIEWED='false';assert.equal((await worker.fetch(request('/api/voice-session',{consent:true},token),env,ctx)).status,503);
  env.CREW_VOICE_REVIEWED='true';env.CREW_VOICE_SESSION_CAP='Infinity';assert.equal((await worker.fetch(request('/api/voice-session',{consent:true},token),env,ctx)).status,503);assert.equal(calls,0);
  }finally{globalThis.fetch=original;}
 });
@@ -103,4 +103,38 @@ test('provider failure consumes voice allowance and hides upstream errors',async
  const {worker,env}=setup();enableVoice(env);const token=await session(worker,env),original=globalThis.fetch;let calls=0;
  globalThis.fetch=async()=>{calls++;return new Response('private-test-key provider diagnostic',{status:500});};
  try{const r=await worker.fetch(request('/api/voice-session',{consent:true},token),env,ctx);assert.equal(r.status,503);assert.doesNotMatch(await r.text(),/private-test-key|diagnostic/);assert.equal((await worker.fetch(request('/api/voice-session',{consent:true},token),env,ctx)).status,429);assert.equal(calls,1);}finally{globalThis.fetch=original;}
+});
+
+test('flagship handoff is explicitly accepted, session-bound and preserves only consented context',async()=>{
+ const {worker,env}=setup();env.AI_ENABLED='false';const token=await session(worker,env),other=await session(worker,env);
+ const run=(path,input,t=token)=>worker.fetch(request(path,input,t),env,ctx);
+ assert.equal((await run('/api/crew-handoff',{accept:true,shareContext:true})).status,403);
+ const offer=await (await run('/api/chat',{message:'I am interested in Crew sales for my website',business_id:'cedar',role:'sales'})).json();
+ assert.equal(offer.role,'concierge');assert.equal(offer.handoffOffer.target_role,'sales');assert.equal(offer.events.at(-1).business_id,'aw_creatives');
+ assert.equal((await run('/api/crew-handoff',{accept:true,shareContext:true},other)).status,403);
+ assert.equal((await run('/api/crew-handoff',{shareContext:true})).status,400);
+ const transferred=await run('/api/crew-handoff',{accept:true,shareContext:true,target_role:'billing',business_id:'cedar'});assert.equal(transferred.status,200);
+ const result=await transferred.json();assert.equal(result.role,'sales');assert.equal(result.specialist.name,null);assert.equal(result.mode,'prepared_role_handoff');assert.equal(result.contextShared,true);
+ const history=JSON.parse(env.DB.raw.prepare('SELECT history FROM chat_sessions WHERE id=?').get(token.split('.')[0]).history);
+ assert.match(history.at(-1).handoff_context.intent,/website/);assert.equal(history.at(-1).handoff_context.contact,null);
+ assert.equal((await run('/api/crew-handoff',{accept:true,shareContext:true})).status,429);
+ const continued=await (await run('/api/chat',{message:'What can be combined?',role:'concierge'})).json();assert.equal(continued.role,'sales');
+ const fresh=await session(worker,env);const reset=await (await run('/api/chat',{message:'What is your name?'},fresh)).json();assert.equal(reset.role,'concierge');
+});
+
+test('declined context does not enter Sales handoff; public callback fails closed without configuration',async()=>{
+ const {worker,env}=setup();env.AI_ENABLED='false';const token=await session(worker,env);
+ await worker.fetch(request('/api/chat',{message:'Explain multiple specialists'},token),env,ctx);
+ const result=await worker.fetch(request('/api/crew-handoff',{accept:true,shareContext:false},token),env,ctx);assert.equal(result.status,200);
+ const history=JSON.parse(env.DB.raw.prepare('SELECT history FROM chat_sessions WHERE id=?').get(token.split('.')[0]).history);assert.deepEqual(history.at(-1).handoff_context,{summary:'',transcript:[],intent:'',contact:null});
+ const callback=await worker.fetch(request('/api/callback',{consent:true,phone:'+12025550123',demo_id:'cedar'},token),env,ctx);assert.equal(callback.status,503);assert.doesNotMatch(await callback.text(),/Ellis|Cedar/);
+});
+
+test('reviewed public callback route fixes AW identity and hides spent readiness',async()=>{
+ const {worker,env}=setup();env.RETELL_API_KEY='fake-callback-secret';
+ env.CREW_BUSINESS_CALLBACK_CONFIG=JSON.stringify({enabled:true,business_id:'aw_creatives',number_role:'aw_business_number',specialist_id:'awc_concierge',reviewed:true,agentId:'agent_awctest',agentVersion:2,fromNumber:'+12025550101',destinations:[{phone:'+12025550102',operatorVerified:true,consented:true}],allowance:{id:'callback_worker_test',approved:true,cap:1,expiresAt:new Date(Date.now()+3600000).toISOString(),approvedBudgetUsd:.5,conservativeCostUsd:.5,maxDurationSeconds:120}});
+ const first=await (await worker.fetch(request('/api/session'),env,ctx)).json();assert.equal(first.crew.callAvailable,true);
+ const original=globalThis.fetch;let calls=0;
+ globalThis.fetch=async(url,init)=>{calls++;assert.equal(url,'https://api.retellai.com/v2/create-phone-call');const payload=JSON.parse(init.body);assert.equal(payload.override_agent_id,'agent_awctest');assert.equal(payload.metadata.business_id,'aw_creatives');assert.equal(payload.retell_llm_dynamic_variables.demo_id,'');return new Response(JSON.stringify({call_id:'call_callback_fake',private_field:'not-exposed'}));};
+ try{const result=await worker.fetch(request('/api/callback',{phone:'+12025550102',consent:true,phoneConfirmed:true,shareContext:false},first.token),env,ctx);assert.equal(result.status,200);assert.equal((await result.json()).status,'accepted');assert.equal(calls,1);const next=await (await worker.fetch(request('/api/session'),env,ctx)).json();assert.equal(next.crew.callAvailable,false);assert.equal(env.DB.raw.prepare('SELECT reserved_micros FROM crew_callback_allowances').get().reserved_micros,500000);}finally{globalThis.fetch=original;}
 });

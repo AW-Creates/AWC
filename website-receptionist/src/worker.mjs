@@ -1,5 +1,7 @@
 import { estimate } from './offers.mjs';
 import { MODEL, SYSTEM, guideAnswer } from './facts.mjs';
+import {callbackStatus, createPublicCallback} from './crew-callback.mjs';
+import {resolveRoute, handoff, publicGuideResponse, sanitizeEvent} from './crew-routing.mjs';
 
 const ORIGIN = 'https://aw-creates-ventures.thesml.chatgpt.site';
 const encoder = new TextEncoder();
@@ -67,7 +69,7 @@ async function notify(row,env) {
 function inboxHTML(rows) {
   return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AWC inquiry inbox</title><style>body{font:16px system-ui;margin:32px auto;max-width:900px;padding:16px;background:#fff9f8;color:#32181c}article{border:1px solid #cfb8bc;padding:20px;margin:18px 0;border-radius:12px}pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#9d2440}</style><h1>AWC inquiry inbox</h1><p>Owner only. Requests need human confirmation. Email status 'accepted' means the sending service accepted the notification, not verified inbox receipt.</p><p><a href="/">Website</a> · <a href="/signout-with-chatgpt?return_to=/" target="_top">Sign out</a></p>${rows.map(r=>`<article><h2>${escape(r.interest)}</h2><p>${escape(r.name)} · ${escape(r.email)}</p><p>Reference: ${escape(r.id)}<br>${escape(new Date(r.created*1000).toISOString())}<br>Email: ${escape(r.mail_status)}</p><pre>${escape(r.message)}</pre><details><summary>Attached conversation</summary><pre>${escape(JSON.parse(r.transcript).map(t=>`${t.role}: ${t.content}`).join('\n\n'))}</pre></details></article>`).join('') || '<p>No inquiries yet.</p>'}</html>`;
 }
-export function voiceAvailable(env) {const cap=Number(env.CREW_VOICE_SESSION_CAP);return !(env.CREW_VOICE_ENABLED!=='true' || !env.RETELL_API_KEY || !/^agent_[a-zA-Z0-9]+$/.test(env.CREW_RETELL_AGENT_ID||'') || !env.CREW_RETELL_AGENT_VERSION || !/^[a-zA-Z0-9_-]{1,64}$/.test(env.CREW_VOICE_ALLOWANCE_ID||'') || env.CREW_VOICE_REVIEWED!=='true' || !Number.isInteger(cap) || cap<1 || cap>10);}
+export function voiceAvailable(env) {const cap=Number(env.CREW_VOICE_SESSION_CAP);return !(env.CREW_VOICE_BUSINESS_ID!=='aw_creatives' || env.CREW_VOICE_SPECIALIST_ID!=='awc_concierge' || !Number.isFinite(Date.parse(env.CREW_VOICE_EXPIRES_AT)) || Date.parse(env.CREW_VOICE_EXPIRES_AT)<=Date.now() || env.CREW_VOICE_ENABLED!=='true' || !env.RETELL_API_KEY || !/^agent_[a-zA-Z0-9]+$/.test(env.CREW_RETELL_AGENT_ID||'') || !env.CREW_RETELL_AGENT_VERSION || !/^[a-zA-Z0-9_-]{1,64}$/.test(env.CREW_VOICE_ALLOWANCE_ID||'') || env.CREW_VOICE_REVIEWED!=='true' || !Number.isInteger(cap) || cap<1 || cap>10);}
 export function createWorker(html, assets={}) {
  return { async fetch(request,env,ctx) {
   try {
@@ -81,16 +83,40 @@ export function createWorker(html, assets={}) {
      if(!owner(request,env))throw new HttpError(403,'This inbox is available only to the AWC owner.');
      const rows=await env.DB.prepare('SELECT * FROM inquiries WHERE expires > ? ORDER BY created DESC LIMIT 100').bind(Math.floor(Date.now()/1000)).all();return page(inboxHTML(rows.results));
    }
-   if(!['/api/session','/api/chat','/api/inquiry','/api/estimate','/api/voice-session'].includes(path))return json({error:'Not found'},404);
+   if(!['/api/session','/api/chat','/api/inquiry','/api/estimate','/api/voice-session','/api/crew-handoff','/api/callback'].includes(path))return json({error:'Not found'},404);
    if(request.method!=='POST')return json({error:'Method not allowed'},405);
    sameOrigin(request,env);const input=await body(request);
    ctx?.waitUntil(cleanup(env.DB).catch(()=>{}));
    if(path==='/api/session') {
      await rate(request,env,'session',12,3600);const id=crypto.randomUUID(),expires=Math.floor(Date.now()/1000)+DAY;
      await env.DB.prepare('INSERT INTO chat_sessions(id,history,expires,busy_until) VALUES(?,?,?,0)').bind(id,'[]',expires).run();
-     return json({token:await tokenFor(env.SESSION_SECRET,id,expires),voiceAvailable:voiceAvailable(env),aiAvailable:env.AI_ENABLED==='true' && !!env.OPENAI_API_KEY});
+     return json({token:await tokenFor(env.SESSION_SECRET,id,expires),voiceAvailable:voiceAvailable(env),aiAvailable:env.AI_ENABLED==='true' && !!env.OPENAI_API_KEY,crew:{business_id:'aw_creatives',specialist_role:'concierge',callAvailable:(await callbackStatus(env)).available,liveHandoffAvailable:false}});
    }
    const id=await sessionId(request,env);
+   // The signed website session owns tenant and role; visitor fields never select a business.
+   if(path==='/api/callback') {
+     const active=await env.DB.prepare('SELECT history FROM chat_sessions WHERE id=? AND expires>?').bind(id,Math.floor(Date.now()/1000)).first();
+     if(!active)throw new HttpError(401,'Your conversation expired. Start again.');
+     try {return json(await createPublicCallback({env,sessionId:id,input,request,rate,counter}));}catch(error){throw new HttpError(error.status||503,error.status?error.message:'Callback is unavailable. Please request a consultation.');}
+   }
+   if(path==='/api/crew-handoff') {
+     if(input.accept!==true || typeof input.shareContext!=='boolean')throw new HttpError(400,'Accept the specialist handoff and choose whether to carry context.');
+     await rate(request,env,'handoff',3,60);
+     const now=Math.floor(Date.now()/1000);
+     const row=await env.DB.prepare('UPDATE chat_sessions SET busy_until=? WHERE id=? AND expires>? AND busy_until<? RETURNING history').bind(now+35,id,now,now).first();
+     if(!row)throw new HttpError(409,'Please wait or start a new conversation.');
+     try {
+       const history=JSON.parse(row.history),previous=history.at(-1);
+       if(history.length>=20)throw new HttpError(429,'This conversation has reached its limit. Please use the inquiry form.');
+       if(previous?.handoffOffer?.target_role!=='sales' || previous.specialist_role!=='concierge')throw new HttpError(403,'No authorized handoff is pending.');
+       const source=resolveRoute({role:'concierge'}),target=resolveRoute({role:'sales'});
+       const carry=handoff({source,target,accepted:true,shareContext:input.shareContext,context:{channel:'chat',transcript:history,intent:history.filter(t=>t.role==='user').at(-1)?.content||''}});
+       const response=publicGuideResponse('sales','',guideAnswer,{introduction:true,intent:carry.context.intent});
+       history.push({role:'assistant',content:response.answer,specialist_role:'sales',handoff_context:carry.context});
+       await env.DB.prepare('UPDATE chat_sessions SET history=? WHERE id=?').bind(JSON.stringify(history),id).run();
+       return json({...response,mode:'prepared_role_handoff',contextShared:input.shareContext,events:[sanitizeEvent('crew_specialist_handoff_accepted',source,{channel:'chat',target_role:'sales'}),sanitizeEvent('crew_specialist_handoff_completed',target,{channel:'chat',target_role:'sales'}),sanitizeEvent('crew_specialist_started',target,{channel:'chat'})]});
+     } finally {await env.DB.prepare('UPDATE chat_sessions SET busy_until=0 WHERE id=?').bind(id).run();}
+   }
    if(path==='/api/voice-session') {
      if(input.consent!==true)throw new HttpError(400,'Please agree to the voice demo disclosure.');
      const active=await env.DB.prepare('SELECT history FROM chat_sessions WHERE id=? AND expires>?').bind(id,Math.floor(Date.now()/1000)).first();
@@ -98,13 +124,13 @@ export function createWorker(html, assets={}) {
      // Independent website agent, reviewed published version and finite allowance. Never reuse BrightHome implicitly.
      const cap=Number(env.CREW_VOICE_SESSION_CAP);
      if(!voiceAvailable(env))throw new HttpError(503,'Voice preview is not enabled yet. Explore Crew with Autumn’s text guide or send an inquiry.');
-     await rate(request,env,'voice',2,3600);
+     await rate(request,env,'voice',2,3600);const dailyLimit=Number(env.CREW_PUBLIC_DAILY_SESSION_CAP||24);if(!Number.isInteger(dailyLimit)||dailyLimit<1||dailyLimit>100)throw new HttpError(503,'Crew is temporarily unavailable.');if(!await counter(env.DB,'crew-public-day:'+new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()),dailyLimit,Math.floor(Date.now()/1000)+2*DAY))throw new HttpError(429,'Today’s Crew session limit is reached. Please use the contact form.');
      const now=Math.floor(Date.now()/1000);
      if(!await counter(env.DB,'voice-session:'+id,1,now+DAY))throw new HttpError(429,'This conversation already requested a voice session. Use the text guide or inquiry form.');
      // No refunds or retries: failed/abandoned creations consume allowance too.
      if(!await counter(env.DB,'voice-allowance:'+env.CREW_VOICE_ALLOWANCE_ID,cap,253402300799))throw new HttpError(429,'Voice demo allowance is exhausted. Please use the text guide.');
      let response;
-     try {response=await fetch('https://api.retellai.com/v3/create-web-call',{method:'POST',headers:{Authorization:'Bearer '+env.RETELL_API_KEY,'Content-Type':'application/json'},body:JSON.stringify({agent_id:env.CREW_RETELL_AGENT_ID,agent_version:/^\d+$/.test(env.CREW_RETELL_AGENT_VERSION)?Number(env.CREW_RETELL_AGENT_VERSION):env.CREW_RETELL_AGENT_VERSION,agent_override:{agent:{max_call_duration_ms:120000,data_storage_setting:'basic_attributes_only',contact_memory_config:{enable_read:false,enable_update:false},pre_session_tools:[],post_session_tools:[]}},metadata:{channel:'crew-website-demo'}}),signal:AbortSignal.timeout(15000)});}catch{throw new HttpError(503,'Voice connection failed. Please use the text guide.');}
+     try {response=await fetch('https://api.retellai.com/v3/create-web-call',{method:'POST',headers:{Authorization:'Bearer '+env.RETELL_API_KEY,'Content-Type':'application/json'},body:JSON.stringify({agent_id:env.CREW_RETELL_AGENT_ID,agent_version:/^\d+$/.test(env.CREW_RETELL_AGENT_VERSION)?Number(env.CREW_RETELL_AGENT_VERSION):env.CREW_RETELL_AGENT_VERSION,agent_override:{agent:{max_call_duration_ms:120000,data_storage_setting:'basic_attributes_only',contact_memory_config:{enable_read:false,enable_update:false},pre_session_tools:[],post_session_tools:[]}},metadata:{channel:'crew-website',business_id:'aw_creatives',specialist_role:'concierge'},retell_llm_dynamic_variables:{business:'AW Creatives',business_id:'aw_creatives',specialist:'Autumn Winters',specialist_id:'awc_concierge',role:'Customer Experience',demo_id:''}}),signal:AbortSignal.timeout(15000)});}catch{throw new HttpError(503,'Voice connection failed. Please use the text guide.');}
      if(!response.ok)throw new HttpError(503,'Voice connection failed. Please use the text guide.');
      const data=await response.json();
      if(typeof data.access_token!=='string'||typeof data.call_id!=='string'||data.transport!=='gateway'||!Array.isArray(data.ice_servers)||!Number.isFinite(data.expires_at)||data.expires_at<=Date.now())throw new HttpError(503,'Voice connection failed. Please use the text guide.');
@@ -124,9 +150,19 @@ export function createWorker(html, assets={}) {
      try {
        const history=JSON.parse(row.history);
        if(history.length>=20)throw new HttpError(429,'This conversation has reached its limit. You can send your request using the form.');
-       if(env.AI_ENABLED!=='true') {
-         const answer=guideAnswer(message);history.push({role:'user',content:message},{role:'assistant',content:answer});
-         await env.DB.prepare('UPDATE chat_sessions SET history=? WHERE id=?').bind(JSON.stringify(history),id).run();return json({answer,mode:'guide'});
+       const specialistRole=history.filter(t=>t.role==='assistant' && ['concierge','sales'].includes(t.specialist_role)).at(-1)?.specialist_role||'concierge';
+       const roleResponse=publicGuideResponse(specialistRole,message,guideAnswer,{intent:history.filter(t=>t.handoff_context).at(-1)?.handoff_context.intent||''});
+       if(env.AI_ENABLED!=='true' || specialistRole==='sales' || roleResponse.handoffOffer) {
+         const answer=roleResponse.answer,route=resolveRoute({role:specialistRole});
+         const events=[];
+         if(!history.length)events.push(sanitizeEvent('crew_specialist_started',route,{channel:'chat'}));
+         if(roleResponse.handoffOffer)events.push(sanitizeEvent('crew_specialist_handoff_offered',route,{channel:'chat',target_role:'sales'}));
+         // A request is an intent event, not a booking, delivery or qualification assertion.
+         if(/request.*consultation/i.test(message))events.push(sanitizeEvent('crew_consultation_requested',route,{channel:'chat'}));
+         if(/request.*demo/i.test(message))events.push(sanitizeEvent('crew_demo_requested',route,{channel:'chat'}));
+         if(/human|person|owner/i.test(message))events.push(sanitizeEvent('crew_human_handoff_requested',route,{channel:'chat',target_role:'human'}));
+         history.push({role:'user',content:message},{role:'assistant',content:answer,specialist_role:specialistRole,handoffOffer:roleResponse.handoffOffer||null});
+         await env.DB.prepare('UPDATE chat_sessions SET history=? WHERE id=?').bind(JSON.stringify(history),id).run();return json({...roleResponse,answer,mode:'guide',events});
        }
        if(!env.OPENAI_API_KEY)throw new HttpError(503,'Autumn is unavailable right now. You can still send an inquiry using the form.');
        if(/\b(price|pricing|cost|quote|budget|discount|refund|payment|insured|insurance)\b|how much|book.*(consultation|appointment)|confirm.*(consultation|appointment)/i.test(message)) {
@@ -134,7 +170,7 @@ export function createWorker(html, assets={}) {
          history.push({role:'user',content:message},{role:'assistant',content:answer});
          await env.DB.prepare('UPDATE chat_sessions SET history=? WHERE id=?').bind(JSON.stringify(history),id).run();return json({answer});
        }
-       const messages=[{role:'system',content:SYSTEM},...history.slice(-8),{role:'user',content:message}];
+       const messages=[{role:'system',content:SYSTEM},...history.slice(-8).map(({role,content})=>({role,content})),{role:'user',content:message}];
        if(encoder.encode(JSON.stringify(messages)).length>14000)throw new HttpError(413,'This conversation is too long. Please submit an inquiry.');
        // Reserve two cents BEFORE each model request. No refunds/retries, including failures.
        // At current pinned model prices, <=14k input UTF-8 bytes and 350 output tokens cost <0.02 USD.
@@ -161,7 +197,7 @@ export function createWorker(html, assets={}) {
    const chat=await env.DB.prepare('SELECT history FROM chat_sessions WHERE id=? AND expires>?').bind(id,Math.floor(Date.now()/1000)).first();
    if(!chat)throw new HttpError(401,'Your conversation expired. Please start again.');
    const now=Math.floor(Date.now()/1000);
-   const row={id:input.requestId,session:id,name,email,interest,message,transcript:input.attachConversation===true?chat.history:'[]',created:now};
+   const row={id:input.requestId,session:id,name,email,interest,message,transcript:input.attachConversation===true?JSON.stringify(JSON.parse(chat.history).map(({role,content})=>({role,content}))):'[]',created:now};
    const inserted=await env.DB.prepare('INSERT OR IGNORE INTO inquiries(id,session,name,email,interest,message,transcript,created,expires,mail_status,status) VALUES(?,?,?,?,?,?,?,?,?,\'pending\',\'new\') RETURNING id').bind(row.id,id,name,email,interest,message,row.transcript,now,now+90*DAY).first();
    if(!inserted)throw new HttpError(409,'Your request is already being processed. Please retry to retrieve its status.');
    const mail=await notify(row,env);

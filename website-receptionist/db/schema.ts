@@ -13,3 +13,9 @@ export const inquiries = sqliteTable('inquiries', {
   expires: integer('expires').notNull(), mailStatus: text('mail_status').notNull().default('pending'),
   providerId: text('provider_id'), status: text('status').notNull().default('new')
 });
+
+// Immutable finite public callback grants; consumption survives cleanup/restarts.
+export const callbackAllowances = sqliteTable('crew_callback_allowances', {
+  id: text('id').primaryKey(), signature: text('signature').notNull(),
+  count: integer('count').notNull().default(0), reservedMicros: integer('reserved_micros').notNull().default(0)
+});

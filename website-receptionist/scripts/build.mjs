@@ -5,7 +5,7 @@ for(const [name,file] of Object.entries({'eventemitter3':'eventemitter3/dist/eve
 const html=readFileSync('public/index.html','utf8').replace('<!-- DRAFT_OFFER_CARDS -->',offerHTML());
 if(existsSync('dist/index.html'))unlinkSync('dist/index.html');
 mkdirSync('dist/server',{recursive:true});mkdirSync('dist/.openai',{recursive:true});
-cpSync('src/offers.mjs','dist/server/offers.mjs');
+cpSync('src/offers.mjs','dist/server/offers.mjs');cpSync('src/crew-routing.mjs','dist/server/crew-routing.mjs');cpSync('src/crew-callback.mjs','dist/server/crew-callback.mjs');
 cpSync('src/worker.mjs','dist/server/worker.mjs');cpSync('src/facts.mjs','dist/server/facts.mjs');
 writeFileSync('dist/server/index.js',`import {createWorker} from './worker.mjs';\nexport default createWorker(${JSON.stringify(html)},${JSON.stringify(assets)});\n`);
 if(existsSync('.openai/hosting.json'))cpSync('.openai/hosting.json','dist/.openai/hosting.json');cpSync('drizzle','dist/.openai/drizzle',{recursive:true});

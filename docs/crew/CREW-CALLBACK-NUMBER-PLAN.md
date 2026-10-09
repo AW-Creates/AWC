@@ -2,7 +2,7 @@
 
 Updated 2026-10-09. The owner purchased ONE US local Retell/Twilio number after adding the workspace payment method. The exact owned source was verified by API readback and named **AW Creatives Business Demo**. Do not purchase a replacement or release it after a test: the owner intends to retain it for business demos.
 
-Outbound routing is bound only to the dedicated published Ellis agent, version 0. Inbound answering, inbound webhook, fallback and SMS routing are disabled. Calling is restricted to the US. No paid add-ons or auto-recharge were enabled. The full source and privately supplied destination remain in ignored local configuration.
+Fresh 2026-10-09 v2 inventory confirms an outbound agent array matching dedicated published Ellis; private callbacks pin version 0 by per-call override. Public AW callbacks must explicitly override to their reviewed AW specialist, never inherit Ellis. See [flagship number-role policy](FLAGSHIP-CREW-ARCHITECTURE.md). Inbound answering, inbound webhook, fallback and SMS routing are disabled. Calling is restricted to the US. No paid add-ons or auto-recharge were enabled. The full source and privately supplied destination remain in ignored local configuration.
 
 The source costs $2/month while retained, plus call usage. Phone subscriptions bill the payment method separately from usage credits; the earlier HTTP 402 blocker is resolved by the owner’s purchase. [Official billing](https://docs.retellai.com/accounts/billing), [Official pricing](https://www.retellai.com/pricing).
 

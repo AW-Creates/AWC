@@ -4,9 +4,9 @@
  </style>
  <section class="crew-voice" aria-label="Autumn voice demo">
  <div class="crew-state"><span class="crew-orb" aria-hidden="true">AW</span><span id="crewState" role="status" aria-live="polite" data-state="idle">Ready to meet Autumn</span></div>
- <p>Experience one specialist. Imagine your own team.</p>
+ <p>Talk Here with Autumn · AW Creatives Customer Experience</p>
  <label><input id="crewConsent" type="checkbox"> I agree to try an AI voice demo processed by Retell. Microphone access starts only when I choose Start voice. Please don’t share sensitive information.</label>
- <div class="crew-controls"><button id="crewStart" type="button">Start voice</button><button id="crewEnd" type="button" disabled>End conversation</button></div>
+ <div class="crew-controls"><button id="crewStart" type="button">Talk Here</button><button id="crewCallback" type="button" disabled title="Awaiting reviewed AW Creatives business-number routing">Call Me · unavailable</button><button id="crewEnd" type="button" disabled>End conversation</button></div>
  <p id="crewHint">Voice preview requires separate activation. The prepared-answer text guide below is available now. Voice is limited to two minutes; requests and final quotes need human confirmation.</p>
  <p id="crewError" role="alert"></p><a id="crewCTA" href="#contact" hidden>Shape your own Crew specialist →</a>
  </section>
@@ -40,7 +40,7 @@
  // Gateway does not supply turn events. Audio activity estimates are UI hints, not claims about the model’s internal state.
  hint.textContent='AI voice demo · up to two minutes. Turn labels estimate microphone and playback activity. Voice is not attached to your inquiry; use the form for a human response.';
  function tick(){if(!active||generation!==current)return;analyser.getByteTimeDomainData(samples);const peak=Math.max(...samples.map(v=>Math.abs(v-128)));const now=performance.now();if(peak>9)lastMic=now;if(now-lastRemote<350)show('speaking');else if(now-lastMic<450)show('listening');else if(now-lastMic<2500&&lastMic>0)show('thinking');else show('listening');frame=requestAnimationFrame(tick);}
- client.on('call_started',()=>{if(generation!==current)return;clearTimeout(watchdog);show('listening');frame=requestAnimationFrame(tick);});
+ client.on('call_started',()=>{if(generation!==current)return;clearTimeout(watchdog);window.dispatchEvent?.(new CustomEvent('crew:event',{detail:{event:'crew_specialist_started',business_id:'aw_creatives',demo_id:null,channel:'web_voice',specialist_role:'concierge'}}));show('listening');frame=requestAnimationFrame(tick);});
  client.on('audio',audio=>{if(generation===current&&audio.some(v=>Math.abs(v)>.02))lastRemote=performance.now();});
  client.on('call_ended',()=>{if(generation===current)stop();});client.on('error',()=>{if(generation===current)fail();});
  timer=setTimeout(()=>{if(generation===current)stop();},115000);
