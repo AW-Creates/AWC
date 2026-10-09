@@ -3,7 +3,7 @@ let opener=launcher;
 // Session messages remain in this page while the panel is closed. No external voice session exists.
 const session={prospectId:document.body.dataset.prospect,messages:[]};
 function message(name,text){const p=document.createElement('p');p.className='message';const b=document.createElement('b');b.textContent=name;const span=document.createElement('span');span.textContent=text;p.append(b,span);messages.append(p);session.messages.push({speaker:name,text:text.slice(0,800)});session.messages=session.messages.slice(-4);updateContext();messages.scrollTop=messages.scrollHeight;}
-function open(trigger){opener=trigger;const context=trigger.dataset.context;if(context&&!input.value)input.value=context;panel.showModal();launcher.setAttribute('aria-expanded','true');input.focus();messages.scrollTop=messages.scrollHeight;}
+function open(trigger){dismissInvitation();opener=trigger.closest('#crew-invitation')?launcher:trigger;const context=trigger.dataset.context;if(context&&!input.value)input.value=context;panel.showModal();launcher.setAttribute('aria-expanded','true');input.focus();messages.scrollTop=messages.scrollHeight;}
 for(const trigger of document.querySelectorAll('[data-open-crew],#crew-launcher'))trigger.addEventListener('click',()=>open(trigger));
 document.querySelector('#crew-close').addEventListener('click',()=>panel.close());
 panel.addEventListener('close',()=>{launcher.setAttribute('aria-expanded','false');opener.focus({preventScroll:true});});
@@ -13,3 +13,13 @@ function updateContext(){const ctx=window.crewConversationContext();document.que
 window.crewConversationContext=()=>({prospectId:session.prospectId,business:document.body.dataset.business,specialist:document.body.dataset.specialist,lastUserRequest:session.messages.filter(m=>m.speaker==='You · demo').at(-1)?.text.slice(0,800)||'',channel:'text',requestedChannel:null,voiceEnabled:false,consent:false,summary:session.messages.map(m=>m.speaker+': '+m.text).join('\n').slice(-2400)});
 updateContext();
 form.onsubmit=async ev=>{ev.preventDefault();const text=input.value.trim();if(!text)return;const button=form.querySelector('button');button.disabled=true;message('You · demo',text);status.textContent='Preparing a reviewed answer…';try{const r=await fetch('/api/prospects/'+session.prospectId+'/chat',{method:'POST',headers:{'Content-Type':'application/json','X-Owner-Action':'local-workbench'},body:JSON.stringify({message:text})});const d=await r.json();if(!r.ok)throw Error(d.error);message(d.name+' · '+d.role,d.answer);status.textContent=d.handoff?'Local draft saved for '+d.handoff.destination+'. Nobody contacted.':'Prepared answer · No external action';input.value='';}catch(err){status.textContent=err.message;}finally{button.disabled=false;input.focus();}};
+
+const invitation=document.querySelector('#crew-invitation');
+const invitationKey='crew-invitation:'+session.prospectId;
+let invitationSeen=false;
+try{invitationSeen=sessionStorage.getItem(invitationKey)==='seen';}catch{}
+function dismissInvitation(){invitation.hidden=true;invitationSeen=true;try{sessionStorage.setItem(invitationKey,'seen');}catch{}}
+function invite(){if(invitationSeen||panel.open)return;invitation.hidden=false;invitationSeen=true;try{sessionStorage.setItem(invitationKey,'seen');}catch{}}
+document.querySelector('#invitation-dismiss').addEventListener('click',dismissInvitation);
+setTimeout(invite,6000);
+window.addEventListener('scroll',()=>{if(scrollY>Math.max(300,innerHeight*.55))invite();},{passive:true});

@@ -15,8 +15,8 @@ export function createOwnerServer({dataDir=join(root,'.local'),seed=true}={}){
    if(req.headers.host!=='127.0.0.1:'+server.address().port)throw new ValidationError('Open the loopback address printed by the owner workbench.',403);
    const url=new URL(req.url,origin),parts=url.pathname.split('/').filter(Boolean);const method=req.method;
    if(url.pathname.startsWith('/api/')&&(req.headers['sec-fetch-site']==='cross-site'||(req.headers.origin&&req.headers.origin!==origin)))throw new ValidationError('Use the local owner workbench.',403);
-   const assets={'/':'index.html','/app.js':'app.js','/app.css':'app.css','/demo.js':'demo.js','/demo.css':'demo.css'};
-   if(method==='GET'&&assets[url.pathname]){const f=assets[url.pathname];return respond(200,readFileSync(join(root,'public',f)),f.endsWith('.js')?'text/javascript; charset=utf-8':f.endsWith('.css')?'text/css; charset=utf-8':'text/html; charset=utf-8');}
+   const assets={'/':'index.html','/app.js':'app.js','/app.css':'app.css','/demo.js':'demo.js','/demo.css':'demo.css','/showcase-estate.png':'showcase-estate.png','/showcase-interior.png':'showcase-interior.png'};
+   if(method==='GET'&&assets[url.pathname]){const f=assets[url.pathname];return respond(200,readFileSync(join(root,'public',f)),f.endsWith('.png')?'image/png':f.endsWith('.js')?'text/javascript; charset=utf-8':f.endsWith('.css')?'text/css; charset=utf-8':'text/html; charset=utf-8');}
    if(method==='GET'&&url.pathname==='/robots.txt')return respond(200,'User-agent: *\nDisallow: /\n','text/plain');
    if(parts[0]==='demo'&&parts.length===2&&method==='GET'){
     const p=store.get(parts[1]);if(!p?.artifact)throw new ValidationError('Generate a reviewed concept first.',404);if(!qa(p).passed)throw new ValidationError('This concept is stale. Review and regenerate the current configuration.',409);

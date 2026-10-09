@@ -57,9 +57,13 @@ test('local API enforces origin, current revision, data scope and generated-prev
 test('niche structures are distinct, original and truthful; floating conversation has explicit voice gates',()=>{
  const [home,realty,studio]=fixtures();const pages=[home,realty,studio].map(renderDemo);
  assert.match(pages[0],/A fresh home/);assert.match(pages[0],/Choose your service/);
- assert.match(pages[1],/Find your way/);assert.match(pages[1],/This concept contains no active listings/);assert.match(pages[1],/Original architectural illustration/);
+ assert.match(pages[1],/Home is more/);assert.match(pages[1],/This concept contains no active listings/);assert.match(pages[1],/Generated contemporary residence concept/);
  assert.match(pages[2],/Clarity first/);assert.match(pages[2],/Frame the challenge/);
- for(const html of pages){assert.match(html,/id="crew-launcher" aria-haspopup="dialog"/);assert.match(html,/<dialog id="crew-panel" aria-labelledby="crew-title"/);assert.match(html,/data-context=/);assert.match(html,/disabled aria-describedby="voice-status">Talk here/);assert.match(html,/disabled aria-describedby="voice-status">Call me/);assert.doesNotMatch(html,/https?:\/\/.*\.(jpg|png)|api\.retell|tel:/);}
+ for(const html of pages){assert.match(html,/id="crew-launcher" aria-haspopup="dialog"/);assert.match(html,/<dialog id="crew-panel" aria-labelledby="crew-title"/);assert.match(html,/data-context=/);assert.match(html,/disabled aria-describedby="browser-voice-description voice-status">Talk here/);assert.match(html,/disabled aria-describedby="callback-description voice-status">Call me/);assert.doesNotMatch(html,/https?:\/\/.*\.(jpg|png)|api\.retell|tel:/);}
  // Artifacts made with the previous renderer hash cannot pass the current QA gate.
  const old=structuredClone(home);old.builtRevision=old.inputRevision;old.artifact={inputHash:'old-renderer-hash'};assert.equal(qa(old).passed,false);
+});
+
+test('showcase invitation is explicit, channels are explained and callback remains consent-gated',()=>{
+ const html=renderDemo(fixtures()[1]);assert.match(html,/id="crew-invitation" hidden/);assert.match(html,/Dismiss specialist invitation/);assert.match(html,/Try me/);assert.match(html,/No phone call needed/);assert.match(html,/Request a phone call from a digital specialist/);assert.match(html,/digital Sales Specialist/);assert.match(html,/request a person instead/);assert.match(html,/collects no number and schedules no call/);assert.match(html,/showcase-estate.png/);assert.match(html,/showcase-interior.png/);assert.doesNotMatch(html,/<audio|autoplay|<input[^>]*type="tel"/);
 });

@@ -63,7 +63,7 @@ export function reviewProspect(current){
  const p=structuredClone(current);if(!p.sources.length||!p.facts.about.value||!p.facts.services.length)fail('Capture a source, a business summary and at least one service before review.');
  facts(p.facts,p.sources);crewConfig(p.crew);p.reviewedRevision=p.inputRevision;p.sources=p.sources.map(s=>({...s,verified:true}));p.stage='reviewed';p.updatedAt=new Date().toISOString();return p;
 }
-export const TEMPLATE_BUILD_VERSION=2;
+export const TEMPLATE_BUILD_VERSION=3;
 export const revisionHash=p=>createHash('sha256').update(JSON.stringify({templateBuildVersion:TEMPLATE_BUILD_VERSION,name:p.name,niche:p.niche,template:p.template,revision:p.inputRevision,facts:p.facts,crew:p.crew})).digest('hex');
 export function qa(p){return {passed:p.reviewedRevision===p.inputRevision&&p.builtRevision===p.inputRevision&&p.artifact?.inputHash===revisionHash(p),checks:[{label:'Business facts reviewed against captured sources',passed:p.reviewedRevision===p.inputRevision},{label:'Generated concept matches current facts and Crew configuration',passed:p.builtRevision===p.inputRevision&&p.artifact?.inputHash===revisionHash(p)},{label:'No external action tools enabled',passed:p.crew.permissions.every(x=>CAPABILITIES.includes(x))},{label:'Local preview only; noindex is not remote access protection',passed:true}],deployment:{mode:'loopback-only',remotePrivateAccessVerified:false,indexing:'X-Robots-Tag + meta noindex',outreachEnabled:false}};}
 export function routeMessage(p,message){
