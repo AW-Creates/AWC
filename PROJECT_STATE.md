@@ -178,3 +178,7 @@ Validated implementation: a7df38d718bc89e2ec49c54fc7b2e6074a3b3915. Forty public
 Configured private-value scan PASS (seven configured values checked without output); private-artifact gate PASS; CRLF-aware staged whitespace gate PASS after trailing-blank cleanup. All 77 intended source/docs/synthetic screenshot files reviewed. No private database/config/transcripts/media tracked. Query Git for implementation and separate checkpoint hashes, fresh remote equality and clean tree. STOP after backup verification.
 
 Validated demo-factory implementation: 5a4d086ed362021030dce4ce1b0b020562344573. Separate state/closeout checkpoint follows. Fresh remote before push remains the recovered 6d0b378 checkpoint, with no unexpected advance; ordinary non-force push and final local/origin/fresh-remote equality are required. No next milestone started.
+
+## Six-role flagship Git checkpoint — 2026-10-09
+
+Validated implementation: `99cc42053dbf6e9baeab43da429fc60fdaf4173d`. Public Site version9/source `8fc84c9a66df5427e2c0b83c89ac269cf966395e` succeeded; all six live prepared-role selections HTTP200 and channels disabled. 45 public +34 owner tests, final6 browser cases/52 screenshots, configured-private-value scan (3 values), private-artifact and CRLF-aware whitespace gates PASS. No paid calls/new spend. This separate checkpoint records the implementation without self-reference. Verify final HEAD==origin/main==fresh remote and clean tree after push. Next: AWC — Flagship Live Voice Activation & Six-Role Acceptance; no outreach/new niche build. STOP.
