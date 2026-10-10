@@ -1,0 +1,50 @@
+{
+  "verifiedAt": "2026-10-10T00:00:25.932Z",
+  "url": "https://aw-creates-ventures.thesml.chatgpt.site",
+  "liveRoles": [
+    {
+      "role": "concierge",
+      "name": "Autumn Winters",
+      "status": 200,
+      "voiceAvailable": false,
+      "callAvailable": false
+    },
+    {
+      "role": "sales",
+      "name": "Owen Brooks",
+      "status": 200,
+      "voiceAvailable": false,
+      "callAvailable": false
+    },
+    {
+      "role": "scheduling",
+      "name": "Clara Bennett",
+      "status": 200,
+      "voiceAvailable": false,
+      "callAvailable": false
+    },
+    {
+      "role": "support",
+      "name": "Miles Carter",
+      "status": 200,
+      "voiceAvailable": false,
+      "callAvailable": false
+    },
+    {
+      "role": "billing",
+      "name": "June Parker",
+      "status": 200,
+      "voiceAvailable": false,
+      "callAvailable": false
+    },
+    {
+      "role": "implementation",
+      "name": "Theo Reed",
+      "status": 200,
+      "voiceAvailable": false,
+      "callAvailable": false
+    }
+  ],
+  "paidCalls": 0,
+  "inquiries": 0
+}

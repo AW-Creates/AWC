@@ -25,6 +25,16 @@ Live preview root cause identified: long-running Node imported old renderer whil
 
 ## Current milestone
 
+**AWC — Complete Flagship Crew + Website Launch Readiness — six-role showcase COMPLETE; operational voice readiness remains gated.** Public Site version9 is live with Autumn Winters (Customer Experience), Owen Brooks (Sales), Clara Bennett (Scheduling), Miles Carter (Support), June Parker (Billing), Theo Reed (Implementation). Registry-driven cards/options, role introductions/examples/customization and signed-session consent-based text handoffs; no prospect leakage. Text and voice share one signed session; nonconcierge voice/callback denied. Prepared chat24/minute, paid mode6; no paid mode enabled.
+
+Five dedicated Retell agents created/published/readback at pinned version0; preserved Autumn version1 verified. Config IDs/prompts/checks in docs/crew/FLAGSHIP-PROVIDER-*.json; public channels disabled. No live tools/calendars/billing/account execution or voice transfers. Five roles share existing voice preset; distinct audible identities untested. Hosted secret absent and previous paid grants consumed; no new budget inferred.
+
+45 public +34 owner tests/build PASS; final6 desktop/mobile dark/light cases and52 screenshots PASS;zero JS/provider/microphone/overflow. All6 live hosted selections HTTP200. Site source8fc84c9a66df5427e2c0b83c89ac269cf966395e, deployment appgdep_6ac97fcd2680819180dfb8324dca7226 succeeded,environment6. URL unchanged. Evidence docs/qa/flagship-six; closeout docs/crew/FLAGSHIP-SIX-CLOSEOUT.md; operator guide FLAGSHIP-SIX-RUNBOOK.md. Spend$0 calls/API/new resources; retained$2/month source unchanged. Owned4191 preview stopped,4196 proofs retained.
+
+Next exact bounded milestone: **AWC — Flagship Live Voice Activation & Six-Role Acceptance**. Secure hosted credential import, pinned per-role voice binding/consented handoffs, owner-approved finite audible tests and real consultation notification acceptance before outreach. Current completed showcase does not establish a fully operational voice workforce. STOP after canonical commit/push/clean-tree verification.
+
+Prior completed milestone:
+
 **AWC — Real Estate Template Trio + Prospect Demo Factory Automation — COMPLETE (local proofs; remote private delivery pending).** One schema/validator/CLI generates three directions on the retained owner engine: Cedar Lane/Ellis Editorial Luxury, Forma House/Nora Modern Architectural, Maren Vale/Avery High-Producer Personal Brand. Stable IDs end 0001/0002/0003. No flagship rebuild or public hosting/provider changes.
 
 Schema `owner-ops/prospect-demo.schema.json`; validation/preflight `owner-ops/factory.mjs`; provenance `owner-ops/PROVENANCE.md`; compositions `owner-ops/estate-directions.mjs`; CSS `owner-ops/public/estate-directions.css`; generator `owner-ops/scripts/generate-demo.mjs`. Approved source-bound facts/identity, hours/team, role/tools/handoffs, assets, disclosure, expiry/status and namespace bind automatically. Unsupported/uncertain facts are omitted and surfaced for operator review. No cloned layouts/text, credentials or fabricated listing/authority claims. Legacy accepted modern residential composition remains; expanded hashes mean old cached previews need review/regeneration after restart.

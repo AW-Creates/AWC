@@ -1,7 +1,7 @@
 import { estimate } from './offers.mjs';
 import { MODEL, SYSTEM, guideAnswer } from './facts.mjs';
 import {callbackStatus, createPublicCallback} from './crew-callback.mjs';
-import {resolveRoute, handoff, publicGuideResponse, sanitizeEvent} from './crew-routing.mjs';
+import {resolveRoute, handoff, publicGuideResponse, sanitizeEvent, FLAGSHIP, activeRole} from './crew-routing.mjs';
 
 const ORIGIN = 'https://aw-creates-ventures.thesml.chatgpt.site';
 const encoder = new TextEncoder();
@@ -83,7 +83,7 @@ export function createWorker(html, assets={}) {
      if(!owner(request,env))throw new HttpError(403,'This inbox is available only to the AWC owner.');
      const rows=await env.DB.prepare('SELECT * FROM inquiries WHERE expires > ? ORDER BY created DESC LIMIT 100').bind(Math.floor(Date.now()/1000)).all();return page(inboxHTML(rows.results));
    }
-   if(!['/api/session','/api/chat','/api/inquiry','/api/estimate','/api/voice-session','/api/crew-handoff','/api/callback'].includes(path))return json({error:'Not found'},404);
+   if(!['/api/session','/api/chat','/api/inquiry','/api/estimate','/api/voice-session','/api/crew-handoff','/api/crew-select','/api/callback'].includes(path))return json({error:'Not found'},404);
    if(request.method!=='POST')return json({error:'Method not allowed'},405);
    sameOrigin(request,env);const input=await body(request);
    ctx?.waitUntil(cleanup(env.DB).catch(()=>{}));
@@ -97,30 +97,36 @@ export function createWorker(html, assets={}) {
    if(path==='/api/callback') {
      const active=await env.DB.prepare('SELECT history FROM chat_sessions WHERE id=? AND expires>?').bind(id,Math.floor(Date.now()/1000)).first();
      if(!active)throw new HttpError(401,'Your conversation expired. Start again.');
+     if(activeRole(JSON.parse(active.history))!=='concierge')throw new HttpError(403,'This specialist is available in chat; Autumn voice requires explicit selection.');
      try {return json(await createPublicCallback({env,sessionId:id,input,request,rate,counter}));}catch(error){throw new HttpError(error.status||503,error.status?error.message:'Callback is unavailable. Please request a consultation.');}
    }
-   if(path==='/api/crew-handoff') {
-     if(input.accept!==true || typeof input.shareContext!=='boolean')throw new HttpError(400,'Accept the specialist handoff and choose whether to carry context.');
-     await rate(request,env,'handoff',3,60);
+   if(path==='/api/crew-handoff'||path==='/api/crew-select') {
+     if((path==='/api/crew-handoff'&&input.accept!==true) || typeof input.shareContext!=='boolean')throw new HttpError(400,'Accept the specialist handoff and choose whether to carry context.');
+     await rate(request,env,path==='/api/crew-select'?'role-select':'handoff',path==='/api/crew-select'?12:6,60);
      const now=Math.floor(Date.now()/1000);
      const row=await env.DB.prepare('UPDATE chat_sessions SET busy_until=? WHERE id=? AND expires>? AND busy_until<? RETURNING history').bind(now+35,id,now,now).first();
      if(!row)throw new HttpError(409,'Please wait or start a new conversation.');
      try {
        const history=JSON.parse(row.history),previous=history.at(-1);
        if(history.length>=20)throw new HttpError(429,'This conversation has reached its limit. Please use the inquiry form.');
-       if(previous?.handoffOffer?.target_role!=='sales' || previous.specialist_role!=='concierge')throw new HttpError(403,'No authorized handoff is pending.');
-       const source=resolveRoute({role:'concierge'}),target=resolveRoute({role:'sales'});
-       const carry=handoff({source,target,accepted:true,shareContext:input.shareContext,context:{channel:'chat',transcript:history,intent:history.filter(t=>t.role==='user').at(-1)?.content||''}});
-       const response=publicGuideResponse('sales','',guideAnswer,{introduction:true,intent:carry.context.intent});
-       history.push({role:'assistant',content:response.answer,specialist_role:'sales',handoff_context:carry.context});
-       await env.DB.prepare('UPDATE chat_sessions SET history=? WHERE id=?').bind(JSON.stringify(history),id).run();
-       return json({...response,mode:'prepared_role_handoff',contextShared:input.shareContext,events:[sanitizeEvent('crew_specialist_handoff_accepted',source,{channel:'chat',target_role:'sales'}),sanitizeEvent('crew_specialist_handoff_completed',target,{channel:'chat',target_role:'sales'}),sanitizeEvent('crew_specialist_started',target,{channel:'chat'})]});
+       if(path==='/api/crew-handoff'&&!previous?.handoffOffer)throw new HttpError(403,'No authorized handoff is pending.');
+       const sourceRole=activeRole(history),targetRole=path==='/api/crew-select'?input.role:input.targetRole||previous?.handoffOffer?.target_role;
+       if(!Object.hasOwn(FLAGSHIP.specialists,targetRole))throw new HttpError(400,'Unknown specialist role.');
+       if(path==='/api/crew-handoff'&&(!previous?.handoffOffer||previous.handoffOffer.target_role!==targetRole||previous.specialist_role!==sourceRole))throw new HttpError(403,'No authorized handoff is pending.');
+       const source=resolveRoute({role:sourceRole}),target=resolveRoute({role:targetRole});
+       const carry=sourceRole===targetRole?{context:{intent:input.shareContext?history.filter(t=>t.role==='user').at(-1)?.content||'':'',transcript:[]}}:handoff({source,target,accepted:true,shareContext:input.shareContext,context:{channel:'chat',transcript:history,intent:history.filter(t=>t.role==='user').at(-1)?.content||''}});
+       const response=publicGuideResponse(targetRole,'',guideAnswer,{introduction:true,intent:carry.context.intent});
+       // New role sees only explicitly shared bounded context; old role records never enter its model context.
+       const nextHistory=[{role:'assistant',content:response.answer,specialist_role:targetRole,handoff_context:carry.context}];
+       await env.DB.prepare('UPDATE chat_sessions SET history=? WHERE id=?').bind(JSON.stringify(nextHistory),id).run();
+       return json({...response,mode:'prepared_role_handoff',contextShared:input.shareContext,voiceAvailable:targetRole==='concierge'&&voiceAvailable(env),callAvailable:targetRole==='concierge'&&(await callbackStatus(env)).available,events:[sanitizeEvent('crew_specialist_handoff_accepted',source,{channel:'chat',target_role:targetRole}),sanitizeEvent('crew_specialist_handoff_completed',target,{channel:'chat',target_role:targetRole}),sanitizeEvent('crew_specialist_started',target,{channel:'chat'})]});
      } finally {await env.DB.prepare('UPDATE chat_sessions SET busy_until=0 WHERE id=?').bind(id).run();}
    }
    if(path==='/api/voice-session') {
      if(input.consent!==true)throw new HttpError(400,'Please agree to the voice demo disclosure.');
      const active=await env.DB.prepare('SELECT history FROM chat_sessions WHERE id=? AND expires>?').bind(id,Math.floor(Date.now()/1000)).first();
      if(!active)throw new HttpError(401,'Your conversation expired. Please start again.');
+     if(activeRole(JSON.parse(active.history))!=='concierge')throw new HttpError(403,'This specialist is available in chat; Autumn voice requires explicit selection.');
      // Independent website agent, reviewed published version and finite allowance. Never reuse BrightHome implicitly.
      const cap=Number(env.CREW_VOICE_SESSION_CAP);
      if(!voiceAvailable(env))throw new HttpError(503,'Voice preview is not enabled yet. Explore Crew with Autumn’s text guide or send an inquiry.');
@@ -143,26 +149,26 @@ export function createWorker(html, assets={}) {
      try{return json(estimate(input));}catch(error){if(error instanceof RangeError)throw new HttpError(400,error.message);throw error;}
    }
    if(path==='/api/chat') {
-     const message=clean(input.message,1,800);await rate(request,env,'chat',6,60);
+     const message=clean(input.message,1,800);await rate(request,env,'chat',env.AI_ENABLED==='true'?6:24,60);
      const now=Math.floor(Date.now()/1000);
      const row=await env.DB.prepare('UPDATE chat_sessions SET busy_until=? WHERE id=? AND expires>? AND busy_until<? RETURNING history').bind(now+35,id,now,now).first();
      if(!row)throw new HttpError(409,'Please wait for the current response, or start a new conversation.');
      try {
        const history=JSON.parse(row.history);
        if(history.length>=20)throw new HttpError(429,'This conversation has reached its limit. You can send your request using the form.');
-       const specialistRole=history.filter(t=>t.role==='assistant' && ['concierge','sales'].includes(t.specialist_role)).at(-1)?.specialist_role||'concierge';
+       const specialistRole=activeRole(history);
        const roleResponse=publicGuideResponse(specialistRole,message,guideAnswer,{intent:history.filter(t=>t.handoff_context).at(-1)?.handoff_context.intent||''});
-       if(env.AI_ENABLED!=='true' || specialistRole==='sales' || roleResponse.handoffOffer) {
+       if(env.AI_ENABLED!=='true' || specialistRole!=='concierge' || roleResponse.handoffOffer) {
          const answer=roleResponse.answer,route=resolveRoute({role:specialistRole});
          const events=[];
          if(!history.length)events.push(sanitizeEvent('crew_specialist_started',route,{channel:'chat'}));
-         if(roleResponse.handoffOffer)events.push(sanitizeEvent('crew_specialist_handoff_offered',route,{channel:'chat',target_role:'sales'}));
+         if(roleResponse.handoffOffer)events.push(sanitizeEvent('crew_specialist_handoff_offered',route,{channel:'chat',target_role:roleResponse.handoffOffer.target_role}));
          // A request is an intent event, not a booking, delivery or qualification assertion.
          if(/request.*consultation/i.test(message))events.push(sanitizeEvent('crew_consultation_requested',route,{channel:'chat'}));
          if(/request.*demo/i.test(message))events.push(sanitizeEvent('crew_demo_requested',route,{channel:'chat'}));
          if(/human|person|owner/i.test(message))events.push(sanitizeEvent('crew_human_handoff_requested',route,{channel:'chat',target_role:'human'}));
          history.push({role:'user',content:message},{role:'assistant',content:answer,specialist_role:specialistRole,handoffOffer:roleResponse.handoffOffer||null});
-         await env.DB.prepare('UPDATE chat_sessions SET history=? WHERE id=?').bind(JSON.stringify(history),id).run();return json({...roleResponse,answer,mode:'guide',events});
+         await env.DB.prepare('UPDATE chat_sessions SET history=? WHERE id=?').bind(JSON.stringify(history),id).run();return json({...roleResponse,answer,mode:'guide',voiceAvailable:specialistRole==='concierge'&&voiceAvailable(env),callAvailable:specialistRole==='concierge'&&(await callbackStatus(env)).available,events});
        }
        if(!env.OPENAI_API_KEY)throw new HttpError(503,'Autumn is unavailable right now. You can still send an inquiry using the form.');
        if(/\b(price|pricing|cost|quote|budget|discount|refund|payment|insured|insurance)\b|how much|book.*(consultation|appointment)|confirm.*(consultation|appointment)/i.test(message)) {

@@ -1,0 +1,11 @@
+# Dedicated flagship provider configurations
+
+Five additional AWC configurations created and published as pinned version 0; Autumn's existing reviewed configuration preserved. Public voice, callback and live transfers remain disabled for these roles. Configuration publication creates no call. No phone numbers, budgets, allowance IDs or live tool integrations changed. Incremental call usage: $0.
+
+`FLAGSHIP-PROVIDER-MANIFEST.json` contains public IDs, immutable versions, prompt hashes and passed readback checks per role. `FLAGSHIP-PROVIDER-PROMPTS.json` contains approved role-specific prompts, greetings and identities. Review confirmed alignment with the six-role registry and AWC's four public service areas, truthful action boundaries and no imported prospect facts. Five roles use the already approved `11labs-Kathrine` voice and `gpt-4.1-mini`; personalities differ. Audio identities remain untested.
+
+Offline export: `node website-receptionist/scripts/provision-flagship.mjs`. After prompt review, secure provisioning uses `--apply --prompts-reviewed` with `RETELL_API_KEY` already injected or `--env-file` pointing to a private local environment file. Credentials stay internal; do not paste them into chat or commit them. Script whitelist permits configuration create/publish/readback only. Persistent IDs prevent repeat creation after interruption; HTTP response bodies are suppressed on failure. There are no calls, chat-completion, phone-number or budget endpoints.
+
+Verified official documentation on 2026-10-09: [Create Agent](https://docs.retellai.com/api-references/create-agent), [Create Retell LLM](https://docs.retellai.com/api-references/create-retell-llm), [Publish Agent](https://docs.retellai.com/api-references/publish-agent). Publish endpoint is `POST /publish-agent-version/{agent_id}` with an explicit numeric version. Public activation requires separate role bindings, finite grants and hosted channel acceptance; publishing a configuration alone does not make it callable through the website.
+
+Readback verified each role's exact identity/LLM, version, published state, prompt hash, model and voice; 120000ms duration and 30000ms silence caps; basic-attributes-only storage; contact memory disabled; no session tools, webhook, general tools, states, MCPs or knowledge bases.

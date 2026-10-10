@@ -74,7 +74,7 @@ test('estimate attachment needs explicit choice and inquiry consent and is recom
 
 test('Autumn identity and Crew customization use approved shared facts',async()=>{
  const {worker,env}=setup();env.AI_ENABLED='false';const token=await session(worker,env);
- for(const [message,expected] of [['What is your name?',/Autumn Winters.*Customer Experience Specialist/],['What is Crew?',/customized.*name, voice, personality/],['Can you book an appointment?',/not a confirmed appointment/]]){
+ for(const [message,expected] of [['What is your name?',/Autumn Winters.*Customer Experience.*Concierge/],['What is Crew?',/customized.*name, voice, personality/],['Can you book an appointment?',/not a confirmed appointment/]]){
  const r=await worker.fetch(request('/api/chat',{message},token),env,ctx);assert.equal(r.status,200);assert.match((await r.json()).answer,expected);}
 });
 function enableVoice(env,cap=1){Object.assign(env,{CREW_VOICE_ENABLED:'true',CREW_VOICE_BUSINESS_ID:'aw_creatives',CREW_VOICE_SPECIALIST_ID:'awc_concierge',CREW_VOICE_EXPIRES_AT:new Date(Date.now()+3600000).toISOString(),CREW_VOICE_REVIEWED:'true',RETELL_API_KEY:'private-test-key',CREW_RETELL_AGENT_ID:'agent_test',CREW_RETELL_AGENT_VERSION:'0',CREW_VOICE_ALLOWANCE_ID:'test-allowance',CREW_VOICE_SESSION_CAP:String(cap)});}
@@ -114,10 +114,10 @@ test('flagship handoff is explicitly accepted, session-bound and preserves only 
  assert.equal((await run('/api/crew-handoff',{accept:true,shareContext:true},other)).status,403);
  assert.equal((await run('/api/crew-handoff',{shareContext:true})).status,400);
  const transferred=await run('/api/crew-handoff',{accept:true,shareContext:true,target_role:'billing',business_id:'cedar'});assert.equal(transferred.status,200);
- const result=await transferred.json();assert.equal(result.role,'sales');assert.equal(result.specialist.name,null);assert.equal(result.mode,'prepared_role_handoff');assert.equal(result.contextShared,true);
+ const result=await transferred.json();assert.equal(result.role,'sales');assert.equal(result.specialist.name,'Owen Brooks');assert.equal(result.mode,'prepared_role_handoff');assert.equal(result.contextShared,true);
  const history=JSON.parse(env.DB.raw.prepare('SELECT history FROM chat_sessions WHERE id=?').get(token.split('.')[0]).history);
  assert.match(history.at(-1).handoff_context.intent,/website/);assert.equal(history.at(-1).handoff_context.contact,null);
- assert.equal((await run('/api/crew-handoff',{accept:true,shareContext:true})).status,429);
+ assert.equal((await run('/api/crew-handoff',{accept:true,shareContext:true})).status,403);
  const continued=await (await run('/api/chat',{message:'What can be combined?',role:'concierge'})).json();assert.equal(continued.role,'sales');
  const fresh=await session(worker,env);const reset=await (await run('/api/chat',{message:'What is your name?'},fresh)).json();assert.equal(reset.role,'concierge');
 });
@@ -127,7 +127,7 @@ test('declined context does not enter Sales handoff; public callback fails close
  await worker.fetch(request('/api/chat',{message:'Explain multiple specialists'},token),env,ctx);
  const result=await worker.fetch(request('/api/crew-handoff',{accept:true,shareContext:false},token),env,ctx);assert.equal(result.status,200);
  const history=JSON.parse(env.DB.raw.prepare('SELECT history FROM chat_sessions WHERE id=?').get(token.split('.')[0]).history);assert.deepEqual(history.at(-1).handoff_context,{summary:'',transcript:[],intent:'',contact:null});
- const callback=await worker.fetch(request('/api/callback',{consent:true,phone:'+12025550123',demo_id:'cedar'},token),env,ctx);assert.equal(callback.status,503);assert.doesNotMatch(await callback.text(),/Ellis|Cedar/);
+ const callback=await worker.fetch(request('/api/callback',{consent:true,phone:'+12025550123',demo_id:'cedar'},token),env,ctx);assert.equal(callback.status,403);assert.doesNotMatch(await callback.text(),/Ellis|Cedar/);
 });
 
 test('reviewed public callback route fixes AW identity and hides spent readiness',async()=>{

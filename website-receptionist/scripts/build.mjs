@@ -1,8 +1,9 @@
+import {rosterHTML,roleOptionsHTML} from '../src/crew-roster.mjs';
 import {offerHTML} from '../src/offers.mjs';
 import {readFileSync,writeFileSync,mkdirSync,cpSync,existsSync,unlinkSync} from 'node:fs';
 const assets={};
 for(const [name,file] of Object.entries({'eventemitter3':'eventemitter3/dist/eventemitter3.umd.js','livekit':'livekit-client/dist/livekit-client.umd.js','retell':'retell-client-js-sdk/dist/index.umd.js'}))assets['/crew-assets/'+name+'.js']=readFileSync('node_modules/'+file,'utf8');
-const html=readFileSync('public/index.html','utf8').replace('<!-- DRAFT_OFFER_CARDS -->',offerHTML());
+const html=readFileSync('public/index.html','utf8').replace('<!-- DRAFT_OFFER_CARDS -->',offerHTML()).replace('<!-- CREW_ROSTER -->',rosterHTML()).replace('<!-- CREW_ROLE_OPTIONS -->',roleOptionsHTML());
 if(existsSync('dist/index.html'))unlinkSync('dist/index.html');
 mkdirSync('dist/server',{recursive:true});mkdirSync('dist/.openai',{recursive:true});
 cpSync('src/offers.mjs','dist/server/offers.mjs');cpSync('src/crew-routing.mjs','dist/server/crew-routing.mjs');cpSync('src/crew-callback.mjs','dist/server/crew-callback.mjs');
