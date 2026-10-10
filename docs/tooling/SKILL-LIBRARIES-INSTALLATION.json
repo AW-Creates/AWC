@@ -1,0 +1,41 @@
+[
+  {
+    "library": "awc-agency-agents",
+    "installed_path": "C:\\Users\\A-Problem\\.codex\\skills\\awc-agency-agents",
+    "repository": "AW-Creates/agency-agents",
+    "commit": "28dd43109763cc962b97ea6a0a9c0d47e34d1755",
+    "entry_count": 61,
+    "resource_count": 84,
+    "resource_bytes": 905935,
+    "hash_verification": "pass",
+    "discovered_entrypoints": [
+      "SKILL.md"
+    ]
+  },
+  {
+    "library": "awc-agent-skills",
+    "installed_path": "C:\\Users\\A-Problem\\.codex\\skills\\awc-agent-skills",
+    "repository": "AW-Creates/agent-skills",
+    "commit": "0ab82f644cd9caf94c65347a50ad934800b0cbc4",
+    "entry_count": 92,
+    "resource_count": 782,
+    "resource_bytes": 6076400,
+    "hash_verification": "pass",
+    "discovered_entrypoints": [
+      "SKILL.md"
+    ]
+  },
+  {
+    "library": "awc-marketing-skills",
+    "installed_path": "C:\\Users\\A-Problem\\.codex\\skills\\awc-marketing-skills",
+    "repository": "coreyhaines31/marketingskills",
+    "commit": "1efedbc5148b54b2f0f6c6c9fe0be62e151c7fff",
+    "entry_count": 50,
+    "resource_count": 501,
+    "resource_bytes": 4455926,
+    "hash_verification": "pass",
+    "discovered_entrypoints": [
+      "SKILL.md"
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "library": "awc-agency-agents",
+    "pass": true,
+    "guides_checked": 61,
+    "catalogue_links_checked": 67,
+    "aliases_checked": 61,
+    "resource_hashes_checked": 84,
+    "frontmatter_failures": [],
+    "missing_catalogue_links": [],
+    "alias_failures": [],
+    "hash_failures": []
+  },
+  {
+    "library": "awc-agent-skills",
+    "pass": true,
+    "guides_checked": 92,
+    "catalogue_links_checked": 92,
+    "aliases_checked": 95,
+    "resource_hashes_checked": 782,
+    "frontmatter_failures": [],
+    "missing_catalogue_links": [],
+    "alias_failures": [],
+    "hash_failures": []
+  },
+  {
+    "library": "awc-marketing-skills",
+    "pass": true,
+    "guides_checked": 50,
+    "catalogue_links_checked": 53,
+    "aliases_checked": 50,
+    "resource_hashes_checked": 501,
+    "frontmatter_failures": [],
+    "missing_catalogue_links": [],
+    "alias_failures": [],
+    "hash_failures": []
+  }
+]
