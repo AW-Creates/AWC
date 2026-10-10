@@ -1,0 +1,9 @@
+# Recorded-demo rate verification
+
+Verified 2026-10-09 against [official Retell pricing](https://www.retellai.com/pricing) and read-only pinned configuration readback for all six agents. All use `11labs-Kathrine`, provider-default voice model, standard `gpt-4.1-mini`; no knowledge bases, guardrail configuration, PII-removal storage or post-call analysis fields. Autumn has no denoise; other roles use default denoise.
+
+Published components: infrastructure $0.055/min; GPT-4.1-mini standard $0.0128/min; ElevenLabs voice models $0.04–$0.10/min. Voice subtype is not exposed explicitly in these configurations, so do not assume Flash. Conservative highest voice rate plus possible advanced-denoise $0.005 gives $0.1728/min. A reviewed conservative admission value of **$0.20/min** therefore remains below the $0.30/min gate and projects at most $0.30 per 90-second call, $1.80 for six. Web sessions require no telephone purchase or telephony rate. Historical account call showed about $0.119/min before separate text-testing analysis; current reconciliation remains authoritative.
+
+These are published-rate estimates, not a provider dollar hard stop. Each attempt reserves $0.50 from the $3 immutable allowance before creating a session, caps duration at 90 seconds and must reconcile actual provider cost before the next role. No retries. Provider silence override is 30 seconds to permit the planned second question. Browser must end recording/session by 80 seconds.
+
+R2 hosting: Sites [storage reference](C:/Users/A-Problem/.codex/plugins/cache/openai-curated-remote/sites/1.0.0/skills/sites/references/storage.md) confirms logical `r2` binding in `.openai/hosting.json`; Sites provisions and connects hosted resources. Serve uploaded MP4/VTT through the Worker module, not script-embedded base64. Upload secret expires and is removed after upload. Recording readiness requires both video and captions before showing Watch controls.

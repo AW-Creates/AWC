@@ -1,0 +1,7 @@
+private/
+approved/
+preflight/
+preflight-timeout/
+*.wav
+*.webm
+*.mp4

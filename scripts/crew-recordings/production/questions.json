@@ -1,0 +1,26 @@
+{
+  "concierge": [
+    "Introduce yourself and tell me what you do for A. Wilcher Creatives.",
+    "If I ran a remodeling company, how could a specialist like you help, and who would you connect me with?"
+  ],
+  "sales": [
+    "Introduce yourself and explain your sales and solutions role at AWC.",
+    "Our team misses website inquiries. What would you help us clarify before we ask for a proposal?"
+  ],
+  "scheduling": [
+    "Introduce yourself and explain your scheduling role at AWC.",
+    "How could your role help a business prepare a consultation request?"
+  ],
+  "support": [
+    "Introduce yourself and explain your client support role at AWC.",
+    "A page stopped working on mobile. What would you ask to prepare a useful support request?"
+  ],
+  "billing": [
+    "Introduce yourself and explain your billing role at AWC.",
+    "How would you help someone with an invoice question while protecting their information?"
+  ],
+  "implementation": [
+    "Introduce yourself and explain your onboarding role at AWC.",
+    "What should a business prepare before a website and Crew project begins?"
+  ]
+}

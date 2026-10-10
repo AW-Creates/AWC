@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-10-10T21:37:16.716Z",
+  "base": "https://aw-creates-ventures.thesml.chatgpt.site",
+  "files": [
+    {
+      "role": "concierge",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "rangeClosedSuffixOpen": true,
+      "conditional304": true
+    },
+    {
+      "role": "sales",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "rangeClosedSuffixOpen": true,
+      "conditional304": true
+    },
+    {
+      "role": "scheduling",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "rangeClosedSuffixOpen": true,
+      "conditional304": true
+    },
+    {
+      "role": "support",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "rangeClosedSuffixOpen": true,
+      "conditional304": true
+    },
+    {
+      "role": "billing",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "rangeClosedSuffixOpen": true,
+      "conditional304": true
+    },
+    {
+      "role": "implementation",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "rangeClosedSuffixOpen": true,
+      "conditional304": true
+    },
+    {
+      "role": "overview",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "rangeClosedSuffixOpen": true,
+      "conditional304": true
+    }
+  ],
+  "uploadClosed403": true,
+  "ready": {
+    "readyRoles": [
+      "concierge",
+      "sales",
+      "scheduling",
+      "support",
+      "billing",
+      "implementation"
+    ],
+    "overviewReady": true
+  }
+}

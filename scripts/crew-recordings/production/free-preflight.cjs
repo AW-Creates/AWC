@@ -1,0 +1,2 @@
+const path=require('path');const {captureSession}=require('./capture-session.cjs');
+captureSession({preflightOnly:true,name:'Offline capture check',role:'Synthetic pipeline test',purpose:'No provider calls.',microphoneWav:path.join(__dirname,'preflight/microphone.wav'),outputDir:path.join(__dirname,'preflight')}).then(result=>console.log(JSON.stringify(result))).catch(error=>{console.error(error.message);process.exitCode=1;});

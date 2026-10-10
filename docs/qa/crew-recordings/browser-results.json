@@ -1,0 +1,155 @@
+{
+  "started": "2026-10-10T00:45:25.422Z",
+  "mode": "Local prepared guidance; synthetic media readiness/playback fixture ONLY, not final agent clips",
+  "cases": [
+    {
+      "width": 1440,
+      "theme": "dark",
+      "missingMediaHidden": true,
+      "customPositioning": true,
+      "sixRolesBound": true,
+      "illustrativePairings": true,
+      "watchControls": true,
+      "autoplay": false,
+      "replay": true,
+      "closeFocus": true,
+      "sourceCleared": true,
+      "noMic": true,
+      "noProviderCall": true,
+      "noOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "missingMediaHidden": true,
+      "customPositioning": true,
+      "sixRolesBound": true,
+      "illustrativePairings": true,
+      "watchControls": true,
+      "autoplay": false,
+      "replay": true,
+      "closeFocus": true,
+      "sourceCleared": true,
+      "noMic": true,
+      "noProviderCall": true,
+      "noOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "missingMediaHidden": true,
+      "customPositioning": true,
+      "sixRolesBound": true,
+      "illustrativePairings": true,
+      "watchControls": true,
+      "autoplay": false,
+      "replay": true,
+      "closeFocus": true,
+      "sourceCleared": true,
+      "noMic": true,
+      "noProviderCall": true,
+      "noOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "missingMediaHidden": true,
+      "customPositioning": true,
+      "sixRolesBound": true,
+      "illustrativePairings": true,
+      "watchControls": true,
+      "autoplay": false,
+      "replay": true,
+      "closeFocus": true,
+      "sourceCleared": true,
+      "noMic": true,
+      "noProviderCall": true,
+      "noOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    },
+    {
+      "width": 360,
+      "theme": "dark",
+      "missingMediaHidden": true,
+      "customPositioning": true,
+      "sixRolesBound": true,
+      "illustrativePairings": true,
+      "watchControls": true,
+      "autoplay": false,
+      "replay": true,
+      "closeFocus": true,
+      "sourceCleared": true,
+      "noMic": true,
+      "noProviderCall": true,
+      "noOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    },
+    {
+      "width": 360,
+      "theme": "light",
+      "missingMediaHidden": true,
+      "customPositioning": true,
+      "sixRolesBound": true,
+      "illustrativePairings": true,
+      "watchControls": true,
+      "autoplay": false,
+      "replay": true,
+      "closeFocus": true,
+      "sourceCleared": true,
+      "noMic": true,
+      "noProviderCall": true,
+      "noOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    }
+  ],
+  "errors": [],
+  "providerRequests": [],
+  "screenshots": [
+    "1440-dark-crew.png",
+    "1440-dark-watch.png",
+    "1440-light-crew.png",
+    "1440-light-watch.png",
+    "390-dark-crew.png",
+    "390-dark-watch.png",
+    "390-light-crew.png",
+    "390-light-watch.png",
+    "360-dark-crew.png",
+    "360-dark-watch.png",
+    "360-light-crew.png",
+    "360-light-watch.png"
+  ],
+  "completed": "2026-10-10T00:45:46.671Z"
+}

@@ -1,3 +1,4 @@
+import {crewMediaResponse} from './crew-media.mjs';
 import { estimate } from './offers.mjs';
 import { MODEL, SYSTEM, guideAnswer } from './facts.mjs';
 import {callbackStatus, createPublicCallback} from './crew-callback.mjs';
@@ -74,6 +75,7 @@ export function createWorker(html, assets={}) {
  return { async fetch(request,env,ctx) {
   try {
    const path=new URL(request.url).pathname;
+   const media=await crewMediaResponse(request,env);if(media)return media;
    if(path==='/' && ['GET','HEAD'].includes(request.method)) return request.method==='HEAD'?new Response(null,{headers:baseHeaders}):page(html);
    if(assets[path] && ['GET','HEAD'].includes(request.method))return new Response(request.method==='HEAD'?null:assets[path],{headers:{...baseHeaders,'Content-Type':'application/javascript; charset=utf-8'}});
    if(path==='/favicon.ico')return new Response(null,{status:204});

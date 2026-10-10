@@ -1,6 +1,6 @@
 # AWC Project State
 
-Updated 2026-10-09 (America/New_York). Canonical repo: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
+Updated 2026-10-10 (America/New_York). Canonical repo: `C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC`, branch `main`.
 
 ## Canonical company identity — locked 2026-10-08
 
@@ -25,13 +25,19 @@ Live preview root cause identified: long-running Node imported old renderer whil
 
 ## Current milestone
 
-**AWC — Complete Flagship Crew + Website Launch Readiness — six-role showcase COMPLETE; operational voice readiness remains gated.** Public Site version9 is live with Autumn Winters (Customer Experience), Owen Brooks (Sales), Clara Bennett (Scheduling), Miles Carter (Support), June Parker (Billing), Theo Reed (Implementation). Registry-driven cards/options, role introductions/examples/customization and signed-session consent-based text handoffs; no prospect leakage. Text and voice share one signed session; nonconcierge voice/callback denied. Prepared chat24/minute, paid mode6; no paid mode enabled.
+**AWC — Custom Crew Positioning & Recorded Showcase — COMPLETE.** Existing public Site now presents AWC's own example specialists with one-specialist-or-team choice, custom names/personalities/responsibilities/approved tools, two illustrative team combinations and a consultation CTA. **Watch … in action** is distinct from **Explore this role in chat**. Clients are not limited to these six names or roles.
 
-Five dedicated Retell agents created/published/readback at pinned version0; preserved Autumn version1 verified. Config IDs/prompts/checks in docs/crew/FLAGSHIP-PROVIDER-*.json; public channels disabled. No live tools/calendars/billing/account execution or voice transfers. Five roles share existing voice preset; distinct audible identities untested. Hosted secret absent and previous paid grants consumed; no new budget inferred.
+Six genuine local browser recordings with scripted synthetic visitor questions and real role-specific provider responses, plus a 60.4-second overview from six separate introductions. Reviewed edits and actual-audio captions; shared existing voice preset, separate role prompts. No native live voice transfer or connected calendar/account/billing execution claim. MP4/VTT pairs are in managed CREW_MEDIA R2; raw captures, transcript timestamps and consumed allowance ledger remain ignored locally. Archived capture gate is closed.
 
-45 public +34 owner tests/build PASS; final6 desktop/mobile dark/light cases and52 screenshots PASS;zero JS/provider/microphone/overflow. All6 live hosted selections HTTP200. Site source8fc84c9a66df5427e2c0b83c89ac269cf966395e, deployment appgdep_6ac97fcd2680819180dfb8324dca7226 succeeded,environment6. URL unchanged. Evidence docs/qa/flagship-six; closeout docs/crew/FLAGSHIP-SIX-CLOSEOUT.md; operator guide FLAGSHIP-SIX-RUNBOOK.md. Spend$0 calls/API/new resources; retained$2/month source unchanged. Owned4191 preview stopped,4196 proofs retained.
+All six owner-approved recording attempts consumed/reconciled, 79.401–79.402 seconds each, $0.16453336 per session / **$0.98720016 total** against $3 cap, zero retries. No additional calls, phone purchase or cloud transcription/TTS. Retained $2/month business source unchanged. Playback starts no provider session; hosting/storage/transfer charges are separate and unavailable. Public live voice/callback remain disabled.
 
-Next exact bounded milestone: **AWC — Flagship Live Voice Activation & Six-Role Acceptance**. Secure hosted credential import, pinned per-role voice binding/consented handoffs, owner-approved finite audible tests and real consultation notification acceptance before outreach. Current completed showcase does not establish a fully operational voice workforce. STOP after canonical commit/push/clean-tree verification.
+50 public tests/build passed with media integration; retained 34 owner tests passed with six-role foundation. Six desktop/mobile dark/light fixture cases validate positioning/player gating. Final ACTUAL production14cases (7 videos × desktop1440/mobile390), 46 screenshots, caption/seek/replay/end/cleanup/focus PASS; zero JS/provider/microphone/inquiry mutations. Seven full decodes, captions without overlaps, published MP4/VTT hashes, closed/open/suffix206, conditional304 PASS. Temporary upload keys removed; endpoint403 verified.
+
+Public source8b84f8581c8d1961d6fa944b1ed9ce040794e553, Site version10, final successful deployment appgdep_6acaafc8cad08191b029de58883e14fb/environment9. URL https://aw-creates-ventures.thesml.chatgpt.site/#meet-crew unchanged. Media module website-receptionist/src/crew-media.mjs; metadata docs/crew/RECORDINGS-MANIFEST.json; closeout RECORDINGS-CLOSEOUT.md and operator RECORDINGS-RUNBOOK.md in docs/crew. Evidence docs/qa/crew-recordings. Prior approved local demo proofs remain at4196; no owned temporary browser/preview left.
+
+Next exact bounded milestone: **AWC — Flagship Consultation Conversion & Outreach Readiness Acceptance**. Verify one owner-consented public inquiry through receipt and follow-up routing, owner contact/response expectations and concise service/proof package. Resolve operational gaps before first prospect outreach. Do not automatically activate unrestricted live voice, contact prospects or build another niche. STOP after canonical Git/state/sync closeout.
+
+Prior six-role flagship showcase remains COMPLETE: implementation99cc42053dbf6e9baeab43da429fc60fdaf4173d / checkpointaf49787d3f440515c7c25a32f56a7f00f7ce2b68. Five dedicated Retell agents pinned0 and preserved Autumn1; signed prepared-role selections/handoffs. No hosted provider secret or unrestricted channels. Details docs/crew/FLAGSHIP-SIX-CLOSEOUT.md and FLAGSHIP-SIX-RUNBOOK.md. Earlier proposed live activation milestone is superseded by the owner's cost-conscious recording showcase and consultation readiness priority.
 
 Prior completed milestone:
 

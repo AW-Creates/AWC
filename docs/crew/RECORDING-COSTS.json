@@ -1,0 +1,60 @@
+{
+  "allowance": {
+    "id": "awc_six_recorded_demos_20261010T0200Z",
+    "maxAttempts": 6,
+    "maxSeconds": 90,
+    "maxTotalUsd": 3,
+    "maxPerRoleUsd": 0.5,
+    "noRetry": true,
+    "publicActivation": false
+  },
+  "approval": "Owner approved six sessions, up to USD 3 total",
+  "attempts": [
+    {
+      "role": "concierge",
+      "agent_version": 1,
+      "duration_ms": 79402,
+      "cost_usd": 0.16453336,
+      "state": "reconciled"
+    },
+    {
+      "role": "sales",
+      "agent_version": 0,
+      "duration_ms": 79402,
+      "cost_usd": 0.16453336,
+      "state": "reconciled"
+    },
+    {
+      "role": "scheduling",
+      "agent_version": 0,
+      "duration_ms": 79402,
+      "cost_usd": 0.16453336,
+      "state": "reconciled"
+    },
+    {
+      "role": "support",
+      "agent_version": 0,
+      "duration_ms": 79402,
+      "cost_usd": 0.16453336,
+      "state": "reconciled"
+    },
+    {
+      "role": "billing",
+      "agent_version": 0,
+      "duration_ms": 79402,
+      "cost_usd": 0.16453336,
+      "state": "reconciled"
+    },
+    {
+      "role": "implementation",
+      "agent_version": 0,
+      "duration_ms": 79401,
+      "cost_usd": 0.16453336,
+      "state": "reconciled"
+    }
+  ],
+  "total_usd": 0.9872001599999999,
+  "remaining_attempts": 0,
+  "first_reserved_at": "2026-10-10T00:39:56.137Z",
+  "last_reconciled_at": "2026-10-10T00:51:30.607Z"
+}

@@ -1,0 +1,1 @@
+const {execFileSync}=require('node:child_process');for(const role of ['sales','scheduling','support','billing','implementation']){console.log('Starting approved recording: '+role);execFileSync(process.execPath,[require('node:path').join(__dirname,'record-role.cjs'),role],{stdio:'inherit'});console.log('Finished and reconciled: '+role);}

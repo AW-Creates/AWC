@@ -1,0 +1,93 @@
+[
+  {
+    "role": "concierge",
+    "duration_seconds": 33.4,
+    "edited_duration_seconds": 33.34,
+    "full_decode_passed": true,
+    "mp4_bytes": 832514,
+    "mp4_sha256": "23aa7499e6e3e3ba012f638ddbc754b70a8571682fbfa874b1dd2074f8e34fa3",
+    "vtt_sha256": "3a9819cb4d6d211db0ebb4353ce1cf9607984168d6c0d1c88450e6add665ba0d",
+    "caption_cues": 10,
+    "no_caption_overlap": true,
+    "source": "actual provider sessions with synthetic visitor questions",
+    "edited_separate_sessions": true
+  },
+  {
+    "role": "sales",
+    "duration_seconds": 30,
+    "edited_duration_seconds": 29.95,
+    "full_decode_passed": true,
+    "mp4_bytes": 1104743,
+    "mp4_sha256": "a7f5dfc78345b40acb601dbb1513c0be55e56d7735dc017d4d5285bc566c50b0",
+    "vtt_sha256": "1d2fddb9796d0b0fb0a674deadeaf6fc74455c358a280809dd1dea441c3767f1",
+    "caption_cues": 10,
+    "no_caption_overlap": true,
+    "source": "actual provider sessions with synthetic visitor questions",
+    "edited_separate_sessions": true
+  },
+  {
+    "role": "scheduling",
+    "duration_seconds": 26,
+    "edited_duration_seconds": 25.95,
+    "full_decode_passed": true,
+    "mp4_bytes": 925065,
+    "mp4_sha256": "a22ad6a81c1aa5b1dfa4869c662b669559ccf46053f8d6c0fd50e636c2eb1141",
+    "vtt_sha256": "11d67d6f7b13a4c2660e9169182535fc9d3c9c924d216933973c4fe184d0cda4",
+    "caption_cues": 7,
+    "no_caption_overlap": true,
+    "source": "actual provider sessions with synthetic visitor questions",
+    "edited_separate_sessions": true
+  },
+  {
+    "role": "support",
+    "duration_seconds": 34.6,
+    "edited_duration_seconds": 34.55,
+    "full_decode_passed": true,
+    "mp4_bytes": 1233772,
+    "mp4_sha256": "5d6b8dc1df96722fe1b22bc30835cd28209e6ecbf191eb933c6f92a50d563ac0",
+    "vtt_sha256": "a65d2ad9840b2684885d1c256b3c34aaa2ce9f2cd06f7fb3e88076052dbb1df7",
+    "caption_cues": 12,
+    "no_caption_overlap": true,
+    "source": "actual provider sessions with synthetic visitor questions",
+    "edited_separate_sessions": true
+  },
+  {
+    "role": "billing",
+    "duration_seconds": 32,
+    "edited_duration_seconds": 31.97,
+    "full_decode_passed": true,
+    "mp4_bytes": 1209178,
+    "mp4_sha256": "e4350551d304bc91051aa4b7fd9b78345cf98a3ddf2bbfb59b82b180737c43c9",
+    "vtt_sha256": "9b578ab2bc5f0e5a9527884b706753e2f4b5dac2e3a5d8965620939659ea6926",
+    "caption_cues": 10,
+    "no_caption_overlap": true,
+    "source": "actual provider sessions with synthetic visitor questions",
+    "edited_separate_sessions": true
+  },
+  {
+    "role": "implementation",
+    "duration_seconds": 39,
+    "edited_duration_seconds": 39,
+    "full_decode_passed": true,
+    "mp4_bytes": 1417623,
+    "mp4_sha256": "e0025b65b6e482c0296aca7f96d1f5e01cae49b3978c87bf4c005ada5480d5f9",
+    "vtt_sha256": "21aabd02b246fe51db51af4f3b3623d07849dd033b23186f5867d7a762377316",
+    "caption_cues": 10,
+    "no_caption_overlap": true,
+    "source": "actual provider sessions with synthetic visitor questions",
+    "edited_separate_sessions": true
+  },
+  {
+    "role": "overview",
+    "duration_seconds": 60.4,
+    "edited_duration_seconds": 60.3,
+    "full_decode_passed": true,
+    "mp4_bytes": 1722375,
+    "mp4_sha256": "ea37909950da32a3565cb2392f067c46831c0f8c0855870b2a936b125cdde1c2",
+    "vtt_sha256": "48f66c8222a163c04bbe45a755b878d0569062ecfefd7a2a8e78a01cde65478b",
+    "caption_cues": 13,
+    "no_caption_overlap": true,
+    "source": "actual provider sessions with synthetic visitor questions",
+    "edited_separate_sessions": true
+  }
+]

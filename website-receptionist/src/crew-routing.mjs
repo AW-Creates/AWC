@@ -44,9 +44,9 @@ export function publicGuideResponse(role,message,guideAnswer,context={}){
  const intro=`I’m ${specialist.display_name}, A. Wilcher Creatives’ automated ${label} specialist. ${specialist.purpose}`;
  const limits=role==='concierge'?'Appointments, quotes and commitments require the owner’s confirmation.':'I provide prepared guidance here. I cannot access client accounts, calendars or invoices, confirm appointments, issue binding quotes, or process payments. The owner confirms requests and next steps.';
  let answer;
- if(context.introduction||/who are|introduce|your role|what (?:do|can) you do|your name|meet.*crew/i.test(text))answer=intro+' '+specialist.example+' This role can be customized around a client’s approved knowledge, permissions and connected tools. '+limits;
+ if(context.introduction||/who are|introduce|your role|what (?:do|can) you do|your name|meet.*crew/i.test(text))answer=intro+' '+specialist.example+' I’m one example from AWC’s own Crew. Your customized Crew can start with one specialist or a team, with your own names, personalities, job duties, approved knowledge and connected tools. '+limits;
  else if(/access|invoice|pay|refund|account|calendar|book|confirm|schedule|appointment/i.test(text)&&role!=='concierge')answer=intro+' '+limits+' Describe the request without passwords or payment details, then use the inquiry form to send it to the owner.';
- else if(/example|customized|customise|adapt.*business/i.test(text))answer=intro+' '+specialist.example+' For your business, this role can be customized using approved public knowledge, explicit permissions and separately connected tools. '+limits;
+ else if(/example|customized|customise|adapt.*business/i.test(text))answer=intro+' '+specialist.example+' For your business, this role can be customized with your own name, personality and job duties, using approved public knowledge, explicit permissions and separately connected tools. Start with one specialist or combine roles around the work you need done. '+limits;
  else if(role==='sales'&&/price|pricing|cost|budget|package|estimate/i.test(text))answer=guideAnswer(text);
  else if(role==='concierge')answer=guideAnswer(text);
  else answer=intro+' '+specialist.example+' '+limits+' What would you like help preparing?';
