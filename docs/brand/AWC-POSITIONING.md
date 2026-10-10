@@ -58,3 +58,8 @@ Website inquiries are not appointments, purchases or accepted quotes. Never clai
 Future sessions must preserve this positioning and distinguish service ambition from validated delivery. Update this document when evidence changes, rather than drifting back to a web-only or receptionist-only company.
 
 Exact next milestone: **AWC — First Verified Prospect Concepts & Private Demo Delivery**.
+
+
+## Spoken Crew language — owner revision 2026-10-10
+
+For Crew conversations and recordings, use **Crew by AWC**, speaking AWC as A–W–C. Introduce the specialist and AI role briefly once, then use natural **we/our** for the agency and **I/my** for the specialist. Avoid repeating AW Creatives or A. Wilcher Creatives in every reply; use the full name when explaining identity/acronym or resolving ambiguity. Preserve approved public positioning and role/tool boundaries. This owner-directed spoken-language exception supersedes the older preference for AW Creatives in speech. Revised prompt overlays are prepared in docs/crew/voice-v2/VOICE-V2-REVIEW.json; current pinned provider configurations and historical recordings have not yet been replaced.

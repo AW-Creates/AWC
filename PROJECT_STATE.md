@@ -25,6 +25,12 @@ Live preview root cause identified: long-running Node imported old renderer whil
 
 ## Current milestone
 
+**AWC — Custom Voice Casting & Demonstration Revision — preparation ready; production awaits samples and budget.** Owner accepted the updated showcase and recorded-example approach, then requested distinct custom voices for all6specialists plus a custom AI presenter, natural Crew by AWC / we / our speech, and longer useful role demonstrations. Preserve accepted visuals and prepared chat.
+
+Seven labeled authorized samples pending: autumn,owen,clara,miles,june,theo,presenter. Recommended clean1–3minute continuous single-speaker audio. Six replacement greetings/shared spoken-style overlay and90–120second role demo outlines prepared in docs/crew/voice-v2; overview stays near60seconds. Native Retell cloning for agents and separately supported standalone presenter TTS are proposed, subject to sample/preview/account/cost verification. No provider API call, clone, audio generation, mutation, upload, new allowance or spend during preparation. Existing public recordings/configurations remain accepted baseline; archived6sessionallowance still consumed. Need samples, preview acceptance and a fresh explicit capped production allowance before replacements. No public live activation or outreach. Consultation Conversion & Outreach Readiness Acceptance follows this owner-prioritized voice refinement.
+
+Prior completed milestone:
+
 **AWC — Custom Crew Positioning & Recorded Showcase — COMPLETE.** Existing public Site now presents AWC's own example specialists with one-specialist-or-team choice, custom names/personalities/responsibilities/approved tools, two illustrative team combinations and a consultation CTA. **Watch … in action** is distinct from **Explore this role in chat**. Clients are not limited to these six names or roles.
 
 Six genuine local browser recordings with scripted synthetic visitor questions and real role-specific provider responses, plus a 60.4-second overview from six separate introductions. Reviewed edits and actual-audio captions; shared existing voice preset, separate role prompts. No native live voice transfer or connected calendar/account/billing execution claim. MP4/VTT pairs are in managed CREW_MEDIA R2; raw captures, transcript timestamps and consumed allowance ledger remain ignored locally. Archived capture gate is closed.
