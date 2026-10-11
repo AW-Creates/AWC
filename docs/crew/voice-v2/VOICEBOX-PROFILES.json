@@ -1,0 +1,77 @@
+{
+  "local_api": "http://127.0.0.1:17493",
+  "voicebox_api_version": "0.5.0",
+  "profiles": [
+    {
+      "name": "AWC — Autumn Winters",
+      "role": "Customer Experience / Concierge",
+      "profile_id": "0af3d9ba-285f-45fa-85c4-5bef49653bc1",
+      "reference_seconds": 26.97,
+      "sample_count": 1,
+      "status": "verified"
+    },
+    {
+      "name": "AWC — Owen Brooks",
+      "role": "Sales / Solutions",
+      "profile_id": "a3a5ce11-ac14-47d6-aae4-ae3a9457e940",
+      "reference_seconds": 26.85,
+      "sample_count": 1,
+      "status": "verified"
+    },
+    {
+      "name": "AWC — Clara Bennett",
+      "role": "Scheduling",
+      "profile_id": "f40f28fb-155e-40a0-8f4e-68c73edeed6b",
+      "reference_seconds": 26.23,
+      "sample_count": 1,
+      "status": "verified"
+    },
+    {
+      "name": "AWC — Miles Carter",
+      "role": "Client Support",
+      "profile_id": "25461cfb-670f-463b-b58d-c76eef562e45",
+      "reference_seconds": 27.15,
+      "sample_count": 1,
+      "status": "verified"
+    },
+    {
+      "name": "AWC — June Parker",
+      "role": "Billing",
+      "profile_id": "1a398459-5e02-44ee-833c-b5f39b7e997b",
+      "reference_seconds": 26.19,
+      "sample_count": 1,
+      "status": "verified"
+    },
+    {
+      "name": "AWC — Theo Reed",
+      "role": "Implementation / Onboarding",
+      "profile_id": "96e48b8a-49a3-465c-bc39-9784ffdf685e",
+      "reference_seconds": 28.05,
+      "sample_count": 1,
+      "status": "verified"
+    },
+    {
+      "name": "AWC — Demo Presenter",
+      "role": "Demonstration presenter",
+      "profile_id": "f66c6cc4-cadd-48d5-8978-0995562ee943",
+      "reference_seconds": 27.71,
+      "sample_count": 1,
+      "status": "verified"
+    },
+    {
+      "name": "AWC — Sage Morgan",
+      "role": "Customer Care / Retention",
+      "profile_id": "06f24989-f153-4c68-b4d8-7de3997701bd",
+      "reference_seconds": 26.41,
+      "sample_count": 1,
+      "status": "verified"
+    }
+  ],
+  "full_split_files": 8,
+  "portable_exports": 8,
+  "existing_profile_content_unchanged": true,
+  "generated_audio": 0,
+  "cloud_uploads": 0,
+  "spend": 0,
+  "completed_at": "2026-10-11T00:51:08.512Z"
+}
