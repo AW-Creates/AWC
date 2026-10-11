@@ -1,7 +1,7 @@
 {
   "id": "awc_seven_custom_voice_demos_20261011",
   "status": "approved_not_used",
-  "approved_at": "2026-10-10T21:14:32.1681490-04:00",
+  "approved_at": "2026-10-10T21:14:32.168149-04:00",
   "max_attempts": 7,
   "max_seconds_per_attempt": 150,
   "max_usd_per_attempt": 1,
@@ -20,9 +20,45 @@
   "recharge": false,
   "subscriptions": false,
   "native_clone_uploads_max": 7,
-  "native_clone_upload_condition": "Verify no separate cloning fee before upload",
+  "native_clone_upload_condition": "Owner authorizes uploads when the interface shows no fee or checkout; stop if it requests payment or discloses a charge",
   "clone_fee_verified": false,
   "attempts_consumed": 0,
   "actual_spend_usd": 0,
-  "source": "Owner approved this specific capped plan in chat"
+  "source": "Owner approved this specific capped plan in chat",
+  "clone_condition_amended_at": "2026-10-10T22:48:39.9704262-04:00",
+  "clone_condition_amendment_source": "Owner explicitly answered: Proceed if no fee or checkout is shown",
+  "recording_version_publication_approved": {
+    "source": "Owner explicitly answered: Approve publishing these seven recording versions",
+    "versions": [
+      {
+        "role": "concierge",
+        "version": 2
+      },
+      {
+        "role": "sales",
+        "version": 1
+      },
+      {
+        "role": "scheduling",
+        "version": 1
+      },
+      {
+        "role": "support",
+        "version": 1
+      },
+      {
+        "role": "billing",
+        "version": 1
+      },
+      {
+        "role": "implementation",
+        "version": 1
+      },
+      {
+        "role": "retention",
+        "version": 1
+      }
+    ],
+    "public_live_activation": false
+  }
 }

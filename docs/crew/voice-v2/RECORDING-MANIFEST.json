@@ -1,0 +1,97 @@
+{
+  "allowance_id": "awc_seven_custom_voice_demos_20261011",
+  "status": "verified_published_recording_bindings",
+  "roles": [
+    {
+      "role": "concierge",
+      "name": "Autumn Winters",
+      "purpose": "Show a genuine concierge conversation with approved AWC knowledge and boundaries",
+      "agent_id": "agent_7097c8a9a855a9e44f5f628295",
+      "agent_version": 2,
+      "llm_id": "llm_a03af9139baca03202bf73a38813",
+      "llm_version": 2,
+      "voice_id": "custom_voice_ed3e5ebc6829ccf92d0d39cd02",
+      "prompt_sha256": "d339adeb5d5e24b545a5b1d427e3af787e8a4774bee67fdc9dee48dd59ff8efb",
+      "agent_sha256": "d2480a787622c0db4332522c76902c5510113d667f6fac9433d2da4c2db93d13",
+      "llm_sha256": "af5575e7984e7c641d9d2ce989d66dc93198a3492dd2ea7eddd9772a4c45912f"
+    },
+    {
+      "role": "sales",
+      "name": "Owen Brooks",
+      "purpose": "Show a genuine sales conversation with approved AWC knowledge and boundaries",
+      "agent_id": "agent_b726e6a93bdbc4207cb7acd12d",
+      "agent_version": 1,
+      "llm_id": "llm_72367ffef7655ab14c9824c7661d",
+      "llm_version": 1,
+      "voice_id": "custom_voice_59ad21d5574a10b5bf84fc1572",
+      "prompt_sha256": "41b01e60b51844365cd077f745465fcd4915319c647c1201e95bc56fc3ae49dd",
+      "agent_sha256": "177ccdbfd8e134fedc0423689ffcae688b3351f22f6e80407cc99052bcfc0666",
+      "llm_sha256": "7056e596f79b2dfa978b86abcfb430041d3c82412ff5ad2e988d18bd09cfbac3"
+    },
+    {
+      "role": "scheduling",
+      "name": "Clara Bennett",
+      "purpose": "Show a genuine scheduling conversation with approved AWC knowledge and boundaries",
+      "agent_id": "agent_0454254f3625bfeafcf1b0401a",
+      "agent_version": 1,
+      "llm_id": "llm_e203df8c4695927a159b24439024",
+      "llm_version": 1,
+      "voice_id": "custom_voice_34b802b09d0c29f42cdfbb1221",
+      "prompt_sha256": "6c825f92288b0024d455f3a8607af0b00fad22054e355c01995183fdedcfaeb9",
+      "agent_sha256": "54d985b6be18ad591896bedd926f244a73db0981bbf53f24efe0a9296ba4938a",
+      "llm_sha256": "8029a565888dd645ad371558679b9298209145fd45f318ba330e257a29766cfe"
+    },
+    {
+      "role": "support",
+      "name": "Miles Carter",
+      "purpose": "Show a genuine support conversation with approved AWC knowledge and boundaries",
+      "agent_id": "agent_e49fa4babe43f16cff3584ed48",
+      "agent_version": 1,
+      "llm_id": "llm_162b4dd463ec9107cf02b6dbf57e",
+      "llm_version": 1,
+      "voice_id": "custom_voice_0afc7ceed907c1edfeb4135aa4",
+      "prompt_sha256": "80e91dc405d856ac5c1acc7f1b43e95e8dd58fe34945505b19bcbfa2bc4df8e8",
+      "agent_sha256": "1894117b05e9df9746bf001932430dcea656f3c89f8cd01a65272b847506afa3",
+      "llm_sha256": "ad9f3b6d7b9f17b70a7e57b8a561a05ed0a049874ef00a4e8796e99453024211"
+    },
+    {
+      "role": "billing",
+      "name": "June Parker",
+      "purpose": "Show a genuine billing conversation with approved AWC knowledge and boundaries",
+      "agent_id": "agent_6dcc4c74fa5e5495c7ba764d50",
+      "agent_version": 1,
+      "llm_id": "llm_03e88480104eac2c9beb66f184ea",
+      "llm_version": 1,
+      "voice_id": "custom_voice_6d7b51b2b275695e2059502ef7",
+      "prompt_sha256": "d5acd5255b6dadf85647e04eb77822ef2848ba80a41787b75c28c9d25d4c5d54",
+      "agent_sha256": "bea2f400617f9b345ee3ea74f26b7bb2204455ae7eb6794cbb1b19ef8fa9017d",
+      "llm_sha256": "63ca998b4d9ed4f751ef312d3bcc79b1ab2a8f94e2eb379003c1042dd15ca264"
+    },
+    {
+      "role": "implementation",
+      "name": "Theo Reed",
+      "purpose": "Show a genuine implementation conversation with approved AWC knowledge and boundaries",
+      "agent_id": "agent_22760953f9b4c52fdf4e6dac53",
+      "agent_version": 1,
+      "llm_id": "llm_2fc318f7a5a21626dc33db70d694",
+      "llm_version": 1,
+      "voice_id": "custom_voice_8ee7bfce584d103fe412282905",
+      "prompt_sha256": "321fbcffc206ccdc6887ff78321608f10bcfcf654e6e0e7a417f89bb1303d6b4",
+      "agent_sha256": "c72ef8f2b40e3a5f849e535241ce218d72aa8d33f80258e656ac8e1904ad0d4c",
+      "llm_sha256": "59be2fa553f9bca1e2172e4e0f77099e7adb868546d4d51c3d75113afd184ad0"
+    },
+    {
+      "role": "retention",
+      "name": "Sage Morgan",
+      "purpose": "Show a genuine retention conversation with approved AWC knowledge and boundaries",
+      "agent_id": "agent_d97a7573e5c3b758400df2275d",
+      "agent_version": 1,
+      "llm_id": "llm_f6dbdf6be97b10826f4ec72ed911",
+      "llm_version": 1,
+      "voice_id": "custom_voice_9f5443036d4d377f006eccbbb8",
+      "prompt_sha256": "289a238865fe70dbde9b2b86ded090cfb6b595750e4494265ed3c51ae1ea96d8",
+      "agent_sha256": "20c8d6d74a59e667a348e2aabb8296825246bc552bd872e1b919b8fa17aa3d1c",
+      "llm_sha256": "78a6ec4cad4cd828ccb3df790716dd97ec75233d90ac9a3ad3ca4582cc9fe923"
+    }
+  ]
+}

@@ -4,9 +4,9 @@ Owner accepted all eight local Voicebox previews. Seven specialist recordings pl
 
 ## Approved recording allowance
 
-Seven attempts, one per specialist; maximum150seconds and$1perattempt,$7total. No automatic retries, subscriptions, recharge, new phones or public live-call activation. Failed attempts remain consumed. Reconcile actual provider cost before the next attempt. Launch only after a verified all-in rate and safety margin fit the per-session cap. Owner explicitly approved this numerical plan in chat. RECORDING-ALLOWANCE.json records the unused grant; the clone fee condition is still unverified.
+Seven attempts, one per specialist; maximum150seconds and$1perattempt,$7total. No automatic retries, subscriptions, recharge, new phones or public live-call activation. Failed attempts remain consumed. Reconcile actual provider cost before the next attempt. Launch only after a verified all-in rate and safety margin fit the per-session cap. Owner explicitly approved this numerical plan in chat. RECORDING-ALLOWANCE.json records the unused grant; the owner subsequently amended the clone upload condition as recorded in that file.
 
-Upload seven authorized original samples for native Retell cloning only after verifying no separate cloning fee. If a fee is required or cannot be established, pause that action. Local Voicebox IDs cannot be assigned as Retell voice IDs; the documented interface accepts native/provider clones rather than a local Qwen TTS server. Retell clone sound must be checked separately from accepted Voicebox previews.
+The owner subsequently authorized seven original sample uploads when the interface shows no fee or checkout, stopping if payment is requested or a charge is disclosed. All seven native clones are created and inventory-verified. A standalone cloning fee remains undocumented; this is not proof of free cloning. Local Voicebox IDs cannot be assigned as Retell voice IDs; the documented interface accepts native/provider clones rather than a local Qwen TTS server. Retell clone sound must be checked separately from accepted Voicebox previews.
 
 ## Content and capture
 
@@ -16,13 +16,8 @@ Use separately decoded custom-presenter WAVs, replacing the fixed SAPI timeline.
 
 Target90–120second finished clips when the exchange supports it; do not pad or promise exact length before capture. Review identity, acronym pronunciation, role example, boundaries, captions and audio. Provider transcripts can support captions if local ASR remains blocked, with listening verification.
 
-Use new versioned public assets only after desktop/mobile playback acceptance. Preserve existing clips and archived closed gate. Create a separate immutable voice-v2 allowance gate after the cloning fee and pinned provider bindings are verified. Raw samples/transcripts/recordings remain private and ignored.
+Use new versioned public assets only after desktop/mobile playback acceptance. Preserve existing clips and archived closed gate. Enable the separate immutable voice-v2 gate only after approved native voices, verified published bindings/rates and actual presenter-question listening acceptance. Raw samples/transcripts/recordings remain private and ignored.
 
 Sources: https://docs.retellai.com/build/voice ; https://docs.retellai.com/api-references/clone-voice ; https://docs.retellai.com/api-references/add-voice ; https://www.retellai.com/pricing
 
-No cloud clone, paid session or provider binding has changed during preparation.
-
-Read-only provider check confirms all seven pinned specialist agents currently use the same preset11labs-Kathrine, with120second configured duration and no LLM tools. No provider configuration was changed. The Retell browser connection became unavailable while inspecting cloning pricing. The documented clone API does not specify a standalone fee; absence of a listed fee is not proof of no charge. Owner requested browser reconnection or explicit no-fee dialog information.
-
-
-Browser recovery succeeded: the authenticated Voice Clone dialog accepts audio/video up to10MB and a rights/consent checkbox, but neither quotes a separate cloning price nor explicitly states free cloning. Dialogs were closed with Cancel; no upload or save occurred. The no-fee condition therefore remains unverified.
+Owner accepted all seven native clone previews and explicitly approved publishing Autumn v2 and the other six v1 recording revisions. Exact published custom-voice, prompt, no-tool/no-memory/no-fallback and 150-second cap readbacks passed; pinned baselines were preserved. Each selected custom-voice version shows $0.108/min. All 21 presenter inputs passed full decode, signal, script mapping and unique-hash checks, totaling 133.52 seconds. A private combined question review and script reference are ready; actual generated-question listening acceptance remains pending. No paid session or public media replacement has occurred. See NATIVE-VOICE-BINDINGS.json and PRODUCTION-PREFLIGHT.md.

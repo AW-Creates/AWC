@@ -1,5 +1,5 @@
 {
-  "status": "prepared_not_applied_local_voices_accepted_recording_allowance_approved_clone_fee_unverified",
+  "status": "owner_accepted_native_voices_published_recording_versions_verified_presenter_question_listening_pending",
   "created": "2026-10-10",
   "business_id": "aw_creatives",
   "spoken_brand": "Crew by AWC",
@@ -13,8 +13,9 @@
       "baseline_version": 1,
       "baseline_prompt_sha256": "483b890e7c3ac70806e88ea83f2333fc0f6fec1fd2bb7c0008fa11dcabbb05b1",
       "sample_label": "autumn",
-      "selected_custom_voice_id": null,
-      "begin_message": "Hi, I’m Autumn, your AI concierge with Crew by AWC. What can I help you work through today?"
+      "selected_custom_voice_id": "custom_voice_ed3e5ebc6829ccf92d0d39cd02",
+      "begin_message": "Hi, I’m Autumn, your AI concierge with Crew by AWC. What can I help you work through today?",
+      "prepared_version": 2
     },
     {
       "role": "sales",
@@ -23,8 +24,9 @@
       "baseline_version": 0,
       "baseline_prompt_sha256": "00c658ce2c2b566c2792a268464af32ae67a9f416d447dbe40550b9cf53d18e2",
       "sample_label": "owen",
-      "selected_custom_voice_id": null,
-      "begin_message": "Hi, I’m Owen, an AI solutions specialist with Crew by AWC. Tell me what you’d like your business to do better."
+      "selected_custom_voice_id": "custom_voice_59ad21d5574a10b5bf84fc1572",
+      "begin_message": "Hi, I’m Owen, an AI solutions specialist with Crew by AWC. Tell me what you’d like your business to do better.",
+      "prepared_version": 1
     },
     {
       "role": "scheduling",
@@ -33,8 +35,9 @@
       "baseline_version": 0,
       "baseline_prompt_sha256": "ba5babf373360ab08c0a63a1368fd5fa11b631ef0854af8a1d10c9d9cc3a6882",
       "sample_label": "clara",
-      "selected_custom_voice_id": null,
-      "begin_message": "Hi, I’m Clara, our AI scheduling specialist with Crew by AWC. Let’s get your next conversation organized."
+      "selected_custom_voice_id": "custom_voice_34b802b09d0c29f42cdfbb1221",
+      "begin_message": "Hi, I’m Clara, our AI scheduling specialist with Crew by AWC. Let’s get your next conversation organized.",
+      "prepared_version": 1
     },
     {
       "role": "support",
@@ -43,8 +46,9 @@
       "baseline_version": 0,
       "baseline_prompt_sha256": "d1959aca9edb24bb80876b26df6edcc22bf4e2746c75bf1fdfd96627ef8ed7fc",
       "sample_label": "miles",
-      "selected_custom_voice_id": null,
-      "begin_message": "Hi, I’m Miles, an AI support specialist with Crew by AWC. What’s going on, and how is it affecting your work?"
+      "selected_custom_voice_id": "custom_voice_0afc7ceed907c1edfeb4135aa4",
+      "begin_message": "Hi, I’m Miles, an AI support specialist with Crew by AWC. What’s going on, and how is it affecting your work?",
+      "prepared_version": 1
     },
     {
       "role": "billing",
@@ -53,8 +57,9 @@
       "baseline_version": 0,
       "baseline_prompt_sha256": "e405b464bae4f796b7e0595284fd0582cd04a8517052e4a9cea83602affc396b",
       "sample_label": "june",
-      "selected_custom_voice_id": null,
-      "begin_message": "Hi, I’m June, our AI billing specialist with Crew by AWC. I can help you prepare a billing question."
+      "selected_custom_voice_id": "custom_voice_6d7b51b2b275695e2059502ef7",
+      "begin_message": "Hi, I’m June, our AI billing specialist with Crew by AWC. I can help you prepare a billing question.",
+      "prepared_version": 1
     },
     {
       "role": "implementation",
@@ -63,8 +68,9 @@
       "baseline_version": 0,
       "baseline_prompt_sha256": "f9a82617539f655d9eb72e635de3b7252ce4936df759d181e2ab73ad5d5668ae",
       "sample_label": "theo",
-      "selected_custom_voice_id": null,
-      "begin_message": "Hi, I’m Theo, an AI onboarding specialist with Crew by AWC. Let’s talk about getting your project ready."
+      "selected_custom_voice_id": "custom_voice_8ee7bfce584d103fe412282905",
+      "begin_message": "Hi, I’m Theo, an AI onboarding specialist with Crew by AWC. Let’s talk about getting your project ready.",
+      "prepared_version": 1
     },
     {
       "role": "retention",
@@ -73,8 +79,9 @@
       "baseline_version": 0,
       "baseline_prompt_sha256": "ef9c7b6ebbda57b47d2254badddc9058c351b1b456149380c66c06be730aa46b",
       "sample_label": "sage",
-      "selected_custom_voice_id": null,
-      "begin_message": "Hi, I’m Sage, our AI customer care specialist with Crew by AWC. Tell me what happened and what you’d like us to help resolve."
+      "selected_custom_voice_id": "custom_voice_9f5443036d4d377f006eccbbb8",
+      "begin_message": "Hi, I’m Sage, our AI customer care specialist with Crew by AWC. Tell me what happened and what you’d like us to help resolve.",
+      "prepared_version": 1
     }
   ],
   "presenter": {

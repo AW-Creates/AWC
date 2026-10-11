@@ -1,0 +1,76 @@
+{
+  "reviewed_at": "2026-10-11T03:02:43.351Z",
+  "basis": "Authenticated Retell agent detail inspected individually for all seven custom-voice versions; GPT 4.1 mini and the respective accepted ElevenLabs clone selected",
+  "roles": [
+    {
+      "role": "concierge",
+      "agent_id": "agent_7097c8a9a855a9e44f5f628295",
+      "agent_version": 2,
+      "voice_id": "custom_voice_ed3e5ebc6829ccf92d0d39cd02",
+      "all_in_usd_per_minute": 0.108,
+      "displayed_max_150_second_cost_usd": 0.27,
+      "reserved_usd": 1,
+      "source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_7097c8a9a855a9e44f5f628295"
+    },
+    {
+      "role": "sales",
+      "agent_id": "agent_b726e6a93bdbc4207cb7acd12d",
+      "agent_version": 1,
+      "voice_id": "custom_voice_59ad21d5574a10b5bf84fc1572",
+      "all_in_usd_per_minute": 0.108,
+      "displayed_max_150_second_cost_usd": 0.27,
+      "reserved_usd": 1,
+      "source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_b726e6a93bdbc4207cb7acd12d"
+    },
+    {
+      "role": "scheduling",
+      "agent_id": "agent_0454254f3625bfeafcf1b0401a",
+      "agent_version": 1,
+      "voice_id": "custom_voice_34b802b09d0c29f42cdfbb1221",
+      "all_in_usd_per_minute": 0.108,
+      "displayed_max_150_second_cost_usd": 0.27,
+      "reserved_usd": 1,
+      "source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_0454254f3625bfeafcf1b0401a"
+    },
+    {
+      "role": "support",
+      "agent_id": "agent_e49fa4babe43f16cff3584ed48",
+      "agent_version": 1,
+      "voice_id": "custom_voice_0afc7ceed907c1edfeb4135aa4",
+      "all_in_usd_per_minute": 0.108,
+      "displayed_max_150_second_cost_usd": 0.27,
+      "reserved_usd": 1,
+      "source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_e49fa4babe43f16cff3584ed48"
+    },
+    {
+      "role": "billing",
+      "agent_id": "agent_6dcc4c74fa5e5495c7ba764d50",
+      "agent_version": 1,
+      "voice_id": "custom_voice_6d7b51b2b275695e2059502ef7",
+      "all_in_usd_per_minute": 0.108,
+      "displayed_max_150_second_cost_usd": 0.27,
+      "reserved_usd": 1,
+      "source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_6dcc4c74fa5e5495c7ba764d50"
+    },
+    {
+      "role": "implementation",
+      "agent_id": "agent_22760953f9b4c52fdf4e6dac53",
+      "agent_version": 1,
+      "voice_id": "custom_voice_8ee7bfce584d103fe412282905",
+      "all_in_usd_per_minute": 0.108,
+      "displayed_max_150_second_cost_usd": 0.27,
+      "reserved_usd": 1,
+      "source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_22760953f9b4c52fdf4e6dac53"
+    },
+    {
+      "role": "retention",
+      "agent_id": "agent_d97a7573e5c3b758400df2275d",
+      "agent_version": 1,
+      "voice_id": "custom_voice_9f5443036d4d377f006eccbbb8",
+      "all_in_usd_per_minute": 0.108,
+      "displayed_max_150_second_cost_usd": 0.27,
+      "reserved_usd": 1,
+      "source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_d97a7573e5c3b758400df2275d"
+    }
+  ]
+}

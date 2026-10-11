@@ -2,7 +2,7 @@
 
 Status: capture workflow validated locally; genuine custom-voice production remains pending.
 
-Owner accepted all eight local Voicebox voices and approved seven Retell attempts, at most 150 seconds and $1 each / $7 total, with no automatic retries. Native clone uploads remain conditional on verifying no separate cloning fee. The authenticated clone dialog, native API documentation, pricing page and billing documentation do not establish that condition. No upload, clone, provider mutation or new Retell session has occurred. Current incremental cloud spend: $0; all seven attempts remain unused.
+Owner accepted all eight local Voicebox voices and approved seven Retell attempts, at most 150 seconds and $1 each / $7 total, with no automatic retries. Owner subsequently authorized uploads when no fee or checkout is shown, stopping if a charge is disclosed. Seven native clones and exact published recording revisions are now verified after explicit owner approval. Native preview files passed full FFmpeg decoding and owner listening acceptance. Published pinned baselines were rechecked and preserved. No new Retell session has occurred; all seven attempts remain unused. No separate cloning cost was disclosed; actual standalone cloning cost is unavailable.
 
 ## Verified capture behavior
 
@@ -28,6 +28,14 @@ Default presenter mode prints the plan. Explicit generation uses the existing lo
 
 ## Remaining work
 
-Verify the clone-fee condition; create and audition seven Retell voices; review and pin new specialist versions with Crew by AWC and natural we/our wording; create the separate immutable paid gate; capture and reconcile one genuine session per specialist; review audio, captions and desktop/mobile playback before publishing versioned replacement assets. Existing public media and disabled live channels remain unchanged.
+Accept the actual generated presenter question outputs; finalize the separate immutable readiness gate; capture and reconcile one genuine session per specialist; review audio, captions and desktop/mobile playback before publishing versioned replacement assets. Existing public media and disabled live channels remain unchanged.
 
 The subsequent revenue milestone is Flagship Consultation Conversion & Outreach Readiness Acceptance. No outreach or new niche build is authorized by this checkpoint.
+
+## Completed production preparation
+
+Seven selected custom-voice versions each show $0.108/min in authenticated Retell details; maximum displayed 150-second usage cost is $0.27, below the $1 reservation. Published pinned binding and no-tool/no-memory/no-fallback readback PASS for all seven. Native voice acceptance and specific version-publication approval are recorded.
+
+All 21 local question inputs completed, 133.52 seconds total. Full decode, signal, unique hashes and script-ledger mapping PASS. Measured local generation elapsed 1220.08 seconds (20m20s), from ledger creation to completion. Cloud TTS calls/spend: zero. The two-minute private Presenter-Questions-Review.mp3 and script reference are ready; generated-question listening acceptance is pending.
+
+Separate paid gate: 13 offline tests PASS; default command confirms zero provider calls and zero consumed attempts. Prepared RECORDING-MANIFEST.json pins all seven verified published configurations. RECORDING-READINESS.json is absent. Automatic review rejected readiness creation while generated-question listening verification was pending; no process ran and no paid attempt was consumed. Complete the actual question listening review before enabling the gate.
