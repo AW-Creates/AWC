@@ -65,6 +65,16 @@
       "sample_label": "theo",
       "selected_custom_voice_id": null,
       "begin_message": "Hi, I’m Theo, an AI onboarding specialist with Crew by AWC. Let’s talk about getting your project ready."
+    },
+    {
+      "role": "retention",
+      "name": "Sage Morgan",
+      "existing_agent_id": "agent_d97a7573e5c3b758400df2275d",
+      "baseline_version": 0,
+      "baseline_prompt_sha256": "ef9c7b6ebbda57b47d2254badddc9058c351b1b456149380c66c06be730aa46b",
+      "sample_label": "sage",
+      "selected_custom_voice_id": null,
+      "begin_message": "Hi, I’m Sage, our AI customer care specialist with Crew by AWC. Tell me what happened and what you’d like us to help resolve."
     }
   ],
   "presenter": {

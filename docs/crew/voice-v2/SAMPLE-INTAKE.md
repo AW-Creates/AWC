@@ -25,3 +25,7 @@ Retain raw samples and consent evidence in ignored private storage, outside publ
 Initial process: inspect each file locally, map it to the intended identity, confirm the chosen provider can accept it, verify the cloning/TTS account and budget, create the voice, and let the owner hear a short preview before longer recordings. Sample approval and spend approval are separate. A failed clone or disappointing preview does not authorize an automatic paid retry.
 
 If Professional Voice Cloning is requested instead, plan for substantially more audio and speaker verification. ElevenLabs only allows the account owner to create their own PVC; another speaker must create/verify theirs on their own account. [PVC ownership rule](https://help.elevenlabs.io/hc/en-us/articles/36842751624209-Can-I-create-a-Professional-Voice-Clone-of-someone-else-s-voice).
+
+## Customer Care / Retention addition — 2026-10-10
+
+Eight voices are now planned: seven Crew specialists plus Presenter. Sage Morgan is the seventh specialist; record a separate sage/retention sample using SAGE-VOICE-SAMPLE.md. The combined owner-supplied recording has all original seven sections (six agents plus Presenter), locally transcribed and provisionally split; listening review remains pending. Owner confirmed ownership in direct reply to the cloning/public commercial demonstration permission question. Raw audio and intake metadata remain private and ignored, with no provider upload, clone or spend. Sage sample pending.

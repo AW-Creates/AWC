@@ -1,4 +1,4 @@
-const roles=['concierge','sales','scheduling','support','billing','implementation','overview'];
+const roles=['concierge','sales','scheduling','support','billing','implementation','retention','overview'];
 const files=new Set(roles.flatMap(role=>[role+'.mp4',role+'.vtt']));
 const maxBytes=12*1024*1024;
 const headers={'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'};

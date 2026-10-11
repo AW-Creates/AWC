@@ -57,3 +57,9 @@ Presenter audio is generated from the selected authorized custom voice, not Wind
 Old recording allowances are fully consumed and the archived capture gate remains closed. Incremental spend during this preparation: $0. Current public recordings/provider configurations are unchanged.
 
 Sources: [Retell custom voices](https://docs.retellai.com/build/voice), [Retell Clone Voice API](https://docs.retellai.com/api-references/clone-voice), [ElevenLabs instant cloning](https://elevenlabs.io/docs/eleven-creative/voices/voice-cloning/instant-voice-cloning).
+
+## Customer Care / Retention addition — 2026-10-10
+
+Sage Morgan joins as a seventh specialist, making eight planned custom voices including Presenter. Sage is separate from Miles’s routine support and June’s invoice clarification. Explain approved options, clarify the requested resolution and prepare a human-reviewed concern; no refund/credit/cancellation execution, invented policies, pressure or obstruction. Its provider configuration is published/read back with the existing preset only as a temporary placeholder; public voice/callback remain disabled. Custom sample and preview pending.
+
+Longer Sage demo: customer is frustrated by an unresolved issue and asks about cancellation/refund; Sage acknowledges the concern, clarifies the desired resolution and prepares an owner-reviewed request without promising account actions. A clear cancellation choice is respected. This is a genuine future conversation, not a synthesized agent-answer script. The original seven sections are received and ownership confirmed; listening review and new production budget remain pending.

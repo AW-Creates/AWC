@@ -138,6 +138,34 @@
         "gpt41mini": true,
         "voice": true
       }
+    },
+    {
+      "role": "retention",
+      "specialist_id": "awc_retention",
+      "name": "Sage Morgan",
+      "prompt_sha256": "ef9c7b6ebbda57b47d2254badddc9058c351b1b456149380c66c06be730aa46b",
+      "status": "published_verified",
+      "public_enabled": false,
+      "custom_voice_status": "awaiting_owner_sample",
+      "voice_id": "11labs-Kathrine",
+      "voice_note": "Temporary existing preset; no recording or voice preview generated.",
+      "llm_id": "llm_f6dbdf6be97b10826f4ec72ed911",
+      "agent_id": "agent_d97a7573e5c3b758400df2275d",
+      "version": 0,
+      "verified_at": "2026-10-11T00:21:18.230Z",
+      "readback_checks": {
+        "published": true,
+        "version": true,
+        "identity": true,
+        "max_duration": true,
+        "storage": true,
+        "memory_off": true,
+        "no_session_tools": true,
+        "no_webhook": true,
+        "no_llm_tools": true,
+        "prompt": true,
+        "voice": true
+      }
     }
   ],
   "concierge": {

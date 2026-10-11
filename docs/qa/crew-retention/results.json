@@ -1,0 +1,107 @@
+{
+  "started": "2026-10-11T00:24:30.205Z",
+  "mode": "Local SQLite prepared guidance, no provider credentials. Existing six recording readiness mocked; no recording playback re-tested.",
+  "cases": [
+    {
+      "width": 1440,
+      "theme": "dark",
+      "sevenCards": true,
+      "seventhCardReadable": true,
+      "sageChatSelected": true,
+      "cancellationRefundApprovalLimits": true,
+      "noPressure": true,
+      "noSageRecording": true,
+      "existingSixRecordingButtons": true,
+      "noMic": true,
+      "noProvider": true,
+      "noInquiry": true,
+      "noHorizontalOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "sevenCards": true,
+      "seventhCardReadable": true,
+      "sageChatSelected": true,
+      "cancellationRefundApprovalLimits": true,
+      "noPressure": true,
+      "noSageRecording": true,
+      "existingSixRecordingButtons": true,
+      "noMic": true,
+      "noProvider": true,
+      "noInquiry": true,
+      "noHorizontalOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "sevenCards": true,
+      "seventhCardReadable": true,
+      "sageChatSelected": true,
+      "cancellationRefundApprovalLimits": true,
+      "noPressure": true,
+      "noSageRecording": true,
+      "existingSixRecordingButtons": true,
+      "noMic": true,
+      "noProvider": true,
+      "noInquiry": true,
+      "noHorizontalOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "sevenCards": true,
+      "seventhCardReadable": true,
+      "sageChatSelected": true,
+      "cancellationRefundApprovalLimits": true,
+      "noPressure": true,
+      "noSageRecording": true,
+      "existingSixRecordingButtons": true,
+      "noMic": true,
+      "noProvider": true,
+      "noInquiry": true,
+      "noHorizontalOverflow": true,
+      "apiPaths": [
+        "/api/crew-recordings",
+        "/api/session",
+        "/api/crew-select",
+        "/api/chat"
+      ]
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "screenshots": [
+    "1440-dark-seven-roster.png",
+    "1440-dark-sage-card.png",
+    "1440-dark-sage-cancellation-chat.png",
+    "1440-light-seven-roster.png",
+    "1440-light-sage-card.png",
+    "1440-light-sage-cancellation-chat.png",
+    "390-dark-seven-roster.png",
+    "390-dark-sage-card.png",
+    "390-dark-sage-cancellation-chat.png",
+    "390-light-seven-roster.png",
+    "390-light-sage-card.png",
+    "390-light-sage-cancellation-chat.png"
+  ],
+  "completed": "2026-10-11T00:24:35.514Z"
+}
