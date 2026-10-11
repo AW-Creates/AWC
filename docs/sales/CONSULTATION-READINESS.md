@@ -8,10 +8,12 @@ Status: IN PROGRESS, 2026-10-11. Completed Crew showcase is retained. No prospec
 - PASS: public site HTTP200; delivered HTML includes `/api/inquiry` and Request a consultation.
 - PASS: 19 existing worker/offer tests, including inquiry consent, idempotency, session isolation, safe rendering, fallback persistence and server-recomputed estimate attachment.
 - PASS: source trace confirms inquiry persistence precedes notification; email status distinguishes accepted, failed and not_configured. Provider acceptance alone is not inbox receipt. Consultation requests are not appointments.
-- PENDING: owner-controlled test address and consent for one public test inquiry; approved public response expectation.
-- PENDING: real public submission, reference and saved status, owner notification/private review, actual inbox receipt and owner acceptance. Keep personal data/provider IDs in ignored local evidence.
-- PENDING: confirm operational destination/sender configuration privately; never assume configured notification from successful unit tests.
-- PENDING: browser desktop/mobile form acceptance and actual follow-up routing, after owner input.
+- PASS: owner supplied the destination and explicitly authorized one test; no prospect outreach.
+- PASS: one real browser consultation test saved and appeared in live D1 with status=new, mail_status=failed and no attached conversation. Actual email receipt FAILED, so the milestone cannot close. No second submission/retry performed.
+- PASS: destination stored as a production secret; existing Site version13 redeployed successfully with environment revision14 (deployment appgdep_6acbcdbda16481918637cb96394da712). Other settings preserved. No source change or voice activation.
+- PASS: desktop and390px mobile form inspected; mobile document width375px within390px viewport. Confirmation truthfully reports saved inquiry and unavailable notification. Private screenshots remain outside repository.
+- BLOCKED: sender is onboarding@resend.dev; Resend restricts this test sender to its account email. This is a plausible explanation, not a confirmed provider rejection: the Worker retains only failed status. Existing local credential cannot read domain inventory (HTTP403); a verified sender/domain or owner Resend dashboard inspection is needed.
+- PENDING: actual inbox delivery, human follow-up and owner acceptance after sender repair. Keep personal data/provider IDs out of committed evidence.
 
 ## Service and proof package
 
@@ -27,8 +29,10 @@ Consultation invitation: “Bring one challenge or a bigger idea. We can discuss
 
 “Thanks for contacting A. Wilcher Creatives. I received your request about [visitor's stated goal]. To understand the right starting point, what is the biggest obstacle in that workflow today? If a consultation would help, please share your time zone and a few suitable times. I'll confirm availability before we treat anything as booked.”
 
-Keep the response expectation blank until owner approval. Review the actual inquiry in the authenticated private inbox, confirm destination receipt, assign the human follow-up, and record the reviewed outcome without committing personal details.
+Owner asked us to choose a prompt response expectation. Selected copy: “Tell us what you have in mind. We aim to respond within one business day with a thoughtful next step. Consultation times are confirmed personally.” This is a service target, not a measured delivery guarantee. Prepare for publication once owner notifications work; the current live page does not yet state this target. Review the actual inquiry in the authenticated private inbox, confirm destination receipt, assign the human follow-up, and record the reviewed outcome without committing personal details.
 
 ## Closeout gate and next action
 
-The milestone remains incomplete until live inquiry receipt, response route, public journey and owner acceptance pass. Next action: obtain the test address/consent and public response expectation, then validate one inquiry end to end. No sending to prospects, new niche build, live voice activation or showcase rework. After acceptance, close canonical Git/state/sync before starting the separately authorized first prospect batch.
+The milestone remains incomplete until live inquiry receipt, response route, public journey and owner acceptance pass. Next action: obtain the existing verified Resend sender or identify the AWC-owned domain to verify; inspect the failed-send reason in the provider dashboard, repair MAIL_FROM and verify receipt under a separately bounded retry. Publish the selected response target with the validated consultation journey. No sending to prospects, new niche build, live voice activation or showcase rework. After acceptance, close canonical Git/state/sync before starting the separately authorized first prospect batch.
+
+Provider guidance: https://resend.com/docs/knowledge-base/403-error-resend-dev-domain . Owner private inbox: https://aw-creates-ventures.thesml.chatgpt.site/inbox (sign in using the existing authorized owner account; notification destination does not change inbox access).
