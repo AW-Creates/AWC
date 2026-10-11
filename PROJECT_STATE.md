@@ -25,13 +25,13 @@ Live preview root cause identified: long-running Node imported old renderer whil
 
 ## Current milestone — consultation and outreach readiness
 
-**AWC — Flagship Consultation Conversion & Outreach Readiness Acceptance — ACCEPTANCE PASS; CANONICAL SYNC PENDING (2026-10-11).** Owner-consented retry saved in live inbox, provider delivered, and owner explicitly confirmed actual mailbox receipt. Lowercase account destination resolved Resend's testing restriction; no domain purchase needed for owner-only notification. Both authorized test submissions consumed; no additional sends. Human reply-to/owner review route and unsent follow-up package documented in docs/sales/CONSULTATION-READINESS.md.
+**AWC — Flagship Consultation Conversion & Outreach Readiness Acceptance — COMPLETE (2026-10-11).** Owner-consented retry saved in live inbox, provider delivered, and owner explicitly confirmed actual mailbox receipt. Lowercase account destination resolved Resend's testing restriction; no domain purchase needed for owner-only notification. Both authorized test submissions consumed; no additional sends. Human reply-to/owner review route and unsent follow-up package documented in docs/sales/CONSULTATION-READINESS.md.
 
 Response target published: aim to respond within one business day, consultations personally confirmed. Site14/environment15/source aaad8d6305dc3a3d3f3388497cc475c758e53156, deployment appgdep_6acbd410c4948191909de6ee3cc32de1 succeeded.19 inquiry/offer tests, Worker build and direct target/non-guarantee checks PASS. Actual desktop/mobile390 copy and7recording buttons verified, no overflow. Crew showcase retained; no live voice or prospect outreach.
 
 REA6.4.0 Codex doctor/registration PASS; Topview registration/OAuth PASS; agent tool attachment still requires reconnect verification. No optional engines installed. Secret-free operator guide: docs/tooling/LOCAL-CAPABILITIES.md. User-level configuration/credentials never enter AWC Git.
 
-Next exact action: obtain approval for canonical main push, verify local/origin/fresh remote equality and close this milestone. Then First Real Prospect Batch + Outreach Execution, with separate outreach-send authorization. STOP at this closeout; no new niche or showcase rework. Acceptance is not a completed milestone until canonical sync is verified.
+Validated implementation: 0a0b421855a6556e28f4b840d37fe4c181449250. Owner explicitly approved canonical main push; implementation local/origin/fresh remote equality verified and tree clean. This separate state closeout is committed and synced next. Next milestone: First Real Prospect Batch + Outreach Execution; begin with a bounded prospect batch and drafts, with separate authorization before any outreach send. STOP at this closeout; no new niche or showcase rework.
 
 ## Latest completed milestone
 
