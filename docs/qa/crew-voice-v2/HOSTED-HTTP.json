@@ -1,0 +1,134 @@
+{
+  "checked_at": "2026-10-11T17:12:49.086Z",
+  "base": "https://aw-creates-ventures.thesml.chatgpt.site",
+  "site_version": 13,
+  "files": [
+    {
+      "role": "sales",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "closedSuffixOpenRanges206": true,
+      "conditional304": true,
+      "bytes": 5632327,
+      "duration_seconds": 141.8
+    },
+    {
+      "role": "scheduling",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "closedSuffixOpenRanges206": true,
+      "conditional304": true,
+      "bytes": 4158510,
+      "duration_seconds": 107.3
+    },
+    {
+      "role": "support",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "closedSuffixOpenRanges206": true,
+      "conditional304": true,
+      "bytes": 4659925,
+      "duration_seconds": 122.3
+    },
+    {
+      "role": "billing",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "closedSuffixOpenRanges206": true,
+      "conditional304": true,
+      "bytes": 3331554,
+      "duration_seconds": 89.7
+    },
+    {
+      "role": "implementation",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "closedSuffixOpenRanges206": true,
+      "conditional304": true,
+      "bytes": 4815463,
+      "duration_seconds": 117.6
+    },
+    {
+      "role": "retention",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "closedSuffixOpenRanges206": true,
+      "conditional304": true,
+      "bytes": 4674215,
+      "duration_seconds": 115.5
+    },
+    {
+      "role": "concierge",
+      "mp4HashMatches": true,
+      "captionHashMatches": true,
+      "closedSuffixOpenRanges206": true,
+      "conditional304": true,
+      "bytes": 4207534,
+      "duration_seconds": 100.8
+    }
+  ],
+  "selected_v2_roles": [
+    "sales",
+    "scheduling",
+    "support",
+    "billing",
+    "implementation",
+    "retention",
+    "concierge"
+  ],
+  "uploadClosed403": true,
+  "ready": {
+    "readyRoles": [
+      "concierge",
+      "sales",
+      "scheduling",
+      "support",
+      "billing",
+      "implementation",
+      "retention"
+    ],
+    "overviewReady": true,
+    "recordings": {
+      "concierge": {
+        "revision": "v2",
+        "videoUrl": "/crew-media/concierge-v2.mp4",
+        "captionUrl": "/crew-media/concierge-v2.vtt"
+      },
+      "sales": {
+        "revision": "v2",
+        "videoUrl": "/crew-media/sales-v2.mp4",
+        "captionUrl": "/crew-media/sales-v2.vtt"
+      },
+      "scheduling": {
+        "revision": "v2",
+        "videoUrl": "/crew-media/scheduling-v2.mp4",
+        "captionUrl": "/crew-media/scheduling-v2.vtt"
+      },
+      "support": {
+        "revision": "v2",
+        "videoUrl": "/crew-media/support-v2.mp4",
+        "captionUrl": "/crew-media/support-v2.vtt"
+      },
+      "billing": {
+        "revision": "v2",
+        "videoUrl": "/crew-media/billing-v2.mp4",
+        "captionUrl": "/crew-media/billing-v2.vtt"
+      },
+      "implementation": {
+        "revision": "v2",
+        "videoUrl": "/crew-media/implementation-v2.mp4",
+        "captionUrl": "/crew-media/implementation-v2.vtt"
+      },
+      "retention": {
+        "revision": "v2",
+        "videoUrl": "/crew-media/retention-v2.mp4",
+        "captionUrl": "/crew-media/retention-v2.vtt"
+      },
+      "overview": {
+        "revision": "legacy",
+        "videoUrl": "/crew-media/overview.mp4",
+        "captionUrl": "/crew-media/overview.vtt"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# Custom Voice Casting & Demonstration Revision — complete
+
+**AWC — Custom Voice Casting & Demonstration Revision — COMPLETE.** All seven custom specialist voices, realistic custom presenter questions, genuine conversations and captions are owner accepted and published at https://aw-creates-ventures.thesml.chatgpt.site/#meet-crew. Autumn101s, Owen142s, Clara107s, Miles122s, June90s, Theo118s and Sage115s. Scripts introduce Crew by AWC and use natural we/our; the site presents these as AWC's customizable examples. The existing overview remains available. Public live voice/callback remains disabled; watching recordings starts no provider session.
+
+All ten finite attempts are consumed and provider reconciled: original7 $1.197410199, fresh2 $0.417103403, correctedAutumn1 $0.202263367; total **$1.816776969**. Three failed attempts remain consumed and excluded from published clips. Corrected Autumn Q3 shortened an internal quiet gap without changing spoken words, under separate owner input/attempt approval; all3exchanges completed. No cloud TTS/ASR, recharge, subscription or new number. Existing $2/month number unchanged. No cloning fee or checkout was shown; separate clone cost remains undocumented. Grants must never reset.
+
+Site version13/environment13 deployment succeeded; hosted source10a39f92827043268bc6aa9885b61df1b4e42b65. Fourteen accepted media files match hashes; HTTP ranges/304 pass, upload403 after temporary keys removed. Validation:24 gate tests,23 finalization/review tests,55 public tests/build,16 actual desktop/mobile hosted playback cases and48 screenshots; zero business mutations/provider/microphone/WebSocket activity. Two blocked Cloudflare platform POSTs caused an initial QA classification error; corrected classification preserved blocking and revalidated original evidence. Director inspected desktop/mobile Autumn/Sage frames and actual live Autumn player; small recorded-screen text on mobile uses native captions/fullscreen.
+
+Closeout/runbook: docs/crew/voice-v2/CLOSEOUT.md and RUNBOOK.md. Acceptance: MEDIA-ACCEPTANCE.json; accounting: RECORDING-PROGRESS.json; evidence: docs/qa/crew-voice-v2/{HOSTED-HTTP.json,production/}. Private audio/transcripts/call identities/ledgers stay ignored. Measured local question generation20m20s for133.52s of questions; hosted browser matrix31.160s. Largest remaining manual bottleneck: listening and caption review, with provider end-of-turn heuristics still requiring supervised production. Exact next revenue milestone: **AWC — Flagship Consultation Conversion & Outreach Readiness Acceptance**. STOP after this closeout; no outreach/new niches.
+
+
+## Publication
+
+Project appgprj_6abf204484b881919358d57a2d56bd08. Site version appgprj_6abf204484b881919358d57a2d56bd08~appgver_dbd95f0217408191b6904160685d8d33. Final deployment appgdep_6acbc378e85c8191bebf82676bc00561 succeeded at2026-10-11T17:12:31Z; environment revision13. Hosted source10a39f92827043268bc6aa9885b61df1b4e42b65. All seven roles explicitly select v2; legacy media remain available for reviewed fallback. Public audience/access preserved. Temporary upload token and expiry keys absent. No hosted Retell key/live activation added.
+
+Final approved files are privately retained under voice-samples/production-v2/approved/. The immutable manifest pins seven exact video/caption pairs; two reviewed upload batches covered six roles then Autumn. MEDIA-ACCEPTANCE.json records the owner's actual six-video response and separate Autumn response, not inferred approval. Its publication_performed:false describes finalization-stage behavior; this closeout records subsequent publication.
+
+## Boundaries and next milestone
+
+Recorded examples demonstrate real agent speech, not connected calendars, client accounts, payment/refund authority or validated live multi-agent transfer. Sage listens, clarifies and prepares an owner-reviewed resolution without pressure to stay. Native captions are owner accepted coarse timing, not word alignment. Existing one-minute overview is retained.
+
+Next: **AWC — Flagship Consultation Conversion & Outreach Readiness Acceptance**: validate consultation inquiry receipt, owner notification/review and response flow; align the offer and consultation CTA; verify the public customer journey and owner acceptance before outreach. No outreach is part of this closeout. Final canonical Git HEAD/origin/clean verification is reported after committing; do not embed a self-referential commit hash here.

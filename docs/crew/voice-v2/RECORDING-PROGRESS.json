@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11T16:45:35.457Z",
+  "updated_at": "2026-10-11T17:18:37.134Z",
   "approved_original_attempts": 7,
   "original_attempts_consumed": 7,
   "original_attempts_unused": 0,
@@ -7,7 +7,7 @@
   "unsettled_roles": [],
   "accepted_presenter_questions": 21,
   "public_live_channels_enabled": false,
-  "new_public_media_published": false,
+  "new_public_media_published": true,
   "attempts": [
     {
       "role": "concierge",
@@ -120,13 +120,42 @@
   "fresh_attempts_consumed": 2,
   "fresh_attempts_unused": 0,
   "fresh_settled_spend_usd": 0.41710340300000004,
-  "total_settled_recording_spend_usd": 1.6145136020000002,
+  "total_settled_recording_spend_usd": 1.816776969,
   "selected_complete_roles": [
+    "concierge",
+    "sales",
     "scheduling",
     "support",
     "billing",
     "implementation",
-    "retention",
-    "sales"
+    "retention"
+  ],
+  "approved_corrected_attempts": 1,
+  "corrected_attempts_consumed": 1,
+  "corrected_attempts_unused": 0,
+  "corrected_settled_spend_usd": 0.202263367,
+  "all_attempts_consumed": 10,
+  "owner_accepted_roles": [
+    "concierge",
+    "sales",
+    "scheduling",
+    "support",
+    "billing",
+    "implementation",
+    "retention"
+  ],
+  "site_version": 13,
+  "environment_revision": 13,
+  "corrected_attempts": [
+    {
+      "role": "concierge",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0.202263367,
+      "duration_ms": 100212,
+      "capture_complete": true,
+      "capture_reason": "final_reply_complete",
+      "questions_completed": 3
+    }
   ]
 }

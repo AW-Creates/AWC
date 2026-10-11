@@ -4,7 +4,7 @@ Owner accepted all eight local Voicebox previews. Seven specialist recordings pl
 
 ## Approved recording allowance
 
-Seven attempts, one per specialist; maximum150seconds and$1perattempt,$7total. No automatic retries, subscriptions, recharge, new phones or public live-call activation. Failed attempts remain consumed. Reconcile actual provider cost before the next attempt. Launch only after a verified all-in rate and safety margin fit the per-session cap. Owner explicitly approved this numerical plan in chat. RECORDING-ALLOWANCE.json records the unused grant; the owner subsequently amended the clone upload condition as recorded in that file.
+Seven attempts, one per specialist; maximum150seconds and$1perattempt,$7total. No automatic retries, subscriptions, recharge, new phones or public live-call activation. Failed attempts remain consumed. Reconcile actual provider cost before the next attempt. Launch only after a verified all-in rate and safety margin fit the per-session cap. Owner explicitly approved this numerical plan in chat. RECORDING-ALLOWANCE.json records the original grant, now fully consumed; the owner subsequently amended the clone upload condition as recorded in that file.
 
 The owner subsequently authorized seven original sample uploads when the interface shows no fee or checkout, stopping if payment is requested or a charge is disclosed. All seven native clones are created and inventory-verified. A standalone cloning fee remains undocumented; this is not proof of free cloning. Local Voicebox IDs cannot be assigned as Retell voice IDs; the documented interface accepts native/provider clones rather than a local Qwen TTS server. Retell clone sound must be checked separately from accepted Voicebox previews.
 
@@ -20,8 +20,8 @@ Use new versioned public assets only after desktop/mobile playback acceptance. P
 
 Sources: https://docs.retellai.com/build/voice ; https://docs.retellai.com/api-references/clone-voice ; https://docs.retellai.com/api-references/add-voice ; https://www.retellai.com/pricing
 
-## Current recording progress — 2026-10-11
+## Final recording progress — 2026-10-11
 
-The owner accepted all21actual presenter questions. All7original and2fresh attempts are consumed and reconciled; six complete replacement conversations are ready. Autumn’s fresh attempt failed overlap; Owen completed141seconds after bounded append-only readiness renewal. Total recording spend$1.614513602. See RECORDING-PROGRESS.json for authoritative sanitized costs/status and PROJECT_STATE.md for recovery steps. Private preview captions remain drafts, public replacements are not accepted or published. Owner review of six actual previews and separate corrected-Autumn/$1approval is pending.
+The owner accepted all seven genuine custom-voice videos and captions for website use, including Autumn's separately approved corrected attempt. All ten attempts (seven original, two fresh, one corrected) are consumed and reconciled; total recording spend $1.816776969. Seven v2 MP4/VTT pairs are published on Site version13/environment13. Desktop/mobile hosted playback, integrity/range checks and Director visual inspection passed. Temporary media upload credentials were removed; unauthenticated upload returns403. Public live voice/callback remains disabled. See CLOSEOUT.md and RECORDING-PROGRESS.json. No unused recording grant remains.
 
-Never reset a consumed grant or invent actual-audio acceptance. Next revenue milestone remains Flagship Consultation Conversion & Outreach Readiness Acceptance; no outreach or new niche build.
+Never reset consumed grants. New paid attempts require a separate finite approval. Next revenue milestone: **AWC — Flagship Consultation Conversion & Outreach Readiness Acceptance**. Stop after closeout; no outreach or new niche build.

@@ -2,18 +2,19 @@
 // Private loopback-only draft playback; no provider, public hosting or acceptance.
 const fs = require('node:fs'), path = require('node:path'), http = require('node:http');
 const ROLES = ['concierge','sales','scheduling','support','billing','implementation','retention'];
+const {takeProfile}=require('./take-profile.cjs');
 const escape = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function reviewInventory(root) {
+function reviewInventory(root,{conciergeTake='corrected'}={}) {
   const manifest = JSON.parse(fs.readFileSync(path.join(root,'docs/crew/voice-v2/RECORDING-MANIFEST.json'),'utf8'));
   return ROLES.map(role => {
-    const take = ['concierge','sales'].includes(role) ? 'retake' : 'original';
-    const dir = path.join(root,'voice-samples/production-v2/reviews',role+(take === 'retake' ? '-retake' : '')+'-draft');
+    const take = role==='concierge'?conciergeTake:role==='sales'?'retake':'original',profile=takeProfile(role,take);
+    const dir = path.join(root,'voice-samples/production-v2/reviews',profile.captureName+'-draft');
     const binding = manifest.roles?.find(item=>item.role===role);
     if (!binding || typeof binding.name !== 'string') throw Error('Approved review names unavailable');
     let available = false;
     try { const draft = JSON.parse(fs.readFileSync(path.join(dir,'REVIEW-DRAFT.json'),'utf8')); available = draft.role === role && draft.take === take && draft.review_status === 'unreviewed' && fs.existsSync(path.join(dir,'preview.mp4')) && fs.existsSync(path.join(dir,'preview.vtt')); } catch {}
     let status = available ? 'available' : 'pending';
-    const evidencePath = path.join(root,'voice-samples/production-v2/recordings',role+(take === 'retake' ? '-retake' : ''),'capture-evidence.json');
+    const evidencePath = path.join(root,'voice-samples/production-v2/recordings',profile.captureName,'capture-evidence.json');
     try { if (JSON.parse(fs.readFileSync(evidencePath,'utf8')).complete === false) { available = false; status = 'incomplete'; } } catch {}
     return { role, name: binding.name, take, available, status, dir };
   });
@@ -31,16 +32,16 @@ function parseRange(header,size) {
   if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>=size||end<start)return null;
   return {start,end,partial:true};
 }
-function createReviewServer({root,port=4207}) {
+function createReviewServer({root,port=4207,conciergeTake='corrected'}) {
   if(!Number.isInteger(port)||port<0||port>65535)throw Error('Invalid local port');
-  reviewInventory(root);
+  reviewInventory(root,{conciergeTake});
   const server = http.createServer((request,response) => {
     response.setHeader('X-Robots-Tag','noindex, nofollow, noarchive');response.setHeader('X-Content-Type-Options','nosniff');response.setHeader('Cache-Control','no-store');
     response.setHeader('Content-Security-Policy',"default-src 'none'; style-src 'unsafe-inline'; media-src 'self'; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'");
     if(!['GET','HEAD'].includes(request.method)){response.writeHead(405);return response.end();}
     if(!/^127\.0\.0\.1(?::\d+)?$/.test(request.headers.host||'')){response.writeHead(403);return response.end();}
     if(request.url==='/robots.txt'){response.writeHead(200,{'Content-Type':'text/plain'});return response.end(request.method==='HEAD'?undefined:'User-agent: *\nDisallow: /\n');}
-    let items;try{items=reviewInventory(root);}catch{response.writeHead(503);return response.end('Private drafts unavailable');}
+    let items;try{items=reviewInventory(root,{conciergeTake});}catch{response.writeHead(503);return response.end('Private drafts unavailable');}
     if(request.url==='/'){const html=render(items);response.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Content-Length':Buffer.byteLength(html)});return response.end(request.method==='HEAD'?undefined:html);}
     const match=/^\/review\/([a-z]+)\/(preview\.mp4|preview\.vtt)$/.exec(request.url||'');
     const item=match&&items.find(item=>item.role===match[1]&&item.available);

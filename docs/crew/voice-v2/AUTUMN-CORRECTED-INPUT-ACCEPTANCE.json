@@ -1,0 +1,11 @@
+{
+  "recorded_at": "2026-10-11T17:03:10.855Z",
+  "owner_answer": "Accept the corrected question and approve one $1 attempt",
+  "corrected_input_sha256": "ec362da2ca84912bdcaeef2c5f71936148c6e88140c764e8da263cde61b75df4",
+  "reviewed_mp3_sha256": "c6b42b5ebd8b0a6c870281071a7ebee5d58f87c2b5d54f5269198f47c61a3b48",
+  "script_sha256": "e3e846ad019d8b172cc5f6991400d8e08fc51221a998401b213ab7b4037ca7a6",
+  "prior_inputs_unchanged": true,
+  "new_attempt_limit": 1,
+  "new_spend_cap_usd": 1,
+  "actual_recording_accepted": false
+}

@@ -1,8 +1,8 @@
 # Custom-voice production preflight checkpoint
 
-Status: capture workflow validated locally; genuine custom-voice production remains pending.
+Status: COMPLETE. The following preflight describes the historical preparation checkpoint; final results appear below and in CLOSEOUT.md.
 
-Owner accepted all eight local Voicebox voices and approved seven Retell attempts, at most 150 seconds and $1 each / $7 total, with no automatic retries. Owner subsequently authorized uploads when no fee or checkout is shown, stopping if a charge is disclosed. Seven native clones and exact published recording revisions are now verified after explicit owner approval. Native preview files passed full FFmpeg decoding and owner listening acceptance. Published pinned baselines were rechecked and preserved. No new Retell session has occurred; all seven attempts remain unused. No separate cloning cost was disclosed; actual standalone cloning cost is unavailable.
+Owner accepted all eight local Voicebox voices and approved seven Retell attempts, at most 150 seconds and $1 each / $7 total, with no automatic retries. Owner subsequently authorized uploads when no fee or checkout is shown, stopping if a charge is disclosed. Seven native clones and exact published recording revisions are now verified after explicit owner approval. Native preview files passed full FFmpeg decoding and owner listening acceptance. Published pinned baselines were rechecked and preserved. At that preparation checkpoint, no new Retell session had occurred. All original attempts are now consumed; final progress below supersedes the historical checkpoint. No separate cloning cost was disclosed; actual standalone cloning cost is unavailable.
 
 ## Verified capture behavior
 
@@ -26,8 +26,8 @@ node scripts/crew-recordings/production/voice-v2/generate-presenter.cjs --genera
 
 Default presenter mode prints the plan. Explicit generation uses the existing local Voicebox Qwen 1.7B model and accepted presenter profile, saves a resumable private ledger, and never downloads a model or calls cloud TTS. Generated inputs still require listening and audio validation before recording. See the capture README and PRODUCTION-PLAN.md for supervised production acceptance.
 
-## Current recording progress — 2026-10-11
+## Final recording progress — 2026-10-11
 
-The owner accepted all21actual presenter questions. All7original and2fresh attempts are consumed and reconciled; six complete replacement conversations are ready. Autumn’s fresh attempt failed overlap; Owen completed141seconds after bounded append-only readiness renewal. Total recording spend$1.614513602. See RECORDING-PROGRESS.json for authoritative sanitized costs/status and PROJECT_STATE.md for recovery steps. Private preview captions remain drafts, public replacements are not accepted or published. Owner review of six actual previews and separate corrected-Autumn/$1approval is pending.
+The owner accepted all seven genuine custom-voice videos and captions for website use, including Autumn's separately approved corrected attempt. All ten attempts (seven original, two fresh, one corrected) are consumed and reconciled; total recording spend $1.816776969. Seven v2 MP4/VTT pairs are published on Site version13/environment13. Desktop/mobile hosted playback, integrity/range checks and Director visual inspection passed. Temporary media upload credentials were removed; unauthenticated upload returns403. Public live voice/callback remains disabled. See CLOSEOUT.md and RECORDING-PROGRESS.json. No unused recording grant remains.
 
-Never reset a consumed grant or invent actual-audio acceptance. Next revenue milestone remains Flagship Consultation Conversion & Outreach Readiness Acceptance; no outreach or new niche build.
+Never reset consumed grants. New paid attempts require a separate finite approval. Next revenue milestone: **AWC — Flagship Consultation Conversion & Outreach Readiness Acceptance**. Stop after closeout; no outreach or new niche build.

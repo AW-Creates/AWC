@@ -1,0 +1,19 @@
+{
+  "id": "awc_autumn_corrected_demo_20261011",
+  "status": "approved_not_used",
+  "recorded_at": "2026-10-11T17:03:10.855Z",
+  "roles": [
+    "concierge"
+  ],
+  "max_attempts": 1,
+  "max_seconds_per_attempt": 150,
+  "max_usd_per_attempt": 1,
+  "max_total_usd": 1,
+  "automatic_retries": false,
+  "public_live_activation": false,
+  "recharge": false,
+  "subscriptions": false,
+  "attempts_consumed": 0,
+  "actual_spend_usd": 0,
+  "source": "Owner explicitly answered: Accept the corrected question and approve one $1 attempt. One separate new Autumn attempt with the accepted corrected presenter Q3; all prior grants remain consumed."
+}

@@ -27,9 +27,10 @@ test('selected incomplete retake shows replacement status and never exposes stal
   fs.mkdirSync(dir,{recursive:true});fs.mkdirSync(input,{recursive:true});
   fs.writeFileSync(path.join(dir,'REVIEW-DRAFT.json'),JSON.stringify({role:'concierge',take:'retake',review_status:'unreviewed'}));fs.writeFileSync(path.join(dir,'preview.mp4'),'failed source');fs.writeFileSync(path.join(dir,'preview.vtt'),'WEBVTT\n');
   fs.writeFileSync(path.join(input,'capture-evidence.json'),JSON.stringify({complete:false,reason:'question_agent_overlap',call_id:'call_private',completedQuestions:2}));
-  const items=reviewInventory(root),autumn=items.find(item=>item.role==='concierge'),owen=items.find(item=>item.role==='sales'),html=render(items);
+  const items=reviewInventory(root,{conciergeTake:'retake'}),autumn=items.find(item=>item.role==='concierge'),owen=items.find(item=>item.role==='sales'),html=render(items);
   assert.equal(autumn.status,'incomplete');assert.equal(autumn.available,false);assert.equal(owen.status,'pending');
   assert.match(html,/Recording incomplete; replacement requires a separately approved attempt/);assert.match(html,/Draft unavailable; preparation pending/);
   assert.equal(html.includes('/review/concierge/preview.mp4'),false);assert.equal(html.includes('question_agent_overlap'),false);assert.equal(html.includes('call_private'),false);assert.equal(html.includes(root),false);
+  const corrected=reviewInventory(root).find(item=>item.role==='concierge');assert.equal(corrected.take,'corrected');assert.equal(corrected.status,'pending');assert.equal(corrected.available,false);assert.match(corrected.dir,/concierge-corrected-draft$/);
  }finally{assert.equal(path.dirname(root),path.resolve(os.tmpdir()));assert.ok(path.basename(root).startsWith('awc-draft-server-'));fs.rmSync(root,{recursive:true,force:true});}
 });

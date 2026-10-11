@@ -5,6 +5,7 @@ const LIMITS = Object.freeze({ id:'awc_seven_custom_voice_demos_20261011', attem
 const ORIGINAL_LIMITS=LIMITS,ORIGINAL_ROLES=ROLES;
 const RETAKE_LIMITS=Object.freeze({id:'awc_autumn_owen_fresh_demos_20261011',attempts:2,seconds:150,perAttemptUsd:1,totalUsd:2});
 const RETAKE_ROLES=Object.freeze(['concierge','sales']);
+const AUTUMN_CORRECTED_LIMITS=Object.freeze({id:'awc_autumn_corrected_demo_20261011',attempts:1,seconds:150,perAttemptUsd:1,totalUsd:1});
 const RENEWAL_ID='awc_autumn_owen_fresh_demos_20261011_readiness_renewal_20261011';
 const sha = value => crypto.createHash('sha256').update(value).digest('hex');
 const stable = value => JSON.stringify(value, (_, v) => v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.keys(v).sort().map(k => [k,v[k]])) : v);
@@ -36,18 +37,18 @@ function assertProvider(entry, agent, llm) {
  if(sha(llm.general_prompt || '') !== entry.prompt_sha256 || bindingDigest(agent) !== entry.agent_sha256 || bindingDigest(llm) !== entry.llm_sha256) fail('Provider binding hash changed');
 }
 function createGate({root, api, clock = Date.now, profile='original'}) {
- if(!['original','retake'].includes(profile))fail('Unknown fixed recording profile');
- const LIMITS=profile==='retake'?RETAKE_LIMITS:ORIGINAL_LIMITS,ROLES=profile==='retake'?RETAKE_ROLES:ORIGINAL_ROLES,prefix=profile==='retake'?'RETAKE':'RECORDING';
- const privateDir = path.join(root,'voice-samples/production-v2'), ledgerPath = path.join(privateDir,profile==='retake'?'RETAKE-ATTEMPTS.json':'PAID-ATTEMPTS.json'), lockPath = ledgerPath+'.lock', markerPath=ledgerPath+'.initialized';
- const files = {approval:path.join(root,'docs/crew/voice-v2/'+prefix+'-ALLOWANCE.json'), manifest:path.join(root,'docs/crew/voice-v2/RECORDING-MANIFEST.json'), readiness:path.join(root,'docs/crew/voice-v2/'+prefix+'-READINESS.json'), questions:path.join(privateDir,'presenter/QUESTIONS.json')};
+ if(!['original','retake','autumn-corrected'].includes(profile))fail('Unknown fixed recording profile');
+ const corrected=profile==='autumn-corrected',LIMITS=corrected?AUTUMN_CORRECTED_LIMITS:profile==='retake'?RETAKE_LIMITS:ORIGINAL_LIMITS,ROLES=corrected?['concierge']:profile==='retake'?RETAKE_ROLES:ORIGINAL_ROLES,prefix=corrected?'AUTUMN-CORRECTED':profile==='retake'?'RETAKE':'RECORDING';
+ const privateDir = path.join(root,'voice-samples/production-v2'), ledgerPath = path.join(privateDir,corrected?'AUTUMN-CORRECTED-ATTEMPTS.json':profile==='retake'?'RETAKE-ATTEMPTS.json':'PAID-ATTEMPTS.json'), lockPath = ledgerPath+'.lock', markerPath=ledgerPath+'.initialized';
+ const files = {approval:path.join(root,'docs/crew/voice-v2/'+prefix+'-ALLOWANCE.json'), manifest:path.join(root,'docs/crew/voice-v2/RECORDING-MANIFEST.json'), readiness:path.join(root,'docs/crew/voice-v2/'+prefix+'-READINESS.json'), questions:path.join(privateDir,corrected?'presenter/concierge-corrected/QUESTIONS.json':'presenter/QUESTIONS.json')};
  const read = file => JSON.parse(fs.readFileSync(file,'utf8'));
  function inputs(role) {
   const approval=read(files.approval);
   if(profile==='original')assertAllowance(approval);
-  else if(approval.id!==LIMITS.id||approval.status!=='approved_not_used'||approval.max_attempts!==2||approval.max_seconds_per_attempt!==150||approval.max_usd_per_attempt!==1||approval.max_total_usd!==2||stable(approval.roles)!==stable(ROLES)||approval.automatic_retries!==false||approval.public_live_activation!==false||approval.recharge!==false||approval.subscriptions!==false||approval.attempts_consumed!==0||approval.actual_spend_usd!==0||typeof approval.source!=='string'||!approval.source.trim())fail('Fresh owner-approved two-attempt grant required; original grant cannot authorize retakes');
+  else if(approval.id!==LIMITS.id||approval.status!=='approved_not_used'||approval.max_attempts!==LIMITS.attempts||approval.max_seconds_per_attempt!==150||approval.max_usd_per_attempt!==1||approval.max_total_usd!==LIMITS.totalUsd||stable(approval.roles)!==stable(ROLES)||approval.automatic_retries!==false||approval.public_live_activation!==false||approval.recharge!==false||approval.subscriptions!==false||approval.attempts_consumed!==0||approval.actual_spend_usd!==0||typeof approval.source!=='string'||!approval.source.trim())fail('Fresh owner-approved fixed grant required; earlier grants cannot authorize another attempt');
   const manifest=read(files.manifest), readiness=read(files.readiness), questions=read(files.questions);
   let expiry=Date.parse(readiness.expires_at);const reviewed=Date.parse(readiness.reviewed_at);
-  if(!Number.isFinite(expiry)||!Number.isFinite(reviewed)||reviewed>clock()||expiry-reviewed>86400000||expiry<=reviewed) fail('Readiness expired or exceeds bounded 24-hour window');
+  if(!Number.isFinite(expiry)||!Number.isFinite(reviewed)||reviewed>clock()||expiry-reviewed>(corrected?10800000:86400000)||expiry<=reviewed) fail('Readiness expired or exceeds bounded review window');
   if(expiry<=clock()) {
    if(profile!=='retake')fail('Readiness expired');
    const proof=read(path.join(root,'docs/crew/voice-v2/RETAKE-READINESS-RENEWAL.json'));
@@ -57,7 +58,7 @@ function createGate({root, api, clock = Date.now, profile='original'}) {
   if(manifest.allowance_id!==ORIGINAL_LIMITS.id || readiness.allowance_id!==LIMITS.id || !Array.isArray(manifest.roles) || stable(manifest.roles.map(e=>e.role).sort())!==stable([...ORIGINAL_ROLES].sort())||!ROLES.includes(role)) fail('Manifest roles or allowance mismatch');
   for(const k of ['approval','manifest','questions']) if(sha(fs.readFileSync(files[k])) !== readiness[k+'_sha256']) fail('Reviewed file changed: '+k);
   if(readiness.preflight_passed!==true || readiness.supervised_recording_authorized!==true || readiness.presenter_listening_accepted!==true || typeof readiness.acceptance_source!=='string' || !readiness.acceptance_source.trim()) fail('Supervision/listening/preflight evidence required');
-  if(!Array.isArray(questions.items)||questions.items.length!==21||ORIGINAL_ROLES.some(r=>{const items=questions.items.filter(q=>q.role===r);return items.length!==3||items.some(q=>q.status!=='completed')||new Set(items.map(q=>q.index)).size!==3||items.some(q=>![0,1,2].includes(q.index));})) fail('All 21 presenter clips must finish before immutable readiness');
+  if(!Array.isArray(questions.items)||questions.items.length!==(corrected?3:21)||(corrected?ROLES:ORIGINAL_ROLES).some(r=>{const items=questions.items.filter(q=>q.role===r);return items.length!==3||items.some(q=>q.status!=='completed')||new Set(items.map(q=>q.index)).size!==3||items.some(q=>![0,1,2].includes(q.index));})) fail(corrected?'All three corrected concierge clips must finish before immutable readiness':'All 21 presenter clips must finish before immutable readiness');
   const entry=manifest.roles.find(e=>e.role===role), accepted=readiness.roles?.find(e=>e.role===role); if(!entry||!accepted) fail('Unknown or unreviewed role');
   if(!/^agent_[A-Za-z0-9]+$/.test(entry.agent_id)||!/^llm_[A-Za-z0-9]+$/.test(entry.llm_id)||!/^custom_voice_[A-Za-z0-9]+$/.test(entry.voice_id)||!Number.isInteger(entry.agent_version)||entry.agent_version<0||!Number.isInteger(entry.llm_version)||entry.llm_version<0) fail('Invalid pinned identifiers');
   if(accepted.native_voice_listening_accepted!==true || accepted.voice_id!==entry.voice_id || accepted.agent_version!==entry.agent_version || !accepted.preview_sha256?.match(/^[a-f0-9]{64}$/) || !accepted.rate_evidence_source?.trim() || accepted.rate_reviewed!==true || !Number.isFinite(accepted.all_in_usd_per_minute) || accepted.all_in_usd_per_minute<=0 || accepted.all_in_usd_per_minute>0.36) fail('Owner native-voice acceptance and reviewed all-in rate <= $0.36/min required');
@@ -75,8 +76,19 @@ function createGate({root, api, clock = Date.now, profile='original'}) {
    if(original.length!==1||original[0].agent_id!==entry.agent_id||original[0].agent_version!==entry.agent_version||original[0].voice_id!==entry.voice_id||failed.complete!==false||failed.questionCount!==3)fail('Only the two reconciled incomplete original demonstrations are eligible');
    if(readiness.original_approval_sha256!==sha(fs.readFileSync(oldApprovalPath))||readiness.original_readiness_sha256!==sha(fs.readFileSync(oldReadyPath))||accepted.failed_capture_sha256!==sha(fs.readFileSync(failedPath)))fail('Original failed-attempt proof changed');
   }
+  if(corrected) {
+   const docs=path.join(root,'docs/crew/voice-v2'),originalQuestionsPath=path.join(privateDir,'presenter/QUESTIONS.json'),originalQuestions=read(originalQuestionsPath).items?.filter(q=>q.role==='concierge').sort((a,b)=>a.index-b.index);
+   if(readiness.original_questions_sha256!==sha(fs.readFileSync(originalQuestionsPath))||!originalQuestions||originalQuestions.length!==3||[0,1].some(i=>stable(clips[i])!==stable(originalQuestions[i]))||clips[2].audio_sha256!==readiness.accepted_corrected_question_sha256||clips[2].script_sha256!==readiness.accepted_corrected_script_sha256||clips[2].audio_sha256===originalQuestions[2].audio_sha256)fail('Only the accepted third concierge question may change');
+   for(const [oldPrefix,oldLimits,oldLedgerName,expectedCount] of [['RECORDING',ORIGINAL_LIMITS,'PAID-ATTEMPTS.json',7],['RETAKE',RETAKE_LIMITS,'RETAKE-ATTEMPTS.json',2]]) {
+    const oldReadyPath=path.join(docs,oldPrefix+'-READINESS.json'),oldApprovalPath=path.join(docs,oldPrefix+'-ALLOWANCE.json'),oldReady=read(oldReadyPath),oldLedger=read(path.join(privateDir,oldLedgerName)),label=oldPrefix==='RETAKE'?'retake':'original';
+    const oldFingerprint=sha(stable({limits:oldLimits,approval:oldReady.approval_sha256,manifest:oldReady.manifest_sha256,questions:oldReady.questions_sha256,readiness:sha(fs.readFileSync(oldReadyPath))}));
+    if(readiness[label+'_approval_sha256']!==sha(fs.readFileSync(oldApprovalPath))||readiness[label+'_readiness_sha256']!==sha(fs.readFileSync(oldReadyPath))||oldReady.approval_sha256!==sha(fs.readFileSync(oldApprovalPath))||oldReady.manifest_sha256!==readiness.manifest_sha256||oldReady.questions_sha256!==readiness.original_questions_sha256||stable(oldLedger.allowance)!==stable(oldLimits)||oldLedger.fingerprint!==oldFingerprint||fs.readFileSync(path.join(privateDir,oldLedgerName+'.initialized'),'utf8')!==oldFingerprint||oldLedger.attempts?.length!==expectedCount||new Set(oldLedger.attempts.map(a=>a.role)).size!==expectedCount||oldLedger.attempts.some(a=>a.state!=='reconciled'||!Number.isFinite(a.cost_usd)||a.cost_usd<0||a.cost_usd>1||!Number.isFinite(a.duration_ms)||a.duration_ms<0||a.duration_ms>150000))fail('All nine previous attempts must remain settled and pinned');
+   }
+   const previousPath=path.join(privateDir,'recordings/concierge-retake/capture-evidence.json'),previous=read(previousPath);
+   if(previous.complete!==false||previous.questionCount!==3||accepted.previous_failed_capture_sha256!==sha(fs.readFileSync(previousPath)))fail('Previous incomplete concierge capture proof required');
+  }
   const fingerprint=sha(stable({limits:LIMITS,approval:readiness.approval_sha256,manifest:readiness.manifest_sha256,questions:readiness.questions_sha256,readiness:sha(fs.readFileSync(files.readiness))}));
-  return {entry,clips,fingerprint,expiry,recordingVariant:profile==='retake'?role+'-retake':role};
+  return {entry,clips,fingerprint,expiry,recordingVariant:corrected?'concierge-corrected':profile==='retake'?role+'-retake':role};
  }
  function load(fingerprint) {
   if(!fs.existsSync(ledgerPath)&&fs.existsSync(markerPath))fail('Initialized ledger missing; never reset consumed grant');
@@ -125,4 +137,5 @@ function createGate({root, api, clock = Date.now, profile='original'}) {
  return {inputs,preflight,createSession,reconcile,stopAfterFailure,status:()=>{if(!fs.existsSync(ledgerPath)&&fs.existsSync(markerPath))fail('Initialized ledger missing; never reset consumed grant');return fs.existsSync(ledgerPath)?read(ledgerPath):{allowance:LIMITS,attempts:[]};}};
 }
 const createRetakeGate=options=>createGate({...options,profile:'retake'});
-module.exports={createGate,createRetakeGate,LIMITS,ROLES,RETAKE_LIMITS,RETAKE_ROLES,RENEWAL_ID,validateRetakeRenewal,sha,stable,bindingDigest,assertProvider};
+const createAutumnCorrectedGate=options=>createGate({...options,profile:'autumn-corrected'});
+module.exports={createGate,createRetakeGate,createAutumnCorrectedGate,LIMITS,ROLES,RETAKE_LIMITS,RETAKE_ROLES,AUTUMN_CORRECTED_LIMITS,RENEWAL_ID,validateRetakeRenewal,sha,stable,bindingDigest,assertProvider};

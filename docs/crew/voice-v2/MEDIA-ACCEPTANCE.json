@@ -1,0 +1,176 @@
+{
+  "status": "all_seven_actual_dialogues_owner_accepted_for_website_use",
+  "owner_answer": "Accept all six for website use",
+  "owner_question": "After reviewing Owen, Clara, Miles, June, Theo and Sage at http://127.0.0.1:4207/, are their voices, complete conversations and captions suitable for AWC’s website? Please name any clip or caption that needs correction.",
+  "recorded_at": "2026-10-11T17:00:41Z",
+  "timestamp_basis": "Recorded in this task; exact original response timestamp unavailable",
+  "roles": [
+    {
+      "role": "sales",
+      "name": "Owen Brooks",
+      "take": "retake",
+      "duration_seconds": 141.8,
+      "mp4_bytes": 5632327,
+      "caption_cues": 39,
+      "mp4_sha256": "33117ec62cf48c583aff9eca635ce1197741463b645d9202d56a643ee7f8358e",
+      "vtt_sha256": "d761edb5b24c11e9a9951c916fee3690140283508e91959b30509d6a3cf838f7",
+      "source_sha256": {
+        "screen.webm": "cb8de6488a0e183f04bad3cfd7dc5c46796df3f8ed071f7043f53caff374e337",
+        "mixed-audio.webm": "42f24c076839a4aece509e5477316d547c8fca5e12a0f1e7eaaa82e45734e01e",
+        "capture-evidence.json": "e1df41a7a30b41b62ae625bcd81d6b9ae57f68507d8f3027204c45cd8ae42bb2"
+      },
+      "accepted_preview_sha256": {
+        "mp4": "33117ec62cf48c583aff9eca635ce1197741463b645d9202d56a643ee7f8358e",
+        "vtt": "d5e81da0c1f3dba15002d2e920579c33f8c7a0ebffed3bc1db79019a64de74ee"
+      },
+      "review_sha256": "467edcb20d9e3228d99fd563c857d42570dbdc0b4b52da3fca96cefcbd22cb58",
+      "full_decode_passed": true,
+      "no_caption_overlap": true
+    },
+    {
+      "role": "scheduling",
+      "name": "Clara Bennett",
+      "take": "original",
+      "duration_seconds": 107.3,
+      "mp4_bytes": 4158510,
+      "caption_cues": 31,
+      "mp4_sha256": "c7fe9ec40f88923aa2e2c8ea6d28b2e5251ab31ebb8f36f202fc8af40ac27f7f",
+      "vtt_sha256": "15b7eb038c56b2ed04b3158de6c22596bd40f40c5b972a0e47292e89851616dc",
+      "source_sha256": {
+        "screen.webm": "b41849aad7de1097bf1cb3a0c43dc3394e4f9c8df2842c345cc9d357b9b3d7bb",
+        "mixed-audio.webm": "799d3f5c6166a733e87bf8c87348b2cbcfd234e012930451a2d91c19f7ba1675",
+        "capture-evidence.json": "63bbbd93f5bfa322dd0e7ac5f97083a55fce97497fff245c80e13b40decd1cab"
+      },
+      "accepted_preview_sha256": {
+        "mp4": "c7fe9ec40f88923aa2e2c8ea6d28b2e5251ab31ebb8f36f202fc8af40ac27f7f",
+        "vtt": "8162cb4971d17fa22b3a6883e64ca017d971a5fbccdaf580239aab41bf2ca257"
+      },
+      "review_sha256": "1330ab0060128affcac95928f184971ab7d78469a52bdd6b93024a3e4014a3a1",
+      "full_decode_passed": true,
+      "no_caption_overlap": true
+    },
+    {
+      "role": "support",
+      "name": "Miles Carter",
+      "take": "original",
+      "duration_seconds": 122.3,
+      "mp4_bytes": 4659925,
+      "caption_cues": 34,
+      "mp4_sha256": "6fe48b86c3f927c93906f3f456764ec54defc1d90f0c4f81ad31fed4d51bca35",
+      "vtt_sha256": "634e0b4dce619a669befacc2709553740738753e9e72205d0e9eb33778acbeb9",
+      "source_sha256": {
+        "screen.webm": "d57f0d543ff59b71c975b0da80e59ee81e80f24380ed8afebd0d20329b52e505",
+        "mixed-audio.webm": "cd9da5d02b7d8efd8b7a591d378b24eb8d200e2388afbcb6fcbdb39772529379",
+        "capture-evidence.json": "a430bbaaf61e55a64bb882f7f4238ddeef685f50d14b4b108c614413c2156582"
+      },
+      "accepted_preview_sha256": {
+        "mp4": "6fe48b86c3f927c93906f3f456764ec54defc1d90f0c4f81ad31fed4d51bca35",
+        "vtt": "f015bdbb82675b987b6a8fe7b47fb6ce5ce978bdc01907b4d4a1e3a9f515cdf8"
+      },
+      "review_sha256": "852d57da52a52e8b216c15e6c2ae2856378ffe00098295f0df250e8b730a00bf",
+      "full_decode_passed": true,
+      "no_caption_overlap": true
+    },
+    {
+      "role": "billing",
+      "name": "June Parker",
+      "take": "original",
+      "duration_seconds": 89.7,
+      "mp4_bytes": 3331554,
+      "caption_cues": 24,
+      "mp4_sha256": "b0ccb76e91f7880ac2655089bf69707681b7284eb72b3a28e13a9ca9fa7462a9",
+      "vtt_sha256": "b8de576db235f3227566bbc0fc01d2472253c42da7264082a090b265b3a171d3",
+      "source_sha256": {
+        "screen.webm": "a024a4af79e6e1bd07d34087cefa13fe5072be60ca781026882e7408dce6882a",
+        "mixed-audio.webm": "38a77b6612f10c9c43027acd6fc438f5fa366906659e61fc5f135457f7f5a3ce",
+        "capture-evidence.json": "2848ca46dd62220a89367ea9c71373138925e868b00d5b060c2cd27236ce37fd"
+      },
+      "accepted_preview_sha256": {
+        "mp4": "b0ccb76e91f7880ac2655089bf69707681b7284eb72b3a28e13a9ca9fa7462a9",
+        "vtt": "a920bc984a19ffc110d8d13133b046c9068c8211ab3291f81cc85639fc3cd550"
+      },
+      "review_sha256": "a495550f117dfa4e219274823188d8e27e61a63415d112b4a6d257e8fc3f7fc7",
+      "full_decode_passed": true,
+      "no_caption_overlap": true
+    },
+    {
+      "role": "implementation",
+      "name": "Theo Reed",
+      "take": "original",
+      "duration_seconds": 117.6,
+      "mp4_bytes": 4815463,
+      "caption_cues": 31,
+      "mp4_sha256": "ed8652229fc5378284009cd5c296845507ba48f24bafad0d77ad9fe395179a20",
+      "vtt_sha256": "762815d265cfbf769ab03099aa8e9d6f2630287674fe0b7ca15bee76c3b062da",
+      "source_sha256": {
+        "screen.webm": "e8727ad07d2d8d7bb89ee1a00ec7c85b705796993b63104513f0cbcb23012e19",
+        "mixed-audio.webm": "66fbfdbe4b2ec420d15a0510e17209e123a3d46343fc48306a0319fccd395d04",
+        "capture-evidence.json": "a1aef42b9b34f065d62683520782d15ad519966ec6a489dcbef609a9498a6f9a"
+      },
+      "accepted_preview_sha256": {
+        "mp4": "ed8652229fc5378284009cd5c296845507ba48f24bafad0d77ad9fe395179a20",
+        "vtt": "b42123984efdb2490e91dc77ac9a11393e50ada9a407ef5f84abee07234d1c20"
+      },
+      "review_sha256": "9fc42db31c7e61db772774ca9e1282a5969bae8bd09053b4ec34015d1151200e",
+      "full_decode_passed": true,
+      "no_caption_overlap": true
+    },
+    {
+      "role": "retention",
+      "name": "Sage Morgan",
+      "take": "original",
+      "duration_seconds": 115.5,
+      "mp4_bytes": 4674215,
+      "caption_cues": 31,
+      "mp4_sha256": "c5d46ec830b63e4128dc6466dab3b1c0346ff656a64156462f25a6d7ac36c1c0",
+      "vtt_sha256": "11df1f72c9d35342af72b05eed2dc9b8e139a33ad4cd12c57b626bff318d6673",
+      "source_sha256": {
+        "screen.webm": "941a5f3187e291d71fff2fe956eb19bd46703ffc83d438cd986a4592dc26ac09",
+        "mixed-audio.webm": "af20c808755baa26cd1ecee5c4070dc79b3bfd070b472d644d532ecce565cbf0",
+        "capture-evidence.json": "b85cdae7d41af95432a8a2f3c72885efe4a707373751b27eee1e70d302199de7"
+      },
+      "accepted_preview_sha256": {
+        "mp4": "c5d46ec830b63e4128dc6466dab3b1c0346ff656a64156462f25a6d7ac36c1c0",
+        "vtt": "30c78ab093d95dd66961f179a372212b559b88d2d439124b189d8464f02a42f9"
+      },
+      "review_sha256": "6ea0abfcb59e0a7e05015bf74a4663975c9c84a332c905e728b250323672959d",
+      "full_decode_passed": true,
+      "no_caption_overlap": true
+    },
+    {
+      "role": "concierge",
+      "name": "Autumn Winters",
+      "take": "corrected",
+      "duration_seconds": 100.8,
+      "mp4_bytes": 4207534,
+      "caption_cues": 27,
+      "mp4_sha256": "e6e825f1fa84146cd127766035649e312b265cc0fc3f9c96964f87bdb61274f3",
+      "vtt_sha256": "032af9caf9e40ef6eec23d81d3229d9d0246e60dbf71a605a849ac7d2bcedbc3",
+      "source_sha256": {
+        "screen.webm": "bc45b04a44321d314b2f520f8e9c497f47193380af92fcedee601242b0321c04",
+        "mixed-audio.webm": "f0ee361596ccc7d298ff0123b65f8143880d8a674eee4c49ed3d9e79f0bf6ead",
+        "capture-evidence.json": "08b6b2f83a731fc412df53ea502d49501234e3eedbf77a6e3a00eeee0eef452f"
+      },
+      "accepted_preview_sha256": {
+        "mp4": "e6e825f1fa84146cd127766035649e312b265cc0fc3f9c96964f87bdb61274f3",
+        "vtt": "6e687c90a9fe4fe36a1d485255b59eacdbdd20f2359b9602f99cda8453e84ce0"
+      },
+      "review_sha256": "f1e1555be9bd33e30e15f72e09b32b301250776d4f000b3e9295564a2f56232d",
+      "full_decode_passed": true,
+      "no_caption_overlap": true
+    }
+  ],
+  "provider_calls": 0,
+  "uploads": 0,
+  "publication_performed": false,
+  "autumn_not_included": false,
+  "additional_owner_acceptance": {
+    "owner_answer": "Accept Autumn’s new video for website use",
+    "owner_question": "After watching Autumn’s new 101-second demonstration above, are her voice, complete conversation and captions suitable for AWC’s website? Please flag any wording or timing correction.",
+    "recorded_at": "2026-10-11T17:09:48Z",
+    "timestamp_basis": "Recorded in this task; exact original response timestamp unavailable",
+    "role": "concierge",
+    "take": "corrected"
+  },
+  "autumn_included": true
+}

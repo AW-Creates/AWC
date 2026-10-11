@@ -1,0 +1,34 @@
+{
+  "allowance_id": "awc_autumn_corrected_demo_20261011",
+  "reviewed_at": "2026-10-11T17:03:10.855Z",
+  "expires_at": "2026-10-11T20:03:10.855Z",
+  "approval_sha256": "52a4a0e008faa87b6da1ec71bc30ee59d2bbb78d209a856c17caa1c85dd20282",
+  "manifest_sha256": "1a0bfd7b3756f0f9ce045e60ef834fa22cdac1927d9f3d00ad2cd07d349f1d4e",
+  "questions_sha256": "33971d3247be8c833fea841b1f94f0cee77e923aabd28446029f70f017c37b8c",
+  "preflight_passed": true,
+  "supervised_recording_authorized": true,
+  "presenter_listening_accepted": true,
+  "presenter_acceptance_sha256": "75658944dedbf0bc358b753385eba7e8b11205ba84306f2a08e45a33be3a1595",
+  "presenter_listening_scope": "Owner listened to and accepted the combined review of all 21 actual generated question inputs. Full decode, signal, unique-hash and script-ledger mapping checks passed.",
+  "acceptance_source": "Owner accepted all six complete previews for website use. Accept the corrected question and approve one $1 attempt. Root reviewed proposed WAV QC: only internal silence shortened, original accepted source preserved; current capture free-preflight passed with zero provider calls. Same pinned published Autumnv2/custom voice/no-tools/150-second configuration and reviewed$0.108/min. Prior nine attempts settled.",
+  "roles": [
+    {
+      "role": "concierge",
+      "voice_id": "custom_voice_ed3e5ebc6829ccf92d0d39cd02",
+      "agent_version": 2,
+      "native_voice_listening_accepted": true,
+      "preview_sha256": "2f45ff3e237a53b4b0eb1e232542b8ca288b79a91972cee046cf04148ad860db",
+      "rate_reviewed": true,
+      "rate_evidence_source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_7097c8a9a855a9e44f5f628295; individually inspected selected custom clone and GPT4.1mini: $0.108/min",
+      "all_in_usd_per_minute": 0.108,
+      "previous_failed_capture_sha256": "969cc0b653adabab7e2bab050b4bea44668b70ad37f0b11fa8bb594303e72026"
+    }
+  ],
+  "original_approval_sha256": "d48da3601d37e9311bf866f8335fd5d04f1fce730040e340278ec1f2b76fac25",
+  "original_readiness_sha256": "9a8b69a467714a35266147cb8272057156bcde6386def567e40288faea67cbe2",
+  "retake_approval_sha256": "3b715a86e997f3db58d20b7c612ec82581adc24903567f6e7cb6355cf6a48faf",
+  "retake_readiness_sha256": "525967e558810f939cf8ad55420ac8277ffd233222a617869e0db8929ef47fcb",
+  "original_questions_sha256": "e5120df2d3d168e62c95155598a3c1758bb479f7db849dcfb9b9cf876731d0a7",
+  "accepted_corrected_question_sha256": "ec362da2ca84912bdcaeef2c5f71936148c6e88140c764e8da263cde61b75df4",
+  "accepted_corrected_script_sha256": "e3e846ad019d8b172cc5f6991400d8e08fc51221a998401b213ab7b4037ca7a6"
+}

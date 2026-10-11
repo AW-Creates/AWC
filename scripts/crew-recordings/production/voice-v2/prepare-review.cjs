@@ -2,6 +2,7 @@
 // Private, UNREVIEWED preparation only. Never invoke acceptance/publication.
 const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
 const { execFileSync, spawnSync } = require('node:child_process');
+const {takeProfile,assertSettledAttempt}=require('./take-profile.cjs');
 const ROLES = ['concierge','sales','scheduling','support','billing','implementation','retention'];
 const sha = data => crypto.createHash('sha256').update(data).digest('hex');
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -98,14 +99,15 @@ function buildDraft({ role, evidence, ledger, binding, questions, allowanceId = 
   return { review_status: 'unreviewed', caption_status: 'draft_coarse_timing_requires_actual_audio_review', role, name: binding.name, call_id: attempt.call_id, duration_seconds: duration, captions, mapping };
 }
 function prepareReview({ root, role, take = 'original', ffmpeg = 'C:/Program Files/ShareX/ffmpeg.exe' }) {
-  if (!['original','retake'].includes(take) || (take === 'retake' && !['concierge','sales'].includes(role))) fail('Retake is explicit and limited to concierge/sales');
-  const privateDir = path.resolve(root,'voice-samples/production-v2'), input = path.join(privateDir,'recordings',role+(take === 'retake' ? '-retake' : ''));
+  const profile=takeProfile(role,take);
+  const privateDir = path.resolve(root,'voice-samples/production-v2'), input = path.join(privateDir,'recordings',profile.captureName);
   if (!ROLES.includes(role)) fail('Unknown role');
   const evidence = read(path.join(input,'capture-evidence.json'));
-  const draft = buildDraft({ role, evidence, ledger: read(path.join(privateDir,take === 'retake' ? 'RETAKE-ATTEMPTS.json' : 'PAID-ATTEMPTS.json')), binding: read(path.join(root,'docs/crew/voice-v2/RECORDING-MANIFEST.json')).roles.find(item => item.role === role), questions: read(path.join(privateDir,'presenter/QUESTIONS.json')).items, allowanceId: take === 'retake' ? 'awc_autumn_owen_fresh_demos_20261011' : 'awc_seven_custom_voice_demos_20261011' });
+  const ledger=read(path.join(privateDir,profile.ledgerFile)),binding=read(path.join(root,'docs/crew/voice-v2/RECORDING-MANIFEST.json')).roles.find(item=>item.role===role);assertSettledAttempt(profile,ledger,binding);
+  const draft = buildDraft({ role, evidence, ledger, binding, questions: read(path.join(privateDir,profile.questionsFile)).items, allowanceId: profile.allowanceId });
   const source_sha256 = Object.fromEntries(['screen.webm','mixed-audio.webm','capture-evidence.json'].map(name => [name,sha(fs.readFileSync(path.join(input,name)))]));
-  const input_sha256 = { selected_ledger: sha(fs.readFileSync(path.join(privateDir,take === 'retake' ? 'RETAKE-ATTEMPTS.json' : 'PAID-ATTEMPTS.json'))), recording_manifest: sha(fs.readFileSync(path.join(root,'docs/crew/voice-v2/RECORDING-MANIFEST.json'))), presenter_questions: sha(fs.readFileSync(path.join(privateDir,'presenter/QUESTIONS.json'))) };
-  const out = path.join(privateDir,'reviews',role+(take === 'retake' ? '-retake' : '')+'-draft');
+  const input_sha256 = { selected_ledger: sha(fs.readFileSync(path.join(privateDir,profile.ledgerFile))), recording_manifest: sha(fs.readFileSync(path.join(root,'docs/crew/voice-v2/RECORDING-MANIFEST.json'))), presenter_questions: sha(fs.readFileSync(path.join(privateDir,profile.questionsFile))) };
+  const out = path.join(privateDir,'reviews',profile.captureName+'-draft');
   if (fs.existsSync(out)) fail('Private draft already exists; no overwrite');
   fs.mkdirSync(path.dirname(out),{recursive:true}); const temp = fs.mkdtempSync(path.join(path.dirname(out),'.draft-'));
   try {
@@ -123,4 +125,4 @@ function prepareReview({ root, role, take = 'original', ffmpeg = 'C:/Program Fil
   } finally { if (fs.existsSync(temp)) { for (const file of fs.readdirSync(temp)) fs.unlinkSync(path.join(temp,file)); fs.rmdirSync(temp); } }
 }
 module.exports = { buildDraft, coarseCues, prepareReview, stamp };
-if (require.main === module) { try { const [role,...extra] = process.argv.slice(2); if (!role || (extra.length && !(extra.length === 2 && extra[0] === '--take' && extra[1] === 'retake'))) fail('Usage: node prepare-review.cjs ROLE [--take retake]'); console.log(JSON.stringify(prepareReview({root:path.resolve(__dirname,'../../../..'),role,take:extra.length ? 'retake' : 'original'}))); } catch(error) { console.error('Private unreviewed preparation stopped: '+error.message); process.exitCode=1; } }
+if (require.main === module) { try { const [role,...extra] = process.argv.slice(2); if (!role || (extra.length && !(extra.length === 2 && extra[0] === '--take'))) fail('Usage: node prepare-review.cjs ROLE [--take original|retake|corrected]'); console.log(JSON.stringify(prepareReview({root:path.resolve(__dirname,'../../../..'),role,take:extra.length ? extra[1] : 'original'}))); } catch(error) { console.error('Private unreviewed preparation stopped: '+error.message); process.exitCode=1; } }
