@@ -31,6 +31,8 @@ Readiness checkpoint:19 worker/offer tests and Worker build PASS. One owner-auth
 
 Notification repair: owner confirmed Resend account email; dashboard403/testing-domain restriction contrasts with earlier delivered lowercase recipient under the same sender/key. Restored lowercase secret destination and deployed Site13/environment15 successfully. Case-sensitive matching remains the leading explanation pending one newly approved test. No additional send. Next: approve one test, verify actual receipt and follow-up; no domain purchase needed for this owner-only route.
 
+Latest acceptance: owner-approved single retry saved; live D1 new/accepted and no attached conversation; Resend Sent/Delivered at2:18PM New York on2026-10-11. Notification repair PASS. Owner mailbox receipt and human follow-up acceptance remain pending; response target still awaits publication. No additional sends. Next: confirm owner receipt, accept response routing and complete source publication/sync. Milestone remains IN PROGRESS.
+
 ## Latest completed milestone
 
 **AWC — Custom Voice Casting & Demonstration Revision — COMPLETE.** All seven custom specialist voices, realistic custom presenter questions, genuine conversations and captions are owner accepted and published at https://aw-creates-ventures.thesml.chatgpt.site/#meet-crew. Autumn101s, Owen142s, Clara107s, Miles122s, June90s, Theo118s and Sage115s. Scripts introduce Crew by AWC and use natural we/our; the site presents these as AWC's customizable examples. The existing overview remains available. Public live voice/callback remains disabled; watching recordings starts no provider session.
