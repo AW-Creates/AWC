@@ -1,5 +1,5 @@
 {
-  "status": "prepared_not_applied_awaiting_samples_previews_and_fresh_budget",
+  "status": "prepared_not_applied_local_voices_accepted_recording_allowance_approved_clone_fee_unverified",
   "created": "2026-10-10",
   "business_id": "aw_creatives",
   "spoken_brand": "Crew by AWC",
@@ -11,7 +11,7 @@
       "name": "Autumn Winters",
       "existing_agent_id": "agent_7097c8a9a855a9e44f5f628295",
       "baseline_version": 1,
-      "baseline_prompt_sha256": null,
+      "baseline_prompt_sha256": "483b890e7c3ac70806e88ea83f2333fc0f6fec1fd2bb7c0008fa11dcabbb05b1",
       "sample_label": "autumn",
       "selected_custom_voice_id": null,
       "begin_message": "Hi, I’m Autumn, your AI concierge with Crew by AWC. What can I help you work through today?"

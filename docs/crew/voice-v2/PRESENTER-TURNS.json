@@ -1,0 +1,37 @@
+{
+  "concierge": [
+    "I run a remodeling company. Visitors ask similar questions and some inquiries get missed. Where would I start?",
+    "We are a small team with a basic website. We review estimates ourselves and need clearer inquiries before following up.",
+    "Would I need a whole team, or could we start with one specialist? How would that specialist know when sales or scheduling should help?"
+  ],
+  "sales": [
+    "Our website gets inquiries, but they arrive without enough detail. How would you help us plan a better process?",
+    "We use a contact form and shared inbox. People rarely explain project goals, and responsibility for replying is unclear.",
+    "Could we improve the website first and add a specialist later? What would you clarify before proposing a solution?"
+  ],
+  "scheduling": [
+    "People ask for consultations by email, and we spend time going back and forth. How could a specialist help?",
+    "Customers usually want a short video meeting. We need their meeting goal and two preferred time windows before our team confirms availability.",
+    "What would happen if no calendar were connected yet? What could change once an integration is approved?"
+  ],
+  "support": [
+    "A contact page stopped working on mobile. What would you need to prepare a useful support request?",
+    "This is a made-up example: the contact page fails in a mobile browser, starting this morning, and customers cannot submit inquiries.",
+    "How would you decide whether this needs urgent human attention, and what information would the handoff include?"
+  ],
+  "billing": [
+    "I have a question about an invoice line. How could your role help without exposing private information?",
+    "For this example, I would like clarification on a project milestone charge. I do not want to share payment details or account credentials.",
+    "What can you explain here, and when would a person need to review the actual invoice?"
+  ],
+  "implementation": [
+    "We want a website and Crew, but our assets and processes are scattered. What should we prepare first?",
+    "We have business goals, approved logo and copy, an existing form, and ideas for customer experience and sales specialists.",
+    "Could we launch in phases? How would we define each specialist's permissions before connecting tools?"
+  ],
+  "retention": [
+    "I am frustrated by an unresolved service issue and am considering cancelling. How would a customer care specialist help?",
+    "This is a demonstration, not a real account request. Imagine I reported the issue twice and want a person to review cancellation and a possible refund.",
+    "What would you record and pass to a person? If I decide to cancel, how would you respect that choice without promising a refund?"
+  ]
+}
