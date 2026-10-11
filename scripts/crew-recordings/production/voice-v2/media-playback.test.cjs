@@ -1,0 +1,19 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'C:/Users/A-Problem/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+test('native browser uses selected pair, gates incomplete/malicious URLs, hides Sage pending and cleans up',async()=>{
+ const root=path.resolve(__dirname,'../../../..'),source=fs.readFileSync(process.env.AWC_MEDIA_HTML||path.join(root,'website-receptionist/public/index.html'),'utf8');const match=/<script>\s*(\(\(\)=>\{\s*const dialog=document.getElementById\('crewRecordingDialog'\)[\s\S]*?)<\/script>/.exec(source);assert(match,'Recording controller script found');
+ const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH||'C:/Users/A-Problem/.agent-browser/browsers/chrome-153.0.8010.36/chrome.exe'});
+ try{for(const caseData of [
+  {pair:{videoUrl:'/crew-media/retention-v2.mp4',captionUrl:'/crew-media/retention-v2.vtt'},ready:true},
+  {pair:{videoUrl:'/crew-media/retention.mp4',captionUrl:'/crew-media/retention.vtt'},ready:true},
+  {pair:{videoUrl:'https://elsewhere.test/file.mp4',captionUrl:'/crew-media/retention-v2.vtt'},ready:false},
+  {pair:{videoUrl:'/crew-media/retention-v2.mp4',captionUrl:'/crew-media/retention.vtt'},ready:false}
+ ]){const context=await browser.newContext(),page=await context.newPage(),errors=[],unexpected=[];page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(()=>{window.__mic=0;navigator.mediaDevices.getUserMedia=()=>{window.__mic++;throw Error('No microphone allowed');};});
+  const html=`<!doctype html><button data-crew-watch="retention" hidden>Watch Sage</button><p class="crew-recording-pending">Voice example pending</p><div class="crew-recorded-overview" hidden></div><dialog id="crewRecordingDialog"><h2 id="crewRecordingTitle"></h2><button id="crewRecordingClose">Close</button><video id="crewRecordingVideo" controls preload="none"><track id="crewRecordingCaptions"></video></dialog><script>${match[1]}</script>`;
+  await page.route('**/*',route=>{const url=new URL(route.request().url());if(url.origin!=='http://127.0.0.1:4199'){unexpected.push(url.href);return route.abort();}if(url.pathname==='/fixture')return route.fulfill({contentType:'text/html',body:html});if(url.pathname==='/api/crew-recordings')return route.fulfill({json:{readyRoles:['retention'],overviewReady:false,recordings:{retention:caseData.pair}}});if(/^\/crew-media\/retention(?:-v2)?\.(mp4|vtt)$/.test(url.pathname))return route.fulfill({contentType:url.pathname.endsWith('.vtt')?'text/vtt':'video/mp4',body:url.pathname.endsWith('.vtt')?'WEBVTT\n\n':''});unexpected.push(url.href);return route.abort();});
+  await page.goto('http://127.0.0.1:4199/fixture');await page.waitForTimeout(50);assert.equal(await page.locator('[data-crew-watch]').isVisible(),caseData.ready);assert.equal(await page.locator('.crew-recording-pending').isVisible(),!caseData.ready);
+  if(caseData.ready){await page.locator('[data-crew-watch]').click();assert.equal(await page.locator('#crewRecordingVideo').getAttribute('src'),caseData.pair.videoUrl);assert.equal(await page.locator('#crewRecordingCaptions').getAttribute('src'),caseData.pair.captionUrl);assert.equal(await page.locator('#crewRecordingVideo').getAttribute('autoplay'),null);await page.locator('#crewRecordingClose').click();await page.waitForFunction(()=>!document.getElementById('crewRecordingVideo').hasAttribute('src'));assert.equal(await page.locator('#crewRecordingCaptions').getAttribute('src'),null);assert.equal(await page.locator('[data-crew-watch]').evaluate(el=>el===document.activeElement),true);}
+  assert.equal(await page.evaluate(()=>window.__mic),0);assert.deepEqual(errors,[]);assert.deepEqual(unexpected,[]);await context.close();}
+ }finally{await browser.close();}
+});

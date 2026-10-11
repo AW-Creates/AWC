@@ -1,0 +1,40 @@
+{
+  "allowance_id": "awc_autumn_owen_fresh_demos_20261011",
+  "reviewed_at": "2026-10-11T03:37:26.977Z",
+  "expires_at": "2026-10-11T06:37:26.977Z",
+  "approval_sha256": "3b715a86e997f3db58d20b7c612ec82581adc24903567f6e7cb6355cf6a48faf",
+  "manifest_sha256": "1a0bfd7b3756f0f9ce045e60ef834fa22cdac1927d9f3d00ad2cd07d349f1d4e",
+  "questions_sha256": "e5120df2d3d168e62c95155598a3c1758bb479f7db849dcfb9b9cf876731d0a7",
+  "preflight_passed": true,
+  "supervised_recording_authorized": true,
+  "presenter_listening_accepted": true,
+  "presenter_acceptance_sha256": "75658944dedbf0bc358b753385eba7e8b11205ba84306f2a08e45a33be3a1595",
+  "presenter_listening_scope": "Owner listened to and accepted the combined review of all 21 actual generated question inputs. Full decode, signal, unique-hash and script-ledger mapping checks passed.",
+  "acceptance_source": "Owner accepted all eight Voicebox previews, all seven native Retell previews, all 21 actual presenter questions, the exact seven-session $7/150-second plan, and publication of Autumn v2 plus the other six v1 recording versions. Owner separately approved two fresh Autumn/Owen attempts, $2 total, $1/150 seconds each, no automatic retries. Corrected capture completed the five remaining original roles; all original attempts are reconciled.",
+  "roles": [
+    {
+      "role": "concierge",
+      "voice_id": "custom_voice_ed3e5ebc6829ccf92d0d39cd02",
+      "agent_version": 2,
+      "native_voice_listening_accepted": true,
+      "preview_sha256": "2f45ff3e237a53b4b0eb1e232542b8ca288b79a91972cee046cf04148ad860db",
+      "rate_reviewed": true,
+      "rate_evidence_source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_7097c8a9a855a9e44f5f628295; individually inspected selected custom clone and GPT4.1mini: $0.108/min",
+      "all_in_usd_per_minute": 0.108,
+      "failed_capture_sha256": "82e891fa5e038df2eb375569945a1abc72c91db3dfdb9646c6d824a0908d94af"
+    },
+    {
+      "role": "sales",
+      "voice_id": "custom_voice_59ad21d5574a10b5bf84fc1572",
+      "agent_version": 1,
+      "native_voice_listening_accepted": true,
+      "preview_sha256": "e92648bef6699bf41613ed97526a8952283929bed8921eab05d72aa39bccccc2",
+      "rate_reviewed": true,
+      "rate_evidence_source": "https://dashboard.retellai.com/org_9eiqTHaIMfTjcWx1/agents/agent_b726e6a93bdbc4207cb7acd12d; individually inspected selected custom clone and GPT4.1mini: $0.108/min",
+      "all_in_usd_per_minute": 0.108,
+      "failed_capture_sha256": "68316d40f97e803c65588b0300cd43bb579f53d3aa1808a14b4a70f1376e35d3"
+    }
+  ],
+  "original_approval_sha256": "d48da3601d37e9311bf866f8335fd5d04f1fce730040e340278ec1f2b76fac25",
+  "original_readiness_sha256": "9a8b69a467714a35266147cb8272057156bcde6386def567e40288faea67cbe2"
+}

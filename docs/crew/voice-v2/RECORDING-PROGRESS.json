@@ -1,0 +1,132 @@
+{
+  "updated_at": "2026-10-11T16:45:35.457Z",
+  "approved_original_attempts": 7,
+  "original_attempts_consumed": 7,
+  "original_attempts_unused": 0,
+  "settled_spend_usd": 1.1974101990000001,
+  "unsettled_roles": [],
+  "accepted_presenter_questions": 21,
+  "public_live_channels_enabled": false,
+  "new_public_media_published": false,
+  "attempts": [
+    {
+      "role": "concierge",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0.10165001500000001,
+      "duration_ms": 44802,
+      "capture_complete": false,
+      "capture_reason": "greeting_timeout",
+      "questions_completed": 0,
+      "monitor_available": false,
+      "monitor_error": null
+    },
+    {
+      "role": "sales",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0,
+      "duration_ms": 0,
+      "capture_complete": false,
+      "capture_reason": "sdk_error",
+      "questions_completed": 0,
+      "monitor_available": false,
+      "monitor_error": null
+    },
+    {
+      "role": "scheduling",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0.21304336899999998,
+      "duration_ms": 106802,
+      "capture_complete": true,
+      "capture_reason": "final_reply_complete",
+      "questions_completed": 3,
+      "monitor_available": true,
+      "monitor_error": null
+    },
+    {
+      "role": "support",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0.239993374,
+      "duration_ms": 121601,
+      "capture_complete": true,
+      "capture_reason": "final_reply_complete",
+      "questions_completed": 3,
+      "monitor_available": true,
+      "monitor_error": null
+    },
+    {
+      "role": "billing",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0.18250003,
+      "duration_ms": 89201,
+      "capture_complete": true,
+      "capture_reason": "final_reply_complete",
+      "questions_completed": 3,
+      "monitor_available": true,
+      "monitor_error": null
+    },
+    {
+      "role": "implementation",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0.232806706,
+      "duration_ms": 117002,
+      "capture_complete": true,
+      "capture_reason": "final_reply_complete",
+      "questions_completed": 3,
+      "monitor_available": true,
+      "monitor_error": null
+    },
+    {
+      "role": "retention",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0.22741670500000002,
+      "duration_ms": 114802,
+      "capture_complete": true,
+      "capture_reason": "final_reply_complete",
+      "questions_completed": 3,
+      "monitor_available": true,
+      "monitor_error": null
+    }
+  ],
+  "fresh_attempts": [
+    {
+      "role": "concierge",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0.141176689,
+      "duration_ms": 66401,
+      "capture_complete": false,
+      "capture_reason": "question_agent_overlap",
+      "questions_completed": 2
+    },
+    {
+      "role": "sales",
+      "attempt_consumed": true,
+      "settlement_state": "reconciled",
+      "cost_usd": 0.275926714,
+      "duration_ms": 141203,
+      "capture_complete": true,
+      "capture_reason": "final_reply_complete",
+      "questions_completed": 3
+    }
+  ],
+  "approved_fresh_attempts": 2,
+  "fresh_attempts_consumed": 2,
+  "fresh_attempts_unused": 0,
+  "fresh_settled_spend_usd": 0.41710340300000004,
+  "total_settled_recording_spend_usd": 1.6145136020000002,
+  "selected_complete_roles": [
+    "scheduling",
+    "support",
+    "billing",
+    "implementation",
+    "retention",
+    "sales"
+  ]
+}

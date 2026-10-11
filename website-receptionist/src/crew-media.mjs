@@ -1,18 +1,26 @@
 const roles=['concierge','sales','scheduling','support','billing','implementation','retention','overview'];
-const files=new Set(roles.flatMap(role=>[role+'.mp4',role+'.vtt']));
+const specialists=roles.filter(role=>role!=='overview');
+const files=new Set([...roles.flatMap(role=>[role+'.mp4',role+'.vtt']),...specialists.flatMap(role=>[role+'-v2.mp4',role+'-v2.vtt'])]);
 const maxBytes=12*1024*1024;
 const headers={'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'};
 const json=(data,status)=>new Response(JSON.stringify(data),{status,headers:{...headers,'Content-Type':'application/json','Cache-Control':'no-store'}});
 const authorized=(supplied,expected)=>{if(typeof expected!=='string'||expected.length<32||expected.length>256||typeof supplied!=='string'||supplied.length>256)return false;let diff=expected.length^supplied.length;for(let i=0;i<256;i++)diff|=(expected.charCodeAt(i)||0)^(supplied.charCodeAt(i)||0);return diff===0;};
 async function bytes(request,limit){const reader=request.body?.getReader();if(!reader)return null;const chunks=[];let size=0;while(true){const part=await reader.read();if(part.done)break;size+=part.value.length;if(size>limit){await reader.cancel();return null;}chunks.push(part.value);}const result=new Uint8Array(size);let offset=0;for(const chunk of chunks){result.set(chunk,offset);offset+=chunk.length;}return result;}
 async function digest(value){return [...new Uint8Array(await crypto.subtle.digest('SHA-256',value))].map(byte=>byte.toString(16).padStart(2,'0')).join('');}
+function reviewedRevisions(raw){
+ if(typeof raw!=='string'||raw.length>4096)return {};
+ try{const selection=JSON.parse(raw);if(selection.status!=='reviewed'||typeof selection.reviewed_by!=='string'||!selection.reviewed_by.trim()||!Number.isFinite(Date.parse(selection.reviewed_at))||!selection.roles||Array.isArray(selection.roles)||typeof selection.roles!=='object'||Object.entries(selection.roles).some(([role,revision])=>!specialists.includes(role)||revision!=='v2'))return {};return selection.roles;}catch{return {};}
+}
+async function readyRecording(env,role,revision){const stem=role+(revision==='v2'?'-v2':'');const [video,captions]=await Promise.all([env.CREW_MEDIA.head(stem+'.mp4'),env.CREW_MEDIA.head(stem+'.vtt')]);return video?.size>0&&captions?.size>0?{revision,videoUrl:'/crew-media/'+stem+'.mp4',captionUrl:'/crew-media/'+stem+'.vtt'}:null;}
 export async function crewMediaResponse(request,env){
  const url=new URL(request.url),path=url.pathname;
  if(path==='/api/crew-recordings'){
   if(request.method!=='GET')return json({error:'Method not allowed'},405);
-  if(!env.CREW_MEDIA)return json({readyRoles:[],overviewReady:false},200);
-  const ready=await Promise.all(roles.map(async role=>{const [video,captions]=await Promise.all([env.CREW_MEDIA.head(role+'.mp4'),env.CREW_MEDIA.head(role+'.vtt')]);return video?.size>0&&captions?.size>0?role:null;}));
-  return json({readyRoles:ready.filter(role=>role&&role!=='overview'),overviewReady:ready.includes('overview')},200);
+  if(!env.CREW_MEDIA)return json({readyRoles:[],overviewReady:false,recordings:{}},200);
+  const selected=reviewedRevisions(env.CREW_MEDIA_REVISIONS);
+  const pairs=await Promise.all(roles.map(async role=>{const recording=(selected[role]==='v2'?await readyRecording(env,role,'v2'):null)||await readyRecording(env,role,'legacy');return recording?[role,recording]:null;}));
+  const recordings=Object.fromEntries(pairs.filter(Boolean));
+  return json({readyRoles:roles.filter(role=>role!=='overview'&&recordings[role]),overviewReady:!!recordings.overview,recordings},200);
  }
  if(path==='/api/crew-media-upload'){
   if(!['POST','PUT'].includes(request.method))return json({error:'Method not allowed'},405);

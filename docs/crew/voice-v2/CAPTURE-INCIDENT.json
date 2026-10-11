@@ -1,0 +1,44 @@
+{
+  "updated_at": "2026-10-11T16:43:47.439Z",
+  "incidents": [
+    {
+      "role": "concierge",
+      "take": "original",
+      "complete": false,
+      "reason": "greeting_timeout",
+      "questions_played": 0,
+      "cost_usd": 0.101650015,
+      "duration_ms": 44802,
+      "attempt_consumed": true,
+      "root_cause": "Installed SDK3.0.1 gateway does not relay orchestrator control data; remote audio arrived without SDK speech or transcript events",
+      "correction": "Validated direct remote-only acoustic activity detector; transcript monitor separate and optional"
+    },
+    {
+      "role": "sales",
+      "take": "original",
+      "complete": false,
+      "reason": "transcript_monitor_prerequisite_failed",
+      "cost_usd": 0,
+      "duration_ms": 0,
+      "attempt_consumed": true,
+      "root_cause": "Exact monitor diagnostic was not retained; provider terminal reason error_user_not_joined",
+      "correction": "Bounded read-only monitor waits for ongoing provider status, reports safe diagnostics and is optional for audio capture"
+    },
+    {
+      "role": "concierge",
+      "take": "retake",
+      "complete": false,
+      "reason": "question_agent_overlap",
+      "questions_completed": 2,
+      "cost_usd": 0.141176689,
+      "duration_ms": 66401,
+      "attempt_consumed": true,
+      "observed_presenter_mid_question_silence_seconds": 0.49925,
+      "root_cause": "Inference: early response to first clause after internal presenter pause. Provider monitor recognized first clause; remote onset occurred4.158seconds into third question. New agent utterance text was absent at immediate abort, so exact semantic cause is unconfirmed.",
+      "next": "Prepare separate proposed input with shorter internal pause; actual owner review and a new bounded approval are required before another attempt"
+    }
+  ],
+  "all_failed_attempts_preserved": true,
+  "automatic_retry": false,
+  "public_replacement_accepted": false
+}

@@ -26,16 +26,8 @@ node scripts/crew-recordings/production/voice-v2/generate-presenter.cjs --genera
 
 Default presenter mode prints the plan. Explicit generation uses the existing local Voicebox Qwen 1.7B model and accepted presenter profile, saves a resumable private ledger, and never downloads a model or calls cloud TTS. Generated inputs still require listening and audio validation before recording. See the capture README and PRODUCTION-PLAN.md for supervised production acceptance.
 
-## Remaining work
+## Current recording progress — 2026-10-11
 
-Accept the actual generated presenter question outputs; finalize the separate immutable readiness gate; capture and reconcile one genuine session per specialist; review audio, captions and desktop/mobile playback before publishing versioned replacement assets. Existing public media and disabled live channels remain unchanged.
+The owner accepted all21actual presenter questions. All7original and2fresh attempts are consumed and reconciled; six complete replacement conversations are ready. Autumn’s fresh attempt failed overlap; Owen completed141seconds after bounded append-only readiness renewal. Total recording spend$1.614513602. See RECORDING-PROGRESS.json for authoritative sanitized costs/status and PROJECT_STATE.md for recovery steps. Private preview captions remain drafts, public replacements are not accepted or published. Owner review of six actual previews and separate corrected-Autumn/$1approval is pending.
 
-The subsequent revenue milestone is Flagship Consultation Conversion & Outreach Readiness Acceptance. No outreach or new niche build is authorized by this checkpoint.
-
-## Completed production preparation
-
-Seven selected custom-voice versions each show $0.108/min in authenticated Retell details; maximum displayed 150-second usage cost is $0.27, below the $1 reservation. Published pinned binding and no-tool/no-memory/no-fallback readback PASS for all seven. Native voice acceptance and specific version-publication approval are recorded.
-
-All 21 local question inputs completed, 133.52 seconds total. Full decode, signal, unique hashes and script-ledger mapping PASS. Measured local generation elapsed 1220.08 seconds (20m20s), from ledger creation to completion. Cloud TTS calls/spend: zero. The two-minute private Presenter-Questions-Review.mp3 and script reference are ready; generated-question listening acceptance is pending.
-
-Separate paid gate: 13 offline tests PASS; default command confirms zero provider calls and zero consumed attempts. Prepared RECORDING-MANIFEST.json pins all seven verified published configurations. RECORDING-READINESS.json is absent. Automatic review rejected readiness creation while generated-question listening verification was pending; no process ran and no paid attempt was consumed. Complete the actual question listening review before enabling the gate.
+Never reset a consumed grant or invent actual-audio acceptance. Next revenue milestone remains Flagship Consultation Conversion & Outreach Readiness Acceptance; no outreach or new niche build.

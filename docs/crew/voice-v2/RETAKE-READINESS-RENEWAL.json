@@ -1,0 +1,20 @@
+{
+  "renewal_id": "awc_autumn_owen_fresh_demos_20261011_readiness_renewal_20261011",
+  "allowance_id": "awc_autumn_owen_fresh_demos_20261011",
+  "base_readiness_sha256": "525967e558810f939cf8ad55420ac8277ffd233222a617869e0db8929ef47fcb",
+  "original_ledger_fingerprint": "ee0b76dadf0014075348285eca22209713aa7dfbdd50b90510dbb229ce312199",
+  "approval_sha256": "3b715a86e997f3db58d20b7c612ec82581adc24903567f6e7cb6355cf6a48faf",
+  "manifest_sha256": "1a0bfd7b3756f0f9ce045e60ef834fa22cdac1927d9f3d00ad2cd07d349f1d4e",
+  "questions_sha256": "e5120df2d3d168e62c95155598a3c1758bb479f7db849dcfb9b9cf876731d0a7",
+  "reviewed_at": "2026-10-11T16:42:20.199Z",
+  "expires_at": "2026-10-11T19:42:20.199Z",
+  "roles": [
+    "sales"
+  ],
+  "preflight_reviewed_unchanged": true,
+  "native_voice_acceptance_unchanged": true,
+  "presenter_acceptance_unchanged": true,
+  "rate_reviewed_unchanged": true,
+  "provider_pins_reviewed_unchanged": true,
+  "review_source": "Owner continuation preserves unused Owen approval. Root reran zero-provider Chromium free-preflight PASS and21offline gate/renewal tests; actual21presenter and7nativevoice owner acceptance unchanged. Current GET agent/LLM readback passed full pinned published hashes, voice,150-second cap and no tools/memory/fallback checks. Existing$0.108/min selected rate evidence unchanged; runtime still reconciles actual$1 cap. Original grant/readiness and consumed Autumn remain unchanged."
+}

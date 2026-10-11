@@ -1,0 +1,20 @@
+{
+  "id": "awc_autumn_owen_fresh_demos_20261011",
+  "status": "approved_not_used",
+  "approved_at": "2026-10-11T03:31:50.5475532Z",
+  "max_attempts": 2,
+  "max_seconds_per_attempt": 150,
+  "max_usd_per_attempt": 1,
+  "max_total_usd": 2,
+  "roles": [
+    "concierge",
+    "sales"
+  ],
+  "automatic_retries": false,
+  "public_live_activation": false,
+  "recharge": false,
+  "subscriptions": false,
+  "attempts_consumed": 0,
+  "actual_spend_usd": 0,
+  "source": "Owner explicitly answered: Approve two fresh attempts, up to $2 total. Applies only to fresh Autumn and Owen demonstrations, with 150-second and $1 caps each, no automatic retries; original seven-attempt grant remains consumed and unchanged."
+}

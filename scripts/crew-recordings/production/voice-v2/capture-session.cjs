@@ -3,12 +3,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const { createTurnController } = require('./turn-controller.cjs');
+const { createRemoteActivityDetector } = require('./remote-activity.cjs');
 const playwrightPath = process.env.PLAYWRIGHT_MODULE || 'C:/Users/A-Problem/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright';
 const sdkRoot = process.env.AWC_NODE_MODULES || 'C:/Users/A-Problem/Documents/Web Development/AW-Creates-Ventures/AWC/website-receptionist/node_modules';
 const assets = { 'event.js': 'eventemitter3/dist/eventemitter3.umd.js', 'livekit.js': 'livekit-client/dist/livekit-client.umd.js', 'retell.js': 'retell-client-js-sdk/dist/index.umd.js' };
 const escape = value => String(value || '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 
 async function captureSession(session) {
+  if (session.requireTranscriptMonitor === true && typeof (session.preflightOnly ? session.offlineMonitorFactory : session.transcriptMonitorFactory) !== 'function') throw Error('Required transcript monitor factory missing');
   const maxSeconds = session.maxSeconds === undefined ? 150 : session.maxSeconds;
   if (typeof maxSeconds !== 'number' || !Number.isFinite(maxSeconds) || maxSeconds <= 0 || maxSeconds > 150) throw Error('maxSeconds must be finite, positive and at most 150');
   // Decode all inputs before obtaining any provider session. Never create/retry calls here.
@@ -27,7 +29,7 @@ async function captureSession(session) {
   fs.mkdirSync(out, { recursive: true });
   const { chromium } = require(playwrightPath);
   const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROMIUM_EXECUTABLE_PATH || 'C:/Users/A-Problem/.agent-browser/browsers/chrome-153.0.8010.36/chrome.exe', args: ['--autoplay-policy=no-user-gesture-required'] });
-  let context;
+  let context, transcriptMonitor, monitorStarted = false, captureClosing = false;
   try {
     context = await browser.newContext({ viewport: { width: 1280, height: 720 }, recordVideo: { dir: out, size: { width: 1280, height: 720 } } });
     const screenStartedAt = Date.now(), page = await context.newPage(), errors = [];
@@ -48,13 +50,18 @@ async function captureSession(session) {
       const audio = new AudioContext({ sampleRate: 48000 });
       const mix = audio.createMediaStreamDestination(), mic = audio.createMediaStreamDestination(), gain = audio.createGain();
       gain.gain.value = .55; gain.connect(mix);
-      const c = window.__capture = { audio, mix, mic, gain, clips: [], chunks: [], events: [], updates: [], remoteTracks: 0, sources: [], peers: [], syntheticTimers: [] };
+      const c = window.__capture = { audio, mix, mic, gain, clips: [], chunks: [], events: [], updates: [], remoteTracks: 0, sources: [], peers: [], syntheticTimers: [], remoteAnalysers: [] };
       const seen = new Set();
       function captureTrack(stream) {
         for (const track of stream.getAudioTracks()) {
           if (seen.has(track.id)) continue;
           seen.add(track.id); const source = audio.createMediaStreamSource(new MediaStream([track]));
           source.connect(gain); c.sources.push(source); c.remoteTracks++;
+          // Branch before the recorded mix: presenter audio can never trigger activity.
+          const filter = audio.createBiquadFilter(); filter.type = 'highpass'; filter.frequency.value = 180;
+          const analyser = audio.createAnalyser(); analyser.fftSize = 2048;
+          source.connect(filter); filter.connect(analyser);
+          c.remoteAnalysers.push({ filter, analyser, samples: new Float32Array(analyser.fftSize) });
         }
       }
       const OriginalPC = window.RTCPeerConnection;
@@ -85,14 +92,61 @@ async function captureSession(session) {
     // Offline mode cannot invoke sessionFactory, consume credentials, or instantiate the real SDK.
     if (!session.preflightOnly && typeof session.sessionFactory === 'function') session = { ...session, ...await session.sessionFactory({ browserReady: true, captureReady: true, ready }) };
     if (!session.preflightOnly && (!session.access_token || !session.call_id)) throw Error('Authorized in-memory session required');
+    const monitorFactory = session.preflightOnly ? session.offlineMonitorFactory : session.transcriptMonitorFactory;
+    const monitorEnabled = typeof monitorFactory === 'function';
+    const requireTranscriptMonitor = session.requireTranscriptMonitor === true;
+    const diagnosticCodes = new Set(['malformed_request','invalid_credential','permission_denied','call_not_ongoing','watcher_limit','provider_error','stream_lost','invalid_frame','invalid_json','invalid_transcript','transcript_limit','consumer_error','handshake_rejected','connection_error','admission_timeout','duration_limit','ended_before_ready','call_ended','invalid_eligibility_options','eligibility_cancelled','ongoing_timeout','eligibility_read_failed','eligibility_identity_mismatch','call_already_terminal','eligibility_unknown_status','closed']);
+    function monitorFailure(error, event = 'transcript_monitor_error') {
+      if (captureClosing) return Promise.resolve();
+      const code = diagnosticCodes.has(error?.code) ? error.code : 'unknown_monitor_error';
+      return page.evaluate(({ code, event, required }) => {
+        const c = window.__capture; if (!c || c.controller.snapshot().terminal) return;
+        c.monitor_available = false; c.monitor_error = code; c.monitor_status = 'unavailable';
+        c.events.push({ event, code, required, time: performance.now() - c.startTime });
+        if (required) c.controller.event('error');
+      }, { code, event, required: requireTranscriptMonitor }).catch(() => {});
+    }
+    if (monitorEnabled) await page.exposeFunction('__startTranscriptMonitor', async () => {
+      if (monitorStarted) return; monitorStarted = true;
+      try {
+        transcriptMonitor = await monitorFactory({ callId: session.preflightOnly ? 'offline-no-provider' : session.call_id, onTranscript: (input, metadata = {}) => {
+          const items = Array.isArray(input) ? input : input?.transcript;
+          if (!Array.isArray(items)) return;
+          const transcript = items.filter(item => ['agent', 'user'].includes(item?.role) && typeof item.content === 'string').slice(-200).map(item => ({ role: item.role, content: item.content.slice(0, 4000), ...(typeof item.id === 'string' ? { id: item.id.slice(0, 200) } : {}), ...(Number.isFinite(item.time_sec) ? { time_sec: item.time_sec } : {}) }));
+          const received_at_ms = Number.isFinite(metadata.received_at_ms) ? metadata.received_at_ms : Date.now();
+          page.evaluate(({ transcript, name, received_at_ms }) => {
+            const c = window.__capture; if (!c || c.controller.snapshot().terminal) return;
+            c.updates.push({ source: 'transcript_monitor', transcript, received_at_ms, captureTimeMs: performance.now() - c.startTime });
+            document.getElementById('transcript').textContent = transcript.map(item => `${item.role === 'agent' ? name : 'Demonstrator'}: ${item.content}`).join('\n\n');
+          }, { transcript, name: session.name, received_at_ms }).catch(() => {});
+        }, onError: error => {
+          void monitorFailure(error);
+        }, onEnd: error => {
+          void monitorFailure(error, 'transcript_monitor_early_end');
+        } });
+        if (captureClosing) { transcriptMonitor.close(); return; }
+        await transcriptMonitor.readyPromise;
+        await page.evaluate(() => { const c = window.__capture; if (c && c.monitor_status === 'connecting') { c.monitor_available = true; c.monitor_status = 'available'; } }).catch(() => {});
+      } catch (error) {
+        await monitorFailure(error);
+      }
+    });
     const startedAt = Date.now();
-    await page.evaluate(({ source, config }) => {
+    await page.evaluate(({ source, activitySource, config }) => {
       const c = window.__capture, createController = (0, eval)(`(${source})`); c.startTime = performance.now();
+      c.monitor_available = false; c.monitor_error = null; c.monitor_status = config.monitorEnabled ? 'connecting' : 'disabled';
+      const createActivity = (0, eval)(`(${activitySource})`);
+      c.speechAuthority = config.preflightOnly || config.transport === 'gateway' ? 'remote_audio' : 'sdk';
+      c.remoteActivity = createActivity({ onEvent: (event, details) => {
+        if (c.speechAuthority !== 'remote_audio' || c.controller.snapshot().terminal) return;
+        c.events.push({ event: 'remote_activity', speechEvent: event, ...details, time: details.time - c.startTime });
+        c.controller.event(event);
+      } });
       const state = document.getElementById('state'), transcript = document.getElementById('transcript');
       c.controller = createController({ questionCount: c.clips.length,
-        quietMs: config.preflightOnly ? 35 : (config.quietMs || 1200),
-        hardStopMs: config.preflightOnly ? 3500 : Math.min(config.maxSeconds * 1000 || 150000, 150000),
-        connectionMs: config.preflightOnly ? 1500 : 25000, responseMs: config.preflightOnly ? 1200 : 45000,
+        quietMs: config.preflightOnly ? 1200 : (config.quietMs || 1200),
+        hardStopMs: config.preflightOnly ? (config.offlineScenario === 'missing_stop' ? 3500 : 20000) : Math.min(config.maxSeconds * 1000 || 150000, 150000),
+        connectionMs: config.preflightOnly ? 1500 : 25000, responseMs: config.preflightOnly ? 3000 : 45000,
         now: () => performance.now(), onEvent: e => { c.events.push(e); state.textContent = e.state.replaceAll('_', ' '); },
         stopCall: () => c.client?.stopCall(),
         playQuestion: (index, onEnded) => {
@@ -105,8 +159,7 @@ async function captureSession(session) {
           source.start();
           if (config.preflightOnly) {
             const delay = clip.buffer.duration * 1000;
-            c.syntheticTimers.push(setTimeout(() => c.client.emit('agent_start_talking'), delay + 20));
-            c.syntheticTimers.push(setTimeout(() => c.client.emit('agent_stop_talking'), delay + 100));
+            c.syntheticTimers.push(setTimeout(() => c.client.speak(), config.offlineScenario === 'overlap' ? 0 : delay + 100));
           }
           return source;
         }
@@ -115,16 +168,45 @@ async function captureSession(session) {
         async startCall() {
           await new Promise(resolve => { c.syntheticTimers.push(setTimeout(resolve, 200)); });
           if (c.controller.snapshot().terminal) return;
-          const remote = c.audio.createMediaStreamDestination(), oscillator = c.audio.createOscillator();
-          oscillator.frequency.value = 440; oscillator.connect(remote); oscillator.start(); c.oscillator = oscillator;
+          const remote = c.audio.createMediaStreamDestination(), oscillator = c.audio.createOscillator(), envelope = c.audio.createGain();
+          oscillator.frequency.value = 440; envelope.gain.value = .001;
+          oscillator.connect(envelope); envelope.connect(remote); oscillator.start(); c.oscillator = oscillator; c.remoteEnvelope = envelope;
           const pc = new RTCPeerConnection(), transceiver = pc.addTransceiver('audio');
           pc.dispatchEvent(new RTCTrackEvent('track', { track: remote.stream.getAudioTracks()[0], receiver: transceiver.receiver, transceiver, streams: [remote.stream] }));
-          this.emit('call_started'); this.emit('agent_start_talking');
-          c.syntheticTimers.push(setTimeout(() => this.emit('agent_stop_talking'), 100));
+          this.emit('call_started');
+          if (config.offlineScenario !== 'silent') this.speak();
+        }
+        speak() {
+          c.remoteEnvelope.gain.setValueAtTime(.06, c.audio.currentTime);
+          if (config.offlineScenario === 'missing_stop') return;
+          c.syntheticTimers.push(setTimeout(() => c.remoteEnvelope.gain.setValueAtTime(.001, c.audio.currentTime), 350));
+          // A second chunk resumes after detector stop but within the final quiet window.
+          c.syntheticTimers.push(setTimeout(() => c.remoteEnvelope.gain.setValueAtTime(.06, c.audio.currentTime), 1200));
+          c.syntheticTimers.push(setTimeout(() => c.remoteEnvelope.gain.setValueAtTime(.001, c.audio.currentTime), 1550));
         }
         stopCall() { c.oscillator?.stop(); this.emit('call_ended'); }
       })() : new window.retellClientJsSdk.RetellWebClient();
-      for (const event of ['call_started', 'agent_start_talking', 'agent_stop_talking', 'call_ended', 'error']) c.client.on(event, () => c.controller.event(event));
+      for (const event of ['call_started', 'agent_start_talking', 'agent_stop_talking', 'call_ended', 'error']) c.client.on(event, () => {
+        if (event.startsWith('agent_') && c.speechAuthority === 'remote_audio') {
+          c.events.push({ event: 'sdk_speech_ignored', speechEvent: event, time: performance.now() - c.startTime }); return;
+        }
+        c.controller.event(event);
+        if (event === 'call_started' && config.monitorEnabled) window.__startTranscriptMonitor().catch(() => {
+          c.monitor_available = false; c.monitor_error = 'unknown_monitor_error'; c.monitor_status = 'unavailable';
+          c.events.push({ event: 'transcript_monitor_error', code: 'unknown_monitor_error', required: config.requireTranscriptMonitor });
+          if (config.requireTranscriptMonitor) c.controller.event('error');
+        });
+      });
+      c.activityTimer = setInterval(() => {
+        if (c.controller.snapshot().terminal || !c.controller.snapshot().started) return;
+        let rms = 0;
+        for (const remote of c.remoteAnalysers) {
+          remote.analyser.getFloatTimeDomainData(remote.samples);
+          let energy = 0; for (const value of remote.samples) energy += value * value;
+          rms = Math.max(rms, Math.sqrt(energy / remote.samples.length));
+        }
+        c.remoteActivity.sample(rms, performance.now());
+      }, 20);
       c.client.on('update', data => { c.updates.push(data); if (Array.isArray(data.transcript)) transcript.textContent = data.transcript.map(t => `${t.role === 'agent' ? config.name : 'Demonstrator'}: ${t.content}`).join('\n\n'); });
       const analyser = c.audio.createAnalyser(); analyser.fftSize = 512; c.audio.createMediaStreamSource(c.mix.stream).connect(analyser);
       const canvas = document.getElementById('waveform'), draw = canvas.getContext('2d'), samples = new Uint8Array(analyser.fftSize);
@@ -135,12 +217,13 @@ async function captureSession(session) {
         // SDK connection promises may remain pending after stopCall; event/watchdog control is authoritative.
         Promise.resolve(c.client.startCall({ accessToken: config.access_token, callId: config.call_id, transport: config.transport, iceServers: config.ice_servers, emitRawAudioSamples: false })).catch(() => c.controller.event('error'));
       }).catch(() => c.controller.event('error'));
-      c.controller.done.then(result => { c.result = result; });
-    }, { source: createTurnController.toString(), config: { preflightOnly: !!session.preflightOnly, maxSeconds, quietMs: session.quietMs, name: session.name, access_token: session.preflightOnly ? undefined : session.access_token, call_id: session.preflightOnly ? undefined : session.call_id, transport: session.transport, ice_servers: session.ice_servers } });
-    try { await page.waitForFunction(() => !!window.__capture.result, null, { timeout: session.preflightOnly ? 5500 : 153000 }); }
+      c.controller.done.then(result => { clearInterval(c.activityTimer); c.remoteActivity.dispose(); c.result = result; });
+    }, { source: createTurnController.toString(), activitySource: createRemoteActivityDetector.toString(), config: { preflightOnly: !!session.preflightOnly, monitorEnabled, requireTranscriptMonitor, offlineScenario: session.preflightOnly ? session.offlineScenario : undefined, maxSeconds, quietMs: session.quietMs, name: session.name, access_token: session.preflightOnly ? undefined : session.access_token, call_id: session.preflightOnly ? undefined : session.call_id, transport: session.transport, ice_servers: session.ice_servers } });
+    try { await page.waitForFunction(() => !!window.__capture.result, null, { timeout: session.preflightOnly ? 22500 : 153000 }); }
     catch { await page.evaluate(() => window.__capture.controller.abort()); }
     const result = await page.evaluate(async () => {
       const c = window.__capture; cancelAnimationFrame(c.waveFrame);
+      clearInterval(c.activityTimer); c.remoteActivity.dispose();
       for (const timer of c.syntheticTimers) clearTimeout(timer);
       if (c.recorder.state !== 'inactive') await new Promise((resolve, reject) => {
         const timer = setTimeout(() => reject(Error('Recorder stop timeout')), 2000);
@@ -148,6 +231,7 @@ async function captureSession(session) {
       });
       for (const pc of c.peers) pc.close();
       for (const source of c.sources) source.disconnect();
+      for (const remote of c.remoteAnalysers) { remote.filter.disconnect(); remote.analyser.disconnect(); }
       for (const stream of [c.mic.stream, c.mix.stream]) stream.getTracks().forEach(track => track.stop());
       const blob = new Blob(c.chunks, { type: c.recorder.mimeType }), bytes = new Uint8Array(await blob.arrayBuffer());
       let binary = ''; for (let i = 0; i < bytes.length; i += 16384) binary += String.fromCharCode(...bytes.slice(i, i + 16384));
@@ -158,19 +242,23 @@ async function captureSession(session) {
         recordedAudio = { decoded: true, durationSeconds: decoded.duration, rms: Math.sqrt(energy / signal.length), peak };
       } catch { c.events.push({ event: 'recorded_audio_decode_failed' }); }
       await c.audio.close();
-      return { ...c.result, durationSeconds: (performance.now() - c.startTime) / 1000, remoteTracks: c.remoteTracks, events: c.events, updates: c.updates,
+      return { ...c.result, monitor_available: c.monitor_available, monitor_error: c.monitor_error, monitor_status: c.monitor_status, speechAuthority: c.speechAuthority, remoteActivityDisposed: c.remoteActivity.snapshot().disposed, durationSeconds: (performance.now() - c.startTime) / 1000, remoteTracks: c.remoteTracks, events: c.events, updates: c.updates,
         recordedAudio, audio: btoa(binary) };
     });
+    if (requireTranscriptMonitor && result.complete && !result.monitor_available) {
+      result.complete = false; result.reason = 'transcript_monitor_unavailable';
+    }
     fs.writeFileSync(path.join(out, 'mixed-audio.webm'), Buffer.from(result.audio, 'base64')); delete result.audio;
     const evidence = { ...result, ready, startedAt, videoLeadInSeconds: (startedAt - screenStartedAt) / 1000, errors,
       providerCalls: session.preflightOnly ? 0 : 1, blockedRequests,
       screen: 'Actual browser recording; identical question source into microphone and received remote track mix' };
     fs.writeFileSync(path.join(out, 'capture-evidence.json'), JSON.stringify(evidence, null, 2));
     const video = page.video(); await page.screenshot({ path: path.join(out, 'capture-final.png') });
+    captureClosing = true; try { transcriptMonitor?.close(); } catch {}
     await context.close(); context = undefined; await video.saveAs(path.join(out, 'screen.webm'));
     if (!result.complete || !result.remoteTracks || errors.length || result.recordedAudio.rms < .00001 || blockedRequests) throw Error(`Capture failed acceptance: ${result.reason}`);
     return { pass: true, ...evidence };
-  } finally { if (context) await context.close().catch(() => {}); await browser.close().catch(() => {}); }
+  } finally { captureClosing = true; try { transcriptMonitor?.close(); } catch {} if (context) await context.close().catch(() => {}); await browser.close().catch(() => {}); }
 }
 module.exports = { captureSession };
 if (require.main === module) {

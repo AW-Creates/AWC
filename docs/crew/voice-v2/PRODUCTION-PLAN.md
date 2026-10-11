@@ -20,4 +20,8 @@ Use new versioned public assets only after desktop/mobile playback acceptance. P
 
 Sources: https://docs.retellai.com/build/voice ; https://docs.retellai.com/api-references/clone-voice ; https://docs.retellai.com/api-references/add-voice ; https://www.retellai.com/pricing
 
-Owner accepted all seven native clone previews and explicitly approved publishing Autumn v2 and the other six v1 recording revisions. Exact published custom-voice, prompt, no-tool/no-memory/no-fallback and 150-second cap readbacks passed; pinned baselines were preserved. Each selected custom-voice version shows $0.108/min. All 21 presenter inputs passed full decode, signal, script mapping and unique-hash checks, totaling 133.52 seconds. A private combined question review and script reference are ready; actual generated-question listening acceptance remains pending. No paid session or public media replacement has occurred. See NATIVE-VOICE-BINDINGS.json and PRODUCTION-PREFLIGHT.md.
+## Current recording progress — 2026-10-11
+
+The owner accepted all21actual presenter questions. All7original and2fresh attempts are consumed and reconciled; six complete replacement conversations are ready. Autumn’s fresh attempt failed overlap; Owen completed141seconds after bounded append-only readiness renewal. Total recording spend$1.614513602. See RECORDING-PROGRESS.json for authoritative sanitized costs/status and PROJECT_STATE.md for recovery steps. Private preview captions remain drafts, public replacements are not accepted or published. Owner review of six actual previews and separate corrected-Autumn/$1approval is pending.
+
+Never reset a consumed grant or invent actual-audio acceptance. Next revenue milestone remains Flagship Consultation Conversion & Outreach Readiness Acceptance; no outreach or new niche build.
